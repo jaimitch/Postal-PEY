@@ -1,32 +1,36 @@
 <template>
 <div>
     <div class="frame">
-      {{ this.currentPage }} 
       <div
       class='drop-zone-1'
       @dragover.prevent
       @dragenter.prevent
-      @drop="onDropOutside($event)"
       >   
         <div 
           class='drag-el' 
-          v-for='item in items' 
+          v-for='item in firstLevel' 
           :key='item.title' 
-          :draggable ='item.draggable'
-          @dragstart='startDrag($event, item)'
-          @drop="onDrop($event,item)"
+          draggable=false
+          @drop="onDrop($event,item.id)"
         >
           {{ item.title }}
-          <div 
-            class='drag-el-inner' 
-            v-for="child in item.items" 
-            :key='child.title' 
-            @click="doThing(item,child)"
-            @drop="onDrop($event,child)"
-            :draggable='child.draggable'
-            @dragstart="startDragChild($event, child)"
-          >
-            {{child.title}}
+                  <div 
+                    class='drag-el' 
+                    v-for='child in getChildrenIndexes(item.id)' 
+                    :key='child' 
+                    :draggable ='true'
+                    @dragstart='startDrag($event, items[child])'
+                    @drop="onDrop($event,items[child].id)"
+                    >{{items[child].title}}
+                          <div 
+                            class='drag-el' 
+                            v-for='grandchild in getChildrenIndexes(items[child].id)' 
+                            :key='grandchild' 
+                            :draggable ='true'
+                            @dragstart='startDrag($event, items[grandchild])'
+                            @drop="onDrop($event,items[grandchild].id)"
+                            >{{items[grandchild].title}}
+                          </div>
           </div>
         </div>
         
@@ -56,27 +60,36 @@ export default {
             items: [
             {
                 id: 0,
-                title: "Item A",
-                items: [],
-                draggable: true
+                title: "Truck",
+                children: [1],
+                level: 1,
+            },
+            {
+                id: 4,
+                title: "Safe",
+                children: [2,3],
+                level: 1,
             },
             {
                 id: 1,
-                title: "Truck",
-                items: [],
-                draggable: true
+                title: "Letter",
+                children: [],
+                level: 2,
+
             },
             {
                 id: 2,
-                title: "Item C",
-                items: [],
-                draggable: true
+                title: "Package",
+                children: [],
+                level: 2,
+
             },
             {
                 id: 3,
-                title: "Safe",
-                items: [],
-                draggable: true
+                title: "Pouch",
+                children: [],
+                level: 2,
+
             }
             ],
             drag: false,
@@ -89,6 +102,15 @@ export default {
         currentPage() {
             return this.$store.state.pageNum;
         },
+        firstLevel() {
+          let res = [];
+          this.items.forEach(item => {
+            if (item.level === 1) {
+              res.push(item)
+            }
+          })
+          return res
+        },
     },
     methods: {
             startDrag (evt, item)  {
@@ -98,47 +120,25 @@ export default {
                     evt.dataTransfer.setData('itemID', item.id)
                 }
                 this.drag = false
-            },
-                startDragChild (evt, item)  {
-                this.drag = true;
-                evt.dataTransfer.dropEffect = 'move'
-                evt.dataTransfer.effectAllowed = 'move'
-                evt.dataTransfer.setData('itemID', item.id)
-                },
-                onDropOutside (evt) {
-                    const itemID = evt.dataTransfer.getData('itemID')
-                    if(this.items.find(item => item.id == itemID) == undefined) {
-                        console.log(this.items.find(item => item.id == itemID))
-                        this.items.push(this.items.find(item => item.id == itemID))
-                    }
-                },
-                onDrop (evt, item) {
-                    const itemID = evt.dataTransfer.getData('itemID')
-                    if(item.items.find(item => item.id == itemID) == undefined) {
-                        console.log(this.items.find(item => item.id == itemID))
-                        if(this.items.find(item => item.id == itemID) != undefined){
-                            console.log("top")
-                            this.items.find(item => item.id == itemID).parentID = item.id;
-                            item.items.push(this.items.find(item => item.id == itemID))
-                            
-                        }
-                        else{
-                           console.log(this.items.find(thing => thing.id == item.parentID))
-                        }
-                    }
-                    else{
-                        console.log("this")
-                    }
-                    if(this.drop == true){
-                        item.items.pop();
-                        this.drop = false;
-                    }
-                 },
-                 
-                doThing(item,child){
-                item.items = item.items.filter(thing => thing !== child)
-                //console.log(index)
-                }
+              },
+            onDrop (evt, destination) {
+              //check to make sure not already child
+                const draggedID = evt.dataTransfer.getData('itemID')
+                this.items[this.getItemIndex(draggedID)].level = destination.level+1
+                this.items[this.getItemIndex(destination)].children.push(this.getItemIndex(draggedID)-1)
+                // remove obj id from previous parent' array
+              },
+            getItemIndex(id){
+              let index = this.items.findIndex(item => item.id == id)
+              return index
+              },
+            getChildrenIndexes(id){
+              let children = this.items[this.getItemIndex(id)].children.map(child => {
+                let index = this.getItemIndex(child)
+                return index
+              })
+              return children
+              }
 
     }
         
