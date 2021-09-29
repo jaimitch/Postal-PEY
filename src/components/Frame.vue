@@ -15,7 +15,7 @@
         >
           {{ item.title }}
                   <div 
-                    class='drag-el' 
+                    class='drag-el-layer2' 
                     v-for='child in getChildrenIndexes(item.id)' 
                     :key='child' 
                     :draggable ='true'
@@ -23,7 +23,7 @@
                     @drop="onDrop($event,items[child].id)"
                     >{{items[child].title}}
                           <div 
-                            class='drag-el' 
+                            class='drag-el-layer3' 
                             v-for='grandchild in getChildrenIndexes(items[child].id)' 
                             :key='grandchild' 
                             :draggable ='true'
@@ -56,7 +56,6 @@ export default {
   },
   data() {
         return {
-            drop: false,
             items: [
             {
                 id: 0,
@@ -92,10 +91,8 @@ export default {
 
             }
             ],
-            drag: false,
             idCounter: 1000,
-            
-            
+            draggedItem: {}
         }
     },
     computed: {
@@ -114,19 +111,21 @@ export default {
     },
     methods: {
             startDrag (evt, item)  {
-                if(this.drag == false){
                     evt.dataTransfer.dropEffect = 'move'
                     evt.dataTransfer.effectAllowed = 'move'
                     evt.dataTransfer.setData('itemID', item.id)
-                }
-                this.drag = false
+                    evt.dataTransfer.setData('parentID', this.findParent(item.id))
+                    evt.stopPropagation()
               },
             onDrop (evt, destination) {
-              //check to make sure not already child
                 const draggedID = evt.dataTransfer.getData('itemID')
-                this.items[this.getItemIndex(draggedID)].level = destination.level+1
-                this.items[this.getItemIndex(destination)].children.push(this.getItemIndex(draggedID)-1)
-                // remove obj id from previous parent' array
+                const prevParentID = evt.dataTransfer.getData('parentID')
+                if(draggedID != destination){
+                  this.removeItemOnDrop(draggedID,prevParentID)
+                  this.items[this.getItemIndex(draggedID)].level = destination.level+1
+                  this.items[this.getItemIndex(destination)].children.push(this.getItemIndex(draggedID)-1)
+                }
+                evt.stopPropagation();
               },
             getItemIndex(id){
               let index = this.items.findIndex(item => item.id == id)
@@ -138,8 +137,25 @@ export default {
                 return index
               })
               return children
+              },
+            findParent(id){
+                for(var i = 0; i < this.items.length; i++){
+                  if(this.items[i].children.indexOf(id) != -1){
+                    return this.items[i].id
+                  }
+                }
+              },
+            removeItemOnDrop(itemID,parentID){
+                var index = this.getItemIndex(parentID) 
+                return this.items[index].children = this.items[index].children.filter(x => x != itemID)
+              },
+            findParentIndex(itemID){
+                for(var i = 0; i < this.items.length; i++){
+                  if(this.items[i].children.indexOf(itemID) == -1){
+                    return i
+                  }
+                }
               }
-
     }
         
 }
@@ -161,7 +177,7 @@ export default {
     background-color: #eee;
     margin-bottom: 10px;
     padding: 10px;
-    width: 5vw;
+    width: 10vw;
   }
     .drop-zone-2 {
     position: absolute;
@@ -178,8 +194,13 @@ export default {
     margin-bottom: 10px;
     padding: 5px;
   }
-  .drag-el-inner {
+  .drag-el-layer2 {
     background-color: #eee;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  .drag-el-layer3 {
+    background-color: #ddd;
     margin-bottom: 10px;
     padding: 5px;
   }
