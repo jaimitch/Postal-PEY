@@ -50,13 +50,13 @@ export default {
 }
 .previousBtn {
     position: absolute;
-    top: 89.5vh;
-    right: 5.225vw;
+    top: 85vh;
+    right: 4vw;
 }
 .nextBtn {
     position: absolute;
-    top: 89.5vh;
-    right: 2.725vw;
+    top: 85vh;
+    right: 1vw;
 }
 
 .previousBtn,
