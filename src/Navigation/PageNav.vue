@@ -2,10 +2,10 @@
 
     <div class="arrowBtn">
     <div class="arrow">
-    <button @click="previousPage" class="previousBtn"><img src="@/assets/left-arrow.svg" style="width: 2vw"></button>
+    <button @click="prevPage" class="previousBtn"><img src="@/assets/left-arrow.svg" style="width: 2vw"></button>
     </div>
     <div class="arrow">
-    <button @click=" nextPage" class="nextBtn"><img src="@/assets/right-arrow.svg" style="width: 2vw;"></button>
+    <button @click="nextPage" class="nextBtn"><img src="@/assets/right-arrow.svg" style="width: 2vw;"></button>
     </div>
 
 
@@ -38,7 +38,16 @@ export default {
 </script>
 
 <style>
-
+.arrowBtn {
+    font: Arial;
+    position: absolute;
+    top: 5vh;
+    width: 98vw;
+    z-index: 1;
+    font-family: Arial;
+    text-align: left;
+    color: white;
+}
 .previousBtn {
     position: absolute;
     top: 89.5vh;

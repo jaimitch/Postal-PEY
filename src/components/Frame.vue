@@ -1,13 +1,15 @@
 <template>
 <div>
+ <div class="top-bar"><p class="left-text">Page {{this.$store.state.pageNum}}</p><p class="right-text">Right side text</p></div>
+    
     <div class="frame">
       <div
-      class='drop-zone-1'
+      class='drop-zone'
       @dragover.prevent
       @dragenter.prevent
       >   
         <div 
-          class='drag-el' 
+          class='parent-level' 
           v-for='item in firstLevel' 
           :key='item.title' 
           draggable=false
@@ -15,7 +17,7 @@
         >
           {{ item.title }}
                   <div 
-                    class='drag-el-layer2' 
+                    class='child-level' 
                     v-for='child in getChildrenIndexes(item.id)' 
                     :key='child' 
                     :draggable ='true'
@@ -23,7 +25,7 @@
                     @drop="onDrop($event,items[child].id)"
                     >{{items[child].title}}
                           <div 
-                            class='drag-el-layer3' 
+                            class='grand-child-level' 
                             v-for='grandchild in getChildrenIndexes(items[child].id)' 
                             :key='grandchild' 
                             :draggable ='true'
@@ -31,17 +33,15 @@
                             @drop="onDrop($event,items[grandchild].id)"
                             >{{items[grandchild].title}}
                           </div>
-          </div>
+                  </div>
         </div>
-        
+      </div>
+      <div class = "vertical-line"></div>
+      <div class="right-side-content">RIGHT SIDE CONTENT</div>
       
     </div>
-      <PageNav/>
-  </div>
-
-
+  <PageNav/>
 </div>
-  
 </template>
 
 <script>
@@ -111,11 +111,11 @@ export default {
     },
     methods: {
             startDrag (evt, item)  {
-                    evt.dataTransfer.dropEffect = 'move'
-                    evt.dataTransfer.effectAllowed = 'move'
-                    evt.dataTransfer.setData('itemID', item.id)
-                    evt.dataTransfer.setData('parentID', this.findParent(item.id))
-                    evt.stopPropagation()
+                evt.dataTransfer.dropEffect = 'move'
+                evt.dataTransfer.effectAllowed = 'move'
+                evt.dataTransfer.setData('itemID', item.id)
+                evt.dataTransfer.setData('parentID', this.findParent(item.id))
+                evt.stopPropagation()
               },
             onDrop (evt, destination) {
                 const draggedID = evt.dataTransfer.getData('itemID')
@@ -163,45 +163,82 @@ export default {
 
 <style scoped>
 .frame{
+    display: flex;
+    flex-direction: row;
+    font: Arial;
     position: absolute;
-    top: 5%;
-    left: 10%;
-    width: 80%;
-    height: 95%;
+    top: 5vh;
+    left: 0;
+    width: 100vw;
+    height: 95vh;
     z-index: 1;
-    /* overflow: scroll; */
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #3F3F3F;
+    font-family: Arial;
+    background-color: #333366;
+    justify-content: space-evenly;
+    align-items: center;
 }
-  .drop-zone-1 {
-    background-color: #eee;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 10vw;
+  .drop-zone {
+    order: 1;
+    background-color: #333366;
+    width: 15vw;
+    
   }
-    .drop-zone-2 {
-    position: absolute;
-    background-color: #eee;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 7vw;
-    right: 0vw;
-    top:0;
+  .right-side-content{
+    order: 3;
+    color: #D5D5D5;
   }
-
-  .drag-el {
-    background-color: #fff;
+  .parent-level {
+    background-color: #D5D5D5;
     margin-bottom: 10px;
     padding: 5px;
+    color: #42426A;
+    border-radius: 5px;
   }
-  .drag-el-layer2 {
-    background-color: #eee;
+  .child-level {
+    background-color: #42426A;;
     margin-bottom: 10px;
     padding: 5px;
+    color: #D5D5D5;
+    border-radius: 5px;
   }
-  .drag-el-layer3 {
+  .grand-child-level {
     background-color: #ddd;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding: 5px;
+    color: #42426A;
+    border-radius: 5px;
+  }
+  .vertical-line {
+    order:2;
+    border-left: .25vw solid white;
+    top: 10vh;
+    height: 75vh;
+    z-index: 4;
+  }
+  .top-bar {
+    font: Arial;
+    position: absolute;
+    top: 0;
+    left: 3vw;
+    width: 97vw;
+    height: 5vh;
+    z-index: 2;
+    font-family: Arial;
+    background-color: #32334B;
+    text-align: left;
+    color: white;
+  }
+  .right-text{
+    position: absolute;
+    top:0;
+    left:85vw;
+    font-family: Arial;
+  }
+  .left-text {
+    position: absolute;
+    top: 0;
+    left: 1vw;
+    font-family: Arial;
+    color: white;
   }
 </style>

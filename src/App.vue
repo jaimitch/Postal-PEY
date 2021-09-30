@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <Frame/>
     <TLO/>
     <SituationNav/>
@@ -23,6 +23,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .background{
+    background-color: #32334B ;
+  }
 </style>
