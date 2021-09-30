@@ -124,14 +124,14 @@ export default {
   left: 0;
   z-index: 1;
   width: 3vw;
-  height: 5vh; 
+  height: 50px; 
   background-color: #E71922;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0;
-  box-shadow: none;
   border-radius: 0px;
+  box-shadow: 1px 5px 5px black;
 }
 .buttons{
   background-color: #E71922;

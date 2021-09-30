@@ -1,6 +1,10 @@
 <template>
 <div>
- <div class="top-bar"><p class="left-text">Page {{this.$store.state.pageNum}}</p><p class="right-text">Right side text</p></div>
+ <div class="top-bar">
+    <p class="left-text">Page {{this.$store.state.pageNum}}</p>
+    <p class="right-text">Right side text</p>
+    
+  </div>
     
     <div class="frame">
       <div
@@ -32,6 +36,14 @@
                             @dragstart='startDrag($event, items[grandchild])'
                             @drop="onDrop($event,items[grandchild].id)"
                             >{{items[grandchild].title}}
+                              <div 
+                              class='child-level' 
+                              v-for='greatGrand in getChildrenIndexes(items[grandchild].id)' 
+                              :key='greatGrand' 
+                              :draggable ='true'
+                              @dragstart='startDrag($event, items[greatGrand])'
+                              >{{items[greatGrand].title}}
+                              </div>
                           </div>
                   </div>
         </div>
@@ -120,10 +132,13 @@ export default {
             onDrop (evt, destination) {
                 const draggedID = evt.dataTransfer.getData('itemID')
                 const prevParentID = evt.dataTransfer.getData('parentID')
+                let childrenIndexes = this.getChildrenIndexes(draggedID)
                 if(draggedID != destination){
-                  this.removeItemOnDrop(draggedID,prevParentID)
-                  this.items[this.getItemIndex(draggedID)].level = destination.level+1
-                  this.items[this.getItemIndex(destination)].children.push(this.getItemIndex(draggedID)-1)
+                  if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+                    this.removeItemOnDrop(draggedID,prevParentID)
+                    this.items[this.getItemIndex(draggedID)].level = destination.level+1
+                    this.items[this.getItemIndex(destination)].children.push(this.getItemIndex(draggedID)-1)
+                  }
                 }
                 evt.stopPropagation();
               },
@@ -165,7 +180,6 @@ export default {
 .frame{
     display: flex;
     flex-direction: row;
-    font: Arial;
     position: absolute;
     top: 5vh;
     left: 0;
@@ -209,24 +223,23 @@ export default {
     border-radius: 5px;
   }
   .vertical-line {
-    order:2;
+    order: 2;
     border-left: .25vw solid white;
     top: 10vh;
-    height: 75vh;
+    height: 55vh;
     z-index: 4;
   }
   .top-bar {
-    font: Arial;
     position: absolute;
     top: 0;
     left: 3vw;
     width: 97vw;
-    height: 5vh;
+    height: 50px;
     z-index: 2;
     font-family: Arial;
     background-color: #32334B;
-    text-align: left;
     color: white;
+    box-shadow: 1px 5px 5px black;
   }
   .right-text{
     position: absolute;
