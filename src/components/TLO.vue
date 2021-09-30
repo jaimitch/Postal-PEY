@@ -58,6 +58,7 @@
     flex-direction: column;
     min-width: 35vw;
     min-height: 10vh;
+    border-radius: 5px;
   }
 
 

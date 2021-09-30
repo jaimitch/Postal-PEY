@@ -122,7 +122,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   width: 3vw;
   height: 50px; 
   background-color: #E71922;
