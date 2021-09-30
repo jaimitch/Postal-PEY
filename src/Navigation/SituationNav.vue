@@ -4,15 +4,15 @@
 <div>
     <!-- "@click" handler uses the  "drawerVisible" property.  It's set to true so that when the menu is clicked the menu drawer 
     will pop out. -->
-      <button class="toggle" @click="drawerVisible = true"><div></div></button>
+      <div class="toggle" @click="drawerVisible = true"><div></div></div>
    
 
 <!-- Holds the drawer with the menu options. -->
 <div 
 class="drawer"
 :style="{
-     width: drawerVisible? '20vw' : '0',
-     paddingLeft: drawerVisible? '10px' : '0',
+     width: drawerVisible? '10vw' : '0',
+     paddingLeft: drawerVisible? '0' : '0',
   }">
   
   <div>
@@ -20,8 +20,8 @@ class="drawer"
   <button class="close" @click="drawerVisible = false">X
   </button>
   </div>
-        <div>
-          <button @click="jumpToPage(section.page)" :key="section" v-for="section in situations" >{{ section.name }}</button>
+        <div  class="in-menu">
+          <button class="buttons" @click="jumpToPage(section.page)" :key="section" v-for="section in situations" >{{ section.name }}</button>
         </div>   
   </div>
     
@@ -69,14 +69,12 @@ export default {
 
 .drawer {
   position: absolute;
-  top: 15.5%;
+  top: 0;
   left: 0;
   width: 0; 
   overflow: hidden;
-  height: 70vh;
-  padding-top: 5vw;
-  padding-left: 0; 
-  background-color: #3F3F3F;
+  height: 100vh;
+  background-color: #32334B ;
   z-index: 200;
   transition: all 0.5s;
   overflow: scroll;
@@ -100,41 +98,53 @@ export default {
   justify-content: center;
   position: absolute;
   top:0%;
-  right:0%;
+  left:7.25vw;
   border: none;
-  background-color: #222222;
-  color: #EBAD1B;
-  margin: auto; 
-  padding: 3vh;
-  margin: 0 0% 1vh 85%;
+  background-color: #32334B ;
+  color: white;
+  margin: auto;
   width: 20%;
-  height: 7vh;
+  height: 5vh;
   font-size: 1.25vmax;
   font-weight: bold;
   
 }
+.in-menu {
+  position: absolute;
+  top: 5vh;
+  display: flex;
+  flex-direction: column;
+  width: 7vw;
+  left: 1.5vw
+}
 
 .toggle {
   position: absolute;
-  top: 15.5%;
-  left: 0%;
+  top: 0;
+  left: 0;
   z-index: 1;
-  width: 3.5vw;
-  height: 3.5vw;
-  /* padding: 1rem; */
-  background-color: #3F3F3F;
+  width: 3vw;
+  height: 50px; 
+  background-color: #E71922;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-
+  border: 0;
+  border-radius: 0px;
+  box-shadow: 1px 5px 5px black;
 }
-
+.buttons{
+  background-color: #E71922;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+}
 .toggle > div {
   position: relative;
   width: 1.5vw;
   height: 2px;
-  background-color:#EBAD1B;
+  background-color:#FFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +158,7 @@ export default {
   top: -10px;
   width: 1.5vw;
   height: 2px;
-  background-color:#EBAD1B;
+  background-color:#FFFF;
 }
 
 .toggle > div:after {
@@ -162,8 +172,8 @@ export default {
   justify-content: center;
   right: 0%;
   border: none;
-  background-color: #353535;
-  color: #EBAD1B;
+  background-color: #E71922;
+  color: #FFFF;
   margin: 5% auto;
   padding: 3vh;
   width: 70%;
@@ -209,5 +219,6 @@ export default {
   left: 15vw;
   font-size: 1.5vw;
 }
+
 </style>
 

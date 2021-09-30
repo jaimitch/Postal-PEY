@@ -52,7 +52,7 @@
     top: 33vw;
     left:50%;
     transform: translateX(-50%);
-    background: #353535;
+    background: #32334B;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
@@ -71,13 +71,13 @@
     font-size: 20px;
     cursor: pointer;
     font-weight: bold;
-    color: #EBAD1B;
+    color: #D5D5D5;
     background: transparent;
     text-align: right;
   }
 
 .gold {
-  color: #EBAD1B;
+  color: #D5D5D5;
   text-align: center;
 }
 </style>
