@@ -7,6 +7,14 @@
     </div>
       
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+      
+      <button @click="createForm()" >Create New Form</button>
+      <select v-model="createFormType">
+        <option value="DD Form 2261">DD Form 2261</option>
+        <option value="PS Form 3854">PS Form 3854</option>
+        <option value="Truck Bill">Truck Bill</option>
+      </select>
+
       <div
         :class="{'drop-zone': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
@@ -119,10 +127,20 @@ export default {
                 children: [],
                 level: 2,
 
+            },
+            {
+                id: 5,
+                title: "Forms",
+                children: [],
+                level: 1,
+
             }
             ],
             stamping: false,
-            currentItemIndex: 2
+            currentItemIndex: 2,
+            idCounter: 1000,
+            draggedItem: {},
+            createFormType: "",
         }
         
     },
@@ -150,17 +168,21 @@ export default {
                 evt.stopPropagation()
               },
             onDrop (evt, destination) {
+              console.log('dragged = ',evt.dataTransfer.getData('itemID'))
+              console.log('destination = ',destination)
                 const draggedID = evt.dataTransfer.getData('itemID')
                 const prevParentID = evt.dataTransfer.getData('parentID')
                 let childrenIndexes = this.getChildrenIndexes(draggedID)
                 if(draggedID != destination){
                   if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
                     this.removeItemOnDrop(draggedID,prevParentID)
-                    this.items[this.getItemIndex(draggedID)].level = destination.level+1
-                    this.items[this.getItemIndex(destination)].children.push(this.getItemIndex(draggedID)-1)
+
+                    this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+                    this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
                   }
                 }
                 evt.stopPropagation();
+                console.log(this.items)
               },
             getItemIndex(id){
               let index = this.items.findIndex(item => item.id == id)
@@ -181,7 +203,7 @@ export default {
                 }
               },
             removeItemOnDrop(itemID,parentID){
-                var index = this.getItemIndex(parentID) 
+                var index = this.getItemIndex(parentID)
                 return this.items[index].children = this.items[index].children.filter(x => x != itemID)
               },
             findParentIndex(itemID){
@@ -209,6 +231,20 @@ export default {
             changeCurrentItem (evt, id) {
               this.currentItemIndex = this.getItemIndex(id);
               evt.stopPropagation()
+            },
+            createForm() {
+              console.log("create", this.createFormType)
+              let newForm = {
+                id: this.idCounter,
+                title: this.createFormType,
+                children: [],
+                level: 2,
+            }
+              this.idCounter++;
+              this.items.push(newForm);
+              this.items[5].children.push(newForm.id)
+              
+              console.log(this.items)
             }
     }
         
