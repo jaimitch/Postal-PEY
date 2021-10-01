@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="top-bar">
-      <p class="left-text">Page {{this.$store.state.pageNum}}</p>
+      <div class="left-text">Page {{this.$store.state.pageNum}}</div>
       <p class="right-text">Right side text</p>
       <button :class="'stamp-button'" @click="changeCursor()"> Stamp</button>
     </div>
       
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       
-      <button @click="createForm()" >Create New Form</button>
+      <button @click="createItem('form', createFormType)" >Create New Form</button>
       <select v-model="createFormType">
         <option value="DD Form 2261">DD Form 2261</option>
         <option value="PS Form 3854">PS Form 3854</option>
@@ -65,6 +65,8 @@
       </div>
         <div class = "vertical-line"></div>
         <div class="right-side-content">
+          <div> Situation {{ getSituationNumber }} </div>
+          <div class="situation-text"> {{ this.getSituationText }} </div>
           <p> This is a {{this.items[currentItemIndex].title}} </p>
           <img 
             :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
@@ -88,20 +90,23 @@ export default {
       PageNav,
 
   },
+  props: [
+      'pageNum'
+      ],
   data() {
         return {
             items: [
             {
                 id: 0,
                 title: "Truck",
-                children: [1],
+                children: [],
                 level: 1,
                 image: require('../assets/mail-truck.jpeg')
             },
             {
                 id: 4,
                 title: "Safe",
-                children: [2,3],
+                children: [],
                 level: 1,
             },
             {
@@ -136,13 +141,23 @@ export default {
 
             }
             ],
+
             stamping: false,
             currentItemIndex: 2,
             idCounter: 1000,
             draggedItem: {},
             createFormType: "",
+            situationOneInit: false,
+            situationTwoInit: false,
+            situationThreeInit: false,
+            situationFourInit: false,
+            situationFiveInit: false,
+            situationSixInit: false,
         }
         
+    },
+    mounted() {
+      this.updateSituation();
     },
     computed: {
         currentPage() {
@@ -157,6 +172,59 @@ export default {
           })
           return res
         },
+        getSituationText() {
+          let text = "";
+          if(this.pageNum ==  1) {
+            text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry section and verified the items inside\
+            the safe against the previous day's inventory. Verify that the following items (RB339 065 331US and RB290 770 790US) are accounted for."
+          }
+          else if(this.pageNum > 1 && this.pageNum < 4) {
+            text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's).\
+            2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
+          }
+          else if(this.pageNum >= 4 && this.pageNum < 5) {
+            text = "This is situation three!"
+          }
+          else if(this.pageNum >= 5 && this.pageNum < 9) {
+            text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area.\
+            2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2.\
+            3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877.\
+            4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."         
+          }
+          else if(this.pageNum == 9) {
+            text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
+            registered mail.\
+            1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300. \
+            2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+          }
+          else if(this.pageNum == 10) {
+            text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
+            that is still on hand and has not been delivered."
+          }
+          return text;
+        },
+        getSituationNumber() {
+          let num = 1;
+          if(this.pageNum ==  1) {
+            num = 1;
+          }
+          else if(this.pageNum > 1 && this.pageNum < 4) {
+            num = 2;
+          }
+          else if(this.pageNum >= 4 && this.pageNum < 5) {
+            num = 3;
+          }
+          else if(this.pageNum >= 5 && this.pageNum < 9) {
+            num = 4;
+          }
+          else if(this.pageNum == 9) {
+            num = 5;
+          }
+          else if(this.pageNum == 10) {
+            num = 6;
+          }
+          return num;
+        }
         
     },
     methods: {
@@ -168,8 +236,8 @@ export default {
                 evt.stopPropagation()
               },
             onDrop (evt, destination) {
-              console.log('dragged = ',evt.dataTransfer.getData('itemID'))
-              console.log('destination = ',destination)
+              // console.log('dragged = ',evt.dataTransfer.getData('itemID'))
+              // console.log('destination = ',destination)
                 const draggedID = evt.dataTransfer.getData('itemID')
                 const prevParentID = evt.dataTransfer.getData('parentID')
                 let childrenIndexes = this.getChildrenIndexes(draggedID)
@@ -182,7 +250,7 @@ export default {
                   }
                 }
                 evt.stopPropagation();
-                console.log(this.items)
+                // console.log(this.items)
               },
             getItemIndex(id){
               let index = this.items.findIndex(item => item.id == id)
@@ -232,20 +300,48 @@ export default {
               this.currentItemIndex = this.getItemIndex(id);
               evt.stopPropagation()
             },
-            createForm() {
-              console.log("create", this.createFormType)
-              let newForm = {
+            createItem(itemType, itemName) {
+              if(itemType == "form") {
+                let newForm = {
                 id: this.idCounter,
-                title: this.createFormType,
+                title: itemName,
                 children: [],
                 level: 2,
-            }
+                }
+                this.items.push(newForm);
+                this.items[5].children.push(newForm.id)
+              }
+              else if(itemType == "mail") {
+                let mail = {
+                id: this.idCounter,
+                title: itemName,
+                children: [],
+                level: 2,
+                }
+                this.items.push(mail);
+                this.items[1].children.push(mail.id)
+              }
               this.idCounter++;
-              this.items.push(newForm);
-              this.items[5].children.push(newForm.id)
               
-              console.log(this.items)
-            }
+              
+            },
+            updateSituation() {
+              if(this.getSituationNumber == 1 && !this.situationOneInit) {
+                this.createItem('mail', 'RB339 065 331US')
+                this.createItem('mail', 'RB290 770 790US')
+                this.situationOneInit = true;
+              }
+              else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
+                this.createItem('mail', 'RB339 065 331US!!!')
+                this.createItem('mail', 'RB290 770 790US!!!')
+                this.situationTwoInit = true;
+              }
+            },
+    },
+    watch: {
+      getSituationNumber: function () {
+        this.updateSituation();
+      }
     }
         
 }
@@ -366,6 +462,9 @@ export default {
   }
   .is-stamping{
     pointer-events: none;
+  }
+  .situation-text {
+    width: 32vw;
   }
 
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Frame/>
+    <Frame v-bind:pageNum="this.$store.state.pageNum"/>
     <TLO/>
-    <SituationNav/>
+    <SituationNav v-on:jump="jumpPage()"/>
   </div>
 </template>
 
@@ -15,10 +15,25 @@ import TLO from './components/TLO.vue'
 export default {
   name: 'App',
   store,
+  data() {
+    return {
+      globalPageNum: this.vuexPageNum,
+    }
+  },
   components: {
     Frame,
     SituationNav,
     TLO
+  },
+  methods: {
+    jumpPage() {
+      console.log("jump page")
+    },
+  },
+  computed: {
+    vuexPageNum() {
+      return this.$store.state.pageNum
+    }
   }
 }
 </script>

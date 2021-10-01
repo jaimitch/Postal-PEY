@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 const store = createStore({
     state: {
-        pageNum: 0,
+        pageNum: 1,
         
     },
     mutations: {
