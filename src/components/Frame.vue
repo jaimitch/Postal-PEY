@@ -1,13 +1,11 @@
 <template>
   <div>
     <div class="top-bar">
-      <div class="left-text">Page {{this.$store.state.pageNum}}</div>
+      <p class="left-text">Left side text</p>
       <p class="right-text">Right side text</p>
-      <button :class="'stamp-button'" @click="changeCursor()"> Stamp</button>
+      <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
     </div>
-      
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
-      
       <button @click="createItem('form', createFormType)" >Create New Form</button>
       <select v-model="createFormType">
         <option value="DD Form 2261">DD Form 2261</option>
@@ -81,286 +79,272 @@
 </template>
 
 <script>
-
-import PageNav from '../Navigation/PageNav.vue'
-
-export default {
-  name: 'Frame',
-  components: {
+  import PageNav from '../Navigation/PageNav.vue'
+  export default {
+    name: 'Frame',
+    components: {
       PageNav,
-
-  },
-  props: [
+    },
+    props: [
       'pageNum'
-      ],
-  data() {
-        return {
-            items: [
-            {
-                id: 0,
-                title: "Truck",
-                children: [],
-                level: 1,
-                image: require('../assets/mail-truck.jpeg')
-            },
-            {
-                id: 4,
-                title: "Safe",
-                children: [],
-                level: 1,
-            },
-            {
-                id: 1,
-                title: "Letter",
-                children: [],
-                level: 2,
-                stamped: false,
-                image: require('../assets/letter.png'),
-                stampedImage: require('../assets/stamped-letter.png')
-
-            },
-            {
-                id: 2,
-                title: "Package",
-                children: [],
-                level: 2,
-
-            },
-            {
-                id: 3,
-                title: "Pouch",
-                children: [],
-                level: 2,
-
-            },
-            {
-                id: 5,
-                title: "Forms",
-                children: [],
-                level: 1,
-
-            }
-            ],
-
-            stamping: false,
-            currentItemIndex: 2,
-            idCounter: 1000,
-            draggedItem: {},
-            createFormType: "",
-            situationOneInit: false,
-            situationTwoInit: false,
-            situationThreeInit: false,
-            situationFourInit: false,
-            situationFiveInit: false,
-            situationSixInit: false,
-        }
-        
+    ],
+    data() {
+      return {
+        items: [
+          {
+            id: 0,
+            title: "Truck",
+            children: [],
+            level: 1,
+            image: require('../assets/mail-truck.jpeg')
+          },
+          {
+            id: 4,
+            title: "Safe",
+            children: [],
+            level: 1,
+          },
+          {
+            id: 1,
+            title: "Letter",
+            children: [],
+            level: 2,
+            stamped: false,
+            image: require('../assets/letter.png'),
+            stampedImage: require('../assets/stamped-letter.png')
+          },
+          {
+            id: 2,
+            title: "Package",
+            children: [],
+            level: 2,
+          },
+          {
+            id: 3,
+            title: "Pouch",
+            children: [],
+            level: 2,
+          },
+          {
+            id: 5,
+            title: "Forms",
+            children: [],
+            level: 1,
+          }
+        ],
+        stamping: false,
+        currentItemIndex: 2,
+        idCounter: 1000,
+        draggedItem: {},
+        createFormType: "",
+        situationOneInit: false,
+        situationTwoInit: false,
+        situationThreeInit: false,
+        situationFourInit: false,
+        situationFiveInit: false,
+        situationSixInit: false,
+        }   
     },
     mounted() {
       this.updateSituation();
     },
     computed: {
-        currentPage() {
-            return this.$store.state.pageNum;
-        },
-        firstLevel() {
-          let res = [];
-          this.items.forEach(item => {
-            if (item.level === 1) {
-              res.push(item)
-            }
-          })
-          return res
-        },
-        getSituationText() {
-          let text = "";
-          if(this.pageNum ==  1) {
-            text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry section and verified the items inside\
-            the safe against the previous day's inventory. Verify that the following items (RB339 065 331US and RB290 770 790US) are accounted for."
+      currentPage() {
+        return this.$store.state.pageNum;
+      },
+      firstLevel() {
+        let res = [];
+        this.items.forEach(item => {
+          if (item.level === 1) {
+            res.push(item)
           }
-          else if(this.pageNum > 1 && this.pageNum < 4) {
-            text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's).\
-            2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
-          }
-          else if(this.pageNum >= 4 && this.pageNum < 5) {
-            text = "This is situation three!"
-          }
-          else if(this.pageNum >= 5 && this.pageNum < 9) {
-            text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area.\
-            2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2.\
-            3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877.\
-            4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."         
-          }
-          else if(this.pageNum == 9) {
-            text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
-            registered mail.\
-            1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300. \
-            2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
-          }
-          else if(this.pageNum == 10) {
-            text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
-            that is still on hand and has not been delivered."
-          }
-          return text;
-        },
-        getSituationNumber() {
-          let num = 1;
-          if(this.pageNum ==  1) {
-            num = 1;
-          }
-          else if(this.pageNum > 1 && this.pageNum < 4) {
-            num = 2;
-          }
-          else if(this.pageNum >= 4 && this.pageNum < 5) {
-            num = 3;
-          }
-          else if(this.pageNum >= 5 && this.pageNum < 9) {
-            num = 4;
-          }
-          else if(this.pageNum == 9) {
-            num = 5;
-          }
-          else if(this.pageNum == 10) {
-            num = 6;
-          }
-          return num;
+        })
+        return res
+      },
+      getSituationText() {
+        let text = "";
+        if(this.pageNum ==  1) {
+          text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry section and verified the items inside\
+          the safe against the previous day's inventory. Verify that the following items (RB339 065 331US and RB290 770 790US) are accounted for."
         }
-        
+        else if(this.pageNum > 1 && this.pageNum < 4) {
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's).\
+          2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
+        }
+        else if(this.pageNum >= 4 && this.pageNum < 5) {
+          text = "This is situation three!"
+        }
+        else if(this.pageNum >= 5 && this.pageNum < 9) {
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area.\
+          2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2.\
+          3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877.\
+          4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."         
+        }
+        else if(this.pageNum == 9) {
+          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
+          registered mail.\
+          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300. \
+          2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+        }
+        else if(this.pageNum == 10) {
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
+          that is still on hand and has not been delivered."
+        }
+        return text;
+      },
+      getSituationNumber() {
+        let num = 1;
+        if(this.pageNum ==  1) {
+          num = 1;
+        }
+        else if(this.pageNum > 1 && this.pageNum < 4) {
+          num = 2;
+        }
+        else if(this.pageNum >= 4 && this.pageNum < 5) {
+          num = 3;
+        }
+        else if(this.pageNum >= 5 && this.pageNum < 9) {
+          num = 4;
+        }
+        else if(this.pageNum == 9) {
+          num = 5;
+        }
+        else if(this.pageNum == 10) {
+          num = 6;
+        }
+        return num;
+      } 
     },
     methods: {
-            startDrag (evt, item)  {
-                evt.dataTransfer.dropEffect = 'move'
-                evt.dataTransfer.effectAllowed = 'move'
-                evt.dataTransfer.setData('itemID', item.id)
-                evt.dataTransfer.setData('parentID', this.findParent(item.id))
-                evt.stopPropagation()
-              },
-            onDrop (evt, destination) {
-              // console.log('dragged = ',evt.dataTransfer.getData('itemID'))
-              // console.log('destination = ',destination)
-                const draggedID = evt.dataTransfer.getData('itemID')
-                const prevParentID = evt.dataTransfer.getData('parentID')
-                let childrenIndexes = this.getChildrenIndexes(draggedID)
-                if(draggedID != destination){
-                  if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
-                    this.removeItemOnDrop(draggedID,prevParentID)
-
-                    this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
-                    this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
-                  }
-                }
-                evt.stopPropagation();
-                // console.log(this.items)
-              },
-            getItemIndex(id){
-              let index = this.items.findIndex(item => item.id == id)
-              return index
-              },
-            getChildrenIndexes(id){
-              let children = this.items[this.getItemIndex(id)].children.map(child => {
-                let index = this.getItemIndex(child)
-                return index
-              })
-              return children
-              },
-            findParent(id){
-                for(var i = 0; i < this.items.length; i++){
-                  if(this.items[i].children.indexOf(id) != -1){
-                    return this.items[i].id
-                  }
-                }
-              },
-            removeItemOnDrop(itemID,parentID){
-                var index = this.getItemIndex(parentID)
-                return this.items[index].children = this.items[index].children.filter(x => x != itemID)
-              },
-            findParentIndex(itemID){
-                for(var i = 0; i < this.items.length; i++){
-                  if(this.items[i].children.indexOf(itemID) == -1){
-                    return i
-                  }
-                }
-              },
-            changeCursor(){
-                this.stamping = !this.stamping
-              },
-            stamp(object) {
-                if(object.stamped != undefined){
-                  object.stamped = !object.stamped;
-                }
-                this.stamping = false;
-              },
-            itemImage(object) {
-                if(object.stamped == true){
-                  return object.stampedImage
-                }
-                return object.image
-              },
-            changeCurrentItem (evt, id) {
-              this.currentItemIndex = this.getItemIndex(id);
-              evt.stopPropagation()
-            },
-            createItem(itemType, itemName) {
-              if(itemType == "form") {
-                let newForm = {
-                id: this.idCounter,
-                title: itemName,
-                children: [],
-                level: 2,
-                }
-                this.items.push(newForm);
-                this.items[5].children.push(newForm.id)
-              }
-              else if(itemType == "mail") {
-                let mail = {
-                id: this.idCounter,
-                title: itemName,
-                children: [],
-                level: 2,
-                }
-                this.items.push(mail);
-                this.items[1].children.push(mail.id)
-              }
-              this.idCounter++;
-              
-              
-            },
-            updateSituation() {
-              if(this.getSituationNumber == 1 && !this.situationOneInit) {
-                this.createItem('mail', 'RB339 065 331US')
-                this.createItem('mail', 'RB290 770 790US')
-                this.situationOneInit = true;
-              }
-              else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
-                this.createItem('mail', 'RB339 065 331US!!!')
-                this.createItem('mail', 'RB290 770 790US!!!')
-                this.situationTwoInit = true;
-              }
-            },
+      startDrag (evt, item)  {
+        evt.dataTransfer.dropEffect = 'move'
+        evt.dataTransfer.effectAllowed = 'move'
+        evt.dataTransfer.setData('itemID', item.id)
+        evt.dataTransfer.setData('parentID', this.findParent(item.id))
+        evt.stopPropagation()
+      },
+      onDrop (evt, destination) {
+        // console.log('dragged = ',evt.dataTransfer.getData('itemID'))
+        // console.log('destination = ',destination)
+        const draggedID = evt.dataTransfer.getData('itemID')
+        const prevParentID = evt.dataTransfer.getData('parentID')
+        let childrenIndexes = this.getChildrenIndexes(draggedID)
+        if(draggedID != destination){
+          if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+            this.removeItemOnDrop(draggedID,prevParentID)
+            this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+            this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+          }
+        }
+        evt.stopPropagation();
+        // console.log(this.items)
+      },
+      getItemIndex(id){
+        let index = this.items.findIndex(item => item.id == id)
+        return index
+      },
+      getChildrenIndexes(id){
+        let children = this.items[this.getItemIndex(id)].children.map(child => {
+          let index = this.getItemIndex(child)
+          return index
+        })
+        return children
+      },
+      findParent(id){
+        for(var i = 0; i < this.items.length; i++){
+          if(this.items[i].children.indexOf(id) != -1){
+            return this.items[i].id
+          }
+        }
+      },
+      removeItemOnDrop(itemID,parentID){
+        var index = this.getItemIndex(parentID)
+        return this.items[index].children = this.items[index].children.filter(x => x != itemID)
+      },
+      findParentIndex(itemID){
+        for(var i = 0; i < this.items.length; i++){
+          if(this.items[i].children.indexOf(itemID) == -1){
+            return i
+          }
+        }
+      },
+      changeCursor(){
+        this.stamping = !this.stamping
+      },
+      stamp(object) {
+        if(object.stamped != undefined){
+          object.stamped = !object.stamped;
+        }
+        this.stamping = false;
+      },
+      itemImage(object) {
+        if(object.stamped == true){
+          return object.stampedImage
+        }
+        return object.image
+      },
+      changeCurrentItem (evt, id) {
+        this.currentItemIndex = this.getItemIndex(id);
+        evt.stopPropagation()
+      },
+      createItem(itemType, itemName) {
+        if(itemType == "form") {
+          let newForm = {
+            id: this.idCounter,
+            title: itemName,
+            children: [],
+            level: 2,
+          }
+          this.items.push(newForm);
+          this.items[5].children.push(newForm.id)
+        }
+        else if(itemType == "mail") {
+          let mail = {
+            id: this.idCounter,
+            title: itemName,
+            children: [],
+            level: 2,
+          }
+          this.items.push(mail);
+          this.items[1].children.push(mail.id)
+        }
+        this.idCounter++;      
+      },
+      updateSituation() {
+        if(this.getSituationNumber == 1 && !this.situationOneInit) {
+          this.createItem('mail', 'RB339 065 331US')
+          this.createItem('mail', 'RB290 770 790US')
+          this.situationOneInit = true;
+        }
+        else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
+          this.createItem('mail', 'RB339 065 331US!!!')
+          this.createItem('mail', 'RB290 770 790US!!!')
+          this.situationTwoInit = true;
+        }
+      },
     },
     watch: {
       getSituationNumber: function () {
         this.updateSituation();
       }
-    }
-        
-}
+    }      
+  }
 </script>
 
 <style scoped>
   .frame{
-      display: flex;
-      flex-direction: row;
-      position: absolute;
-      top: 5vh;
-      left: 0;
-      width: 100vw;
-      height: 95vh;
-      z-index: 1;
-      font-family: Arial;
-      background-color: #333366;
-      justify-content: space-evenly;
-      align-items: center;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 5vh;
+    left: 0;
+    width: 100vw;
+    height: 95vh;
+    z-index: 1;
+    font-family: Arial;
+    background-color: #333366;
+    justify-content: space-evenly;
+    align-items: center;
   }
   .frame-is-stamping{
     display: flex;
