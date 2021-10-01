@@ -5,14 +5,15 @@
       <p class="right-text">Right side text</p>
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
     </div>
+    <div class= "form-creation">
+        <button @click="createItem('form', createFormType)" >Create New Form</button>
+        <select v-model="createFormType">
+          <option value="DD Form 2261">DD Form 2261</option>
+          <option value="PS Form 3854">PS Form 3854</option>
+          <option value="Truck Bill">Truck Bill</option>
+        </select>
+    </div>
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
-      <button @click="createItem('form', createFormType)" >Create New Form</button>
-      <select v-model="createFormType">
-        <option value="DD Form 2261">DD Form 2261</option>
-        <option value="PS Form 3854">PS Form 3854</option>
-        <option value="Truck Bill">Truck Bill</option>
-      </select>
-
       <div
         :class="{'drop-zone': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
@@ -448,7 +449,12 @@
     pointer-events: none;
   }
   .situation-text {
-    width: 32vw;
+    max-width: 39vw;
   }
-
+  .form-creation{
+    position: absolute;
+    top:60px;
+    left: 30px;
+    z-index: 2;
+  }
 </style>
