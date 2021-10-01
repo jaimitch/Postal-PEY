@@ -3,17 +3,19 @@
     <div class="top-bar">
       <p class="left-text">Left side text</p>
       <p class="right-text">Right side text</p>
-      <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
     </div>
-    <div class= "form-creation">
-        <button @click="createItem('form', createFormType)" >Create New Form</button>
-        <select v-model="createFormType">
+    <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+      <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
+      <div class= "form-creation">
+        <button @click="createItem('form', createFormType)" :class="{'is-stamping': this.stamping == true}">
+          Create New Form
+        </button>
+        <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
           <option value="DD Form 2261">DD Form 2261</option>
           <option value="PS Form 3854">PS Form 3854</option>
           <option value="Truck Bill">Truck Bill</option>
         </select>
-    </div>
-    <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+      </div>
       <div
         :class="{'drop-zone': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
@@ -97,7 +99,13 @@
             title: "Truck",
             children: [],
             level: 1,
-            image: require('../assets/mail-truck.jpeg')
+            images: [require('../assets/mail-truck.jpeg')],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "Truck",
+            droppable: true
           },
           {
             id: 4,
@@ -133,7 +141,7 @@
             level: 1,
           }
         ],
-        stamping: false,
+        stamping: this.$store.state.stamping,
         currentItemIndex: 2,
         idCounter: 1000,
         draggedItem: {},
@@ -144,7 +152,7 @@
         situationFourInit: false,
         situationFiveInit: false,
         situationSixInit: false,
-        }   
+      }   
     },
     mounted() {
       this.updateSituation();
@@ -225,8 +233,6 @@
         evt.stopPropagation()
       },
       onDrop (evt, destination) {
-        // console.log('dragged = ',evt.dataTransfer.getData('itemID'))
-        // console.log('destination = ',destination)
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
         let childrenIndexes = this.getChildrenIndexes(draggedID)
@@ -238,7 +244,6 @@
           }
         }
         evt.stopPropagation();
-        // console.log(this.items)
       },
       getItemIndex(id){
         let index = this.items.findIndex(item => item.id == id)
@@ -271,6 +276,7 @@
       },
       changeCursor(){
         this.stamping = !this.stamping
+        this.$store.commit('stamp');
       },
       stamp(object) {
         if(object.stamped != undefined){
@@ -312,14 +318,20 @@
         this.idCounter++;      
       },
       updateSituation() {
-        if(this.getSituationNumber == 1 && !this.situationOneInit) {
-          this.createItem('mail', 'RB339 065 331US')
-          this.createItem('mail', 'RB290 770 790US')
+        if(this.getSituationNumber == 1) {
+          if(!this.situationOneInit){
+            this.createItem('mail', 'RB339 065 331US')
+            this.createItem('mail', 'RB290 770 790US')
+          }
+          this.items[this.getItemIndex(0)].level = 0;
           this.situationOneInit = true;
         }
-        else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
-          this.createItem('mail', 'RB339 065 331US!!!')
-          this.createItem('mail', 'RB290 770 790US!!!')
+        else if(this.getSituationNumber == 2) {
+          if(!this.situationTwoInit){
+            this.createItem('mail', 'RB339 065 331US!!!')
+            this.createItem('mail', 'RB290 770 790US!!!')
+          }
+          this.items[this.getItemIndex(0)].level = 1;
           this.situationTwoInit = true;
         }
       },
@@ -414,7 +426,7 @@
     top: 0;
     left: 3vw;
     width: 97vw;
-    height: 50px;
+    height: 5vh;
     z-index: 2;
     font-family: Arial;
     background-color: #32334B;
@@ -436,8 +448,9 @@
   }
   .stamp-button {
     position: absolute;
-    top: 60px;
-    right: 30px;
+    top: 10px;
+    right: 1vw;
+    z-index: 2;
   }
   .letter{
     pointer-events: none;
@@ -453,8 +466,8 @@
   }
   .form-creation{
     position: absolute;
-    top:60px;
-    left: 30px;
+    top: 10px;
+    left: 1vw;
     z-index: 2;
   }
 </style>

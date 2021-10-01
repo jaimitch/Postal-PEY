@@ -49,7 +49,7 @@
 
   .modal {
     position: absolute;
-    top: 33vw;
+    top: 20vw;
     left:50%;
     transform: translateX(-50%);
     background: #32334B;

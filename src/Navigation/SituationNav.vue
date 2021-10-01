@@ -120,11 +120,11 @@ export default {
 
 .toggle {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 2;
   width: 3vw;
-  height: 50px; 
+  height: 5vh; 
   background-color: #E71922;
   display: flex;
   align-items: center;
