@@ -21,7 +21,7 @@ class="drawer"
   </button>
   </div>
         <div  class="in-menu">
-          <button class="buttons" @click="jumpToPage(section.page)" :key="section" v-for="section in situations" >{{ section.name }}</button>
+          <button class="buttons" @click="jumpToPage(section.page), $emit('jump')" :key="section" v-for="section in situations" >{{ section.name }}</button>
         </div>   
   </div>
     
@@ -50,7 +50,7 @@ export default {
     data () {
       return {
         drawerVisible: false,
-        situations: [{name: 'Situation 1', page: 0}, {name: 'Situation 2', page: 2}, {name: 'Situation 3', page: 3}, {name: 'Situation 4', page: 4},{name: 'Situation 5', page: 5}, {name: 'Situation 6', page: 6},],
+        situations: [{name: 'Situation 1', page: 1}, {name: 'Situation 2', page: 2}, {name: 'Situation 3', page: 4}, {name: 'Situation 4', page: 5},{name: 'Situation 5', page: 9}, {name: 'Situation 6', page: 10},],
         }
       
     },
