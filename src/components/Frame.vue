@@ -293,6 +293,7 @@
         })
         return children
       },
+      //accepts an item id and returns that items parent id
       findParent(id){
         for(var i = 0; i < this.items.length; i++){
           if(this.items[i].children.indexOf(id) != -1){
@@ -300,10 +301,12 @@
           }
         }
       },
+      //deletes an item from it's original position
       removeItemOnDrop(itemID,parentID){
         var index = this.getItemIndex(parentID)
         return this.items[index].children = this.items[index].children.filter(x => x != itemID)
       },
+      //returns the "items" array index of the given item id's parent
       findParentIndex(itemID){
         for(var i = 0; i < this.items.length; i++){
           if(this.items[i].children.indexOf(itemID) == -1){
@@ -333,6 +336,7 @@
         this.currentItemIndex = this.getItemIndex(id);
         evt.stopPropagation()
       },
+      //creates a new item given information via various parameters
       createItem(itemType, itemName) {
         if(itemType == "form") {
           let newForm = {
@@ -370,6 +374,7 @@
         }
         this.idCounter++;      
       },
+      //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
