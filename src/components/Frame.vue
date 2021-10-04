@@ -3,17 +3,19 @@
     <div class="top-bar">
       <p class="left-text">Left side text</p>
       <p class="right-text">Right side text</p>
-      <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
     </div>
-    <div class= "form-creation">
-        <button @click="createItem('form', createFormType)" >Create New Form</button>
-        <select v-model="createFormType">
+    <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+      <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
+      <div class= "form-creation">
+        <button @click="createItem('form', createFormType)" :class="{'is-stamping': this.stamping == true}">
+          Create New Form
+        </button>
+        <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
           <option value="DD Form 2261">DD Form 2261</option>
           <option value="PS Form 3854">PS Form 3854</option>
           <option value="Truck Bill">Truck Bill</option>
         </select>
-    </div>
-    <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+      </div>
       <div
         :class="{'drop-zone': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
@@ -97,40 +99,78 @@
             title: "Truck",
             children: [],
             level: 1,
-            image: require('../assets/mail-truck.jpeg')
+            images: [require('../assets/mail-truck.jpeg'),],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "Truck",
+            droppable: true
           },
           {
             id: 4,
             title: "Safe",
             children: [],
             level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "safe",
+            droppable: true
           },
           {
             id: 1,
             title: "Letter",
             children: [],
             level: 2,
-            stamped: false,
-            image: require('../assets/letter.png'),
-            stampedImage: require('../assets/stamped-letter.png')
+            images: [require('../assets/letter.png'), undefined ,require('../assets/stamped-letter.png')],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "mail",
+            droppable: true
           },
           {
             id: 2,
             title: "Package",
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "mail",
+            droppable: true
           },
           {
             id: 3,
             title: "Pouch",
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "pouch",
+            droppable: true
           },
           {
             id: 5,
             title: "Forms",
             children: [],
             level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true
           }
         ],
         stamping: false,
@@ -144,7 +184,7 @@
         situationFourInit: false,
         situationFiveInit: false,
         situationSixInit: false,
-        }   
+      }   
     },
     mounted() {
       this.updateSituation();
@@ -228,14 +268,19 @@
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
         let childrenIndexes = this.getChildrenIndexes(draggedID)
-        if(draggedID != destination){
-          if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
-            this.removeItemOnDrop(draggedID,prevParentID)
-            this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
-            this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+        if(this.isDroppable(destination)){
+          if(draggedID != destination){
+            if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+              this.removeItemOnDrop(draggedID,prevParentID)
+              this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+              this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+            }
           }
         }
         evt.stopPropagation();
+      },
+      isDroppable(id){
+        return this.items[this.getItemIndex(id)].droppable
       },
       getItemIndex(id){
         let index = this.items.findIndex(item => item.id == id)
@@ -271,18 +316,21 @@
       },
       changeCursor(){
         this.stamping = !this.stamping
+        this.$store.commit('stamp');
       },
       stamp(object) {
-        if(object.stamped != undefined){
-          object.stamped = !object.stamped;
+        if(object.stampable){
+          if(object.stampCounter == 0){
+          object.currentImageIndex = 2
+          }else{
+            object.currentImageIndex = object.currentImageIndex+1
+          }
         }
-        this.stamping = false;
+        this.stamping = false
+        this.$store.commit('stamp');
       },
       itemImage(object) {
-        if(object.stamped == true){
-          return object.stampedImage
-        }
-        return object.image
+        return object.images[object.currentImageIndex]
       },
       changeCurrentItem (evt, id) {
         this.currentItemIndex = this.getItemIndex(id);
@@ -296,6 +344,13 @@
             title: itemName,
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "form",
+            droppable: true
           }
           this.items.push(newForm);
           this.items[5].children.push(newForm.id)
@@ -306,6 +361,13 @@
             title: itemName,
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "mail",
+            droppable: true
           }
           this.items.push(mail);
           this.items[1].children.push(mail.id)
@@ -314,14 +376,18 @@
       },
       //function that handles events as the situation is changed
       updateSituation() {
-        if(this.getSituationNumber == 1 && !this.situationOneInit) {
-          this.createItem('mail', 'RB339 065 331US')
-          this.createItem('mail', 'RB290 770 790US')
+        if(this.getSituationNumber == 1) {
+          if(!this.situationOneInit){
+            this.createItem('mail', 'RB339 065 331US')
+            this.createItem('mail', 'RB290 770 790US')
+          }
           this.situationOneInit = true;
         }
-        else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
-          this.createItem('mail', 'RB339 065 331US!!!')
-          this.createItem('mail', 'RB290 770 790US!!!')
+        else if(this.getSituationNumber == 2) {
+          if(!this.situationTwoInit){
+            this.createItem('mail', 'RB339 065 331US!!!')
+            this.createItem('mail', 'RB290 770 790US!!!')
+          }
           this.situationTwoInit = true;
         }
       },
@@ -416,7 +482,7 @@
     top: 0;
     left: 3vw;
     width: 97vw;
-    height: 50px;
+    height: 5vh;
     z-index: 2;
     font-family: Arial;
     background-color: #32334B;
@@ -438,8 +504,9 @@
   }
   .stamp-button {
     position: absolute;
-    top: 60px;
-    right: 30px;
+    top: 10px;
+    right: 1vw;
+    z-index: 2;
   }
   .letter{
     pointer-events: none;
@@ -455,8 +522,8 @@
   }
   .form-creation{
     position: absolute;
-    top:60px;
-    left: 30px;
+    top: 10px;
+    left: 1vw;
     z-index: 2;
   }
 </style>
