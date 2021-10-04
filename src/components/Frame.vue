@@ -99,7 +99,7 @@
             title: "Truck",
             children: [],
             level: 1,
-            images: [require('../assets/mail-truck.jpeg')],
+            images: [require('../assets/mail-truck.jpeg'),],
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
@@ -112,36 +112,68 @@
             title: "Safe",
             children: [],
             level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "safe",
+            droppable: true
           },
           {
             id: 1,
             title: "Letter",
             children: [],
             level: 2,
-            stamped: false,
-            image: require('../assets/letter.png'),
-            stampedImage: require('../assets/stamped-letter.png')
+            images: [require('../assets/letter.png'), undefined ,require('../assets/stamped-letter.png')],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "mail",
+            droppable: true
           },
           {
             id: 2,
             title: "Package",
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "mail",
+            droppable: true
           },
           {
             id: 3,
             title: "Pouch",
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "pouch",
+            droppable: true
           },
           {
             id: 5,
             title: "Forms",
             children: [],
             level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true
           }
         ],
-        stamping: this.$store.state.stamping,
+        stamping: false,
         currentItemIndex: 2,
         idCounter: 1000,
         draggedItem: {},
@@ -236,14 +268,19 @@
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
         let childrenIndexes = this.getChildrenIndexes(draggedID)
-        if(draggedID != destination){
-          if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
-            this.removeItemOnDrop(draggedID,prevParentID)
-            this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
-            this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+        if(this.isDroppable(destination)){
+          if(draggedID != destination){
+            if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+              this.removeItemOnDrop(draggedID,prevParentID)
+              this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+              this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+            }
           }
         }
         evt.stopPropagation();
+      },
+      isDroppable(id){
+        return this.items[this.getItemIndex(id)].droppable
       },
       getItemIndex(id){
         let index = this.items.findIndex(item => item.id == id)
@@ -279,16 +316,18 @@
         this.$store.commit('stamp');
       },
       stamp(object) {
-        if(object.stamped != undefined){
-          object.stamped = !object.stamped;
+        if(object.stampable){
+          if(object.stampCounter == 0){
+          object.currentImageIndex = 2
+          }else{
+            object.currentImageIndex = object.currentImageIndex+1
+          }
         }
-        this.stamping = false;
+        this.stamping = false
+        this.$store.commit('stamp');
       },
       itemImage(object) {
-        if(object.stamped == true){
-          return object.stampedImage
-        }
-        return object.image
+        return object.images[object.currentImageIndex]
       },
       changeCurrentItem (evt, id) {
         this.currentItemIndex = this.getItemIndex(id);
@@ -301,6 +340,13 @@
             title: itemName,
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "form",
+            droppable: true
           }
           this.items.push(newForm);
           this.items[5].children.push(newForm.id)
@@ -311,6 +357,13 @@
             title: itemName,
             children: [],
             level: 2,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: true,
+            formInputs: {},
+            type: "mail",
+            droppable: true
           }
           this.items.push(mail);
           this.items[1].children.push(mail.id)
@@ -323,7 +376,6 @@
             this.createItem('mail', 'RB339 065 331US')
             this.createItem('mail', 'RB290 770 790US')
           }
-          this.items[this.getItemIndex(0)].level = 0;
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
@@ -331,7 +383,6 @@
             this.createItem('mail', 'RB339 065 331US!!!')
             this.createItem('mail', 'RB290 770 790US!!!')
           }
-          this.items[this.getItemIndex(0)].level = 1;
           this.situationTwoInit = true;
         }
       },
