@@ -383,12 +383,26 @@
           }
           this.situationOneInit = true;
         }
-        else if(this.getSituationNumber == 2) {
-          if(!this.situationTwoInit){
-            this.createItem('mail', 'RB339 065 331US!!!')
-            this.createItem('mail', 'RB290 770 790US!!!')
-          }
+        else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
+          //Either need to add a pouch '70948511'
+          this.createItem('mail', 'RB102 022 763US')
+          this.createItem('mail', 'RB298 302 613US')
+          this.createItem('form', 'PS Form 3854')
+          //42 - 47
+
+
+          this.createItem('form', 'PS Form 3854 S2 #2')
+          this.createItem('mail', 'RB867 092 744US')
+          this.createItem('mail', 'RB309 266 140US')
+          this.createItem('mail', 'RB143 899 161US')
+          this.createItem('mail', 'RB218 344 488US')
+          this.createItem('mail', 'RB888 122 361US')
+          //34-41
           this.situationTwoInit = true;
+        }
+        else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
+
+          this.situationThreeInit = true;
         }
       },
     },
