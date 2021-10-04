@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 const store = createStore({
     state: {
         pageNum: 1,
-        
+        stamping: false
     },
     mutations: {
         nextPage(state) {
@@ -14,6 +14,9 @@ const store = createStore({
         },
         jumpToPage(state, num) {
             state.pageNum = num;
+        },
+        stamp(state){
+            state.stamping = !state.stamping;
         }
     }
 })

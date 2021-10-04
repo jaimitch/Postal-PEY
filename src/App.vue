@@ -2,7 +2,7 @@
   <div>
     <Frame v-bind:pageNum="this.$store.state.pageNum"/>
     <TLO/>
-    <SituationNav v-on:jump="jumpPage()"/>
+    <SituationNav v-on:jump="jumpPage()" :class="{'is-stamping': this.$store.state.stamping == true}"/>
   </div>
 </template>
 
@@ -39,5 +39,7 @@ export default {
 </script>
 
 <style scoped>
-  
+  .is-stamping{
+    pointer-events: none;
+  }
 </style>
