@@ -7,11 +7,12 @@
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
       <div class= "form-creation">
-        <button @click="createItem(createFormType, 'default', getSituationNumber, 2)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, 'default', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
           <option value="psform3854">PS Form 3854</option>
+          <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
         </select>
       </div>
@@ -155,6 +156,10 @@
         situationTwoPartOne: false,
         situationTwoPartTwo: false,
         situationThreeInit: false,
+        situationFourPartOne: false,
+        situationFourPartTwo: false,
+        situationFourPartThree: false,
+        situationFourPartFour: false,
       }   
     },
     mounted() {
@@ -185,22 +190,31 @@
          else if(this.pageNum == 3) {
           text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
         }
-        else if(this.pageNum >= 4 && this.pageNum < 5) {
-          text = "This is situation three!"
+        else if(this.pageNum == 4) {
+          text = "Deliver the following mail using the appropriate PS Forms: \
+          RB298 302 613US, RB339 065 331US, RB290 770 790US, RB309 266 140US, RB218 344 488US, RB143 899 161US, RB867 092 744US, RB102 022 763US"
         }
-        else if(this.pageNum >= 5 && this.pageNum < 9) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area.\
-          2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2.\
-          3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877.\
-          4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."         
+        else if(this.pageNum == 5) {
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
+        }
+        else if(this.pageNum == 6) {
+          text = "2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2."
+        }
+        else if(this.pageNum == 7) {
+          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877."
+        }
+        else if(this.pageNum == 8) {
+          text = "4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."
         }
         else if(this.pageNum == 9) {
           text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
           registered mail.\
-          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300. \
-          2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300."
         }
         else if(this.pageNum == 10) {
+          text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+        }
+        else if(this.pageNum == 11) {
           text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
           that is still on hand and has not been delivered."
         }
@@ -220,10 +234,10 @@
         else if(this.pageNum >= 5 && this.pageNum < 9) {
           num = 4;
         }
-        else if(this.pageNum == 9) {
+        else if(this.pageNum >= 9 && this.pageNum < 11) {
           num = 5;
         }
-        else if(this.pageNum == 10) {
+        else if(this.pageNum == 11) {
           num = 6;
         }
         return num;
@@ -338,6 +352,26 @@
             this.items[2].children.push(newItem.id)
           }
         }
+        else if(itemType == "psform3877") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: 'Bill #' +articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "PS FORM 3877",
+            droppable: true
+          }
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
+        }
         else if(itemType == "ddform2261") {
           newItem = {
             id: this.idCounter,
@@ -439,7 +473,7 @@
             this.createItem('pouch', '70948511', 2, 2, true)
             this.createItem('package', 'RB102 022 763US', 2, 2, true)
             this.createItem('package', 'RB298 302 613US', 2, 2, true)
-            this.createItem('psform3854', 'PS Form 3854', 2, 2, true)
+            this.createItem('psform3854', '260', 2, 2, true)
             //42 - 47
             this.situationTwoPartOne = true;
           }
@@ -462,8 +496,56 @@
           
         }
         else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
-
           this.situationThreeInit = true;
+        }
+        else if(this.getSituationNumber == 4) {
+          if(this.pageNum == 5 && !this.situationFourPartOne) {
+            this.createItem('psform3854', '30', 4, 2, true)
+            this.createItem('pouch', '43000277', 4, 2, true)
+            this.createItem('package', 'RB300 911 759US', 4, 2, true)
+            //30-33
+            this.situationFourPartOne = true;
+          }
+          else if(this.pageNum == 6 && !this.situationFourPartTwo) {
+            let item1 = this.createItem('psform3854', '24', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item1)
+            let item2 = this.createItem('letter', 'RB300 911 755US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item2)
+            let item3 = this.createItem('letter', 'RB300 911 756US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item3)
+            let item4 = this.createItem('letter', 'RB300 911 757US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item4)
+            let item5 = this.createItem('package', 'RB300 911 758US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item5)
+            let item6 = this.createItem('letter', 'RB300 911 760US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item6)
+            let item7 = this.createItem('package', 'RB300 911 761US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item7)
+            //22-29
+            this.situationFourPartTwo = true;
+          }
+          else if(this.pageNum == 7 && !this.situationFourPartThree) {
+            this.createItem('psform3877', '24', 4, 2, true)
+            this.createItem('letter', 'RB842 320 438US', 4, 2, true)
+            this.createItem('letter', 'RB842 320 439US', 4, 2, true)
+            //18-21
+            this.situationFourPartThree = true;
+          }
+          else if(this.pageNum == 8 && !this.situationFourPartFour) {
+            this.createItem('psform3854', '33', 4, 2, true)
+            this.createItem('letter', 'RB707 092 210US', 4, 2, true)
+            this.createItem('package', 'RB707 092 211US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 212US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 213US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 214US', 4, 2, true)
+            this.createItem('package', 'RB707 092 215US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 216US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 217US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 218US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 219US', 4, 2, true)
+            //6-17
+            this.situationFourPartFour = true;
+          }
         }
       },
     },
