@@ -38,13 +38,18 @@
             @drop="onDrop($event,items[child].id)"
             @click="changeCurrentItem($event, items[child].id)"
           >
-            <div>
-              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon">
-              <img v-else src="../assets/White-form.svg" class="item-icon">
+            <div class="child">
+              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
+              <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
+            <div class='space-bar'>|</div>
+
+              <div class = "child-text">
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+              </div>
+              
             </div>  
             
             <div 
@@ -56,12 +61,17 @@
               @drop="onDrop($event,items[grandchild].id)"
               @click="changeCurrentItem($event, items[grandchild].id)"
             >
-              <img v-if="items[child].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon">
-              <img v-else src="../assets/Black-Form.svg" class="item-icon">
+            
+              <img v-if="items[child].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon grand-letter">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon grand-package">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon grand-pouch">
+              <img v-else src="../assets/Black-Form.svg" class="item-icon grand-form">
 
+            <div class='space-bar'>|</div>
+
+              <div class='grand-text'>
               {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
+              </div>
               <!-- <div 
                 class='child-level' 
                 v-for='greatGrand in getChildrenIndexes(items[grandchild].id)'
@@ -476,6 +486,8 @@
 </script>
 
 <style scoped>
+  
+
   .frame{
     display: flex;
     flex-direction: row;
@@ -526,7 +538,7 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    height: 50vw;
+    height: 35vw;
     width: 25vw;
   }
   .parent-level {
@@ -538,21 +550,24 @@
     z-index: 1;
   }
   .child-level {
-    background-color: #42426A;;
+    background-color: #42426A;
     margin-bottom: 10px;
     padding: 5px;
     color: #D5D5D5;
     border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
+
   }
   .grand-child-level {
+    display: flex;
+    flex-direction: row;
     background-color: #ddd;
     margin-bottom: 5px;
     padding: 5px;
     color: #42426A;
     border-radius: 5px;
-    font-size: 0.8vw;
+    font-size: 1vw;
   }
   .vertical-line {
     order: 2;
@@ -613,4 +628,25 @@
   .item-icon{
     width: 2vw;
   }
+  /* .child{
+    position: absolute;
+  } */
+  .child-text{
+    margin-left: 40px;
+  }
+  .child{
+    display: flex;
+    flex-direction: row;
+  }
+  .grand-text{
+    margin-left: 40px;
+  }
+  .space-bar{
+    margin-left: 5px;
+    /* margin-top: 1px; */
+    font-size: 40px;
+  }
+  /* .child-package{
+    margin-top: 15px;
+  } */
 </style>
