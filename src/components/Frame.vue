@@ -7,7 +7,7 @@
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
       <div class= "form-creation">
-        <button @click="createItem(createFormType, 'default', getSituationNumber)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, 'default', getSituationNumber, 2)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
@@ -16,7 +16,7 @@
         </select>
       </div>
       <div
-        :class="{'drop-zone': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
+        :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
         @dragenter.prevent
       >   
@@ -38,7 +38,15 @@
             @drop="onDrop($event,items[child].id)"
             @click="changeCurrentItem($event, items[child].id)"
           >
-            {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+            <div>
+              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon">
+              <img v-else src="../assets/White-form.svg" class="item-icon">
+
+              {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+            </div>  
+            
             <div 
               class='grand-child-level' 
               v-for='grandchild in getChildrenIndexes(items[child].id)' 
@@ -48,6 +56,11 @@
               @drop="onDrop($event,items[grandchild].id)"
               @click="changeCurrentItem($event, items[grandchild].id)"
             >
+              <img v-if="items[child].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon">
+              <img v-else src="../assets/Black-Form.svg" class="item-icon">
+
               {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
               <!-- <div 
                 class='child-level' 
@@ -299,8 +312,10 @@
         this.currentItemIndex = this.getItemIndex(id);
         evt.stopPropagation()
       },
-      //creates a new item given information via various parameters
-      createItem(itemType, articleCode, situationNumber) {
+      /*creates a new item given information:
+      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation)
+      */
+      createItem(itemType, articleCode, situationNumber, level, defaultCreate) {
         let newItem = {};
 
         if(itemType == "psform3854") {
@@ -309,7 +324,7 @@
             articleCode: 'Bill #' + articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
@@ -319,7 +334,9 @@
             droppable: true
           }
           this.items.push(newItem);
-          this.items[2].children.push(newItem.id)
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
         }
         else if(itemType == "ddform2261") {
           newItem = {
@@ -327,7 +344,7 @@
             articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
@@ -337,7 +354,9 @@
             droppable: true
           }
           this.items.push(newItem);
-          this.items[2].children.push(newItem.id)
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
         }
         else if(itemType == "letter") {
           newItem = {
@@ -345,7 +364,7 @@
             articleCode: 'RB #' + articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
@@ -354,7 +373,9 @@
             droppable: true
           }
           this.items.push(newItem);
-          this.items[1].children.push(newItem.id)
+          if(defaultCreate) {
+            this.items[1].children.push(newItem.id)
+          }
         }
         else if(itemType == "package") {
           newItem = {
@@ -362,7 +383,7 @@
             articleCode: 'RB #' + articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
@@ -371,7 +392,9 @@
             droppable: true
           }
           this.items.push(newItem);
-          this.items[1].children.push(newItem.id)
+          if(defaultCreate) {
+            this.items[1].children.push(newItem.id)
+          }
         }
         else if(itemType == "pouch") {
           newItem = {
@@ -379,7 +402,7 @@
             articleCode: 'SEAL #' + articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
@@ -388,7 +411,9 @@
             droppable: true
           }
           this.items.push(newItem);
-          this.items[1].children.push(newItem.id)
+          if(defaultCreate) {
+            this.items[1].children.push(newItem.id)
+          }
         }
         this.idCounter++;
         return newItem.id;
@@ -404,32 +429,32 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
-            this.createItem('package', 'RB339 065 331US', 1)
-            this.createItem('package', 'RB290 770 790US', 1)
+            this.createItem('package', 'RB339 065 331US', 1, 2, true)
+            this.createItem('package', 'RB290 770 790US', 1, 2, true)
           }
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
-            this.createItem('pouch', '70948511', 2)
-            this.createItem('package', 'RB102 022 763US', 2)
-            this.createItem('package', 'RB298 302 613US', 2)
-            this.createItem('psform3854', 'PS Form 3854', 2)
+            this.createItem('pouch', '70948511', 2, 2, true)
+            this.createItem('package', 'RB102 022 763US', 2, 2, true)
+            this.createItem('package', 'RB298 302 613US', 2, 2, true)
+            this.createItem('psform3854', 'PS Form 3854', 2, 2, true)
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
-            let item1 = this.createItem('psform3854', '123', 2)
+            let item1 = this.createItem('psform3854', '123', 2, 3, false)
             this.assignItemToParent('SEAL #70948511', item1)
-            let item2 = this.createItem('letter', 'RB867 092 744US', 2)
+            let item2 = this.createItem('letter', 'RB867 092 744US', 2, 3, false)
             this.assignItemToParent('SEAL #70948511', item2)
-            let item3 = this.createItem('letter', 'RB309 266 140US', 2)
+            let item3 = this.createItem('letter', 'RB309 266 140US', 2, 3, false)
             this.assignItemToParent('SEAL #70948511', item3)
-            let item4 = this.createItem('letter', 'RB143 899 161US', 2)
+            let item4 = this.createItem('letter', 'RB143 899 161US', 2, 3, false)
             this.assignItemToParent('SEAL #70948511', item4)
-            let item5 = this.createItem('letter', 'RB218 344 488US', 2)
+            let item5 = this.createItem('letter', 'RB218 344 488US', 2, 3, false)
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB888 122 361US', 2)
+            let item6 = this.createItem('letter', 'RB888 122 361US', 2, 3, false)
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -483,7 +508,7 @@
   .drop-zone {
     order: 1;
     background-color: #333366;
-    width: 15vw;
+    width: 22vw;
   }
   .drop-zone-is-stamping{
     order: 1;
@@ -497,10 +522,17 @@
     top:15vh;
     text-align: center;
   }
+  .left-side-content{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: 50vw;
+    width: 25vw;
+  }
   .parent-level {
     background-color: #D5D5D5;
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
     color: #42426A;
     border-radius: 5px;
     z-index: 1;
@@ -577,5 +609,8 @@
     top: 10px;
     left: 1vw;
     z-index: 2;
+  }
+  .item-icon{
+    width: 2vw;
   }
 </style>
