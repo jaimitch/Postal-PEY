@@ -80,14 +80,19 @@
         <div class = "vertical-line"></div>
         <div class="right-side-content">
           <div> Situation {{ getSituationNumber }} </div>
-          <div class="situation-text"> {{ this.getSituationText }} </div>
+          <div class="right-side-content"> {{ this.getSituationText }} </div>
           <p> This is a {{this.items[currentItemIndex].title}} </p>
-          <img 
-            :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
-            :src="itemImage(this.items[currentItemIndex])"
-            width="500"
-            @click="stamp(this.items[currentItemIndex])"
-          >
+          <div v-if="this.items[currentItemIndex].type != 'form'">
+            <img 
+              :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
+              :src="itemImage(this.items[currentItemIndex])"
+              width="500"
+              @click="stamp(this.items[currentItemIndex])"
+            >
+          </div>
+          <div v-else>
+            <Form3854/>
+          </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
     </div>
@@ -96,10 +101,12 @@
 
 <script>
   import PageNav from '../Navigation/PageNav.vue'
+  import Form3854 from '../Forms/Form3854.vue'
   export default {
     name: 'Frame',
     components: {
       PageNav,
+      Form3854
     },
     props: [
       'pageNum'
@@ -603,6 +610,7 @@
     color: #D5D5D5;
     top:15vh;
     text-align: center;
+    max-width: 39vw;
   }
   .left-side-content{
     display: flex;
@@ -685,6 +693,7 @@
   }
   .situation-text {
     max-width: 39vw;
+    text-align: center;
   }
   .form-creation{
     position: absolute;
