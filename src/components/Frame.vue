@@ -82,7 +82,7 @@
           <div> Situation {{ getSituationNumber }} </div>
           <div class="right-side-content"> {{ this.getSituationText }} </div>
           <p> This is a {{this.items[currentItemIndex].title}} </p>
-          <div v-if="this.items[currentItemIndex].type != 'form'">
+          <div v-if="this.items[currentItemIndex].type != 'PS FORM 3854'">
             <img 
               :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
               :src="itemImage(this.items[currentItemIndex])"
@@ -91,7 +91,7 @@
             >
           </div>
           <div v-else>
-            <Form3854/>
+            <Form3877/>
           </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
@@ -101,12 +101,14 @@
 
 <script>
   import PageNav from '../Navigation/PageNav.vue'
-  import Form3854 from '../Forms/Form3854.vue'
+  //import Form3854 from '../Forms/Form3854.vue'
+  import Form3877 from '../Forms/Form3877.vue'
   export default {
     name: 'Frame',
     components: {
       PageNav,
-      Form3854
+      //Form3854,
+      Form3877
     },
     props: [
       'pageNum'
@@ -610,13 +612,12 @@
     color: #D5D5D5;
     top:15vh;
     text-align: center;
-    max-width: 39vw;
+    max-width: 50vw;
   }
   .left-side-content{
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    height: 50vw;
     width: 25vw;
   }
   .parent-level {
@@ -647,6 +648,7 @@
   .vertical-line {
     order: 2;
     border-left: .25vw solid white;
+    width: 0;
     top: 10vh;
     height: 55vh;
     z-index: 4;
