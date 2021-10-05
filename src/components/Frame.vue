@@ -7,17 +7,17 @@
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
       <div class= "form-creation">
-        <button @click="createItem('form', createFormType)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, 'default', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
-          <option value="DD Form 2261">DD Form 2261</option>
-          <option value="PS Form 3854">PS Form 3854</option>
-          <option value="Truck Bill">Truck Bill</option>
+          <option value="psform3854">PS Form 3854</option>
+          <option value="psform3877">PS Form 3877</option>
+          <option value="ddform2261">DD Form 2261</option>
         </select>
       </div>
       <div
-        :class="{'drop-zone': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
+        :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
         @dragenter.prevent
       >   
@@ -39,7 +39,15 @@
             @drop="onDrop($event,items[child].id)"
             @click="changeCurrentItem($event, items[child].id)"
           >
-            {{items[child].title}}
+            <div>
+              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon">
+              <img v-else src="../assets/White-form.svg" class="item-icon">
+
+              {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+            </div>  
+            
             <div 
               class='grand-child-level' 
               v-for='grandchild in getChildrenIndexes(items[child].id)' 
@@ -49,17 +57,22 @@
               @drop="onDrop($event,items[grandchild].id)"
               @click="changeCurrentItem($event, items[grandchild].id)"
             >
-              {{items[grandchild].title}}
-              <div 
+              <img v-if="items[child].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon">
+              <img v-else src="../assets/Black-Form.svg" class="item-icon">
+
+              {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
+              <!-- <div 
                 class='child-level' 
-                v-for='greatGrand in getChildrenIndexes(items[grandchild].id)' 
+                v-for='greatGrand in getChildrenIndexes(items[grandchild].id)'
                 :key='greatGrand' 
                 :draggable ='true'
                 @dragstart='startDrag($event, items[greatGrand])'
                 @click="changeCurrentItem($event, items[greatGrand].id)"
               >
                 {{items[greatGrand].title}}
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -128,45 +141,6 @@
             droppable: true
           },
           {
-            id: 1,
-            title: "Letter",
-            children: [],
-            level: 2,
-            images: [require('../assets/letter.png'), undefined ,require('../assets/stamped-letter.png')],
-            currentImageIndex: 0,
-            stampCounter: 0,
-            stampable: true,
-            formInputs: {},
-            type: "mail",
-            droppable: true
-          },
-          {
-            id: 2,
-            title: "Package",
-            children: [],
-            level: 2,
-            images: [],
-            currentImageIndex: 0,
-            stampCounter: 0,
-            stampable: true,
-            formInputs: {},
-            type: "mail",
-            droppable: true
-          },
-          {
-            id: 3,
-            title: "Pouch",
-            children: [],
-            level: 2,
-            images: [],
-            currentImageIndex: 0,
-            stampCounter: 0,
-            stampable: true,
-            formInputs: {},
-            type: "pouch",
-            droppable: true
-          },
-          {
             id: 5,
             title: "Forms",
             children: [],
@@ -186,11 +160,13 @@
         draggedItem: {},
         createFormType: "",
         situationOneInit: false,
-        situationTwoInit: false,
+        situationTwoPartOne: false,
+        situationTwoPartTwo: false,
         situationThreeInit: false,
-        situationFourInit: false,
-        situationFiveInit: false,
-        situationSixInit: false,
+        situationFourPartOne: false,
+        situationFourPartTwo: false,
+        situationFourPartThree: false,
+        situationFourPartFour: false,
       }   
     },
     mounted() {
@@ -215,26 +191,37 @@
           text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry section and verified the items inside\
           the safe against the previous day's inventory. Verify that the following items (RB339 065 331US and RB290 770 790US) are accounted for."
         }
-        else if(this.pageNum > 1 && this.pageNum < 4) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's).\
-          2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
+        else if(this.pageNum == 2) {
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's)."
         }
-        else if(this.pageNum >= 4 && this.pageNum < 5) {
-          text = "This is situation three!"
+         else if(this.pageNum == 3) {
+          text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
         }
-        else if(this.pageNum >= 5 && this.pageNum < 9) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area.\
-          2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2.\
-          3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877.\
-          4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."         
+        else if(this.pageNum == 4) {
+          text = "Deliver the following mail using the appropriate PS Forms: \
+          RB298 302 613US, RB339 065 331US, RB290 770 790US, RB309 266 140US, RB218 344 488US, RB143 899 161US, RB867 092 744US, RB102 022 763US"
+        }
+        else if(this.pageNum == 5) {
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
+        }
+        else if(this.pageNum == 6) {
+          text = "2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2."
+        }
+        else if(this.pageNum == 7) {
+          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877."
+        }
+        else if(this.pageNum == 8) {
+          text = "4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."
         }
         else if(this.pageNum == 9) {
           text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
           registered mail.\
-          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300. \
-          2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300."
         }
         else if(this.pageNum == 10) {
+          text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+        }
+        else if(this.pageNum == 11) {
           text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
           that is still on hand and has not been delivered."
         }
@@ -254,14 +241,17 @@
         else if(this.pageNum >= 5 && this.pageNum < 9) {
           num = 4;
         }
-        else if(this.pageNum == 9) {
+        else if(this.pageNum >= 9 && this.pageNum < 11) {
           num = 5;
         }
-        else if(this.pageNum == 10) {
+        else if(this.pageNum == 11) {
           num = 6;
         }
         return num;
-      } 
+      },
+      getVuexPageNum() {
+        return this.pageNum;
+      }
     },
     methods: {
       startDrag (evt, item)  {
@@ -343,78 +333,231 @@
         this.currentItemIndex = this.getItemIndex(id);
         evt.stopPropagation()
       },
-      //creates a new item given information via various parameters
-      createItem(itemType, itemName) {
-        if(itemType == "form") {
-          let newForm = {
+      /*creates a new item given information:
+      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation)
+      */
+      createItem(itemType, articleCode, situationNumber, level, defaultCreate) {
+        let newItem = {};
+
+        if(itemType == "psform3854") {
+          newItem = {
             id: this.idCounter,
-            title: itemName,
+            articleCode: 'Bill #' + articleCode,
+            situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
             formInputs: {},
-            type: "form",
+            type: "PS FORM 3854",
             droppable: true
           }
-          this.items.push(newForm);
-          this.items[5].children.push(newForm.id)
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
         }
-        else if(itemType == "mail") {
-          let mail = {
+        else if(itemType == "psform3877") {
+          newItem = {
             id: this.idCounter,
-            title: itemName,
+            articleCode: 'Bill #' +articleCode,
+            situationNumber: 'Situation ' + situationNumber,
             children: [],
-            level: 2,
+            level: level,
             images: [],
             currentImageIndex: 0,
             stampCounter: 0,
-            stampable: true,
+            stampable: false,
             formInputs: {},
-            type: "mail",
+            type: "PS FORM 3877",
             droppable: true
           }
-          this.items.push(mail);
-          this.items[1].children.push(mail.id)
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
         }
-        this.idCounter++;      
+        else if(itemType == "ddform2261") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "DD FORM 2261",
+            droppable: true
+          }
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
+        }
+        else if(itemType == "letter") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: 'RB #' + articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            formInputs: {},
+            type: "Letter",
+            droppable: true
+          }
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[1].children.push(newItem.id)
+          }
+        }
+        else if(itemType == "package") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: 'RB #' + articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            formInputs: {},
+            type: "Package",
+            droppable: true
+          }
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[1].children.push(newItem.id)
+          }
+        }
+        else if(itemType == "pouch") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: 'SEAL #' + articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            formInputs: {},
+            type: "Pouch",
+            droppable: true
+          }
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[1].children.push(newItem.id)
+          }
+        }
+        this.idCounter++;
+        return newItem.id;
+     
+      },
+      //Uses the parent's article code and the child's id to add the child to the parent's children array
+      assignItemToParent(parentArticleCode, childID) {
+        let parent = this.items.filter(x => x.articleCode == parentArticleCode)
+        let child = this.items.filter(x => x.id == childID)
+        parent[0].children.push(child[0].id);
       },
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
-            this.createItem('mail', 'RB339 065 331US')
-            this.createItem('mail', 'RB290 770 790US')
+            this.createItem('package', 'RB339 065 331US', 1, 2, true)
+            this.createItem('package', 'RB290 770 790US', 1, 2, true)
           }
           this.situationOneInit = true;
         }
-        else if(this.getSituationNumber == 2 && !this.situationTwoInit) {
-          //Either need to add a pouch '70948511'
-          this.createItem('mail', 'RB102 022 763US')
-          this.createItem('mail', 'RB298 302 613US')
-          this.createItem('form', 'PS Form 3854')
-          //42 - 47
-
-
-          this.createItem('form', 'PS Form 3854 S2 #2')
-          this.createItem('mail', 'RB867 092 744US')
-          this.createItem('mail', 'RB309 266 140US')
-          this.createItem('mail', 'RB143 899 161US')
-          this.createItem('mail', 'RB218 344 488US')
-          this.createItem('mail', 'RB888 122 361US')
-          //34-41
-          this.situationTwoInit = true;
+        else if(this.getSituationNumber == 2) {
+          if(this.pageNum == 2 && !this.situationTwoPartOne) {
+            this.createItem('pouch', '70948511', 2, 2, true)
+            this.createItem('package', 'RB102 022 763US', 2, 2, true)
+            this.createItem('package', 'RB298 302 613US', 2, 2, true)
+            this.createItem('psform3854', '260', 2, 2, true)
+            //42 - 47
+            this.situationTwoPartOne = true;
+          }
+          else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
+            let item1 = this.createItem('psform3854', '123', 2, 3, false)
+            this.assignItemToParent('SEAL #70948511', item1)
+            let item2 = this.createItem('letter', 'RB867 092 744US', 2, 3, false)
+            this.assignItemToParent('SEAL #70948511', item2)
+            let item3 = this.createItem('letter', 'RB309 266 140US', 2, 3, false)
+            this.assignItemToParent('SEAL #70948511', item3)
+            let item4 = this.createItem('letter', 'RB143 899 161US', 2, 3, false)
+            this.assignItemToParent('SEAL #70948511', item4)
+            let item5 = this.createItem('letter', 'RB218 344 488US', 2, 3, false)
+            this.assignItemToParent('SEAL #70948511', item5)
+            let item6 = this.createItem('letter', 'RB888 122 361US', 2, 3, false)
+            this.assignItemToParent('SEAL #70948511', item6)
+            //34-41
+            this.situationTwoPartTwo = true;
+          }
+          
         }
         else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
-
           this.situationThreeInit = true;
+        }
+        else if(this.getSituationNumber == 4) {
+          if(this.pageNum == 5 && !this.situationFourPartOne) {
+            this.createItem('psform3854', '30', 4, 2, true)
+            this.createItem('pouch', '43000277', 4, 2, true)
+            this.createItem('package', 'RB300 911 759US', 4, 2, true)
+            //30-33
+            this.situationFourPartOne = true;
+          }
+          else if(this.pageNum == 6 && !this.situationFourPartTwo) {
+            let item1 = this.createItem('psform3854', '24', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item1)
+            let item2 = this.createItem('letter', 'RB300 911 755US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item2)
+            let item3 = this.createItem('letter', 'RB300 911 756US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item3)
+            let item4 = this.createItem('letter', 'RB300 911 757US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item4)
+            let item5 = this.createItem('package', 'RB300 911 758US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item5)
+            let item6 = this.createItem('letter', 'RB300 911 760US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item6)
+            let item7 = this.createItem('package', 'RB300 911 761US', 4, 3, false)
+            this.assignItemToParent('SEAL #43000277', item7)
+            //22-29
+            this.situationFourPartTwo = true;
+          }
+          else if(this.pageNum == 7 && !this.situationFourPartThree) {
+            this.createItem('psform3877', '24', 4, 2, true)
+            this.createItem('letter', 'RB842 320 438US', 4, 2, true)
+            this.createItem('letter', 'RB842 320 439US', 4, 2, true)
+            //18-21
+            this.situationFourPartThree = true;
+          }
+          else if(this.pageNum == 8 && !this.situationFourPartFour) {
+            this.createItem('psform3854', '33', 4, 2, true)
+            this.createItem('letter', 'RB707 092 210US', 4, 2, true)
+            this.createItem('package', 'RB707 092 211US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 212US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 213US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 214US', 4, 2, true)
+            this.createItem('package', 'RB707 092 215US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 216US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 217US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 218US', 4, 2, true)
+            this.createItem('letter', 'RB707 092 219US', 4, 2, true)
+            //6-17
+            this.situationFourPartFour = true;
+          }
         }
       },
     },
     watch: {
-      getSituationNumber: function () {
+      getVuexPageNum: function () {
         this.updateSituation();
       }
     }      
@@ -454,7 +597,7 @@
   .drop-zone {
     order: 1;
     background-color: #333366;
-    width: 15vw;
+    width: 22vw;
   }
   .drop-zone-is-stamping{
     order: 1;
@@ -469,10 +612,17 @@
     text-align: center;
     max-width: 39vw;
   }
+  .left-side-content{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: 50vw;
+    width: 25vw;
+  }
   .parent-level {
     background-color: #D5D5D5;
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
     color: #42426A;
     border-radius: 5px;
     z-index: 1;
@@ -484,6 +634,7 @@
     color: #D5D5D5;
     border-radius: 5px;
     z-index: 2;
+    font-size: 1vw;
   }
   .grand-child-level {
     background-color: #ddd;
@@ -491,6 +642,7 @@
     padding: 5px;
     color: #42426A;
     border-radius: 5px;
+    font-size: 0.8vw;
   }
   .vertical-line {
     order: 2;
@@ -548,5 +700,8 @@
     top: 10px;
     left: 1vw;
     z-index: 2;
+  }
+  .item-icon{
+    width: 2vw;
   }
 </style>
