@@ -107,7 +107,7 @@
                     Not required fo individual Reg. Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;<input type="text" v-model="itemNums[i]" class="box">
+                    &emsp;<input type="text" v-model="itemOrigins[i]" class="box">
                 </div>
             </div>
             <div class="center-area-content3">
@@ -124,7 +124,7 @@
                     Not required fo individual Reg. Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;<input type="text" id="fname" name="fname" class="box">
+                    &emsp;<input type="text" v-model="itemOrigins[i]" class="box">
                 </div>
             </div>
         </div>
