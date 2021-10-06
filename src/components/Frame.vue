@@ -91,7 +91,7 @@
             >
           </div>
           <div v-else>
-            <Form2261/>
+            <Form2261b/>
           </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
@@ -103,14 +103,14 @@
   import PageNav from '../Navigation/PageNav.vue'
   //import Form3854 from '../Forms/Form3854.vue'
   //import Form3877 from '../Forms/Form3877.vue'
-  import Form2261 from '../Forms/Form2261.vue'
+  import Form2261b from '../Forms/Form2261(Back).vue'
   export default {
     name: 'Frame',
     components: {
       PageNav,
       //Form3854,
       //Form3877,
-      Form2261
+      Form2261b
     },
     props: [
       'pageNum'
