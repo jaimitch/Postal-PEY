@@ -132,19 +132,19 @@
         </div>
         <div class="postage-area">
             <div class="postage-text">
-                <div class="box1">Postage</div>
-                <div class="box1">(Extra Service) Fee</div>
-                <div class="box1">Handling Charge</div>
-                <div class="box1">Actual Value if Registered</div>
-                <div class="box1">Insured Value</div>
-                <div class="box1">Due Sender if COD</div>
-                <div class="box1">ASR Fee</div>
-                <div class="box1">ASRD Fee</div>
-                <div class="box1">RD Fee</div>
-                <div class="box1">RR Fee</div>
-                <div class="box1">SC Fee</div>
-                <div class="box1">SCRD Fee</div>
-                <div class="box1">SH Fee</div>
+                <div class="box1"><div class="hover">Postage</div></div>
+                <div class="box1"><div class="hover">(Extra Service) Fee</div></div>
+                <div class="box1"><div class="hover">Handling Charge</div></div>
+                <div class="box1"><div class="hover">Actual Value if Registered</div></div>
+                <div class="box1"><div class="hover">Insured Value</div></div>
+                <div class="box1"><div class="hover">Due Sender if COD</div></div>
+                <div class="box1"><div class="hover">ASR Fee</div></div>
+                <div class="box1"><div class="hover">ASRD Fee</div></div>
+                <div class="box1"><div class="hover">RD Fee</div></div>
+                <div class="box1"><div class="hover">RR Fee</div></div>
+                <div class="box1"><div class="hover">SC Fee</div></div>
+                <div class="box1"><div class="hover">SCRD Fee</div></div>
+                <div class="box1"><div class="hover">SH Fee</div></div>
             </div>
             <div class = "grid">
                 <div v-for="i in 104" :key="i" class="box">
@@ -784,5 +784,12 @@
         min-height: 100%;
         text-align: center;
         display: inline-block;
+    }
+    .hover { 
+        transition: all .2s ease-in-out; 
+    }
+    .hover:hover { 
+        transform: scale(5); 
+        background-color: white;
     }
 </style>
