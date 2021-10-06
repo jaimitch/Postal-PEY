@@ -199,7 +199,13 @@
         }
         else if(this.pageNum == 4) {
           text = "Deliver the following mail using the appropriate PS Forms: \
-          RB298 302 613US, RB339 065 331US, RB290 770 790US, RB309 266 140US, RB218 344 488US, RB143 899 161US, RB867 092 744US, RB102 022 763US"
+          RB298 302 613US, RB339 065 331US, RB290 770 790US, RB309 266 140US, RB218 344 488US, RB143 899 161US, RB867 092 744US, RB102 022 763US\
+          TODAY'S DATE AND TIME: REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours\
+          UNIT: LAST BILL # USED UNIT MAIL CLERK\
+          14th ADMIN CO 183 SGT EARL SMITH\
+          13th EOC 101 PFC JOHN THOMPSON\
+          11th ENGR DET 182 SPC RONNIE CARTER\
+          45TH MP CO 195 SGT JERRY JOHNSON"
         }
         else if(this.pageNum == 5) {
           text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
@@ -334,7 +340,10 @@
         evt.stopPropagation()
       },
       /*creates a new item given information:
-      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation)
+      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior)
+
+      NOTE: Default item creation causes forms to be added to the forms section, and all other things to be added to the safe.
+      You would want to disable default behavior if you planned to add the item to another item's children array for example.
       */
       createItem(itemType, articleCode, situationNumber, level, defaultCreate) {
         let newItem = {};
