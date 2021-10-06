@@ -7,15 +7,23 @@
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
       <div class= "form-creation">
-        <button @click="createItem(createFormType, 'default', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, '', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
-        <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
+        <select class="form-creation-select" v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
           <option value="psform3854">PS Form 3854</option>
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
         </select>
       </div>
+
+      <div class="pouch-creation">
+        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true)">
+          Create New Pouch
+        </button>
+      </div>
+
+    <div class="left-frame">
       <div
         :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
@@ -37,32 +45,44 @@
             :draggable ='true'
             @dragstart='startDrag($event, items[child])'
             @drop="onDrop($event,items[child].id)"
-            @click="changeCurrentItem($event, items[child].id)"
+            @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
           >
-            <div>
-              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon">
-              <img v-else src="../assets/White-form.svg" class="item-icon">
+            <div class="child">
+              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
+              <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
+              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
+              <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
+            <!-- <div class='space-bar'>|</div> -->
+
+              <div class = "child-text">
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+              </div>
             </div>  
+            <img v-show="items[child].showImage" :src="itemImage(items[child])">
             
             <div 
               class='grand-child-level' 
-              v-for='grandchild in getChildrenIndexes(items[child].id)' 
-              :key='grandchild' 
+              v-for='grandchild in getChildrenIndexes(items[child].id)'
+              :key='grandchild'
               :draggable ='true'
               @dragstart='startDrag($event, items[grandchild])'
               @drop="onDrop($event,items[grandchild].id)"
-              @click="changeCurrentItem($event, items[grandchild].id)"
+              @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
             >
-              <img v-if="items[child].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon">
-              <img v-else-if="items[child].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon">
-              <img v-else src="../assets/Black-Form.svg" class="item-icon">
+            
+              <img v-if="items[grandchild].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon grand-letter">
+              <img v-else-if="items[grandchild].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon grand-package">
+              <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon grand-pouch">
+              <img v-else src="../assets/Black-Form.svg" class="item-icon grand-form">
 
+            <!-- <div class='space-bar'>|</div> -->
+
+              <div class='grand-text'>
               {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
+              <br>
+              <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
+              </div>
               <!-- <div 
                 class='child-level' 
                 v-for='greatGrand in getChildrenIndexes(items[grandchild].id)'
@@ -77,18 +97,18 @@
           </div>
         </div>
       </div>
+    </div>
         <div class = "vertical-line"></div>
         <div class="right-side-content">
-          <div> Situation {{ getSituationNumber }} </div>
-          <div class="right-side-content"> {{ this.getSituationText }} </div>
-          <p> This is a {{this.items[currentItemIndex].title}} </p>
-          <div v-if="this.items[currentItemIndex].type != 'PS FORM 3854'">
-            <img 
+          <div> Situation {{ getSituationNumber }} <br> <span v-html="this.getSituationText"></span> </div>
+          <!-- <p> This is a {{this.items[currentItemIndex].title}} </p> -->
+          <div v-if="this.items[currentItemIndex].type != 'form'">
+            <!-- <img 
               :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
               :src="itemImage(this.items[currentItemIndex])"
               width="500"
               @click="stamp(this.items[currentItemIndex])"
-            >
+            > -->
           </div>
           <div v-else>
             <Form2261b/>
@@ -163,6 +183,7 @@
         idCounter: 1000,
         draggedItem: {},
         createFormType: "",
+        definedSeals: [12345678, 22345678, 32345678, 42345678, 52345678, 62345678],
         situationOneInit: false,
         situationTwoPartOne: false,
         situationTwoPartTwo: false,
@@ -202,8 +223,15 @@
           text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
         }
         else if(this.pageNum == 4) {
-          text = "Deliver the following mail using the appropriate PS Forms: \
-          RB298 302 613US, RB339 065 331US, RB290 770 790US, RB309 266 140US, RB218 344 488US, RB143 899 161US, RB867 092 744US, RB102 022 763US"
+          text = "<div>Deliver the following mail using the appropriate PS Forms:</div>\
+          <div>RB298 302 613US <br>RB339 065 331US <br>RB290 770 790US <br>RB309 266 140US <br>RB218 344 488US <br>RB143 899 161US <br>RB867 092 744US <br>RB102 022 763US</div>\
+          <div>TODAY'S DATE AND TIME: </div>\
+          <div>REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours</div>\
+          UNIT: LAST BILL # USED UNIT MAIL CLERK\
+          14th ADMIN CO 183 SGT EARL SMITH\
+          13th EOC 101 PFC JOHN THOMPSON\
+          11th ENGR DET 182 SPC RONNIE CARTER\
+          45TH MP CO 195 SGT JERRY JOHNSON"
         }
         else if(this.pageNum == 5) {
           text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
@@ -337,8 +365,26 @@
         this.currentItemIndex = this.getItemIndex(id);
         evt.stopPropagation()
       },
+      //toggles the item to display or hide it's image
+      toggleItemImage(item) {
+        item.showImage = !item.showImage;
+      },
+      //returns a seal off of the seal array, and then removes it so it cant be duplicated
+      getSeal() {
+        let seal = this.definedSeals[0];
+        this.definedSeals.shift();
+        if(seal == undefined) {
+          alert("There are no remaining pouches!")
+        }
+        else {
+          return seal;
+        }
+      },
       /*creates a new item given information:
-      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation)
+      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior)
+
+      NOTE: Default item creation causes forms to be added to the forms section, and all other things to be added to the safe.
+      You would want to disable default behavior if you planned to add the item to another item's children array for example.
       */
       createItem(itemType, articleCode, situationNumber, level, defaultCreate) {
         let newItem = {};
@@ -346,7 +392,7 @@
         if(itemType == "psform3854") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'Bill #' + articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -358,6 +404,9 @@
             type: "PS FORM 3854",
             droppable: true
           }
+          if(newItem.articleCode != '') {
+            newItem.articleCode = 'Bill #' + newItem.articleCode;
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -366,7 +415,7 @@
         else if(itemType == "psform3877") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'Bill #' +articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -377,6 +426,9 @@
             formInputs: {},
             type: "PS FORM 3877",
             droppable: true
+          }
+          if(newItem.articleCode != '') {
+            newItem.articleCode = 'Bill #' + newItem.articleCode;
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -410,7 +462,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [],
+            images: [require("../assets/letter-test.svg"),],
             currentImageIndex: 0,
             stampCounter: 0,
             formInputs: {},
@@ -429,12 +481,13 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [],
+            images: [require("../assets/package-test.svg"),],
             currentImageIndex: 0,
             stampCounter: 0,
             formInputs: {},
             type: "Package",
-            droppable: true
+            droppable: true,
+            showImage: false,
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -444,20 +497,27 @@
         else if(itemType == "pouch") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'SEAL #' + articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [],
+            images: [require("../assets/Bag-1.svg")],
             currentImageIndex: 0,
             stampCounter: 0,
             formInputs: {},
             type: "Pouch",
             droppable: true
           }
-          this.items.push(newItem);
-          if(defaultCreate) {
-            this.items[1].children.push(newItem.id)
+          //checking to see if the user has used all existing seals
+          if(newItem.articleCode != undefined) {
+            newItem.articleCode = 'SEAL #' + newItem.articleCode;
+          }
+
+          if(itemType == "pouch" && newItem.articleCode != undefined) {
+            this.items.push(newItem);
+            if(defaultCreate) {
+              this.items[1].children.push(newItem.id)
+            }
           }
         }
         this.idCounter++;
@@ -569,6 +629,8 @@
 </script>
 
 <style scoped>
+  
+
   .frame{
     display: flex;
     flex-direction: row;
@@ -611,16 +673,24 @@
   }
   .right-side-content{
     order: 3;
+    position: relative;
     color: #D5D5D5;
-    top:15vh;
+    bottom:13vw;
     text-align: center;
     max-width: 50vw;
+  }
+  .left-frame{
+    position: relative;
+    top: 1.7vw;
+    left: 2vw;
+
   }
   .left-side-content{
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    width: 25vw;
+    height: 35vw;
+    width: 28vw;
   }
   .parent-level {
     background-color: #D5D5D5;
@@ -631,21 +701,24 @@
     z-index: 1;
   }
   .child-level {
-    background-color: #42426A;;
+    background-color: #42426A;
     margin-bottom: 10px;
     padding: 5px;
     color: #D5D5D5;
     border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
+
   }
   .grand-child-level {
+    display: flex;
+    flex-direction: row;
     background-color: #ddd;
     margin-bottom: 5px;
     padding: 5px;
     color: #42426A;
     border-radius: 5px;
-    font-size: 0.8vw;
+    font-size: 1vw;
   }
   .vertical-line {
     order: 2;
@@ -701,11 +774,53 @@
   }
   .form-creation{
     position: absolute;
-    top: 10px;
-    left: 1vw;
+    font-family: Arial;
+    top: 5vw;
+    left: 10vw;
     z-index: 2;
+    background-color: #D5D5D5;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .pouch-creation {
+    position: absolute;
+    font-family: Arial;
+    top: 8vw;
+    left: 10vw;
+    z-index: 2;
+    background-color: #D5D5D5;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
   }
   .item-icon{
+    position: relative;
+    width: 2.5vw;
+    left: 0.5vw;
+  }
+  /* .child{
+    position: absolute;
+  } */
+  .child-text{
+    margin-left: 40px;
+  }
+  .child{
+    display: flex;
+    flex-direction: row;
+  }
+  .grand-text{
+    margin-left: 40px;
+  }
+  .space-bar{
+    margin-left: 5px;
+    /* margin-top: 1px; */
+    font-size: 40px;
+  }
+  .item_image {
     width: 2vw;
   }
+  /* .child-package{
+    margin-top: 15px;
+  } */
 </style>
