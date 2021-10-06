@@ -10,16 +10,20 @@
         <button @click="createItem(createFormType, '', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
-        <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
+        <select class="form-creation-select" v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
           <option value="psform3854">PS Form 3854</option>
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
         </select>
-        <br>
-        <button @click="createItem('pouch', getRandomSeal(), getSituationNumber, 2, true)">
+      </div>
+
+      <div class="pouch-creation">
+        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true)">
           Create New Pouch
         </button>
       </div>
+
+    <div class="left-frame">
       <div
         :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
@@ -49,7 +53,7 @@
               <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
-            <div class='space-bar'>|</div>
+            <!-- <div class='space-bar'>|</div> -->
 
               <div class = "child-text">
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
@@ -72,7 +76,7 @@
               <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon grand-pouch">
               <img v-else src="../assets/Black-Form.svg" class="item-icon grand-form">
 
-            <div class='space-bar'>|</div>
+            <!-- <div class='space-bar'>|</div> -->
 
               <div class='grand-text'>
               {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
@@ -93,10 +97,10 @@
           </div>
         </div>
       </div>
+    </div>
         <div class = "vertical-line"></div>
         <div class="right-side-content">
-          <div> Situation {{ getSituationNumber }} </div>
-          <div class="right-side-content"> {{ this.getSituationText }} </div>
+          <div> Situation {{ getSituationNumber }} <br> <span v-html="this.getSituationText"></span> </div>
           <!-- <p> This is a {{this.items[currentItemIndex].title}} </p> -->
           <div v-if="this.items[currentItemIndex].type != 'form'">
             <!-- <img 
@@ -175,7 +179,7 @@
         idCounter: 1000,
         draggedItem: {},
         createFormType: "",
-        generatedSeals: [],
+        definedSeals: [12345678, 22345678, 32345678, 42345678, 52345678, 62345678],
         situationOneInit: false,
         situationTwoPartOne: false,
         situationTwoPartTwo: false,
@@ -215,9 +219,10 @@
           text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
         }
         else if(this.pageNum == 4) {
-          text = "Deliver the following mail using the appropriate PS Forms: \
-          RB298 302 613US, RB339 065 331US, RB290 770 790US, RB309 266 140US, RB218 344 488US, RB143 899 161US, RB867 092 744US, RB102 022 763US\
-          TODAY'S DATE AND TIME: REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours\
+          text = "<div>Deliver the following mail using the appropriate PS Forms:</div>\
+          <div>RB298 302 613US <br>RB339 065 331US <br>RB290 770 790US <br>RB309 266 140US <br>RB218 344 488US <br>RB143 899 161US <br>RB867 092 744US <br>RB102 022 763US</div>\
+          <div>TODAY'S DATE AND TIME: </div>\
+          <div>REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours</div>\
           UNIT: LAST BILL # USED UNIT MAIL CLERK\
           14th ADMIN CO 183 SGT EARL SMITH\
           13th EOC 101 PFC JOHN THOMPSON\
@@ -360,17 +365,16 @@
       toggleItemImage(item) {
         item.showImage = !item.showImage;
       },
-      //generates a random 8 digit seal for pouch creation, and verifies that there will be no duplicate seals
-      getRandomSeal() {
-        let added = false;
-        while(!added) {
-          let seal = Math.floor(10000000 + Math.random() * 900000);
-          if(!this.generatedSeals.includes(seal)) {
-            this.generatedSeals.push(seal);
-            return seal;
-          }
+      //returns a seal off of the seal array, and then removes it so it cant be duplicated
+      getSeal() {
+        let seal = this.definedSeals[0];
+        this.definedSeals.shift();
+        if(seal == undefined) {
+          alert("There are no remaining pouches!")
         }
-        
+        else {
+          return seal;
+        }
       },
       /*creates a new item given information:
       (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior)
@@ -489,7 +493,7 @@
         else if(itemType == "pouch") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'SEAL #' + articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -500,9 +504,16 @@
             type: "Pouch",
             droppable: true
           }
-          this.items.push(newItem);
-          if(defaultCreate) {
-            this.items[1].children.push(newItem.id)
+          //checking to see if the user has used all existing seals
+          if(newItem.articleCode != undefined) {
+            newItem.articleCode = 'SEAL #' + newItem.articleCode;
+          }
+
+          if(itemType == "pouch" && newItem.articleCode != undefined) {
+            this.items.push(newItem);
+            if(defaultCreate) {
+              this.items[1].children.push(newItem.id)
+            }
           }
         }
         this.idCounter++;
@@ -658,10 +669,17 @@
   }
   .right-side-content{
     order: 3;
+    position: relative;
     color: #D5D5D5;
-    top:15vh;
+    bottom:13vw;
     text-align: center;
     max-width: 39vw;
+  }
+  .left-frame{
+    position: relative;
+    top: 1.7vw;
+    left: 2vw;
+
   }
   .left-side-content{
     display: flex;
@@ -751,12 +769,30 @@
   }
   .form-creation{
     position: absolute;
-    top: 10px;
-    left: 1vw;
+    font-family: Arial;
+    top: 5vw;
+    left: 10vw;
     z-index: 2;
+    background-color: #D5D5D5;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .pouch-creation {
+    position: absolute;
+    font-family: Arial;
+    top: 8vw;
+    left: 10vw;
+    z-index: 2;
+    background-color: #D5D5D5;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
   }
   .item-icon{
-    width: 2vw;
+    position: relative;
+    width: 2.5vw;
+    left: 0.5vw;
   }
   /* .child{
     position: absolute;
