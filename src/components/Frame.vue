@@ -7,7 +7,7 @@
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
       <div class= "form-creation">
-        <button @click="createItem(createFormType, 'default', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, '', getSituationNumber, 2, true)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
@@ -15,6 +15,10 @@
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
         </select>
+        <br>
+        <button @click="createItem('pouch', getRandomSeal(), getSituationNumber, 2, true)">
+          Create New Pouch
+        </button>
       </div>
       <div
         :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
@@ -37,7 +41,7 @@
             :draggable ='true'
             @dragstart='startDrag($event, items[child])'
             @drop="onDrop($event,items[child].id)"
-            @click="changeCurrentItem($event, items[child].id)"
+            @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
           >
             <div class="child">
               <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
@@ -50,28 +54,30 @@
               <div class = "child-text">
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
               </div>
-              
             </div>  
+            <img v-show="items[child].showImage" :src="itemImage(items[child])">
             
             <div 
               class='grand-child-level' 
-              v-for='grandchild in getChildrenIndexes(items[child].id)' 
-              :key='grandchild' 
+              v-for='grandchild in getChildrenIndexes(items[child].id)'
+              :key='grandchild'
               :draggable ='true'
               @dragstart='startDrag($event, items[grandchild])'
               @drop="onDrop($event,items[grandchild].id)"
-              @click="changeCurrentItem($event, items[grandchild].id)"
+              @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
             >
             
-              <img v-if="items[child].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon grand-letter">
-              <img v-else-if="items[child].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon grand-package">
-              <img v-else-if="items[child].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon grand-pouch">
+              <img v-if="items[grandchild].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon grand-letter">
+              <img v-else-if="items[grandchild].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon grand-package">
+              <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon grand-pouch">
               <img v-else src="../assets/Black-Form.svg" class="item-icon grand-form">
 
             <div class='space-bar'>|</div>
 
               <div class='grand-text'>
               {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
+              <br>
+              <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
               <!-- <div 
                 class='child-level' 
@@ -91,14 +97,14 @@
         <div class="right-side-content">
           <div> Situation {{ getSituationNumber }} </div>
           <div class="right-side-content"> {{ this.getSituationText }} </div>
-          <p> This is a {{this.items[currentItemIndex].title}} </p>
+          <!-- <p> This is a {{this.items[currentItemIndex].title}} </p> -->
           <div v-if="this.items[currentItemIndex].type != 'form'">
-            <img 
+            <!-- <img 
               :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
               :src="itemImage(this.items[currentItemIndex])"
               width="500"
               @click="stamp(this.items[currentItemIndex])"
-            >
+            > -->
           </div>
           <div v-else>
             <Form3854/>
@@ -169,6 +175,7 @@
         idCounter: 1000,
         draggedItem: {},
         createFormType: "",
+        generatedSeals: [],
         situationOneInit: false,
         situationTwoPartOne: false,
         situationTwoPartTwo: false,
@@ -349,6 +356,22 @@
         this.currentItemIndex = this.getItemIndex(id);
         evt.stopPropagation()
       },
+      //toggles the item to display or hide it's image
+      toggleItemImage(item) {
+        item.showImage = !item.showImage;
+      },
+      //generates a random 8 digit seal for pouch creation, and verifies that there will be no duplicate seals
+      getRandomSeal() {
+        let added = false;
+        while(!added) {
+          let seal = Math.floor(10000000 + Math.random() * 900000);
+          if(!this.generatedSeals.includes(seal)) {
+            this.generatedSeals.push(seal);
+            return seal;
+          }
+        }
+        
+      },
       /*creates a new item given information:
       (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior)
 
@@ -361,7 +384,7 @@
         if(itemType == "psform3854") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'Bill #' + articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -373,6 +396,9 @@
             type: "PS FORM 3854",
             droppable: true
           }
+          if(newItem.articleCode != '') {
+            newItem.articleCode = 'Bill #' + newItem.articleCode;
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -381,7 +407,7 @@
         else if(itemType == "psform3877") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'Bill #' +articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -392,6 +418,9 @@
             formInputs: {},
             type: "PS FORM 3877",
             droppable: true
+          }
+          if(newItem.articleCode != '') {
+            newItem.articleCode = 'Bill #' + newItem.articleCode;
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -425,7 +454,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [],
+            images: [require("../assets/letter-test.svg"),],
             currentImageIndex: 0,
             stampCounter: 0,
             formInputs: {},
@@ -444,12 +473,13 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [],
+            images: [require("../assets/package-test.svg"),],
             currentImageIndex: 0,
             stampCounter: 0,
             formInputs: {},
             type: "Package",
-            droppable: true
+            droppable: true,
+            showImage: false,
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -463,7 +493,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [],
+            images: [require("../assets/Bag-1.svg")],
             currentImageIndex: 0,
             stampCounter: 0,
             formInputs: {},
@@ -638,7 +668,7 @@
     flex-direction: column;
     overflow: scroll;
     height: 35vw;
-    width: 25vw;
+    width: 28vw;
   }
   .parent-level {
     background-color: #D5D5D5;
@@ -745,6 +775,9 @@
     margin-left: 5px;
     /* margin-top: 1px; */
     font-size: 40px;
+  }
+  .item_image {
+    width: 2vw;
   }
   /* .child-package{
     margin-top: 15px;
