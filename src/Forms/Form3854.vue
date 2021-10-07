@@ -235,6 +235,7 @@
         text-align: center;
         background-color: white;
         color: black;
+        top: 1vw;
     }
     .top-left-area{
         position: absolute;

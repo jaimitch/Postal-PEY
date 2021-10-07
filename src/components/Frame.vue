@@ -674,6 +674,7 @@
     bottom:13vw;
     text-align: center;
     max-width: 39vw;
+    bottom: 4vw;
   }
   .left-frame{
     position: relative;
