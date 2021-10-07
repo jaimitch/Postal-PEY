@@ -10,48 +10,48 @@
             <div class="sender-text">
                 Name and Address of Sender
             </div>
-            <textarea class="sender-input" v-model="senderAddress"></textarea>
+            <textarea class="sender-input" v-model="formData.senderAddress"></textarea>
         </div>
         <div class="type-area">
             <div class="sender-text">
                 Check type of mail or service
             </div>
             <div class="left-stamps">
-                <input type="checkbox" class="checkboxes" v-model="adultSigReq">
+                <input type="checkbox" class="checkboxes" v-model="formData.adultSigReq">
                 <label>Adult Signature Required</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="adultSigRest">
+                <input type="checkbox" class="checkboxes" v-model="formData.adultSigRest">
                 <label>Adult Signature Restricted Delivery</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="certMail">
+                <input type="checkbox" class="checkboxes" v-model="formData.certMail">
                 <label>Certified Mail</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="certMailRestDeliv">
+                <input type="checkbox" class="checkboxes" v-model="formData.certMailRestDeliv">
                 <label>Certified Mail Restricted Delivery</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="cOD">
+                <input type="checkbox" class="checkboxes" v-model="formData.cOD">
                 <label>Collect on Delivery (COD)</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="insuredMail">
+                <input type="checkbox" class="checkboxes" v-model="formData.insuredMail">
                 <label>Insured Mail</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="priorityMail">
+                <input type="checkbox" class="checkboxes" v-model="formData.priorityMail">
                 <label>Priority Mail</label>
             </div>
             <div class="right-stamps">
-                <input type="checkbox" class="checkboxes" v-model="priorityMailEx">
+                <input type="checkbox" class="checkboxes" v-model="formData.priorityMailEx">
                 <label>Priority Mail Express</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="registeredMail">
+                <input type="checkbox" class="checkboxes" v-model="formData.registeredMail">
                 <label>Registered Mail</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="returnReciept">
+                <input type="checkbox" class="checkboxes" v-model="formData.returnReciept">
                 <label>Return Reciept for Merchandise</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="sigConfirm">
+                <input type="checkbox" class="checkboxes" v-model="formData.sigConfirm">
                 <label>Signature Confirmation</label>
                 <br>
-                <input type="checkbox" class="checkboxes" v-model="sigConfirmRestrDeliv">
+                <input type="checkbox" class="checkboxes" v-model="formData.sigConfirmRestrDeliv">
                 <label>Signature Confirmation Restricted Delivery</label>
                 <br>
             </div>
@@ -70,35 +70,35 @@
             </div>
             <div class="tracking1">
                 <p>&emsp;1.</p>
-                <input class="tracking-text-input" v-model="trackingNum1">
+                <input class="tracking-text-input" v-model="formData.trackingNum1">
             </div>
             <div class="tracking2">
                 <p>&emsp;2.</p>
-                <input class="tracking-text-input" v-model="trackingNum2">
+                <input class="tracking-text-input" v-model="formData.trackingNum2">
             </div>
             <div class="tracking3">
                 <p>&emsp;3.</p>
-                <input class="tracking-text-input" v-model="trackingNum3">
+                <input class="tracking-text-input" v-model="formData.trackingNum3">
             </div>
             <div class="tracking4">
                 <p>&emsp;4.</p>
-                <input class="tracking-text-input" v-model="trackingNum4">
+                <input class="tracking-text-input" v-model="formData.trackingNum4">
             </div>
             <div class="tracking5">
                 <p>&emsp;5.</p>
-                <input class="tracking-text-input" v-model="trackingNum5">
+                <input class="tracking-text-input" v-model="formData.trackingNum5">
             </div>
             <div class="tracking6">
                 <p>&emsp;6.</p>
-                <input class="tracking-text-input" v-model="trackingNum6">
+                <input class="tracking-text-input" v-model="formData.trackingNum6">
             </div>
             <div class="tracking7">
                 <p>&emsp;7.</p>
-                <input class="tracking-text-input" v-model="trackingNum7">
+                <input class="tracking-text-input" v-model="formData.trackingNum7">
             </div>
             <div class="tracking8">
                 <p>&emsp;8.</p>  
-                <input class="tracking-text-input" v-model="trackingNum8"> 
+                <input class="tracking-text-input" v-model="formData.trackingNum8"> 
             </div>
         </div>
         <div class="address-area">
@@ -106,28 +106,28 @@
                 <p>Addressee (Name, Street, City, State, & ZIP Code™)</p>
             </div>
             <div class="tracking1">
-                <textarea class="tracking-text-input" v-model="trackingTextInput1"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput1"/>
             </div>
             <div class="tracking2">
-                <textarea class="tracking-text-input" v-model="trackingTextInput2"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput2"/>
             </div>
             <div class="tracking3">
-                <textarea class="tracking-text-input" v-model="trackingTextInput3"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput3"/>
             </div>
             <div class="tracking4">
-                <textarea class="tracking-text-input" v-model="trackingTextInput4"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput4"/>
             </div>
             <div class="tracking5">
-                <textarea class="tracking-text-input" v-model="trackingTextInput5"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput5"/>
             </div>
             <div class="tracking6">
-                <textarea class="tracking-text-input" v-model="trackingTextInput6"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput6"/>
             </div>
             <div class="tracking7">
-                <textarea class="tracking-text-input" v-model="trackingTextInput7"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput7"/>
             </div>
             <div class="tracking8">
-                <textarea class="tracking-text-input" v-model="trackingTextInput8"/>
+                <textarea class="tracking-text-input" v-model="formData.trackingTextInput8"/>
             </div>
         </div>
         <div class="postage-area">
@@ -148,7 +148,7 @@
             </div>
             <div class = "grid">
                 <div v-for="i in 104" :key="i" class="box">
-                    <input :value="square" @change="update($event,i)">
+                    <input v-model="formData.rows[i-1]">
                 </div>
             </div>
         </div>
@@ -156,19 +156,19 @@
             <div class="pieces-text">
                 Total Number of Pieces
                 Listed by Sender
-                <input class="pieces-input" v-model="piecesSent">
+                <input class="pieces-input" v-model="formData.piecesSent">
             </div>
         </div>
         <div class="pieces-recieved" >
             <div class="pieces-text">
                 Total Number of Pieces
                 Recieved at Post Office
-                <input class="pieces-input" v-model="piecesRecieved">
+                <input class="pieces-input" v-model="formData.piecesRecieved">
             </div>
         </div>
         <div class="postmaster">
             Postmaster, Per (Name of receiving employee)
-            <input class="postmaster-input" v-model="postmaster">
+            <input class="postmaster-input" v-model="formData.postmaster">
         </div>
         <div class="blank"/>
         <div class="bottom-text1">
@@ -185,256 +185,65 @@
 
 <script>
     export default{
+        props: ['item'],
         data () {
             return{
-                senderAddress: "",
-                adultSigReq: false,
-                adultSigRest: false,
-                certMail: false,
-                certMailRestDeliv: false,
-                cOD: false,
-                insuredMail: false,
-                priorityMail: false,
-                priorityMailEx: false,
-                registeredMail: false,
-                returnReciept: false,
-                sigConfirm: false,
-                sigConfirmRestrDeliv: false,
-                trackingNum1: "",
-                trackingNum2: "",
-                trackingNum3: "",
-                trackingNum4: "",
-                trackingNum5: "",
-                trackingNum6: "",
-                trackingNum7: "",
-                trackingNum8: "", 
-                trackingTextInput1: "",
-                trackingTextInput2: "",
-                trackingTextInput3: "",
-                trackingTextInput4: "",
-                trackingTextInput5: "",
-                trackingTextInput6: "",
-                trackingTextInput7: "",
-                trackingTextInput8: "",
-                piecesSent: "",
-                piecesRecieved: "",
-                postmaster:"",
-                postageData:{
-                    postage:"",
-                    extraServFee:"",
-                    handlingCharge:"",
-                    actualValIfReg:"",
-                    insuredVal:"",
-                    dueIfCOD:"",
-                    asrFee:"",
-                    asrdFee:"",
-                    rdFee:"",
-                    rrFee:"",
-                    scFee:"",
-                    scrdFee:"",
-                    shFee:"",
-                },
-                rows:[
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    },
-                    {
-                        postage:"",
-                        extraServFee:"",
-                        handlingCharge:"",
-                        actualValIfReg:"",
-                        insuredVal:"",
-                        dueIfCOD:"",
-                        asrFee:"",
-                        asrdFee:"",
-                        rdFee:"",
-                        rrFee:"",
-                        scFee:"",
-                        scrdFee:"",
-                        shFee:"",
-                    }
-                ],
-                square:"",
+                formData: {
+                    senderAddress: this.item.formInputs.senderAddress,
+                    adultSigReq: this.item.formInputs.adultSigReq,
+                    adultSigRest: this.item.formInputs.adultSigRest,
+                    certMail: this.item.formInputs.certMail,
+                    certMailRestDeliv: this.item.formInputs.certMailRestDeliv,
+                    cOD: this.item.formInputs.cOD,
+                    insuredMail: this.item.formInputs.insuredMail,
+                    priorityMail: this.item.formInputs.priorityMail,
+                    priorityMailEx: this.item.formInputs.priorityMailEx,
+                    registeredMail: this.item.formInputs.registeredMail,
+                    returnReciept: this.item.formInputs.returnReciept,
+                    sigConfirm: this.item.formInputs.sigConfirm,
+                    sigConfirmRestrDeliv: this.item.formInputs.sigConfirmRestrDeliv,
+                    trackingNum1: this.item.formInputs.trackingNum1,
+                    trackingNum2: this.item.formInputs.trackingNum2,
+                    trackingNum3: this.item.formInputs.trackingNum3,
+                    trackingNum4: this.item.formInputs.trackingNum4,
+                    trackingNum5: this.item.formInputs.trackingNum5,
+                    trackingNum6: this.item.formInputs.trackingNum6,
+                    trackingNum7: this.item.formInputs.trackingNum7,
+                    trackingNum8: this.item.formInputs.trackingNum8, 
+                    trackingTextInput1: this.item.formInputs.trackingTextInput1,
+                    trackingTextInput2: this.item.formInputs.trackingTextInput2,
+                    trackingTextInput3: this.item.formInputs.trackingTextInput3,
+                    trackingTextInput4: this.item.formInputs.trackingTextInput4,
+                    trackingTextInput5: this.item.formInputs.trackingTextInput5,
+                    trackingTextInput6: this.item.formInputs.trackingTextInput6,
+                    trackingTextInput7: this.item.formInputs.trackingTextInput7,
+                    trackingTextInput8: this.item.formInputs.trackingTextInput8,
+                    piecesSent: this.item.formInputs.piecesSent,
+                    piecesRecieved: this.item.formInputs.piecesRecieved,
+                    postmaster:this.item.formInputs.postmaster,
+                    rows: this.item.formInputs.rows,
+                }
             }
         },
         methods:{
-            update(evt,index){
-                let row;
-                if(index < 14){
-                    row = 0;
-                }
-                if(index >= 14 && index < 26){
-                    row = 1;
-                }
-                if(index >= 27 && index < 39){
-                    row = 2;
-                }
-                if(index >= 40 && index < 52){
-                    row = 3;
-                }
-                if(index >= 53 && index < 65){
-                    row = 4;
-                }
-                if(index >= 66 && index < 78){
-                    row = 5;
-                }
-                if(index >= 79 && index < 91){
-                    row = 6;
-                }
-                if(index >= 92 && index < 104){
-                    row = 7;
-                }
-                let column = index + row *(-13);
-                if(column == 1){
-                    this.rows[row].postage = evt.target.value;
-                }
-                if(column == 2){
-                    this.rows[row].extraServFee = evt.target.value;
-                }
-                if(column == 3){
-                    this.rows[row].handlingCharge = evt.target.value;
-                }
-                if(column == 4){
-                    this.rows[row].actualValIfReg = evt.target.value;
-                }
-                if(column == 5){
-                    this.rows[row].insuredVal = evt.target.value;
-                }
-                if(column == 6){
-                    this.rows[row].dueIfCOD = evt.target.value;
-                }
-                if(column == 7){
-                    this.rows[row].asrFee = evt.target.value;
-                }
-                if(column == 8){
-                    this.rows[row].asrdFee = evt.target.value;
-                }
-                if(column == 9){
-                    this.rows[row].rdFee = evt.target.value;
-                }
-                if(column == 10){
-                    this.rows[row].rrFee = evt.target.value;
-                }
-                if(column == 11){
-                    this.rows[row].scFee = evt.target.value;
-                }
-                if(column == 12){
-                    this.rows[row].scrdFee = evt.target.value;
-                }
-                if(column == 13){
-                    this.rows[row].shFee = evt.target.value;
-                }
-                console.log(this.rows[row])
+            changeForm() {
+                this.$emit('changeForm', this.formData)
             }
-        }
+        },
+        watch: {
+            // whenever question changes, this function will run
+            formData: {
+                deep: true,
+                handler: 'changeForm',
+            }
+        },
     }
 </script>
 
 <style scoped>
     .outline{
         position: relative;
+        left:-10%;
         width: 50vmax;
         height: 36vmax;
         border: 1px solid black;

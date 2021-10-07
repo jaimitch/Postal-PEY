@@ -14,6 +14,7 @@
           <option value="psform3854">PS Form 3854</option>
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
+          <option value="ddform2261">PS Form 3883</option>
         </select>
       </div>
 
@@ -102,7 +103,7 @@
         <div class="right-side-content">
           <div> Situation {{ getSituationNumber }} <br> <span v-html="this.getSituationText"></span> </div>
           <!-- <p> This is a {{this.items[currentItemIndex].title}} </p> -->
-          <div v-if="this.items[currentItemIndex].type != 'PS FORM 3854'">
+          <div>
             <!-- <img 
               :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
               :src="itemImage(this.items[currentItemIndex])"
@@ -110,8 +111,35 @@
               @click="stamp(this.items[currentItemIndex])"
             > -->
           </div>
-          <div v-else>
-            <Form3854/>
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854'">
+            <Form3854 
+              v-bind:item="items[currentItemIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+          </div>
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3877'">
+            <Form3877 
+              v-bind:item="items[currentItemIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+          </div>
+          <div v-if="this.items[currentItemIndex].type == 'DD FORM 2261' && form2261Back == false">
+            <Form2261 
+              v-bind:item="items[currentItemIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+            <button class="flip-2261" @click="form2261Back = true">Flip</button>
+          </div>
+          <div v-if="this.items[currentItemIndex].type == 'DD FORM 2261' && form2261Back == true">
+            <Form2261Back 
+              v-bind:item="items[currentItemIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+            <button class="flip-2261" @click="form2261Back = false">Flip</button>
           </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
@@ -122,11 +150,17 @@
 <script>
   import PageNav from '../Navigation/PageNav.vue'
   import Form3854 from '../Forms/Form3854.vue'
+  import Form3877 from '../Forms/Form3877.vue'
+  import Form2261 from '../Forms/Form2261.vue'
+  import Form2261Back from '../Forms/Form2261(Back).vue'
   export default {
     name: 'Frame',
     components: {
       PageNav,
-      Form3854
+      Form3854,
+      Form3877,
+      Form2261,
+      Form2261Back,
     },
     props: [
       'pageNum'
@@ -188,6 +222,8 @@
         situationFourPartTwo: false,
         situationFourPartThree: false,
         situationFourPartFour: false,
+        formKey: 0,
+        form2261Back: false,
       }   
     },
     mounted() {
@@ -396,7 +432,35 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
-            formInputs: {},
+            formInputs: {
+              lockNo: "",
+              rotaryNo: "",
+              jacketNo: "",
+              controlNo: "",
+              billNo: "",
+              pageNo: "",
+              airmail: "",
+              serialNo: "",
+              to: "",
+              billNoRight: "",
+              amNo: "",
+              jacketNoRight: "",
+              lockNoRight: "",
+              rotaryNoRight: "",
+              sealNoRight: "",
+              airmailRight: "",
+              serialNoRight: "",
+              recieved: "",
+              recievingClerks: [],
+              totalArticlesSent: "",
+              totalArticlesRecieved: "",
+              postmasterSent: "",
+              postmasterRecieved: "",
+              recievingClerk: "",
+              dispatchingClerk: "",
+              itemNums: [],
+              itemOrigins: []
+            },
             type: "PS FORM 3854",
             droppable: true
           }
@@ -419,7 +483,42 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
-            formInputs: {},
+            formInputs: {
+              senderAddress: "",
+                adultSigReq: false,
+                adultSigRest: false,
+                certMail: false,
+                certMailRestDeliv: false,
+                cOD: false,
+                insuredMail: false,
+                priorityMail: false,
+                priorityMailEx: false,
+                registeredMail: false,
+                returnReciept: false,
+                sigConfirm: false,
+                sigConfirmRestrDeliv: false,
+                trackingNum1: "",
+                trackingNum2: "",
+                trackingNum3: "",
+                trackingNum4: "",
+                trackingNum5: "",
+                trackingNum6: "",
+                trackingNum7: "",
+                trackingNum8: "", 
+                trackingTextInput1: "",
+                trackingTextInput2: "",
+                trackingTextInput3: "",
+                trackingTextInput4: "",
+                trackingTextInput5: "",
+                trackingTextInput6: "",
+                trackingTextInput7: "",
+                trackingTextInput8: "",
+                piecesSent: "",
+                piecesRecieved: "",
+                postmaster:"",
+                rows:[],
+                square:"",
+            },
             type: "PS FORM 3877",
             droppable: true
           }
@@ -442,8 +541,74 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
-            formInputs: {},
+            formInputs: {
+              apoNum: "",
+                from: "",
+                to: "",
+                itemsAtStart: "",
+                signature: "",
+                payGrade: "",
+                typedName: "",
+                officialSig: "",
+                prepSig: "",
+                remarks: "",
+                sectionC1: "",
+                sectionC2: "",
+                sectionC3: "",
+                sectionC4: "",
+                sectionC5: "",
+                sectionC6: "",
+                sectionC7: "",
+                sectionC8: "",
+                sectionC9: "",
+                sectionC10: "",
+                sectionC11: "",
+                sectionC12: "",
+                sectionC13: "",
+                sectionC14: "",
+                sectionC15: "",
+                sectionC16: "",
+                sectionC17: "",
+                sectionC18: "",
+                totalItems9thru14: "",
+                itemsOnHandAtEnd: "",
+                numberOfPouchesOpened: "",
+                itemsOnOutgoingTruck: "",
+                itemsOnOutgoingManifests: "",
+                itemsListedOnInsideBillsB: "",
+                itemsDelivered: "",
+                total1thru7: "",
+                itemsRecievedFromOther: "",
+                numberOfPouchesClosed: "",
+                itemsOnIncomingTruck: "",
+                itemsOnIncomingManifests: "",
+                itemsListedOnInsideBillsA: "",
+                itemsAccepted: "",
+                items: [],
+            },
             type: "DD FORM 2261",
+            droppable: true
+          }
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
+        }
+        else if(itemType == "psform3877") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              
+            },
+            type: "PS FORM 3883",
             droppable: true
           }
           this.items.push(newItem);
@@ -615,10 +780,17 @@
           }
         }
       },
+      changeForm(newForm){
+        console.log(newForm)
+        this.items[this.currentItemIndex].formInputs = newForm;
+      }
     },
     watch: {
       getVuexPageNum: function () {
         this.updateSituation();
+      },
+      currentItemIndex: function () {
+        this.formKey++
       }
     }      
   }
@@ -819,4 +991,12 @@
   /* .child-package{
     margin-top: 15px;
   } */
+  .flip-2261{
+    z-index: 4000;
+    position: absolute;
+    right:0;
+    bottom:0;
+    height:5%;
+    width: 5%;
+  }
 </style>

@@ -13,32 +13,32 @@
             </div>
             <div  class="right-area-content">
                 <div>
-                    &emsp;Bill No. <input type="text" v-model="billNoRight">
+                    &emsp;Bill No. <input type="text" v-model="formData.billNoRight">
                 </div>
                 <div> 
                     &emsp;A.M. Rte.<br> 
-                    &emsp;& Fit. No. <input type="text" v-model="amNo">
+                    &emsp;& Fit. No. <input type="text" v-model="formData.amNo">
                 </div>
                 <div> 
-                    &emsp;Jacket No. <input type="text" v-model="jacketNoRight">
+                    &emsp;Jacket No. <input type="text" v-model="formData.jacketNoRight">
                 </div>
                 <div> 
-                    &emsp;Lock No. <input type="text" v-model="lockNoRight">
+                    &emsp;Lock No. <input type="text" v-model="formData.lockNoRight">
                 </div>
                 <div> 
-                    &emsp;Rotary No. <input type="text" v-model="rotaryNoRight">
+                    &emsp;Rotary No. <input type="text" v-model="formData.rotaryNoRight">
                 </div>
                 <div> 
-                    &emsp;Seal No. <input type="text" v-model="sealNoRight">
+                    &emsp;Seal No. <input type="text" v-model="formData.sealNoRight">
                 </div>
                 <div> 
-                    &emsp;Airmail <input type="text" v-model="airmailRight">
+                    &emsp;Airmail <input type="text" v-model="formData.airmailRight">
                 </div>
                 <div> 
-                    &emsp;Serial No. <input type="text" v-model="serialNoRight">
+                    &emsp;Serial No. <input type="text" v-model="formData.serialNoRight">
                 </div>
                 <div> 
-                    &emsp;Recieved. <input type="text" v-model="recieved">
+                    &emsp;Recieved. <input type="text" v-model="formData.recieved">
                     <div class="centered">
                         Articles described
                         on above-specified
@@ -47,11 +47,11 @@
                     </div>
                 </div>
                 <div class="centered">
-                    <input type="text" v-model="recievingClerks[0]"> <br>
+                    <input type="text" v-model="formData.recievingClerks[0]"> <br>
                     Recieving Clerks
                 </div>
                 <div class="centered">
-                    <input type="text" v-model="recievingClerks[1]"> <br>
+                    <input type="text" v-model="formData.recievingClerks[1]"> <br>
                 </div>
                 
             </div>
@@ -59,33 +59,33 @@
         <div class="top-left-area">
             <div class="top-left-inputs">
                 <div>
-                    &emsp;Lock No. <input type="text" v-model="lockNo">
+                    &emsp;Lock No. <input type="text" v-model="formData.lockNo">
                 </div>
                 <div> 
-                    Rotary No. <input type="text" v-model="rotaryNo">
+                    Rotary No. <input type="text" v-model="formData.rotaryNo">
                 </div>
                 <div> 
-                    Jacket No. <input type="text" v-model="jacketNo">
+                    Jacket No. <input type="text" v-model="formData.jacketNo">
                 </div>
                 <div> 
-                    Control No. <input type="text" v-model="controlNo">
+                    Control No. <input type="text" v-model="formData.controlNo">
                 </div>
                 <div> 
-                    &emsp;Bill No. <input type="text" v-model="billNo">
+                    &emsp;Bill No. <input type="text" v-model="formData.billNo">
                 </div>
                 <div> 
-                    Page No. <input type="text" v-model="pageNo">
+                    Page No. <input type="text" v-model="formData.pageNo">
                 </div>
                 <div> 
-                    Airmail <input type="text" v-model="airmail">
+                    Airmail <input type="text" v-model="formData.airmail">
                 </div>
                 <div> 
-                    Serial No. <input type="text" v-model="serialNo">
+                    Serial No. <input type="text" v-model="formData.serialNo">
                 </div>
             </div>
         </div>
         <div class="to-input"> 
-            &emsp;To <input type="text" id="fname" name="fname" class="to-input">
+            &emsp;To <input type="text" id="fname" name="fname" class="to-input" v-model="formData.to">
             <br>
             <div class="to-text">
                 (P.O. or R.P.O and Tr. No.)
@@ -98,7 +98,7 @@
 
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;{{i}} <input type="text" v-model="itemNums[i]" class="box">
+                    &emsp;{{i}} <input type="text" v-model="formData.itemNums[i]" class="box">
                 </div>
             </div>
             <div class="center-area-content2">
@@ -107,7 +107,7 @@
                     Not required fo individual Reg. Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;<input type="text" v-model="itemOrigins[i]" class="box">
+                    &emsp;<input type="text" v-model="formData.itemOrigins[i]" class="box">
                 </div>
             </div>
             <div class="center-area-content3">
@@ -115,7 +115,7 @@
                     Reg. No. Jacket, Lock or Seal Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;{{i+15}} <input type="text" v-model="itemNums[i+15]" class="box">
+                    &emsp;{{i+15}} <input type="text" v-model="formData.itemNums[i+15]" class="box">
                 </div>
             </div>
             <div class="center-area-content4">
@@ -124,37 +124,37 @@
                     Not required fo individual Reg. Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;<input type="text" v-model="itemOrigins[i]" class="box">
+                    &emsp;<input type="text" v-model="formData.itemOrigins[i+15]" class="box">
                 </div>
             </div>
         </div>
         <div class="bottom-area1">
             <div class="sub-area1">
-                A total of <input type="text" v-model="totalArticlesSent"> articles
+                A total of <input type="text" v-model="formData.totalArticlesSent"> articles
                 <br> sent by this dispatch
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
                 <br>
-                &emsp;<input type="text" v-model="postmasterSent">
+                &emsp;<input type="text" v-model="formData.postmasterSent">
             </div>
             <div class="sub-area3">
-                <input type="text" v-model="recievingClerk"> M.
+                <input type="text" v-model="formData.recievingClerk"> M.
                 <br> Recieving Clerk
             </div>
         </div>
         <div class="bottom-area2">
             <div class="sub-area1">
-                A total of <input type="text" v-model="totalArticlesRecieved"> articles
+                A total of <input type="text" v-model="formData.totalArticlesRecieved"> articles
                 <br> recieved in this dispatch
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
                 <br>
-                &emsp;<input type="text" v-model="postmasterRecieved">
+                &emsp;<input type="text" v-model="formData.postmasterRecieved">
             </div>
             <div class="sub-area3">
-                <input type="text" v-model="dispatchingClerk"> M.
+                <input type="text" v-model="formData.dispatchingClerk"> M.
                 <br> Dispatching Clerk
             </div>
         </div>
@@ -190,37 +190,52 @@
 
 <script>
     export default {
+        props: ['item'],
         data () {
             return{
                 topStamp: true,
                 bottomStamp: false,
-                lockNo: "",
-                rotaryNo: "",
-                jacketNo: "",
-                controlNo: "",
-                billNo: "",
-                pageNo: "",
-                airmail: "",
-                serialNo: "",
-                to: "",
-                billNoRight: "",
-                amNo: "",
-                jacketNoRight: "",
-                lockNoRight: "",
-                rotaryNoRight: "",
-                sealNoRight: "",
-                airmailRight: "",
-                serialNoRight: "",
-                recieved: "",
-                recievingClerks: [],
-                totalArticlesSent: "",
-                totalArticlesRecieved: "",
-                postmasterSent: "",
-                postmasterRecieved: "",
-                recievingClerk: "",
-                dispatchingClerk: "",
-                itemNums: [],
-                itemOrigins: []
+                formData: {
+                    lockNo: this.item.formInputs.lockNo,
+                    rotaryNo: this.item.formInputs.rotaryNo,
+                    jacketNo: this.item.formInputs.jacketNo,
+                    controlNo: this.item.formInputs.controlNo,
+                    billNo: this.item.formInputs.billNo,
+                    pageNo: this.item.formInputs.pageNo,
+                    airmail: this.item.formInputs.airmail,
+                    serialNo: this.item.formInputs.serialNo,
+                    to: this.item.formInputs.to,
+                    billNoRight: this.item.formInputs.billNoRight,
+                    amNo: this.item.formInputs.amNo,
+                    jacketNoRight: this.item.formInputs.jacketNoRight,
+                    lockNoRight: this.item.formInputs.lockNoRight,
+                    rotaryNoRight: this.item.formInputs.rotaryNoRight,
+                    sealNoRight: this.item.formInputs.sealNoRight,
+                    airmailRight: this.item.formInputs.airmailRight,
+                    serialNoRight: this.item.formInputs.serialNoRight,
+                    recieved: this.item.formInputs.recieved,
+                    recievingClerks: this.item.formInputs.recievingClerks,
+                    totalArticlesSent: this.item.formInputs.totalArticlesSent,
+                    totalArticlesRecieved: this.item.formInputs.totalArticlesRecieved,
+                    postmasterSent: this.item.formInputs.postmasterSent,
+                    postmasterRecieved: this.item.formInputs.postmasterRecieved,
+                    recievingClerk: this.item.formInputs.recievingClerks,
+                    dispatchingClerk: this.item.formInputs.dispatchingClerk,
+                    itemNums: this.item.formInputs.itemNums,
+                    itemOrigins: this.item.formInputs.itemOrigins
+                },
+            }
+        },
+        methods: {
+            changeForm() {
+                this.$emit('changeForm', this.formData)
+            }
+        },
+        watch: {
+            // whenever question changes, this function will run
+            formData: {
+                deep: true,
+                handler: 'changeForm',
             }
         },
     }
