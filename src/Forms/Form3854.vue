@@ -31,13 +31,10 @@
                     &emsp;Rotary No. <input type="text" v-model="formData.rotaryNoRight">
                 </div>
                 <div> 
-                    &emsp;Seal No. <input type="text" v-model="formData.sealNoRight">
-                </div>
-                <div> 
                     &emsp;Airmail <input type="text" v-model="formData.airmailRight">
                 </div>
                 <div> 
-                    &emsp;Serial No. <input type="text" v-model="formData.serialNoRight">
+                    &emsp;Seal No. <input type="text" v-model="formData.sealNoRight">
                 </div>
                 <div> 
                     &emsp;Recieved. <input type="text" v-model="formData.recieved">
@@ -82,7 +79,7 @@
                     Airmail <input type="text" v-model="formData.airmail">
                 </div>
                 <div> 
-                    Serial No. <input type="text" v-model="formData.serialNo">
+                    Seal No. <input type="text" v-model="formData.sealNo">
                 </div>
             </div>
         </div>
@@ -193,7 +190,7 @@
                     billNo: this.item.formInputs.billNo,
                     pageNo: this.item.formInputs.pageNo,
                     airmail: this.item.formInputs.airmail,
-                    serialNo: this.item.formInputs.serialNo,
+                    sealNo: this.item.formInputs.sealNo,
                     to: this.item.formInputs.to,
                     billNoRight: this.item.formInputs.billNoRight,
                     amNo: this.item.formInputs.amNo,
@@ -202,7 +199,6 @@
                     rotaryNoRight: this.item.formInputs.rotaryNoRight,
                     sealNoRight: this.item.formInputs.sealNoRight,
                     airmailRight: this.item.formInputs.airmailRight,
-                    serialNoRight: this.item.formInputs.serialNoRight,
                     recieved: this.item.formInputs.recieved,
                     recievingClerks: this.item.formInputs.recievingClerks,
                     totalArticlesSent: this.item.formInputs.totalArticlesSent,
