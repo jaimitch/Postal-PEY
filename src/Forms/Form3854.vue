@@ -134,8 +134,12 @@
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
-                <br>
-                &emsp;<input type="text" v-model="formData.postmasterSent">
+                <div class="witness">
+                     &emsp;<input type="text" v-model="formData.witnessSent">
+                </div>
+                <div class="postmaster">
+                     &emsp;<input type="text" v-model="formData.postmasterSent">
+                </div>
             </div>
             <div class="sub-area3">
                 <input type="text" v-model="formData.dispatchingClerk"> M.
@@ -149,8 +153,12 @@
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
-                <br>
-                &emsp;<input type="text" v-model="formData.postmasterRecieved">
+                <div class="witness">
+                     &emsp;<input type="text" v-model="formData.witnessRecieved">
+                </div>
+                <div class="postmaster">
+                     &emsp;<input type="text" v-model="formData.postmasterRecieved">
+                </div>
             </div>
             <div class="sub-area3">
                 <input type="text" v-model="formData.recievingClerk"> M.
@@ -212,7 +220,9 @@
                     topStamp1: this.item.formInputs.topStamp1,
                     topStamp2: this.item.formInputs.topStamp2,
                     bottomStamp1: this.item.formInputs.bottomStamp1,
-                    bottomStamp2: this.item.formInputs.bottomStamp2
+                    bottomStamp2: this.item.formInputs.bottomStamp2,
+                    witnessSent: this.item.formInputs.witnessSent,
+                    witnessRecieved: this.item.formInputs.witnessRecieved
                 },
             }
         },
@@ -234,13 +244,15 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 42vmax;
-        height: 30vmax;
+        left:-10%;
+        width: 50vmax;
+        height: 36vmax;
         border: 1px solid black;
         text-align: center;
         background-color: white;
         color: black;
-        top: 1vw;
+        font-size: 1vmin;
+        font-family: Arial;
     }
     .top-left-area{
         position: absolute;
@@ -390,6 +402,19 @@
         text-align: left;
         font-size: 1vmin;
         height: 40%;
+        top:0%;
+    }
+    .witness{
+        position: absolute;
+        top: 20%;
+        height: 30%;
+        width: 100%;
+    }
+    .postmaster{
+        position: absolute;
+        top: 50%;
+        height: 50%;
+        width: 100%;
     }
     .sub-area3{
         position: absolute;
