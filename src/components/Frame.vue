@@ -3,9 +3,21 @@
     <div class="top-bar">
       <p class="left-text">Left side text</p>
       <p class="right-text">Right side text</p>
+
+      <div class="scroll-zone-up"
+      draggable=false
+      @dragover="onHoverUp()">
+      </div>
+
+      <div class="scroll-zone-down"
+      draggable=false
+      @dragover="onHoverDown()">
+      </div>
+
     </div>
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
+
       <div class= "form-creation">
         <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '')" :class="{'is-stamping': this.stamping == true}">
           Create New Form
@@ -26,6 +38,7 @@
 
     <div class="left-frame">
       <div
+        id="left-frame"
         :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
         @dragover.prevent
         @dragenter.prevent
@@ -48,7 +61,7 @@
             @drop="onDrop($event,items[child].id)"
             @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
           >
-            <div class="child">
+            <div class="child-content">
               <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
               <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
               <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
@@ -60,7 +73,9 @@
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
               </div>
             </div>  
-            <img v-show="items[child].showImage" :src="itemImage(items[child])">
+            <div class="child-content item-image">
+              <img v-show="items[child].showImage" :src="itemImage(items[child])">
+            </div>
             
             <div 
               class='grand-child-level' 
@@ -72,18 +87,23 @@
               @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
             >
             
-              <img v-if="items[grandchild].type == 'Letter'" src="../assets/Black-Letter.svg" class="item-icon grand-letter">
-              <img v-else-if="items[grandchild].type == 'Package'" src="../assets/Black-Box.svg" class="item-icon grand-package">
-              <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/Black-Pouch.svg" class="item-icon grand-pouch">
-              <img v-else src="../assets/Black-Form.svg" class="item-icon grand-form">
+              <div class="grand-child-content">
+              <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+              <img v-else-if="items[grandchild].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+              <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+              <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
             <!-- <div class='space-bar'>|</div> -->
 
               <div class='grand-text'>
               {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
-              <br>
-              <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
+              </div>
+
+              <div class="grand-child-content">
+                <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
+              </div>
+              
               <!-- <div 
                 class='child-level' 
                 v-for='greatGrand in getChildrenIndexes(items[grandchild].id)'
@@ -101,7 +121,9 @@
     </div>
         <div class = "vertical-line"></div>
         <div class="right-side-content">
-          <div> Situation {{ getSituationNumber }} <br> <span v-html="this.getSituationText"></span> </div>
+          <div class="situation-title">Situation {{ getSituationNumber }}</div>
+          <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
+
           <!-- <p> This is a {{this.items[currentItemIndex].title}} </p> -->
           <div>
             <!-- <img 
@@ -264,15 +286,16 @@
           text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
         }
         else if(this.pageNum == 4) {
-          text = "<div>Deliver the following mail using the appropriate PS Forms:</div>\
-          <div>RB298 302 613US <br>RB339 065 331US <br>RB290 770 790US <br>RB309 266 140US <br>RB218 344 488US <br>RB143 899 161US <br>RB867 092 744US <br>RB102 022 763US</div>\
-          <div>TODAY'S DATE AND TIME: </div>\
-          <div>REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours</div>\
-          UNIT: LAST BILL # USED UNIT MAIL CLERK\
-          14th ADMIN CO 183 SGT EARL SMITH\
-          13th EOC 101 PFC JOHN THOMPSON\
-          11th ENGR DET 182 SPC RONNIE CARTER\
-          45TH MP CO 195 SGT JERRY JOHNSON"
+          let now = new Date();
+          text = `<div>Deliver the following mail using the appropriate PS Forms:</div><br>\
+          RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
+          <br><br> <div>TODAY'S DATE AND TIME: ${now} </div><br>\
+          <div>REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours</div><br>\
+          <div style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
+          <tr><th>14th ADMIN CO</th><th>183</th><th>SGT EARL SMITH</th></tr>\
+          <tr><th>13th EOC</th><th>101</th><th>PFC JOHN THOMPSON</th></tr>\
+          <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
+          <tr><th>45TH MP CO</th><th>195</th><th>SGT JERRY JOHNSON</th></tr></table><div>`
         }
         else if(this.pageNum == 5) {
           text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
@@ -348,6 +371,14 @@
           }
         }
         evt.stopPropagation();
+      },
+      onHoverUp() {
+        document.getElementById('left-frame').scrollTop -= 10;
+        console.log(document.getElementById('left-frame').scrollTop)
+      },
+      onHoverDown() {
+        document.getElementById('left-frame').scrollTop += 10;
+        console.log(document.getElementById('left-frame').scrollTop)
       },
       isDroppable(id){
         return this.items[this.getItemIndex(id)].droppable
@@ -646,7 +677,7 @@
         else if(itemType == "letter") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'RB #' + articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -665,7 +696,7 @@
         else if(itemType == "package") {
           newItem = {
             id: this.idCounter,
-            articleCode: 'RB #' + articleCode,
+            articleCode: articleCode,
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
@@ -722,16 +753,16 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
-            this.createItem('package', 'RB339 065 331US', 1, 2, true, '331')
-            this.createItem('package', 'RB290 770 790US', 1, 2, true, '790')
+            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331')
+            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790')
           }
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
             this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1')
-            this.createItem('package', 'RB102 022 763US', 2, 2, true, '763')
-            this.createItem('package', 'RB298 302 613US', 2, 2, true, '613')
+            this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763')
+            this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613')
             this.createItem('psform3854', '260', 2, 2, true, '')
             //42 - 47
             this.situationTwoPartOne = true;
@@ -739,15 +770,15 @@
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
             let item1 = this.createItem('psform3854', '123', 2, 3, false, '')
             this.assignItemToParent('SEAL #70948511', item1)
-            let item2 = this.createItem('letter', 'RB867 092 744US', 2, 3, false, '744')
+            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744')
             this.assignItemToParent('SEAL #70948511', item2)
-            let item3 = this.createItem('letter', 'RB309 266 140US', 2, 3, false, '140')
+            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140')
             this.assignItemToParent('SEAL #70948511', item3)
-            let item4 = this.createItem('letter', 'RB143 899 161US', 2, 3, false, '161')
+            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161')
             this.assignItemToParent('SEAL #70948511', item4)
-            let item5 = this.createItem('letter', 'RB218 344 488US', 2, 3, false, '488')
+            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488')
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB888 122 361US', 2, 3, false, '361')
+            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361')
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -761,47 +792,47 @@
           if(this.pageNum == 5 && !this.situationFourPartOne) {
             this.createItem('psform3854', '30', 4, 2, true, '')
             this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1')
-            this.createItem('package', 'RB300 911 759US', 4, 2, true, '759')
+            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759')
             //30-33
             this.situationFourPartOne = true;
           }
           else if(this.pageNum == 6 && !this.situationFourPartTwo) {
             let item1 = this.createItem('psform3854', '24', 4, 3, false, '')
             this.assignItemToParent('SEAL #43000277', item1)
-            let item2 = this.createItem('letter', 'RB300 911 755US', 4, 3, false, '755')
+            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755')
             this.assignItemToParent('SEAL #43000277', item2)
-            let item3 = this.createItem('letter', 'RB300 911 756US', 4, 3, false, '756')
+            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756')
             this.assignItemToParent('SEAL #43000277', item3)
-            let item4 = this.createItem('letter', 'RB300 911 757US', 4, 3, false, '757')
+            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757')
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB300 911 758US', 4, 3, false, '758')
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758')
             this.assignItemToParent('SEAL #43000277', item5)
-            let item6 = this.createItem('letter', 'RB300 911 760US', 4, 3, false, '760')
+            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760')
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB300 911 761US', 4, 3, false, '761')
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761')
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
           }
           else if(this.pageNum == 7 && !this.situationFourPartThree) {
             this.createItem('psform3877', '24', 4, 2, true, '')
-            this.createItem('letter', 'RB842 320 438US', 4, 2, true, '438')
-            this.createItem('letter', 'RB842 320 439US', 4, 2, true, '439')
+            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438')
+            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439')
             //18-21
             this.situationFourPartThree = true;
           }
           else if(this.pageNum == 8 && !this.situationFourPartFour) {
             this.createItem('psform3854', '33', 4, 2, true, '')
-            this.createItem('letter', 'RB707 092 210US', 4, 2, true, '210')
-            this.createItem('package', 'RB707 092 211US', 4, 2, true, '211')
-            this.createItem('letter', 'RB707 092 212US', 4, 2, true, '212')
-            this.createItem('letter', 'RB707 092 213US', 4, 2, true, '213')
-            this.createItem('letter', 'RB707 092 214US', 4, 2, true, '214')
-            this.createItem('package', 'RB707 092 215US', 4, 2, true, '215')
-            this.createItem('letter', 'RB707 092 216US', 4, 2, true, '216')
-            this.createItem('letter', 'RB707 092 217US', 4, 2, true, '217')
-            this.createItem('letter', 'RB707 092 218US', 4, 2, true, '218')
-            this.createItem('letter', 'RB707 092 219US', 4, 2, true, '219')
+            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210')
+            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211')
+            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212')
+            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213')
+            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214')
+            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215')
+            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216')
+            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217')
+            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218')
+            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219')
             //6-17
             this.situationFourPartFour = true;
           }
@@ -845,7 +876,7 @@
     flex-direction: row;
     position: absolute;
     top: 5vh;
-    left: 0;   
+    left: 0;
     width: 100vw;
     height: 95vh;
     z-index: 1;
@@ -867,18 +898,15 @@
   }
   .right-side-content{
     order: 3;
-    position: relative;
     color: #D5D5D5;
-    bottom:13vw;
     text-align: center;
     max-width: 39vw;
-    bottom: 4vw;
+
   }
   .left-frame{
     position: relative;
-    top: 1.7vw;
+    top: 2vw;
     left: 2vw;
-
   }
   .left-side-content{
     display: flex;
@@ -896,7 +924,6 @@
     z-index: 1;
   }
   .child-level {
-    background-color: #42426A;
     margin-bottom: 10px;
     padding: 5px;
     color: #D5D5D5;
@@ -906,13 +933,13 @@
 
   }
   .grand-child-level {
-    display: flex;
-    flex-direction: row;
-    background-color: #ddd;
-    margin-bottom: 5px;
+    position:relative;
+    left: 5vw;
+    max-width: 20.4vw;;
     padding: 5px;
-    color: #42426A;
+    color: #D5D5D5;
     border-radius: 5px;
+    z-index: 2;
     font-size: 1vw;
   }
   .vertical-line {
@@ -969,7 +996,7 @@
   .form-creation{
     position: absolute;
     font-family: Arial;
-    top: 5vw;
+    top: 5.5vw;
     left: 10vw;
     z-index: 2;
     background-color: #D5D5D5;
@@ -991,29 +1018,73 @@
   .item-icon{
     position: relative;
     width: 2.5vw;
-    left: 0.5vw;
+    left: 1vw;
+    top: 2vw;
   }
-  /* .child{
-    position: absolute;
-  } */
   .child-text{
+    position: relative;
     margin-left: 40px;
+    left: 3vw;
+    bottom: 1vw;
+  }
+  .child-content {
+    background-color: #42426A;
+    border-radius: 5px;
+    margin-top: 0.15vw;
+  }
+  .grand-child-content {
+    background-color: #42426A;
+    border-radius: 5px;
+    margin-top: 0.15vw;
   }
   .child{
     display: flex;
     flex-direction: row;
   }
   .grand-text{
+    position: relative;
     margin-left: 40px;
+    left: 3vw;
+    bottom: 1vw; 
   }
   .space-bar{
     margin-left: 5px;
-    /* margin-top: 1px; */
     font-size: 40px;
   }
   .item_image {
+    height: auto;
     width: 2vw;
   }
+  .form {
+    position: absolute;
+    top: 20vw;
+  }
+  .situation-text {
+    position: relative;
+    bottom: 15vw;
+    font-size: 0.8vw;
+  }
+  .situation-title {
+    position: relative;
+    bottom: 16vw;
+    font-size: 1.2vw;
+    font-weight: bold;
+  }
+  .scroll-zone-up {
+    position:absolute;
+    left: 7vw;
+    top: 13vw;
+    width: 27vw;
+    /* border: 2px solid green; */
+    padding: 1vw;
+  }
+  .scroll-zone-down {
+    position:absolute;
+    left: 7vw;
+    top: 48.5vw;
+    width: 27vw;
+    /* border: 2px solid green; */
+    padding: 1vw;
   /* .child-package{
     margin-top: 15px;
   } */
