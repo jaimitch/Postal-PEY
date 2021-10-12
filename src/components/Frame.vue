@@ -133,14 +133,14 @@
               @click="stamp(this.items[currentItemIndex])"
             > -->
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854'">
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854'" class="form-3854">
             <Form3854 
               v-bind:item="items[currentItemIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3877'">
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3877'" >
             <Form3877 
               v-bind:item="items[currentItemIndex]"
               @changeForm="changeForm($event, data)"
@@ -499,7 +499,11 @@
               recievingClerk: "",
               dispatchingClerk: "",
               itemNums: [],
-              itemOrigins: []
+              itemOrigins: [],
+              topStamp1: false,
+              topStamp2: false,
+              bottomStamp1: false,
+              bottomStamp2: false
             },
             type: "PS FORM 3854",
             droppable: true
@@ -558,6 +562,7 @@
                 postmaster:"",
                 rows:[],
                 square:"",
+                stamped: false
             },
             type: "PS FORM 3877",
             droppable: true
@@ -665,6 +670,7 @@
               recievedBy: "",
               recievedNum: "",
               deliveredBy: "",
+              stamped: false
             },
             type: "PS FORM 3883",
             droppable: true
@@ -1090,10 +1096,10 @@
     margin-top: 15px;
   } */
   .flip-2261{
-    z-index: 4000;
+    z-index: 2;
     position: absolute;
-    right:0;
-    bottom:0;
+    right:4%;
+    bottom:10%;
     height:5%;
     width: 5%;
   }
