@@ -73,7 +73,7 @@
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
               </div>
             </div>  
-            <div class="child-content item-image">
+            <div class="child-content item-image" v-if="items[child].images.length != 0">
               <img v-show="items[child].showImage" :src="itemImage(items[child])">
             </div>
             
@@ -100,7 +100,7 @@
               </div>
               </div>
 
-              <div class="grand-child-content">
+              <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
                 <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
               
