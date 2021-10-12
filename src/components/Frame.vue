@@ -19,7 +19,7 @@
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
 
       <div class= "form-creation">
-        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '')" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select class="form-creation-select" v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
@@ -31,7 +31,7 @@
       </div>
 
       <div class="pouch-creation">
-        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1')">
+        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined)">
           Create New Pouch
         </button>
       </div>
@@ -453,12 +453,14 @@
         }
       },
       /*creates a new item given information:
-      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior, ['string' image code)
+      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior, ['string'] image code, ['object'] form settings)
 
       NOTE: Default item creation causes forms to be added to the forms section, and all other things to be added to the safe.
       You would want to disable default behavior if you planned to add the item to another item's children array for example.
       */
-      createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode) {
+      createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings) {
+        console.log("create item called")
+        console.log("create item formSettings:", formSettings)
         let newItem = {};
 
         if(itemType == "psform3854") {
@@ -507,6 +509,12 @@
           if(newItem.articleCode != '') {
             newItem.articleCode = 'Bill #' + newItem.articleCode;
           }
+
+          if(formSettings != undefined) {
+            console.log("updating value of formInputs")
+            newItem.formInputs = {...formSettings}
+          }
+          
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -565,6 +573,12 @@
           if(newItem.articleCode != '') {
             newItem.articleCode = 'Bill #' + newItem.articleCode;
           }
+
+          if(formSettings != undefined) {
+            console.log("updating value of formInputs")
+            newItem.formInputs = {...formSettings}
+          }
+
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -629,6 +643,12 @@
             type: "DD FORM 2261",
             droppable: true
           }
+
+          if(formSettings != undefined) {
+            console.log("updating value of formInputs")
+            newItem.formInputs = {...formSettings}
+          }
+
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -669,6 +689,12 @@
             type: "PS FORM 3883",
             droppable: true
           }
+
+          if(formSettings != undefined) {
+            console.log("updating value of formInputs")
+            newItem.formInputs = {...formSettings}
+          }
+
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -738,6 +764,8 @@
               this.items[1].children.push(newItem.id)
             }
           }
+
+
         }
         this.idCounter++;
         return newItem.id;
@@ -753,32 +781,63 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331')
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790')
+            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
+            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
-            this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1')
-            this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763')
-            this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613')
-            this.createItem('psform3854', '260', 2, 2, true, '')
+            this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1', undefined)
+            this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763', undefined)
+            this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613', undefined)
+
+            var newFormSettings = {
+              lockNo: "",
+              rotaryNo: "",
+              jacketNo: "",
+              controlNo: "",
+              billNo: "260",
+              pageNo: "1X",
+              airmail: "",
+              serialNo: "",
+              to: "APO AE 09459",
+              billNoRight: "260",
+              amNo: "",
+              jacketNoRight: "",
+              lockNoRight: "",
+              rotaryNoRight: "",
+              sealNoRight: "",
+              airmailRight: "",
+              serialNoRight: "",
+              recieved: "",
+              recievingClerks: [],
+              totalArticlesSent: "3",
+              totalArticlesRecieved: "",
+              postmasterSent: "Anthony Smith",
+              postmasterRecieved: "",
+              recievingClerk: "",
+              dispatchingClerk: "0800",
+              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
+              itemOrigins: ["", "AMF KENNEDY NY 00300"]
+            }
+            console.log("new form settings:", newFormSettings)
+            this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
-            let item1 = this.createItem('psform3854', '123', 2, 3, false, '')
+            let item1 = this.createItem('psform3854', '123', 2, 3, false, '', undefined)
             this.assignItemToParent('SEAL #70948511', item1)
-            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744')
+            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined)
             this.assignItemToParent('SEAL #70948511', item2)
-            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140')
+            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined)
             this.assignItemToParent('SEAL #70948511', item3)
-            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161')
+            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined)
             this.assignItemToParent('SEAL #70948511', item4)
-            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488')
+            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined)
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361')
+            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined)
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -791,48 +850,48 @@
         else if(this.getSituationNumber == 4) {
           if(this.pageNum == 5 && !this.situationFourPartOne) {
             this.createItem('psform3854', '30', 4, 2, true, '')
-            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1')
-            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759')
+            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined)
+            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined)
             //30-33
             this.situationFourPartOne = true;
           }
           else if(this.pageNum == 6 && !this.situationFourPartTwo) {
             let item1 = this.createItem('psform3854', '24', 4, 3, false, '')
             this.assignItemToParent('SEAL #43000277', item1)
-            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755')
+            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined)
             this.assignItemToParent('SEAL #43000277', item2)
-            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756')
+            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined)
             this.assignItemToParent('SEAL #43000277', item3)
-            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757')
+            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined)
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758')
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined)
             this.assignItemToParent('SEAL #43000277', item5)
-            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760')
+            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined)
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761')
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined)
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
           }
           else if(this.pageNum == 7 && !this.situationFourPartThree) {
             this.createItem('psform3877', '24', 4, 2, true, '')
-            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438')
-            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439')
+            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined)
+            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined)
             //18-21
             this.situationFourPartThree = true;
           }
           else if(this.pageNum == 8 && !this.situationFourPartFour) {
             this.createItem('psform3854', '33', 4, 2, true, '')
-            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210')
-            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211')
-            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212')
-            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213')
-            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214')
-            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215')
-            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216')
-            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217')
-            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218')
-            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219')
+            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined)
+            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined)
+            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined)
+            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213', undefined)
+            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214', undefined)
+            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215', undefined)
+            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216', undefined)
+            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217', undefined)
+            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218', undefined)
+            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219', undefined)
             //6-17
             this.situationFourPartFour = true;
           }
