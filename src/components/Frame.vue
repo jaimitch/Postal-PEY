@@ -805,7 +805,7 @@
               billNo: "260",
               pageNo: "1X",
               airmail: "",
-              serialNo: "",
+              sealNo: "",
               to: "APO AE 09459",
               billNoRight: "260",
               amNo: "",
@@ -814,7 +814,6 @@
               rotaryNoRight: "",
               sealNoRight: "",
               airmailRight: "",
-              serialNoRight: "",
               recieved: "",
               recievingClerks: [],
               totalArticlesSent: "3",
@@ -824,7 +823,11 @@
               recievingClerk: "",
               dispatchingClerk: "0800",
               itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
-              itemOrigins: ["", "AMF KENNEDY NY 00300"]
+              itemOrigins: ["", "AMF KENNEDY NY 00300"],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false
             }
             this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
             //42 - 47
@@ -840,7 +843,7 @@
               billNo: "231",
               pageNo: "1X",
               airmail: "",
-              serialNo: "",
+              sealNo: "70948511",
               to: "APO AE 09459",
               billNoRight: "231",
               amNo: "",
@@ -849,7 +852,6 @@
               rotaryNoRight: "",
               sealNoRight: "70948511",
               airmailRight: "",
-              serialNoRight: "",
               recieved: "",
               recievingClerks: [],
               totalArticlesSent: "3",
@@ -858,8 +860,12 @@
               postmasterRecieved: "",
               recievingClerk: "",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
-              itemOrigins: ["", "AMF KENNEDY NY 00300"]
+              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US"],
+              itemOrigins: [],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false
             }
             
             let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings)
