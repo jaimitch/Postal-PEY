@@ -141,8 +141,8 @@
                 &emsp;<input type="text" v-model="formData.postmasterSent">
             </div>
             <div class="sub-area3">
-                <input type="text" v-model="formData.recievingClerk"> M.
-                <br> Recieving Clerk
+                <input type="text" v-model="formData.dispatchingClerk"> M.
+                <br> Dispatching Clerk
             </div>
         </div>
         <div class="bottom-area2">
@@ -156,8 +156,8 @@
                 &emsp;<input type="text" v-model="formData.postmasterRecieved">
             </div>
             <div class="sub-area3">
-                <input type="text" v-model="formData.dispatchingClerk"> M.
-                <br> Dispatching Clerk
+                <input type="text" v-model="formData.recievingClerk"> M.
+                <br> Recieving Clerk
             </div>
         </div>
         <div class="bottom">
@@ -375,8 +375,7 @@
         width: 25%;
         height: 100%;
         border-right: 1px solid black;
-        font-size: 1vmin;
-        
+        font-size: 1vmin; 
     }
     .sub-area2{
         position: absolute;
@@ -387,6 +386,14 @@
         border-right: 1px solid black;
         font-size: 0.75vmax;
         text-align: left;
+    }
+    .sub-area2 input{
+        position: relative;
+        border-bottom: 2px dotted black;
+        width: 80%;
+        text-align: left;
+        font-size: 1vmin;
+        height: 40%;
     }
     .sub-area3{
         position: absolute;
@@ -539,7 +546,7 @@
         position: absolute;
         top: -50%;
         height: 110%;
-
+        width: 85%;
     }
     .centered{
         text-align: center;
