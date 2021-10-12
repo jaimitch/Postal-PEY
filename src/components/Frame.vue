@@ -133,42 +133,47 @@
               @click="stamp(this.items[currentItemIndex])"
             > -->
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854'" class="form-3854">
+
+          <div v-if="this.currentFormIndex != ''">
+
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854'" class="form-3854">
             <Form3854 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3877'" >
+          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3877'" >
             <Form3877 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'DD FORM 2261' && form2261Back == false">
+          <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == false">
             <Form2261 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
             <button class="flip-2261" @click="form2261Back = true">Flip</button>
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'DD FORM 2261' && form2261Back == true">
+          <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == true">
             <Form2261Back 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
             <button class="flip-2261" @click="form2261Back = false">Flip</button>
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3883'" class="form-3883">
+          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3883'" class="form-3883">
             <Form3883 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
+          </div>
+
           </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
@@ -241,6 +246,7 @@
         ],
         stamping: false,
         currentItemIndex: 2,
+        currentFormIndex: '',
         idCounter: 1000,
         draggedItem: {},
         createFormType: "",
@@ -431,8 +437,15 @@
       itemImage(object) {
         return object.images[object.currentImageIndex]
       },
+      //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
         this.currentItemIndex = this.getItemIndex(id);
+
+        // console.log(this.items[this.currentItemIndex].type)
+        if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
+          this.currentFormIndex = this.currentItemIndex;
+        }
+
         evt.stopPropagation()
       },
       //toggles the item to display or hide it's image
