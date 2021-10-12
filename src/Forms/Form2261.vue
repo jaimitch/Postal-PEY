@@ -2,17 +2,17 @@
     <div class="outline">
         <div class="preparing-activity">
             PREPARING ACTIVITY
-            <input v-model="apoNum">
+            <input v-model="formData.apoNum">
         </div>
         <div class="period-covered">
             <div class="period-covered-top">
                 <p>PERIOD COVERED (YYYYMMDD)</p>
             </div>
             <div class="period-covered-from">
-                FROM <input v-model="from">
+                FROM <input v-model="formData.from">
             </div>
             <div class="period-covered-to">
-                TO <input v-model="to">
+                TO <input v-model="formData.to">
             </div>
         </div>
         <div class="part1-banner">
@@ -72,28 +72,28 @@
                 <p>TOTAL OF ITEMS 1 THROUGH 7</p>
             </div>
             <div class="right-box1">
-                <input v-model="itemsAtStart">
+                <input v-model="formData.itemsAtStart">
             </div>
             <div class="right-box2">
-                <input v-model="itemsAccepted">
+                <input v-model="formData.itemsAccepted">
             </div>
             <div class="right-box3">
-                <input v-model="itemsListedOnInsideBillsA">
+                <input v-model="formData.itemsListedOnInsideBillsA">
             </div>
             <div class="right-box4">
-                <input v-model="itemsOnIncomingManifests">
+                <input v-model="formData.itemsOnIncomingManifests">
             </div>
             <div class="right-box5">
-                <input v-model="itemsOnIncomingTruck">
+                <input v-model="formData.itemsOnIncomingTruck">
             </div>
             <div class="right-box6">
-                <input v-model="numberOfPouchesClosed">
+                <input v-model="formData.numberOfPouchesClosed">
             </div>
             <div class="right-box7">
-                <input v-model="itemsRecievedFromOther">
+                <input v-model="formData.itemsRecievedFromOther">
             </div>
             <div class="right-box8">
-                <input v-model="total1thru7">
+                <input v-model="formData.total1thru7">
             </div>
         </div>
         <div class="sectionB">
@@ -143,25 +143,25 @@
                 <b>TOTAL OF ITEMS 9 THROUGH 14(This total must be the same as the total shown in item 8)</b>
             </div>
             <div class="right-box1">
-                <input v-model="itemsDelivered">
+                <input v-model="formData.itemsDelivered">
             </div>
             <div class="right-box2">
-                <input v-model="itemsListedOnInsideBillsB">
+                <input v-model="formData.itemsListedOnInsideBillsB">
             </div>
             <div class="right-box3">
-                <input v-model="itemsOnOutgoingManifests">
+                <input v-model="formData.itemsOnOutgoingManifests">
             </div>
             <div class="right-box4">
-                <input v-model="itemsOnOutgoingTruck">
+                <input v-model="formData.itemsOnOutgoingTruck">
             </div>
             <div class="right-box5">
-                <input v-model="numberOfPouchesOpened">
+                <input v-model="formData.numberOfPouchesOpened">
             </div>
             <div class="right-box6">
-                <input v-model="itemsOnHandAtEnd">
+                <input v-model="formData.itemsOnHandAtEnd">
             </div>
             <div class="right-box15">
-                <input v-model="totalItems9thru14">
+                <input v-model="formData.totalItems9thru14">
             </div>
         </div>
         <div class="sectionC">
@@ -169,35 +169,35 @@
                 <b>SECTION C-INVENTORY BY NUMBER OF EACH ITEM DELIVERED ON PS FORM 3849(Continue in remarks if necessary)</b>
             </div>
             <div class="row1">
-                <div class="space1"><input v-model="sectionC1"></div>
-                <div class="space2"><input v-model="sectionC2"></div>
-                <div class="space3"><input v-model="sectionC3"></div>
-                <div class="space4"><input v-model="sectionC4"></div>
-                <div class="space5"><input v-model="sectionC5"></div>
-                <div class="space6"><input v-model="sectionC6"></div>
+                <div class="space1"><input v-model="formData.sectionC1"></div>
+                <div class="space2"><input v-model="formData.sectionC2"></div>
+                <div class="space3"><input v-model="formData.sectionC3"></div>
+                <div class="space4"><input v-model="formData.sectionC4"></div>
+                <div class="space5"><input v-model="formData.sectionC5"></div>
+                <div class="space6"><input v-model="formData.sectionC6"></div>
             </div>
             <div class="row2">
-                <div class="space1"><input v-model="sectionC7"></div>
-                <div class="space2"><input v-model="sectionC8"></div>
-                <div class="space3"><input v-model="sectionC9"></div>
-                <div class="space4"><input v-model="sectionC10"></div>
-                <div class="space5"><input v-model="sectionC11"></div>
-                <div class="space6"><input v-model="sectionC12"></div>
+                <div class="space1"><input v-model="formData.sectionC7"></div>
+                <div class="space2"><input v-model="formData.sectionC8"></div>
+                <div class="space3"><input v-model="formData.sectionC9"></div>
+                <div class="space4"><input v-model="formData.sectionC10"></div>
+                <div class="space5"><input v-model="formData.sectionC11"></div>
+                <div class="space6"><input v-model="formData.sectionC12"></div>
             </div>
             <div class="row3">
-                <div class="space1"><input v-model="sectionC13"></div>
-                <div class="space2"><input v-model="sectionC14"></div>
-                <div class="space3"><input v-model="sectionC15"></div>
-                <div class="space4"><input v-model="sectionC16"></div>
-                <div class="space5"><input v-model="sectionC17"></div>
-                <div class="space6"><input v-model="sectionC18"></div>
+                <div class="space1"><input v-model="formData.sectionC13"></div>
+                <div class="space2"><input v-model="formData.sectionC14"></div>
+                <div class="space3"><input v-model="formData.sectionC15"></div>
+                <div class="space4"><input v-model="formData.sectionC16"></div>
+                <div class="space5"><input v-model="formData.sectionC17"></div>
+                <div class="space6"><input v-model="formData.sectionC18"></div>
             </div>
         </div>
         <div class="part2-banner">
             <b>PART II-REMARKS</b>
         </div>
         <div class="remarks">
-            <textarea v-model="remarks"></textarea>
+            <textarea v-model="formData.remarks"></textarea>
         </div>
         <div class="part3-banner">
             <b>PART III-VERIFICATION AND TRANSFER OF ACCOUNTABILITY</b>
@@ -208,11 +208,11 @@
             </div>
             <div class="prep-sign">
                 1.SIGNATURE OF PERSON PREPARING FORM
-                <input v-model="prepSig">
+                <input v-model="formData.prepSig">
             </div>
             <div class="official-sign">
                 2.SIGNATURE OF VERIFYING OFFICIAL
-                <input v-model="officialSig">
+                <input v-model="formData.officialSig">
             </div>
         </div>
         <div class="B">
@@ -222,15 +222,15 @@
             <div class="name-print">
                 1.TYPED/PRINTED NAME OF ACCEPTOR
                 (Last,First,Middle Initial)
-                <input v-model="typedName">
+                <input v-model="formData.typedName">
             </div>
             <div class="pay-grade">
                 2.PAY GRADE
-                <input v-model="payGrade">
+                <input v-model="formData.payGrade">
             </div>
             <div class="official-sign">
                 3.SIGNATURE
-                <input v-model="signature">
+                <input v-model="formData.signature">
             </div>
         </div>
         <div class="bottom-text">
@@ -242,52 +242,68 @@
 
 <script>
     export default {
+        props: ['item'],
         data() {
             return{
-                apoNum: "",
-                from: "",
-                to: "",
-                itemsAtStart: "",
-                signature: "",
-                payGrade: "",
-                typedName: "",
-                officialSig: "",
-                prepSig: "",
-                remarks: "",
-                sectionC1: "",
-                sectionC2: "",
-                sectionC3: "",
-                sectionC4: "",
-                sectionC5: "",
-                sectionC6: "",
-                sectionC7: "",
-                sectionC8: "",
-                sectionC9: "",
-                sectionC10: "",
-                sectionC11: "",
-                sectionC12: "",
-                sectionC13: "",
-                sectionC14: "",
-                sectionC15: "",
-                sectionC16: "",
-                sectionC17: "",
-                sectionC18: "",
-                totalItems9thru14: "",
-                itemsOnHandAtEnd: "",
-                numberOfPouchesOpened: "",
-                itemsOnOutgoingTruck: "",
-                itemsOnOutgoingManifests: "",
-                itemsListedOnInsideBillsB: "",
-                itemsDelivered: "",
-                total1thru7: "",
-                itemsRecievedFromOther: "",
-                numberOfPouchesClosed: "",
-                itemsOnIncomingTruck: "",
-                itemsOnIncomingManifests: "",
-                itemsListedOnInsideBillsA: "",
-                itemsAccepted: ""
+                formData:{
+                    apoNum: this.item.formInputs.apoNum,
+                    from: this.item.formInputs.from,
+                    to: this.item.formInputs.to,
+                    itemsAtStart: this.item.formInputs.itemsAtStart,
+                    signature: this.item.formInputs.signature,
+                    payGrade: this.item.formInputs.payGrade,
+                    typedName: this.item.formInputs.typedName,
+                    officialSig: this.item.formInputs.officialSig,
+                    prepSig: this.item.formInputs.prepSig,
+                    remarks: this.item.formInputs.remarks,
+                    sectionC1: this.item.formInputs.sectionC1,
+                    sectionC2: this.item.formInputs.sectionC2,
+                    sectionC3: this.item.formInputs.sectionC3,
+                    sectionC4: this.item.formInputs.sectionC4,
+                    sectionC5: this.item.formInputs.sectionC5,
+                    sectionC6: this.item.formInputs.sectionC6,
+                    sectionC7: this.item.formInputs.sectionC7,
+                    sectionC8: this.item.formInputs.sectionC8,
+                    sectionC9: this.item.formInputs.sectionC9,
+                    sectionC10: this.item.formInputs.sectionC10,
+                    sectionC11: this.item.formInputs.sectionC11,
+                    sectionC12: this.item.formInputs.sectionC12,
+                    sectionC13: this.item.formInputs.sectionC13,
+                    sectionC14: this.item.formInputs.sectionC14,
+                    sectionC15: this.item.formInputs.sectionC15,
+                    sectionC16: this.item.formInputs.sectionC16,
+                    sectionC17: this.item.formInputs.sectionC17,
+                    sectionC18: this.item.formInputs.sectionC18,
+                    totalItems9thru14: this.item.formInputs.totalItems9thru14,
+                    itemsOnHandAtEnd: this.item.formInputs.itemsOnHandAtEnd,
+                    numberOfPouchesOpened: this.item.formInputs.numberOfPouchesOpened,
+                    itemsOnOutgoingTruck: this.item.formInputs.itemsOnOutgoingTruck,
+                    itemsOnOutgoingManifests: this.item.formInputs.itemsOnOutgoingManifests,
+                    itemsListedOnInsideBillsB: this.item.formInputs.itemsListedOnInsideBillsB,
+                    itemsDelivered: this.item.formInputs.itemsDelivered,
+                    total1thru7: this.item.formInputs.total1thru7,
+                    itemsRecievedFromOther: this.item.formInputs.itemsRecievedFromOther,
+                    numberOfPouchesClosed: this.item.formInputs.numberOfPouchesClosed,
+                    itemsOnIncomingTruck: this.item.formInputs.itemsOnIncomingTruck,
+                    itemsOnIncomingManifests: this.item.formInputs.itemsOnIncomingManifests,
+                    itemsListedOnInsideBillsA: this.item.formInputs.itemsListedOnInsideBillsA,
+                    itemsAccepted: this.item.formInputs.itemsAccepted,
+                    items: this.item.formInputs.items,
+                },   
             }
-        }
+        },
+        methods:{
+            changeForm() {
+                this.$emit('changeForm', this.formData)
+            }
+        },
+        watch: {
+            // whenever question changes, this function will run
+            formData: {
+                deep: true,
+                handler: 'changeForm',
+            }
+        },
     }
 </script>
 
