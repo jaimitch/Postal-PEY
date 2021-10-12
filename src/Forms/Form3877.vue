@@ -243,6 +243,9 @@
 </script>
 
 <style scoped>
+    textarea  {
+        font-family:Arial;     
+    }
     .outline{
         position: relative;
         left:-10%;
@@ -253,6 +256,7 @@
         background-color: white;
         color: black;
         font-size: 1vmin;
+        font-family: Arial;
     }
     .top-line{
         position: absolute;

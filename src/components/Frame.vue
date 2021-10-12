@@ -502,7 +502,9 @@
               topStamp1: false,
               topStamp2: false,
               bottomStamp1: false,
-              bottomStamp2: false
+              bottomStamp2: false,
+              witnessSent: "",
+              witnessRecieved: ""
             },
             type: "PS FORM 3854",
             droppable: true
@@ -1101,9 +1103,5 @@
     bottom:10%;
     height:5%;
     width: 5%;
-  }
-  .form-3883{
-    position: relative;
-    left: -15%;
   }
 </style>
