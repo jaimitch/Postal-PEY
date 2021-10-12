@@ -136,6 +136,7 @@
        </div>
        <div class="stamp-area">
            <b>Postmark - Delivery Office</b>
+           <input type="checkbox" v-model="formData.stamped">
        </div>
        <div class="bottom-text">
            PS Form 3883, November 1999
@@ -168,6 +169,7 @@
                     recievedBy: this.item.formInputs.recievedBy,
                     recievedNum: this.item.formInputs.recievedNum,
                     deliveredBy: this.item.formInputs.deliveredBy,
+                    stamped: this.item.formInputs.stamped
                 }
             }
         },
@@ -454,6 +456,13 @@
         width: 23%;
         height: 17%;
         border-bottom: 1px solid black;
+    }
+    .stamp-area input{
+        position: absolute;
+        top:7%;
+        left:20%;
+        width: 80%;
+        height: 80%;
     }
     .sig-area-top{
         position: absolute;

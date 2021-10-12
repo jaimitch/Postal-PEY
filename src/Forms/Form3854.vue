@@ -3,12 +3,14 @@
         <div class="top-stamp1">
             <div class="stamp-inner">
                 <p class="top-text">Postmark of</p>
+                <input type="checkbox" v-model="formData.topStamp1">
                 <p class="bottom-text">Dispatching Office</p>
             </div>
         </div>
         <div class="right-area">
             <div class="stamp3-inner">
                 <p class="top-text">Postmark of</p>
+                <input type="checkbox" v-model="formData.topStamp2">
                 <p class="bottom-text">Dispatching Office</p>
             </div>
             <div  class="right-area-content">
@@ -164,26 +166,16 @@
         <div class="bottom-stamp1">
             <div class="stamp-inner">
                 <p class="top-text">Postmark of</p>
+                <input type="checkbox" v-model="formData.bottomStamp1">
                 <p class="bottom-text">Recieving Office</p>
             </div>
         </div>
         <div class="bottom-stamp2">
             <div class="stamp2-inner">
                 <p class="top-text">Postmark of</p>
+                <input type="checkbox" v-model="formData.bottomStamp2">
                 <p class="bottom-text">Recieving Office</p>
             </div>
-        </div>
-        <div v-if="topStamp == true" class="top-stamped1">
-            STAMPED
-        </div>
-        <div v-if="topStamp == true" class="top-stamped2">
-            STAMPED
-        </div>
-        <div v-if="bottomStamp == true" class="bottom-stamped1">
-            STAMPED
-        </div>
-        <div v-if="bottomStamp == true" class="bottom-stamped2">
-            STAMPED
         </div>
     </div>
 </template>
@@ -193,8 +185,6 @@
         props: ['item'],
         data () {
             return{
-                topStamp: true,
-                bottomStamp: false,
                 formData: {
                     lockNo: this.item.formInputs.lockNo,
                     rotaryNo: this.item.formInputs.rotaryNo,
@@ -219,10 +209,14 @@
                     totalArticlesRecieved: this.item.formInputs.totalArticlesRecieved,
                     postmasterSent: this.item.formInputs.postmasterSent,
                     postmasterRecieved: this.item.formInputs.postmasterRecieved,
-                    recievingClerk: this.item.formInputs.recievingClerks,
+                    recievingClerk: this.item.formInputs.recievingClerk,
                     dispatchingClerk: this.item.formInputs.dispatchingClerk,
                     itemNums: this.item.formInputs.itemNums,
-                    itemOrigins: this.item.formInputs.itemOrigins
+                    itemOrigins: this.item.formInputs.itemOrigins,
+                    topStamp1: this.item.formInputs.topStamp1,
+                    topStamp2: this.item.formInputs.topStamp2,
+                    bottomStamp1: this.item.formInputs.bottomStamp1,
+                    bottomStamp2: this.item.formInputs.bottomStamp2
                 },
             }
         },
@@ -284,6 +278,11 @@
         border-bottom: 1px solid black;
         color: black;
     }
+    .top-stamp1 input{
+        position: absolute;
+        top: 30%;
+        left: 40%;
+    }
     .stamp-inner{
         position: inherit;
         border: 1px solid black;
@@ -306,8 +305,13 @@
         border: 1px solid black;
         top: 3%;
         left: 8%;
-        height: 15%;
+        height: 20%;
         width: 80%;
+    }
+    .stamp3-inner input{
+        position: absolute;
+        top: -10%;
+        left: 30%;
     }
     .center-area{
         position: absolute;
@@ -412,6 +416,12 @@
         border-right: 2px dotted black;
         color: black;
     }
+    .bottom-stamp1 input{
+        position: absolute;
+        z-index: 30;
+        top: 30%;
+        left: 40%;
+    }
     .bottom-stamp2{
         position: absolute;
         top: 80%;
@@ -419,6 +429,11 @@
         height: 14%;
         border-top: 1px solid black;
         color: black;
+    }
+    .bottom-stamp2 input{
+        position: absolute;
+        top: 30%;
+        left: 40%;
     }
     .bottom{
         position: absolute;
@@ -515,9 +530,16 @@
         justify-content: space-evenly;
     }
     .box{
+        position: relative;
         border-bottom: 1px solid black;
         text-align: left;
         font-size: 1vmin;
+    }
+    .box input{
+        position: absolute;
+        top: -50%;
+        height: 110%;
+
     }
     .centered{
         text-align: center;
@@ -528,37 +550,5 @@
         border-bottom: 1px solid black;
         font-size: .80vmin;
         height: 8%;
-    }
-    .top-stamped1{
-        position: absolute;
-        color: red;
-        z-index: 4;
-        top:8%;
-        left:73.5%;
-        font-size: 1vmax;
-    }
-    .top-stamped2{
-        position: absolute;
-        color: red;
-        z-index: 4;
-        top:7%;
-        left:88.5%;
-        font-size: 1vmax;
-    }
-    .bottom-stamped1{
-        position: absolute;
-        color: red;
-        z-index: 4;
-        bottom:10%;
-        left:88.5%;
-        font-size: 1vmax;
-    }
-    .bottom-stamped2{
-        position: absolute;
-        color: red;
-        z-index: 4;
-        bottom:10%;
-        left:73.5%;
-        font-size: 1vmax;
     }
 </style>

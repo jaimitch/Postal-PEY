@@ -62,6 +62,7 @@
                 (for additional copies of this receipt).<br>
                 Postmark with Date of Receipt.
             </div>
+            <input type="checkbox" v-model="formData.stamped">
         </div>
         
         <div class="tracking-area">
@@ -222,6 +223,7 @@
                     piecesRecieved: this.item.formInputs.piecesRecieved,
                     postmaster:this.item.formInputs.postmaster,
                     rows: this.item.formInputs.rows,
+                    stamped: this.item.formInputs.stamped
                 }
             }
         },
@@ -300,6 +302,11 @@
         border: 1px solid black;
         border-left: none;
         border-right: none;
+    }
+    .stamp-area input{
+        position: absolute;
+        height: 80%;
+        width: 25%;
     }
     .tracking-area{
         position: absolute;
