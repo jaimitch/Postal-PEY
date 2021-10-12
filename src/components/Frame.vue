@@ -798,7 +798,7 @@
             this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763', undefined)
             this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613', undefined)
 
-            var newFormSettings = {
+            let newFormSettings = {
               lockNo: "",
               rotaryNo: "",
               jacketNo: "",
@@ -827,13 +827,43 @@
               itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
               itemOrigins: ["", "AMF KENNEDY NY 00300"]
             }
-            console.log("new form settings:", newFormSettings)
             this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
-            let item1 = this.createItem('psform3854', '123', 2, 3, false, '', undefined)
+
+            let newFormSettings = {
+              lockNo: "",
+              rotaryNo: "",
+              jacketNo: "",
+              controlNo: "",
+              billNo: "231",
+              pageNo: "1X",
+              airmail: "",
+              serialNo: "",
+              to: "APO AE 09459",
+              billNoRight: "231",
+              amNo: "",
+              jacketNoRight: "",
+              lockNoRight: "",
+              rotaryNoRight: "",
+              sealNoRight: "70948511",
+              airmailRight: "",
+              serialNoRight: "",
+              recieved: "",
+              recievingClerks: [],
+              totalArticlesSent: "3",
+              totalArticlesRecieved: "",
+              postmasterSent: "Anthony Smith",
+              postmasterRecieved: "",
+              recievingClerk: "",
+              dispatchingClerk: "0800",
+              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
+              itemOrigins: ["", "AMF KENNEDY NY 00300"]
+            }
+            
+            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings)
             this.assignItemToParent('SEAL #70948511', item1)
             let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined)
             this.assignItemToParent('SEAL #70948511', item2)
@@ -1063,7 +1093,7 @@
     font-family: Arial;
     top: 5.5vw;
     left: 10vw;
-    z-index: 2;
+    z-index: 3;
     background-color: #D5D5D5;
     margin-bottom: 5px;
     padding: 5px;
@@ -1074,7 +1104,7 @@
     font-family: Arial;
     top: 8vw;
     left: 10vw;
-    z-index: 2;
+    z-index: 3;
     background-color: #D5D5D5;
     margin-bottom: 5px;
     padding: 5px;
@@ -1138,10 +1168,10 @@
   .scroll-zone-up {
     position:absolute;
     left: 7vw;
-    top: 13vw;
+    top: 12.8vw;
     width: 27vw;
     /* border: 2px solid green; */
-    padding: 1vw;
+    padding: 1.1vw;
   }
   .scroll-zone-down {
     position:absolute;
@@ -1149,7 +1179,7 @@
     top: 48.5vw;
     width: 27vw;
     /* border: 2px solid green; */
-    padding: 1vw;
+    padding: 2vw;
   }
   /* .child-package{
     margin-top: 15px;
