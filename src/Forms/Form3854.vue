@@ -243,8 +243,8 @@
 
 <style scoped>
     .outline{
-        position: relative;
-        left:-10%;
+        position:relative;
+        left: -15%;
         width: 50vmax;
         height: 36vmax;
         border: 1px solid black;
