@@ -14,7 +14,7 @@
           <option value="psform3854">PS Form 3854</option>
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
-          <option value="ddform2261">PS Form 3883</option>
+          <option value="psform3883">PS Form 3883</option>
         </select>
       </div>
 
@@ -141,6 +141,13 @@
             />
             <button class="flip-2261" @click="form2261Back = false">Flip</button>
           </div>
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3883'" class="form-3883">
+            <Form3883 
+              v-bind:item="items[currentItemIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+          </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
     </div>
@@ -153,6 +160,7 @@
   import Form3877 from '../Forms/Form3877.vue'
   import Form2261 from '../Forms/Form2261.vue'
   import Form2261Back from '../Forms/Form2261(Back).vue'
+  import Form3883 from '../Forms/Form3883.vue'
   export default {
     name: 'Frame',
     components: {
@@ -161,6 +169,7 @@
       Form3877,
       Form2261,
       Form2261Back,
+      Form3883
     },
     props: [
       'pageNum'
@@ -594,7 +603,7 @@
             this.items[2].children.push(newItem.id)
           }
         }
-        else if(itemType == "psform3877") {
+        else if(itemType == "psform3883") {
           newItem = {
             id: this.idCounter,
             articleCode: articleCode,
@@ -606,7 +615,25 @@
             stampCounter: 0,
             stampable: false,
             formInputs: {
-              
+              certified: false,
+              COD: false,
+              DCS: false,
+              expressMail: false,
+              insured: false,
+              recDelivery: false,
+              registered: false,
+              returnReceipt: false,
+              SCS: false,
+              billNo: "",
+              article: [],
+              code: [],
+              origin: [],
+              dateOfDeliv: "",
+              sigOfAgent: "",
+              barcodeNum: "",
+              recievedBy: "",
+              recievedNum: "",
+              deliveredBy: "",
             },
             type: "PS FORM 3883",
             droppable: true
@@ -781,7 +808,6 @@
         }
       },
       changeForm(newForm){
-        console.log(newForm)
         this.items[this.currentItemIndex].formInputs = newForm;
       }
     },
@@ -998,5 +1024,9 @@
     bottom:0;
     height:5%;
     width: 5%;
+  }
+  .form-3883{
+    position: relative;
+    left: -15%;
   }
 </style>
