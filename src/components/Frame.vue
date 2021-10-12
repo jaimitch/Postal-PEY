@@ -374,11 +374,9 @@
       },
       onHoverUp() {
         document.getElementById('left-frame').scrollTop -= 10;
-        console.log(document.getElementById('left-frame').scrollTop)
       },
       onHoverDown() {
         document.getElementById('left-frame').scrollTop += 10;
-        console.log(document.getElementById('left-frame').scrollTop)
       },
       isDroppable(id){
         return this.items[this.getItemIndex(id)].droppable
@@ -459,8 +457,6 @@
       You would want to disable default behavior if you planned to add the item to another item's children array for example.
       */
       createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings) {
-        console.log("create item called")
-        console.log("create item formSettings:", formSettings)
         let newItem = {};
 
         if(itemType == "psform3854") {
@@ -516,7 +512,6 @@
           }
 
           if(formSettings != undefined) {
-            console.log("updating value of formInputs")
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           
@@ -581,7 +576,6 @@
           }
 
           if(formSettings != undefined) {
-            console.log("updating value of formInputs")
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
 
@@ -651,7 +645,6 @@
           }
 
           if(formSettings != undefined) {
-            console.log("updating value of formInputs")
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
 
@@ -698,7 +691,6 @@
           }
 
           if(formSettings != undefined) {
-            console.log("updating value of formInputs")
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
 
@@ -784,10 +776,30 @@
         let child = this.items.filter(x => x.id == childID)
         parent[0].children.push(child[0].id);
       },
+      //Returns today by default, provide an int (positive or negative) to adjust the day
+      getYYYYMMDD(offset) {
+        var d = new Date();
+        var mm = d.getMonth() + 1;
+        var dd = d.getDate() + offset;
+        return [d.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('');
+      },
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
+
+            let newFormSettings = {
+              apoNum: "APO AE 09459",
+                from: this.getYYYYMMDD(-1),
+                to: this.getYYYYMMDD(-1),
+                totalItems9thru14: "2",
+                items: ["RB 339 065 331 US", "RB 290 770 790 US"],
+            }
+
+            this.createItem('ddform2261', '', 1, 2, true, '', newFormSettings)
             this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
             this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
