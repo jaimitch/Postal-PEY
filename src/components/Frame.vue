@@ -1085,6 +1085,7 @@
     width: 27vw;
     /* border: 2px solid green; */
     padding: 1vw;
+  }
   /* .child-package{
     margin-top: 15px;
   } */
