@@ -809,7 +809,7 @@
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
                 totalItems9thru14: "2",
-                items: ["RB 339 065 331 US", "RB 290 770 790 US"],
+                items: ["RB339065331US", "RB290770790US"],
             }
 
             this.createItem('ddform2261', '', 1, 2, true, '', newFormSettings)
