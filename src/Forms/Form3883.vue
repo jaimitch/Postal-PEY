@@ -10,33 +10,33 @@
        <div class="options-area">
            <div class="check-area">
                <div class="certified">
-                   Certified <input type="checkbox" v-model="certified">
+                   Certified <input type="checkbox" v-model="formData.certified">
                    <br>
-                   COD  <input type="checkbox" v-model="COD">
+                   COD  <input type="checkbox" v-model="formData.COD">
                </div>
                <div class="delivery-confirm">
-                   Delivery <br> Confirmation <br> Service <br><input type="checkbox" v-model="DCS">
+                   Delivery <br> Confirmation <br> Service <br><input type="checkbox" v-model="formData.DCS">
                </div>
                <div class="express-mail">
-                   Express Mail <input type="checkbox" v-model="expressMail">
+                   Express Mail <input type="checkbox" v-model="formData.expressMail">
                    <br>
-                   Insured  <input type="checkbox" v-model="insured">
+                   Insured  <input type="checkbox" v-model="formData.insured">
                </div>
                <div class="recorded-delivery">
-                   Recorded Delivery <input type="checkbox" v-model="recDelivery">
+                   Recorded Delivery <input type="checkbox" v-model="formData.recDelivery">
                    <br>
-                   Registered  <input type="checkbox" v-model="registered">
+                   Registered  <input type="checkbox" v-model="formData.registered">
                </div>
                <div class="return">
-                   Return <br> Receipt for <br> Merchandise <br><input type="checkbox" v-model="returnReceipt">
+                   Return <br> Receipt for <br> Merchandise <br><input type="checkbox" v-model="formData.returnReceipt">
                </div>
                <div class="sign">
-                   Signature <br> Confirmation <br> Service  <br><input type="checkbox" v-model="SCS">
+                   Signature <br> Confirmation <br> Service  <br><input type="checkbox" v-model="formData.SCS">
                </div>
            </div>
            <div class="bill-no">
                Mail for/Bill No.
-               <input v-model="billNo">
+               <input v-model="formData.billNo">
            </div>
        </div>
        <div class="article-area">
@@ -50,32 +50,32 @@
            <div class="originOffice-2">Office of Origin <br> (International)</div>
            <div class="articleNum-1-area"> 
                <div v-for="i in 10" :key="i" class="articleNum-1-boxes">
-                    {{i}}. <input v-model="article[i]">
+                    {{i}}. <input v-model="formData.article[i]">
                 </div>
            </div>
            <div class="code-1-area"> 
                <div v-for="i in 10" :key="i" class="code-1-boxes">
-                    <input v-model="code[i]">
+                    <input v-model="formData.code[i]">
                 </div>
            </div>
            <div class="originOffice-1-area"> 
                <div v-for="i in 10" :key="i" class="originOffice-1-boxes">
-                    <input v-model="origin[i]">
+                    <input v-model="formData.origin[i]">
                 </div>
            </div>
            <div class="articleNum-2-area"> 
                <div v-for="i in 10" :key="i" class="articleNum-2-boxes">
-                    {{i+10}}. <input v-model="article[i+10]">
+                    {{i+10}}. <input v-model="formData.article[i+10]">
                 </div>
            </div>
            <div class="code-2-area"> 
                <div v-for="i in 10" :key="i" class="code-2-boxes">
-                    <input v-model="code[i+10]">
+                    <input v-model="formData.code[i+10]">
                 </div>
            </div>
            <div class="originOffice-2-area"> 
                <div v-for="i in 10" :key="i" class="originOffice-2-boxes">
-                    <input v-model="origin[i+10]">
+                    <input v-model="formData.origin[i+10]">
                 </div>
            </div>
        </div>
@@ -88,19 +88,19 @@
            <div class="sig-area-top">
                <div class="date-of-delivery">
                    <div class="sig-area-text">
-                        Date of Delivery <input v-model="dateOfDeliv">
+                        Date of Delivery <input v-model="formData.dateOfDeliv">
                    </div>
                </div>
                <div class="delivered-by">
                    <div class="sig-area-text">
                         Delivered By: <br>
                         (Clerk/Carrier)
-                        <input v-model="deliveredBy">
+                        <input v-model="formData.deliveredBy">
                    </div>
                </div>
                <div class="recieved">
                    <div class="recieved-text">
-                        <b>Recieved the <input v-model="recievedNum"><br> pieces described above</b>
+                        <b>Recieved the <input v-model="formData.recievedNum"><br> pieces described above</b>
                    </div>
                    <div class="arrow-right">
                    </div>
@@ -110,7 +110,7 @@
                    <div class="sig-area-text">
                      Recieved By:<br>
                      (Print Name)  
-                     <input v-model="recievedBy">
+                     <input v-model="formData.recievedBy">
                    </div>
                </div>
                <div class="sig-of-agent">
@@ -118,14 +118,14 @@
                      Signature of
                      <br>Addressee/
                      <br>Agent
-                     <input v-model="sigOfAgent">
+                     <input v-model="formData.sigOfAgent">
                    </div>
                </div>
            </div>
            <div class="sig-area-bottom">
                <div class="sig-area-bottom-left">
                    Form 3849 Barcode Number (If delivered using scanning option)
-                   <input v-model="barcodeNum">
+                   <input v-model="formData.barcodeNum">
                </div>
                <div class="sig-area-bottom-right">
                     If using handheld scanner
@@ -145,29 +145,44 @@
 
 <script>
     export default {
+        props: ['item'],
         data () {
             return{
-                certified: false,
-                COD: false,
-                DCS: false,
-                expressMail: false,
-                insured: false,
-                recDelivery: false,
-                registered: false,
-                returnReceipt: false,
-                SCS: false,
-                billNo: "",
-                article: [],
-                code: [],
-                origin: [],
-                dateOfDeliv: "",
-                sigOfAgent: "",
-                barcodeNum: "",
-                recievedBy: "",
-                recievedNum: "",
-                deliveredBy: "",
+                formData: {
+                    certified: this.item.formInputs.certified,
+                    COD: this.item.formInputs.COD,
+                    DCS: this.item.formInputs.DCS,
+                    expressMail: this.item.formInputs.expressMail,
+                    insured: this.item.formInputs.insured,
+                    recDelivery: this.item.formInputs.recDelivery,
+                    registered: this.item.formInputs.registered,
+                    returnReceipt: this.item.formInputs.returnReceipt,
+                    SCS: this.item.formInputs.SCS,
+                    billNo: this.item.formInputs.billNo,
+                    article: this.item.formInputs.article,
+                    code: this.item.formInputs.code,
+                    origin: this.item.formInputs.origin,
+                    dateOfDeliv: this.item.formInputs.dateOfDeliv,
+                    sigOfAgent: this.item.formInputs.sigOfAgent,
+                    barcodeNum: this.item.formInputs.barcodeNum,
+                    recievedBy: this.item.formInputs.recievedBy,
+                    recievedNum: this.item.formInputs.recievedNum,
+                    deliveredBy: this.item.formInputs.deliveredBy,
+                }
             }
-        }
+        },
+        methods:{
+            changeForm() {
+                this.$emit('changeForm', this.formData)
+            }
+        },
+        watch: {
+            // whenever question changes, this function will run
+            formData: {
+                deep: true,
+                handler: 'changeForm',
+            }
+        },
     }
 </script>
 
@@ -328,7 +343,7 @@
     .code-1-boxes input{
         position: absolute;
         width: 85%;
-        left: 1%;
+        left: 2%;
         border:none;
         height: 7%;
     }
@@ -390,7 +405,7 @@
     .code-2-boxes input{
         position: absolute;
         width: 85%;
-        left: 1%;
+        left: 2%;
         border:none;
         height: 7%;
     }
