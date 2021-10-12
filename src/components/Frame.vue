@@ -517,7 +517,7 @@
 
           if(formSettings != undefined) {
             console.log("updating value of formInputs")
-            newItem.formInputs = {...formSettings}
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           
           this.items.push(newItem);
@@ -582,7 +582,7 @@
 
           if(formSettings != undefined) {
             console.log("updating value of formInputs")
-            newItem.formInputs = {...formSettings}
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
 
           this.items.push(newItem);
@@ -652,7 +652,7 @@
 
           if(formSettings != undefined) {
             console.log("updating value of formInputs")
-            newItem.formInputs = {...formSettings}
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
 
           this.items.push(newItem);
@@ -699,7 +699,7 @@
 
           if(formSettings != undefined) {
             console.log("updating value of formInputs")
-            newItem.formInputs = {...formSettings}
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
 
           this.items.push(newItem);
@@ -800,29 +800,12 @@
             this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613', undefined)
 
             let newFormSettings = {
-              lockNo: "",
-              rotaryNo: "",
-              jacketNo: "",
-              controlNo: "",
               billNo: "260",
               pageNo: "1X",
-              airmail: "",
-              sealNo: "",
               to: "APO AE 09459",
               billNoRight: "260",
-              amNo: "",
-              jacketNoRight: "",
-              lockNoRight: "",
-              rotaryNoRight: "",
-              sealNoRight: "",
-              airmailRight: "",
-              recieved: "",
-              recievingClerks: [],
               totalArticlesSent: "3",
-              totalArticlesRecieved: "",
               postmasterSent: "Anthony Smith",
-              postmasterRecieved: "",
-              recievingClerk: "",
               dispatchingClerk: "0800",
               itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
               itemOrigins: ["", "AMF KENNEDY NY 00300"],
@@ -838,32 +821,17 @@
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
 
             let newFormSettings = {
-              lockNo: "",
-              rotaryNo: "",
-              jacketNo: "",
-              controlNo: "",
               billNo: "231",
               pageNo: "1X",
-              airmail: "",
               sealNo: "70948511",
               to: "APO AE 09459",
               billNoRight: "231",
-              amNo: "",
-              jacketNoRight: "",
-              lockNoRight: "",
-              rotaryNoRight: "",
               sealNoRight: "70948511",
-              airmailRight: "",
-              recieved: "",
-              recievingClerks: [],
-              totalArticlesSent: "3",
-              totalArticlesRecieved: "",
-              postmasterSent: "Anthony Smith",
-              postmasterRecieved: "",
-              recievingClerk: "",
-              dispatchingClerk: "0800",
+              totalArticlesSent: "6",
+              postmasterSent: "Hark Smith",
+              dispatchingClerk: "0930",
               itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US"],
-              itemOrigins: [],
+              witnessSent: "WIT: Larry Brown",
               topStamp1: true,
               topStamp2: true,
               bottomStamp1: false,
@@ -892,14 +860,50 @@
         }
         else if(this.getSituationNumber == 4) {
           if(this.pageNum == 5 && !this.situationFourPartOne) {
-            this.createItem('psform3854', '30', 4, 2, true, '')
+
+            let newFormSettings = {
+              billNo: "30",
+              pageNo: "1X",
+              to: "APO AE 09459",
+              billNoRight: "30",
+              totalArticlesSent: "2",
+              postmasterSent: "Todd Edgar",
+              dispatchingClerk: "0800",
+              itemNums: ["", "S/43000277", "O/RB300911759US"],
+              itemOrigins: ["", "APO AE 09459 - 2"],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false,
+            }
+
+            this.createItem('psform3854', '30', 4, 2, true, '', newFormSettings)
             this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined)
             this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined)
             //30-33
             this.situationFourPartOne = true;
           }
           else if(this.pageNum == 6 && !this.situationFourPartTwo) {
-            let item1 = this.createItem('psform3854', '24', 4, 3, false, '')
+
+            let newFormSettings = {
+              billNo: "24",
+              pageNo: "1X",
+              sealNo: "43000277",
+              to: "APO AE 09459",
+              billNoRight: "24",
+              sealNoRight: "43000277",
+              totalArticlesSent: "6",
+              postmasterSent: "Leroy Brown",
+              dispatchingClerk: "0745",
+              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US"],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false,
+              witnessSent: "WIT: Scott Sanders",
+            }
+
+            let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings)
             this.assignItemToParent('SEAL #43000277', item1)
             let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined)
             this.assignItemToParent('SEAL #43000277', item2)
@@ -917,14 +921,65 @@
             this.situationFourPartTwo = true;
           }
           else if(this.pageNum == 7 && !this.situationFourPartThree) {
-            this.createItem('psform3877', '24', 4, 2, true, '')
+
+            let newFormSettings = {
+              senderAddress: "45th MP CO APO AE 09459",
+                registeredMail: true,
+                trackingNum1: "RB842320438US",
+                trackingNum2: "RB842320439US",
+                trackingTextInput1: "HQ CAC FT KNOX, KY 40121",
+                trackingTextInput2: "545 MP CO FT JACKSON, SC 29207",
+                piecesSent: "2",
+                rows:["0.87", "9.50", "N/A", "", "", "", "", "", "", "", "", "", "",
+                      "1.83", "9.50", "N/A"],
+                stamped: false
+            }
+
+            this.createItem('psform3877', '24', 4, 2, true, '', newFormSettings)
             this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined)
             this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined)
             //18-21
             this.situationFourPartThree = true;
           }
           else if(this.pageNum == 8 && !this.situationFourPartFour) {
-            this.createItem('psform3854', '33', 4, 2, true, '')
+
+            let newFormSettings = {
+              lockNo: "",
+              rotaryNo: "",
+              jacketNo: "",
+              controlNo: "",
+              billNo: "33",
+              pageNo: "1X",
+              airmail: "",
+              sealNo: "H/C",
+              to: "APO AE 09824",
+              billNoRight: "33",
+              amNo: "",
+              jacketNoRight: "",
+              lockNoRight: "",
+              rotaryNoRight: "",
+              airmailRight: "",
+              sealNoRight: "H/C",
+              recieved: "",
+              recievingClerks: [],
+              totalArticlesSent: "10",
+              totalArticlesRecieved: "",
+              postmasterSent: "Michael Turner",
+              postmasterRecieved: "",
+              recievingClerk: "",
+              dispatchingClerk: "1400",
+              itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
+               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US"],
+              itemOrigins: [],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false,
+              witnessSent: "",
+              witnessRecieved: ""
+            }
+
+            this.createItem('psform3854', '33', 4, 2, true, '', newFormSettings)
             this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined)
             this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined)
             this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined)
