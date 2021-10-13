@@ -134,12 +134,21 @@
               @click="stamp(this.items[currentItemIndex])"
             > -->
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854'" class="form-3854">
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == false">
             <Form3854 
               v-bind:item="items[currentItemIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
+            <button class="flip-2261" @click="form3854Back = true">Flip</button>
+          </div>
+          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == true">
+            <Form3854Back 
+              v-bind:item="items[currentItemIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+            <button class="flip-2261" @click="form3854Back = false">Flip</button>
           </div>
           <div v-if="this.items[currentItemIndex].type == 'PS FORM 3877'" >
             <Form3877 
@@ -187,6 +196,7 @@
 <script>
   import PageNav from '../Navigation/PageNav.vue'
   import Form3854 from '../Forms/Form3854.vue'
+  import Form3854Back from '../Forms/Form3854(Back).vue'
   import Form3877 from '../Forms/Form3877.vue'
   import Form2261 from '../Forms/Form2261.vue'
   import Form2261Back from '../Forms/Form2261(Back).vue'
@@ -201,7 +211,8 @@
       Form2261,
       Form2261Back,
       Form3883,
-      Form3849
+      Form3849,
+      Form3854Back
     },
     props: [
       'pageNum'
@@ -265,6 +276,7 @@
         situationFourPartFour: false,
         formKey: 0,
         form2261Back: false,
+        form3854Back: false,
       }   
     },
     mounted() {
