@@ -209,6 +209,7 @@
   import Form2261Back from '../Forms/Form2261(Back).vue'
   import Form3883 from '../Forms/Form3883.vue'
   import Form3849 from '../Forms/Form3849.vue'
+  import key from '../data/answerKey.json'
   export default {
     name: 'Frame',
     components: {
@@ -226,6 +227,7 @@
     ],
     data() {
       return {
+        answerKey: key,
         items: [
           {
             id: 1,
@@ -891,9 +893,21 @@
         return newItem.id;
      
       },
+      //accepts an array and returns it without any blank entries
+      cleanArray(arr) {
+        let newArr = arr.filter(function(str) {
+        return /\S/.test(str);
+      });
+      return newArr;
+      },
       submitPage() {
         console.log("submit page")
         this.gradeSituationContents();
+
+        if(this.getSituationNumber == 1) {
+          this.gradeForm("20211012", this.answerKey.answers[0], "2261");
+        }
+
         if(this.pageErrors[this.getSituationNumber - 1] == false) {
           console.log("unlock right arrow")
         }
@@ -901,22 +915,51 @@
       //checks to see if the correct amount of items exist in each level 1 item in a given situation
       gradeSituationContents() {
         if(this.getSituationNumber == 1) {
-          if(this.items[1].children.length != 2) {
-            this.pageErrors[0] = true;
+          if(this.items[1].children.length == 2) {
+            this.pageErrors[0] = false;
           }
-          if(this.items[2].children.length != 1) {
-            this.pageErrors[0] = true;
+          if(this.items[2].children.length == 1) {
+            this.pageErrors[0] = false;
           }
-          console.log(this.pageErrors)
+          // console.log(this.pageErrors)
         }
       },
       gradeForm(articleCode, keyForm, formCode) {
-        console.log(articleCode, keyForm, formCode);
-        console.log(this.getItemByArticleCode("260"))
-        let userForm = this.items[this.getItemByArticleCode("260")]
-        console.log(userForm);
+        // console.log(articleCode, keyForm, formCode);
+        let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
+
+        if(formCode == "2261") {
+          let errors = 0;
+
+          for (let property in keyForm) {
+            if(userForm[property] != keyForm[property] && property != "items") {
+              console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
+              errors++;
+            }
+
+            if(Array.isArray(keyForm[property])) {  
+              let startGrading = false;
+              for(let i = userForm.items.length - 1; i > 0; i--) {
+                let userItem = userForm.items[i].trim()
+                if(userItem.length != 0) {
+                  // console.log("userItem:", userItem)
+                  startGrading = true;
+                }
+                if(startGrading) {
+                  if(!keyForm.items.includes(userItem)) {
+                  errors++;
+                  }
+                }
+              }
+              console.log(errors);
+
+            }
+          }
+
+        }
+
       },
-      //this doesnt work
+
       getItemByArticleCode(code) {
         let index = this.items.findIndex(item => item.articleCode == code)
         return index;
@@ -932,6 +975,7 @@
         var d = new Date();
         var mm = d.getMonth() + 1;
         var dd = d.getDate() + offset;
+
         return [d.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
@@ -950,7 +994,8 @@
                 items: ["RB339065331US", "RB290770790US"],
             }
 
-            this.createItem('ddform2261', '', 1, 2, true, '', newFormSettings)
+            let yest = this.getYYYYMMDD(-1)
+            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings)
             this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
             this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
@@ -982,13 +1027,11 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
+            this.createItem('psform3854', '', 2, 2, true, '', newFormSettings)
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
-
-            this.gradeForm("260", this.$store.state.answerKey[0], "3854");
 
             let newFormSettings = {
               billNo: "231",
