@@ -192,7 +192,10 @@
           </div>
           </div>
         </div>
-        <PageNav :class="{'is-stamping': this.stamping == true}"/>
+        <PageNav 
+          :class="{'is-stamping': this.stamping == true}"
+          v-bind:pageErrors="pageErrors"
+        />
     </div>
   </div>
 </template>
@@ -286,17 +289,19 @@
             droppable: true
           },
         ],
-        situationErrors: [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
+        //default assumes there is something wrong
+        //(this prevents next arrow from being clicked until they at least try and submit)
+        pageErrors: [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
         ],
         stamping: false,
         currentItemIndex: 2,
@@ -570,7 +575,8 @@
               bottomStamp1: false,
               bottomStamp2: false,
               witnessSent: "",
-              witnessRecieved: ""
+              witnessRecieved: "",
+              backText: ""
             },
             type: "PS FORM 3854",
             droppable: true
@@ -888,7 +894,7 @@
       submitPage() {
         console.log("submit page")
         this.gradeSituationContents();
-        if(this.situationErrors[this.getSituationNumber - 1] == false) {
+        if(this.pageErrors[this.getSituationNumber - 1] == false) {
           console.log("unlock right arrow")
         }
       },
@@ -896,12 +902,12 @@
       gradeSituationContents() {
         if(this.getSituationNumber == 1) {
           if(this.items[1].children.length != 2) {
-            this.situationErrors[0] = true;
+            this.pageErrors[0] = true;
           }
           if(this.items[2].children.length != 1) {
-            this.situationErrors[0] = true;
+            this.pageErrors[0] = true;
           }
-          console.log(this.situationErrors)
+          console.log(this.pageErrors)
         }
       },
       gradeForm(articleCode, keyForm, formCode) {

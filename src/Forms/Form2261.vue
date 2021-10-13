@@ -310,9 +310,9 @@
 <style scoped>
     .outline{
         position: relative;
-        left: 20%;
-        width: 30vmax;
-        height: 40vmax;
+        left: 10%;
+        width: 35vmax;
+        height: 45vmax;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
@@ -403,16 +403,16 @@
     }
     .sectionA input{
         position: absolute;
-        left:2%;
-        top:2%;
+        left:5%;
+        top:5%;
         width:75%;
         height: 75%;
         border: none;
     }
     .sectionB input{
         position: absolute;
-        left:2%;
-        top:2%;
+        left:5%;
+        top:5%;
         width:75%;
         height: 75%;
         border: none;
@@ -876,10 +876,10 @@
     }
     .B input{
         position: absolute;
-        top:40%;
+        top:50%;
         left:1%;
-        width: 90%;
-        height: 45%;
+        width: 80%;
+        height: 35%;
         border: none;
         
     }
