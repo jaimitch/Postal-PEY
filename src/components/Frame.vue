@@ -575,7 +575,8 @@
               bottomStamp1: false,
               bottomStamp2: false,
               witnessSent: "",
-              witnessRecieved: ""
+              witnessRecieved: "",
+              backText: ""
             },
             type: "PS FORM 3854",
             droppable: true
