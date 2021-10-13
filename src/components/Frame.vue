@@ -27,6 +27,7 @@
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
           <option value="psform3883">PS Form 3883</option>
+          <option value="psform3849">PS Form 3849</option>
         </select>
       </div>
 
@@ -133,14 +134,9 @@
               @click="stamp(this.items[currentItemIndex])"
             > -->
           </div>
-<<<<<<< HEAD
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == false">
-=======
 
           <div v-if="this.currentFormIndex != ''">
-
-            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854'" class="form-3854">
->>>>>>> 3bc142dadf4e73bcb75277045e2ec0bd21429e32
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
             <Form3854 
               v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
@@ -186,7 +182,13 @@
               :key="formKey"
             />
           </div>
-
+          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3849'">
+            <Form3849
+              v-bind:item="items[currentFormIndex]"
+              @changeForm="changeForm($event, data)"
+              :key="formKey"
+            />
+          </div>
           </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
@@ -202,6 +204,7 @@
   import Form2261 from '../Forms/Form2261.vue'
   import Form2261Back from '../Forms/Form2261(Back).vue'
   import Form3883 from '../Forms/Form3883.vue'
+  import Form3849 from '../Forms/Form3849.vue'
   export default {
     name: 'Frame',
     components: {
@@ -210,13 +213,9 @@
       Form3877,
       Form2261,
       Form2261Back,
-<<<<<<< HEAD
       Form3883,
       Form3849,
       Form3854Back
-=======
-      Form3883
->>>>>>> 3bc142dadf4e73bcb75277045e2ec0bd21429e32
     },
     props: [
       'pageNum'
@@ -549,6 +548,53 @@
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           
+          this.items.push(newItem);
+          if(defaultCreate) {
+            this.items[2].children.push(newItem.id)
+          }
+        }
+        else if(itemType == "psform3849") {
+          newItem = {
+            id: this.idCounter,
+            articleCode: articleCode,
+            situationNumber: 'Situation ' + situationNumber,
+            children: [],
+            level: level,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+               reverseAddress: "",
+               name: "",
+               signature: "",
+               otherText: "",
+               other: false,
+               mustBe21: false,
+               mustBe18: false,
+               sigReq: false,
+               noRecip: false,
+               noSecLoc: false,
+               receptFull: false,
+               customs: false,
+               postage: false,
+               cost: "",
+               requiresPayment: false,
+               finalNotice: false,
+               firstAttempt: false,
+               pickupDate: "",
+               parcelLockEligible: false,
+               pack: false,
+               letter: false,
+               largeEnvelope: false,
+               address: "",
+               sentTo: "",
+               sentBy: "",
+               date: ""
+            },
+            type: "PS FORM 3849",
+            droppable: true
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
