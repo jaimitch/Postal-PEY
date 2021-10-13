@@ -16,6 +16,7 @@
 
     </div>
     <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+      <button :class="'page-submit-button'" @click="submitPage()">Submit</button>
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
 
       <div class= "form-creation">
@@ -284,6 +285,18 @@
             type: "Truck",
             droppable: true
           },
+        ],
+        situationErrors: [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
         ],
         stamping: false,
         currentItemIndex: 2,
@@ -872,6 +885,36 @@
         return newItem.id;
      
       },
+      submitPage() {
+        console.log("submit page")
+        this.gradeSituationContents();
+        if(this.situationErrors[this.getSituationNumber - 1] == false) {
+          console.log("unlock right arrow")
+        }
+      },
+      //checks to see if the correct amount of items exist in each level 1 item in a given situation
+      gradeSituationContents() {
+        if(this.getSituationNumber == 1) {
+          if(this.items[1].children.length != 2) {
+            this.situationErrors[0] = true;
+          }
+          if(this.items[2].children.length != 1) {
+            this.situationErrors[0] = true;
+          }
+          console.log(this.situationErrors)
+        }
+      },
+      gradeForm(articleCode, keyForm, formCode) {
+        console.log(articleCode, keyForm, formCode);
+        console.log(this.getItemByArticleCode("260"))
+        let userForm = this.items[this.getItemByArticleCode("260")]
+        console.log(userForm);
+      },
+      //this doesnt work
+      getItemByArticleCode(code) {
+        let index = this.items.findIndex(item => item.articleCode == code)
+        return index;
+      },
       //Uses the parent's article code and the child's id to add the child to the parent's children array
       assignItemToParent(parentArticleCode, childID) {
         let parent = this.items.filter(x => x.articleCode == parentArticleCode)
@@ -938,6 +981,8 @@
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
+
+            this.gradeForm("260", this.$store.state.answerKey[0], "3854");
 
             let newFormSettings = {
               billNo: "231",
@@ -1258,6 +1303,12 @@
     position: absolute;
     top: 10px;
     right: 1vw;
+    z-index: 2;
+  }
+  .page-submit-button {
+    position: absolute;
+    top: 10px;
+    right: 5vw;
     z-index: 2;
   }
   .letter{
