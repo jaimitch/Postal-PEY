@@ -86,14 +86,14 @@
 <style scoped>
     .outline{
         position: relative;
-        left: 20%;
-        width: 30vmax;
-        height: 40vmax;
+        left: 10%;
+        width: 35vmax;
+        height: 45vmax;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
         color: black;
-        font-size: 0.7vmax;
+        font-size: 1vmin;
     }
     .banner{
         position: absolute;
