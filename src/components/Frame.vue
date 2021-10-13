@@ -224,12 +224,10 @@
       return {
         items: [
           {
-            id: 0,
-            title: "Truck",
+            id: 1,
+            title: "Placeholder",
             children: [],
-            level: 1,
-            images: [require('../assets/mail-truck.jpeg'),],
-            currentImageIndex: 0,
+            level: 0,
             stampCounter: 0,
             stampable: false,
             formInputs: {},
@@ -261,7 +259,31 @@
             formInputs: {},
             type: "forms",
             droppable: true
-          }
+          },
+          {
+            id: 6,
+            title: "Incoming Truck",
+            children: [],
+            level: 0,
+            situationNumber: 'Situation ' + 2,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "Truck",
+            droppable: true
+          },
+          {
+            id: 7,
+            title: "Outgoing Truck",
+            children: [],
+            level: 0,
+            situationNumber: 'Situation ' + 3,
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {},
+            type: "Truck",
+            droppable: true
+          },
         ],
         stamping: false,
         currentItemIndex: 2,
@@ -887,6 +909,11 @@
         }
         else if(this.getSituationNumber == 2) {
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
+            
+            //hardcode all truck visibility
+            this.items[3].level = 1;
+            this.items[4].level = 0;
+
             this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1', undefined)
             this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763', undefined)
             this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613', undefined)
@@ -949,6 +976,10 @@
         }
         else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
           this.situationThreeInit = true;
+          //hardcode all truck visibility
+          this.items[3].level = 0;
+          this.items[4].level = 1;
+          console.log(this.items)
         }
         else if(this.getSituationNumber == 4) {
           if(this.pageNum == 5 && !this.situationFourPartOne) {
