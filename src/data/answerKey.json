@@ -2,15 +2,15 @@
     "answers":[
         {
             "apoNum": "APO AE 09459",
-            "from": "Prev Date/0800",
-            "to": "Prev Date/1600",
-            "itemsAtStart": "0",
+            "from": "20211012",
+            "to": "20211012",
+            "itemsAtStart": "",
             "signature": "Student",
             "payGrade": "PayGrade",
             "typedName": "Student",
-            "officialSig": "Matthew L. Long",
-            "prepSig": "Students name",
-            "remarks": "WIT: George Forrest, PFC Student’s printed name and grade",
+            "officialSig": "",
+            "prepSig": "",
+            "remarks": "",
             "sectionC1": "",
             "sectionC2": "",
             "sectionC3": "",
@@ -29,7 +29,7 @@
             "sectionC16": "",
             "sectionC17": "",
             "sectionC18": "",
-            "totalItems9thru14": "",
+            "totalItems9thru14": "2",
             "itemsOnHandAtEnd": "",
             "numberOfPouchesOpened": "",
             "itemsOnOutgoingTruck": "",
@@ -43,7 +43,7 @@
             "itemsOnIncomingManifests": "",
             "itemsListedOnInsideBillsA": "",
             "itemsAccepted": "",
-            "items": []
+            "items": ["RB339065331US", "RB290770790US"]
         },
         {
             "lockNo": "",

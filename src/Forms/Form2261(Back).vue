@@ -6,7 +6,7 @@
         </div>
         <div class="grid">
             <div v-for="i in 96" :key="i" class="box">
-                <textarea v-model="formData.items[i-1]"/>
+                <textarea placeholder=" " v-model="formData.items[i-1]">" "</textarea>
             </div>
         </div>
         <div class="bottom-text">
