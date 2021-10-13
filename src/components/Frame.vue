@@ -19,7 +19,7 @@
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
 
       <div class= "form-creation">
-        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '')" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined)" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select class="form-creation-select" v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
@@ -27,12 +27,11 @@
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
           <option value="psform3883">PS Form 3883</option>
-          <option value="psform3849">PS Form 3849</option>
         </select>
       </div>
 
       <div class="pouch-creation">
-        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1')">
+        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined)">
           Create New Pouch
         </button>
       </div>
@@ -74,7 +73,7 @@
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
               </div>
             </div>  
-            <div class="child-content item-image">
+            <div class="child-content item-image" v-if="items[child].images.length != 0">
               <img v-show="items[child].showImage" :src="itemImage(items[child])">
             </div>
             
@@ -101,7 +100,7 @@
               </div>
               </div>
 
-              <div class="grand-child-content">
+              <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
                 <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
               
@@ -134,9 +133,12 @@
               @click="stamp(this.items[currentItemIndex])"
             > -->
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == false">
+
+          <div v-if="this.currentFormIndex != ''">
+
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
             <Form3854 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -150,42 +152,37 @@
             />
             <button class="flip-2261" @click="form3854Back = false">Flip</button>
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3877'" >
+          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3877'" >
             <Form3877 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'DD FORM 2261' && form2261Back == false">
+          <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == false">
             <Form2261 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
             <button class="flip-2261" @click="form2261Back = true">Flip</button>
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'DD FORM 2261' && form2261Back == true">
+          <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == true">
             <Form2261Back 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
             <button class="flip-2261" @click="form2261Back = false">Flip</button>
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3883'">
+          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3883'" class="form-3883">
             <Form3883 
-              v-bind:item="items[currentItemIndex]"
+              v-bind:item="items[currentFormIndex]"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
           </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3849'">
-            <Form3849
-              v-bind:item="items[currentItemIndex]"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
+
           </div>
         </div>
         <PageNav :class="{'is-stamping': this.stamping == true}"/>
@@ -201,7 +198,6 @@
   import Form2261 from '../Forms/Form2261.vue'
   import Form2261Back from '../Forms/Form2261(Back).vue'
   import Form3883 from '../Forms/Form3883.vue'
-  import Form3849 from '../Forms/Form3849.vue'
   export default {
     name: 'Frame',
     components: {
@@ -211,7 +207,7 @@
       Form2261,
       Form2261Back,
       Form3883,
-      Form3849,
+      // Form3849,
       Form3854Back
     },
     props: [
@@ -262,6 +258,7 @@
         ],
         stamping: false,
         currentItemIndex: 2,
+        currentFormIndex: '',
         idCounter: 1000,
         draggedItem: {},
         createFormType: "",
@@ -396,11 +393,9 @@
       },
       onHoverUp() {
         document.getElementById('left-frame').scrollTop -= 10;
-        console.log(document.getElementById('left-frame').scrollTop)
       },
       onHoverDown() {
         document.getElementById('left-frame').scrollTop += 10;
-        console.log(document.getElementById('left-frame').scrollTop)
       },
       isDroppable(id){
         return this.items[this.getItemIndex(id)].droppable
@@ -455,8 +450,15 @@
       itemImage(object) {
         return object.images[object.currentImageIndex]
       },
+      //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
         this.currentItemIndex = this.getItemIndex(id);
+
+        // console.log(this.items[this.currentItemIndex].type)
+        if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
+          this.currentFormIndex = this.currentItemIndex;
+        }
+
         evt.stopPropagation()
       },
       //toggles the item to display or hide it's image
@@ -475,12 +477,12 @@
         }
       },
       /*creates a new item given information:
-      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior, ['string' image code)
+      (['string' type of item], ['string' unique article identifer], ['int' situation number], ['int' level], ['boolean'] default item creation behavior, ['string'] image code, ['object'] form settings)
 
       NOTE: Default item creation causes forms to be added to the forms section, and all other things to be added to the safe.
       You would want to disable default behavior if you planned to add the item to another item's children array for example.
       */
-      createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode) {
+      createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings) {
         let newItem = {};
 
         if(itemType == "psform3854") {
@@ -534,6 +536,11 @@
           if(newItem.articleCode != '') {
             newItem.articleCode = 'Bill #' + newItem.articleCode;
           }
+
+          if(formSettings != undefined) {
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
+          }
+          
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -593,6 +600,11 @@
           if(newItem.articleCode != '') {
             newItem.articleCode = 'Bill #' + newItem.articleCode;
           }
+
+          if(formSettings != undefined) {
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
+          }
+
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -657,6 +669,11 @@
             type: "DD FORM 2261",
             droppable: true
           }
+
+          if(formSettings != undefined) {
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
+          }
+
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -698,53 +715,11 @@
             type: "PS FORM 3883",
             droppable: true
           }
-          this.items.push(newItem);
-          if(defaultCreate) {
-            this.items[2].children.push(newItem.id)
+
+          if(formSettings != undefined) {
+            newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
-        }
-        else if(itemType == "psform3849") {
-          newItem = {
-            id: this.idCounter,
-            articleCode: articleCode,
-            situationNumber: 'Situation ' + situationNumber,
-            children: [],
-            level: level,
-            images: [],
-            currentImageIndex: 0,
-            stampCounter: 0,
-            stampable: false,
-            formInputs: {
-               reverseAddress: "",
-               name: "",
-               signature: "",
-               otherText: "",
-               other: false,
-               mustBe21: false,
-               mustBe18: false,
-               sigReq: false,
-               noRecip: false,
-               noSecLoc: false,
-               receptFull: false,
-               customs: false,
-               postage: false,
-               cost: "",
-               requiresPayment: false,
-               finalNotice: false,
-               firstAttempt: false,
-               pickupDate: "",
-               parcelLockEligible: false,
-               pack: false,
-               letter: false,
-               largeEnvelope: false,
-               address: "",
-               sentTo: "",
-               sentBy: "",
-               date: ""
-            },
-            type: "PS FORM 3849",
-            droppable: true
-          }
+
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -814,6 +789,8 @@
               this.items[1].children.push(newItem.id)
             }
           }
+
+
         }
         this.idCounter++;
         return newItem.id;
@@ -825,36 +802,91 @@
         let child = this.items.filter(x => x.id == childID)
         parent[0].children.push(child[0].id);
       },
+      //Returns today by default, provide an int (positive or negative) to adjust the day
+      getYYYYMMDD(offset) {
+        var d = new Date();
+        var mm = d.getMonth() + 1;
+        var dd = d.getDate() + offset;
+        return [d.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('');
+      },
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
           if(!this.situationOneInit){
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331')
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790')
+
+            let newFormSettings = {
+              apoNum: "APO AE 09459",
+                from: this.getYYYYMMDD(-1),
+                to: this.getYYYYMMDD(-1),
+                totalItems9thru14: "2",
+                items: ["RB339065331US", "RB290770790US"],
+            }
+
+            this.createItem('ddform2261', '', 1, 2, true, '', newFormSettings)
+            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
+            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
-            this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1')
-            this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763')
-            this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613')
-            this.createItem('psform3854', '260', 2, 2, true, '')
+            this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1', undefined)
+            this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763', undefined)
+            this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613', undefined)
+
+            let newFormSettings = {
+              billNo: "260",
+              pageNo: "1X",
+              to: "APO AE 09459",
+              billNoRight: "260",
+              totalArticlesSent: "3",
+              postmasterSent: "Anthony Smith",
+              dispatchingClerk: "0800",
+              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
+              itemOrigins: ["", "AMF KENNEDY NY 00300"],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false
+            }
+            this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
-            let item1 = this.createItem('psform3854', '123', 2, 3, false, '')
+
+            let newFormSettings = {
+              billNo: "231",
+              pageNo: "1X",
+              sealNo: "70948511",
+              to: "APO AE 09459",
+              billNoRight: "231",
+              sealNoRight: "70948511",
+              totalArticlesSent: "6",
+              postmasterSent: "Hark Smith",
+              dispatchingClerk: "0930",
+              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US"],
+              witnessSent: "WIT: Larry Brown",
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false
+            }
+            
+            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings)
             this.assignItemToParent('SEAL #70948511', item1)
-            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744')
+            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined)
             this.assignItemToParent('SEAL #70948511', item2)
-            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140')
+            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined)
             this.assignItemToParent('SEAL #70948511', item3)
-            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161')
+            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined)
             this.assignItemToParent('SEAL #70948511', item4)
-            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488')
+            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined)
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361')
+            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined)
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -866,49 +898,136 @@
         }
         else if(this.getSituationNumber == 4) {
           if(this.pageNum == 5 && !this.situationFourPartOne) {
-            this.createItem('psform3854', '30', 4, 2, true, '')
-            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1')
-            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759')
+
+            let newFormSettings = {
+              billNo: "30",
+              pageNo: "1X",
+              to: "APO AE 09459",
+              billNoRight: "30",
+              totalArticlesSent: "2",
+              postmasterSent: "Todd Edgar",
+              dispatchingClerk: "0800",
+              itemNums: ["", "S/43000277", "O/RB300911759US"],
+              itemOrigins: ["", "APO AE 09459 - 2"],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false,
+            }
+
+            this.createItem('psform3854', '30', 4, 2, true, '', newFormSettings)
+            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined)
+            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined)
             //30-33
             this.situationFourPartOne = true;
           }
           else if(this.pageNum == 6 && !this.situationFourPartTwo) {
-            let item1 = this.createItem('psform3854', '24', 4, 3, false, '')
+
+            let newFormSettings = {
+              billNo: "24",
+              pageNo: "1X",
+              sealNo: "43000277",
+              to: "APO AE 09459",
+              billNoRight: "24",
+              sealNoRight: "43000277",
+              totalArticlesSent: "6",
+              postmasterSent: "Leroy Brown",
+              dispatchingClerk: "0745",
+              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US"],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false,
+              witnessSent: "WIT: Scott Sanders",
+            }
+
+            let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings)
             this.assignItemToParent('SEAL #43000277', item1)
-            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755')
+            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined)
             this.assignItemToParent('SEAL #43000277', item2)
-            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756')
+            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined)
             this.assignItemToParent('SEAL #43000277', item3)
-            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757')
+            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined)
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758')
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined)
             this.assignItemToParent('SEAL #43000277', item5)
-            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760')
+            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined)
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761')
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined)
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
           }
           else if(this.pageNum == 7 && !this.situationFourPartThree) {
-            this.createItem('psform3877', '24', 4, 2, true, '')
-            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438')
-            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439')
+
+            let newFormSettings = {
+              senderAddress: "45th MP CO APO AE 09459",
+                registeredMail: true,
+                trackingNum1: "RB842320438US",
+                trackingNum2: "RB842320439US",
+                trackingTextInput1: "HQ CAC FT KNOX, KY 40121",
+                trackingTextInput2: "545 MP CO FT JACKSON, SC 29207",
+                piecesSent: "2",
+                rows:["0.87", "9.50", "N/A", "", "", "", "", "", "", "", "", "", "",
+                      "1.83", "9.50", "N/A"],
+                stamped: false
+            }
+
+            this.createItem('psform3877', '24', 4, 2, true, '', newFormSettings)
+            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined)
+            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined)
             //18-21
             this.situationFourPartThree = true;
           }
           else if(this.pageNum == 8 && !this.situationFourPartFour) {
-            this.createItem('psform3854', '33', 4, 2, true, '')
-            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210')
-            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211')
-            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212')
-            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213')
-            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214')
-            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215')
-            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216')
-            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217')
-            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218')
-            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219')
+
+            let newFormSettings = {
+              lockNo: "",
+              rotaryNo: "",
+              jacketNo: "",
+              controlNo: "",
+              billNo: "33",
+              pageNo: "1X",
+              airmail: "",
+              sealNo: "H/C",
+              to: "APO AE 09824",
+              billNoRight: "33",
+              amNo: "",
+              jacketNoRight: "",
+              lockNoRight: "",
+              rotaryNoRight: "",
+              airmailRight: "",
+              sealNoRight: "H/C",
+              recieved: "",
+              recievingClerks: [],
+              totalArticlesSent: "10",
+              totalArticlesRecieved: "",
+              postmasterSent: "Michael Turner",
+              postmasterRecieved: "",
+              recievingClerk: "",
+              dispatchingClerk: "1400",
+              itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
+               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US"],
+              itemOrigins: [],
+              topStamp1: true,
+              topStamp2: true,
+              bottomStamp1: false,
+              bottomStamp2: false,
+              witnessSent: "",
+              witnessRecieved: ""
+            }
+
+            this.createItem('psform3854', '33', 4, 2, true, '', newFormSettings)
+            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined)
+            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined)
+            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined)
+            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213', undefined)
+            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214', undefined)
+            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215', undefined)
+            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216', undefined)
+            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217', undefined)
+            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218', undefined)
+            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219', undefined)
             //6-17
             this.situationFourPartFour = true;
           }
@@ -1074,7 +1193,7 @@
     font-family: Arial;
     top: 5.5vw;
     left: 10vw;
-    z-index: 2;
+    z-index: 3;
     background-color: #D5D5D5;
     margin-bottom: 5px;
     padding: 5px;
@@ -1085,7 +1204,7 @@
     font-family: Arial;
     top: 8vw;
     left: 10vw;
-    z-index: 2;
+    z-index: 3;
     background-color: #D5D5D5;
     margin-bottom: 5px;
     padding: 5px;
@@ -1149,10 +1268,10 @@
   .scroll-zone-up {
     position:absolute;
     left: 7vw;
-    top: 13vw;
+    top: 12.8vw;
     width: 27vw;
     /* border: 2px solid green; */
-    padding: 1vw;
+    padding: 1.1vw;
   }
   .scroll-zone-down {
     position:absolute;
@@ -1160,7 +1279,7 @@
     top: 48.5vw;
     width: 27vw;
     /* border: 2px solid green; */
-    padding: 1vw;
+    padding: 2vw;
   }
   /* .child-package{
     margin-top: 15px;
