@@ -4,7 +4,7 @@
     <div class="arrow">
     <button v-if="this.$store.state.pageNum > 1" @click="prevPage(), $emit('prev')" class="previousBtn"><img src="@/assets/left-arrow.svg" style="width: 2vw"></button>
     </div>
-    <div class="arrow">
+    <div :class="{'arrow': pageErrors[this.$store.state.pageNum-1] == false, 'arrow-off': pageErrors[this.$store.state.pageNum-1] == true}">
     <button v-if="this.$store.state.pageNum < 11" @click="nextPage(), $emit('next')" class="nextBtn"><img src="@/assets/right-arrow.svg" style="width: 2vw;"></button>
     </div>
 
@@ -15,6 +15,7 @@
 <script>
 export default {
     name: "PageNav",
+    props:['pageErrors'],
     data() {
     return {
     }
@@ -70,5 +71,9 @@ export default {
     position: absolute;
     top: 18vh;
     left: 13vw;
+}
+.arrow-off{
+    pointer-events: none;
+    background-color: grey;
 }
 </style> 
