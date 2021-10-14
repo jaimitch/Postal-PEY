@@ -598,6 +598,34 @@
             "witnessSent": "",
             "witnessRecieved": "Kyle ",
             "backText": ""
+        },
+        {
+            "articleCode": "RB 339 065 331 US",
+            "children": [],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs":{},
+            "id":1001,
+            "images": ["/img/331.b2e18f31.svg"],
+            "level": 2,
+            "showImage": false,
+            "situationNumber": "Situation 1",
+            "stampCounter": 0,
+            "type": "Package"
+        },
+        {
+            "articleCode": "RB 290 770 790 US",
+            "children": [],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1002,
+            "images": ["/img/790.09d01016.svg"],
+            "level": 2,
+            "showImage": false,
+            "situationNumber": "Situation 1",
+            "stampCounter": 0,
+            "type": "Package"
         }
     ]
 }

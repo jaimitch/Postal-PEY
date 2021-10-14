@@ -892,6 +892,7 @@
 
 
         }
+        console.log(newItem)
         this.idCounter++;
         return newItem.id;
      
