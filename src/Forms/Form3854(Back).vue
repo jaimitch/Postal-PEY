@@ -94,6 +94,7 @@
     }
     
     .right-area textarea{
+        resize: none;
         position: absolute;
         width: 95%;
         height: 98%;

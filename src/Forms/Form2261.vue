@@ -833,6 +833,7 @@
         height: 13%;
     }
     .remarks textarea{
+        resize: none;
         position: absolute;
         top:2%;
         left:1%;
