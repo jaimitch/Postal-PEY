@@ -915,41 +915,24 @@
       return newArr;
       },
       submitPage() {
-        //console.log("submit page")
         this.gradeSituationContents();
-
-        if(this.getSituationNumber == 1) {
-          this.gradeForm("20211013", this.answerKey.answers[0], "2261");
-        }
-
-        if(this.pageErrors[this.getSituationNumber - 1] == false) {
-          //console.log("unlock right arrow")
-        }
       },
       /*Accepts an item and and returns the number of errors it has
       NOTE: Grading of forms takes place in gradeForm() since it's much more complex then other items
       NOTE 2: At the time this is called, we assume that there is a match between the item and the answer key
       */
       gradeItem(item, keyItem) {
-        var errors = 0;
-        // console.log("grading item:", item)
         let itemType = item.type;
-        // console.log(itemType)
 
         switch(itemType) {
             case "Package": {
-              // console.log("Its a package!")
-              break
+              return 0;
             }
-            default: {
-              console.log("Its a form!")
-              let code = item.type.replace(/\D/g,'');
-              
-              if(code == "2261") {
-                console.log(item.articleCode, keyItem, code)
-                this.gradeForm(item.articleCode, keyItem, code)
+            default: {              
+              if(itemType == "DD FORM 2261") {
+                console.log(item.articleCode, keyItem, item.type)
+                return this.gradeForm(item.articleCode, keyItem, item.type)
               }
-              console.log(errors)
               break
             }
         }
@@ -959,31 +942,27 @@
 
         var errors = 0;
 
-        if(this.getSituationNumber == 1) {
-          let situationItems = this.items.filter(x => x.situationNumber == "Situation 1")
-          let keyItems = this.answerKey.answers.filter(x => x.situationNumber == "Situation 1")
-          console.log(keyItems)
-          console.log(situationItems)
-
-          for(let item in keyItems) {
+          let situationItems = this.items.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
+          let keyItems = this.answerKey.answers.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
+          keyItems.forEach((currentKeyItem) => {
             //check to see if our filtered key list contains a matching article code
-            console.log(keyItems[item])
-            if(situationItems.filter(x => x.articleCode == keyItems[item].articleCode)) {
-              console.log("")
+            let currentItem = situationItems.filter(x => 
+              x.articleCode == currentKeyItem.articleCode
+            )
+            if(currentItem != undefined) {
+              let itemErrors = this.gradeItem(currentItem[0], currentKeyItem);
+              console.log(itemErrors)
+              //if there are no errors, remove item from both arrays
+                situationItems = situationItems.filter(x => 
+                  x.articleCode != currentItem[0].articleCode
+                  )
             }
-            
-            //if it doesn't we leave it on the
-            //if it does, we need to grade the item
-            this.gradeItem(situationItems[item], "keyItem");
-            //if gradeItem finds no errors, remove the item from both filtered arrays
-          }
-
-          console.log("Situation 1 errors:", errors)
+          })
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
             this.pageErrors[0] = false;
           }
-        }
+        
 
 
 
