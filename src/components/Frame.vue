@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- <Error v-if="error"/> -->
+
     <div class="top-bar">
       <p class="left-text">Left side text</p>
       <p class="right-text">Right side text</p>
@@ -227,6 +229,7 @@
     ],
     data() {
       return {
+        error: false,
         answerKey: key,
         items: [
           {
@@ -914,21 +917,60 @@
       },
       //checks to see if the correct amount of items exist in each level 1 item in a given situation
       gradeSituationContents() {
+
+        var errors = 0;
+
         if(this.getSituationNumber == 1) {
-          if(this.items[1].children.length == 2) {
+          let situationItems = this.items.filter(x => x.situationNumber == "Situation 1")
+
+          for(let item in situationItems) {
+
+
+            //Form case
+            if(situationItems[item].type.includes("FORM")) {
+              // console.log(situationItems[item].type)
+              if(situationItems[item].type == "DD FORM 2261") {
+                let keyForm = this.answerKey.answers.filter(x => x.from == situationItems[item].formInputs.from)
+                // console.log(keyForm)
+                if(keyForm.length == 0) {
+                  errors++;
+                }
+                else if(keyForm.length > 1) {
+                  errors++;
+                }
+                else {
+                  errors += this.gradeForm(situationItems[item].articleCode, keyForm[0], "DD FORM 2261")
+                }
+              }
+            }
+
+            //Package case
+            else if(situationItems[item].type == "Package") {
+              console.log("Its a package!")
+            }
+
+            //Pouch case
+            else if(situationItems[item].type == "Pouch") {
+              console.log("Its a pouch!")
+              errors++;
+            }
+
+          } //end for
+
+          console.log("Situation 1 errors:", errors)
+          if(errors == 0) {
             this.pageErrors[0] = false;
           }
-          if(this.items[2].children.length == 1) {
-            this.pageErrors[0] = false;
-          }
-          // console.log(this.pageErrors)
         }
+
+
+
       },
       gradeForm(articleCode, keyForm, formCode) {
         // console.log(articleCode, keyForm, formCode);
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
 
-        if(formCode == "2261") {
+        if(formCode == "DD FORM 2261") {
           let errors = 0;
           for (let property in keyForm) {
             if(userForm[property] != keyForm[property] && property != "items") {
@@ -949,7 +991,8 @@
                   startGrading = true;
                 }
               }
-              console.log(errors);
+              console.log(articleCode, "errors:", errors);
+              return errors;
             }
           }
 
