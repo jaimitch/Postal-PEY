@@ -150,6 +150,8 @@
         data () {
             return{
                 formData: {
+                    articleCode:this.item.formInputs.articleCode,
+                    situationNumber: this.item.formInputs.situationNumber,
                     certified: this.item.formInputs.certified,
                     COD: this.item.formInputs.COD,
                     DCS: this.item.formInputs.DCS,

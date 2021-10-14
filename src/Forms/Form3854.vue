@@ -191,6 +191,8 @@
         data () {
             return{
                 formData: {
+                    articleCode:this.item.formInputs.articleCode,
+                    situationNumber: this.item.formInputs.situationNumber,
                     lockNo: this.item.formInputs.lockNo,
                     rotaryNo: this.item.formInputs.rotaryNo,
                     jacketNo: this.item.formInputs.jacketNo,

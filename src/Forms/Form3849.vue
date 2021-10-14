@@ -155,6 +155,8 @@
         data() {
             return{
                 formData: {
+                    articleCode:this.item.formInputs.articleCode,
+                    situationNumber: this.item.formInputs.situationNumber,
                     reverseAddress: this.item.formInputs.reverseAddress,
                     name: this.item.formInputs.name,
                     signature: this.item.formInputs.signature,
