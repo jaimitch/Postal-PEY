@@ -626,6 +626,47 @@
             "situationNumber": "Situation 1",
             "stampCounter": 0,
             "type": "Package"
+        },
+        {
+            "articleCode": "SEAL #70948511",
+            "children": [],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1003,
+            "images": ["/img/Bag-1.141db596.svg"],
+            "level": 2,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Pouch"
+        },
+        {
+            "articleCode": "RB 102 022 763 US",
+            "children": [],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1004,
+            "images": ["/img/763.070e9f67.sv"],
+            "level": 2,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Package"
+        },
+        {
+            "articleCode": "RB 298 302 613 US",
+            "children":[],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1005,
+            "images": ["/img/613.d1bdb31a.svg"],
+            "level": 2,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Package"
         }
     ]
 }
