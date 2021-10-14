@@ -1,6 +1,7 @@
 {
     "answers":[
         {
+            "situationNumber":"Situation 1",
             "apoNum": "APO AE 09459",
             "from": "20211013",
             "to": "20211013",
@@ -46,6 +47,7 @@
             "items": ["RB339065331US", "RB290770790US"]
         },
         {
+            "situationNumber":"Situation 2",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -81,6 +83,7 @@
             "backText": ""
         },
         {
+            "situationNumber": "Situation 6",
             "apoNum": "APO AE 09459",
             "from": "Current Date/0800",
             "to": "Current Date/1600",
@@ -126,6 +129,7 @@
             "items": []
         },
         {
+            "situationNumber": "Situation 4",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -161,6 +165,7 @@
             "backText": ""
           },
           {
+            "situationNumber": "Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459 ",
             "name": "Ronald Cain",
             "signature": "Ronald Cain",
@@ -189,6 +194,7 @@
             "date": "Current Date"
          },
          {
+            "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459 ",
             "name": "Carl Thompson",
             "signature": "Carl Thompson",
@@ -217,6 +223,7 @@
             "date": "Current Date"
          },
          {
+            "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459 ",
             "name": "Donald Green",
             "signature": "Donald Green",
@@ -245,6 +252,7 @@
             "date": "Current Date"
          },
          {
+            "situationNumber":"Situation 3",
             "reverseAddress": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
             "name": "Mary Fulton",
             "signature": "Mary Fulton",
@@ -273,6 +281,7 @@
             "date": "Current Date"
          },
          {
+            "situationNumber":"Situation 4",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -308,6 +317,7 @@
             "backText": ""
          },
          {
+            "situationNumber":"Situation 2",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -343,6 +353,7 @@
             "backText": "RB621758502US – NOT RECEIVED RB309266104US – SHOULD READ RB309266140US RB888122361US – MISSENT"
         },
         {
+            "situationNumber":"Situation 4",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -390,6 +401,7 @@
             "backText": ""
         },
         {
+            "situationNumber":"Situation 4",
             "senderAddress": "",
             "adultSigReq": false,
             "adultSigRest": false,
@@ -443,6 +455,7 @@
             "stamped": true
         },
         {
+            "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
             "DCS": false,
@@ -465,6 +478,7 @@
             "stamped": true
         },
         {
+            "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
             "DCS": false,
@@ -487,6 +501,7 @@
             "stamped": true
         },
         {
+            "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
             "DCS": false,
@@ -509,6 +524,7 @@
             "stamped": true
         },
         {
+            "situationNumber":"Situation 5",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -565,6 +581,7 @@
             "backText": "" 
         },
         {
+            "situationNumber":"Situation 5",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
@@ -667,6 +684,348 @@
             "situationNumber": "Situation 2",
             "stampCounter": 0,
             "type": "Package"
+        },
+        {
+            "articleCode": "RB 867 092 744 US",
+            "children":[],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1008,
+            "images": ["/img/744.0be49885.svg"],
+            "level": 3,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Letter"
+        },
+        {
+            "articleCode": "RB 309 266 140 US",
+            "children":[],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1009,
+            "images": ["/img/140.3f7948ea.svg"],
+            "level": 3,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Letter" 
+        },
+        {
+            "articleCode": "RB 143 899 161 US",
+            "children":[],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1010,
+            "images": ["/img/161.627c623f.svg"],
+            "level": 3,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Letter" 
+        },
+        {
+            "articleCode": "RB 218 344 488 US",
+            "children":[],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1011,
+            "images": ["/img/488.00b9c4d6.svg"],
+            "level": 3,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Letter" 
+        },
+        {
+            "articleCode": "RB 888 122 361 US",
+            "children":[],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1012,
+            "images": ["/img/361.dd636199.svg"],
+            "level": 3,
+            "showImage": false,
+            "situationNumber": "Situation 2",
+            "stampCounter": 0,
+            "type": "Letter" 
+        },
+        {
+            "articleCode": "SEAL #43000277",
+            "children": [],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1014,
+            "images": ["/img/Bag-1.141db596.svg"],
+            "level": 2,
+            "situationNumber": "Situation 4",
+            "stampCounter": 0,
+            "type": "Pouch"
+        },
+        {
+            "articleCode": "RB 300 911 759 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1015,
+            "images": ["/img/759.2408f69b.svg"],
+            "level":2,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Package"
+        },
+        {
+            "articleCode": "RB 300 911 755 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1017,
+            "images": ["/img/755.3e739ad2.svg"],
+            "level":3,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 300 911 756 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1018,
+            "images": ["/img/756.3c1fcf93.svg"],
+            "level":3,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 300 911 757 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1019,
+            "images": ["/img/757.e8265873.svg"],
+            "level":3,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 300 911 758 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1020,
+            "images": ["/img/758.3011d9aa.svg"],
+            "level":3,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 300 911 760 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1021,
+            "images": ["/img/760.43812843.svg"],
+            "level":3,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 300 911 761 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1022,
+            "images": ["/img/761.35d33dad.svg"],
+            "level":3,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Package"
+        },
+        {
+            "articleCode": "RB 842 320 438 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1024,
+            "images": ["/img/438.31cee677.svg"],
+            "level":2,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 842 320 439 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1025,
+            "images": ["/img/439.b77faa91.svg"],
+            "level":2,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "articleCode": "RB 707 092 210 US",
+            "children":[],
+            "currentImageIndex":0,
+            "droppable":true,
+            "formInputs":{},
+            "id":1027,
+            "images": ["/img/210.d55dbf9b.svg"],
+            "level":2,
+            "showImage":false,
+            "situationNumber":"Situation 4",
+            "stampCounter":0,
+            "type":"Letter"
+        },
+        {
+            "id":1028,
+            "articleCode":"RB 707 092 211 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/211.a679d8d7.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Package",
+            "droppable":true,
+            "showImage":false
+        },
+        {
+            "id":1029,
+            "articleCode":"RB 707 092 212 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/212.35732733.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
+        },
+        {
+            "id":1030,
+            "articleCode":"RB 707 092 213 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/213.99c12d6d.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
+        },
+        {
+            "id":1031,
+            "articleCode":"RB 707 092 214 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/214.bc898deb.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
+        },
+        {
+            "id":1032,
+            "articleCode":"RB 707 092 215 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/215.ed33ef49.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Package",
+            "droppable":true,
+            "showImage":false
+        },
+        {
+            "id":1033,
+            "articleCode":"RB 707 092 216 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/216.2bb592c2.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
+        },
+        {
+            "id":1034,
+            "articleCode":"RB 707 092 217 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/217.ce569454.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
+        },
+        {
+            "id":1035,
+            "articleCode":"RB 707 092 218 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/218.289dc2bc.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
+        },
+        {
+            "id":1036,
+            "articleCode":"RB 707 092 219 US",
+            "situationNumber":"Situation 4",
+            "children":[],
+            "level":2,
+            "images":["/img/219.d9aa413d.svg"],
+            "currentImageIndex":0,
+            "stampCounter":0,
+            "formInputs":{},
+            "type":"Letter",
+            "droppable":true
         }
     ]
 }
