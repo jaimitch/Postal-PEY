@@ -549,6 +549,8 @@
             stampCounter: 0,
             stampable: false,
             formInputs: {
+              situationNumber: 'Situation ' + situationNumber,
+              articleCode: articleCode,
               lockNo: "",
               rotaryNo: "",
               jacketNo: "",
@@ -611,6 +613,8 @@
             stampCounter: 0,
             stampable: false,
             formInputs: {
+               situationNumber: 'Situation ' + situationNumber,
+               articleCode: articleCode,
                reverseAddress: "",
                name: "",
                signature: "",
@@ -658,7 +662,9 @@
             stampCounter: 0,
             stampable: false,
             formInputs: {
-              senderAddress: "",
+                situationNumber: 'Situation ' + situationNumber,
+                articleCode: articleCode,
+                senderAddress: "",
                 adultSigReq: false,
                 adultSigRest: false,
                 certMail: false,
@@ -722,7 +728,9 @@
             stampCounter: 0,
             stampable: false,
             formInputs: {
-              apoNum: "",
+                situationNumber: 'Situation ' + situationNumber,
+                articleCode: articleCode,
+                apoNum: "",
                 from: "",
                 to: "",
                 itemsAtStart: "",
@@ -791,6 +799,8 @@
             stampCounter: 0,
             stampable: false,
             formInputs: {
+              situationNumber: 'Situation ' + situationNumber,
+              articleCode: articleCode,
               certified: false,
               COD: false,
               DCS: false,

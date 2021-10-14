@@ -190,6 +190,8 @@
         data () {
             return{
                 formData: {
+                    articleCode:this.item.formInputs.articleCode,
+                    situationNumber: this.item.formInputs.situationNumber,
                     senderAddress: this.item.formInputs.senderAddress,
                     adultSigReq: this.item.formInputs.adultSigReq,
                     adultSigRest: this.item.formInputs.adultSigRest,

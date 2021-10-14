@@ -21,6 +21,8 @@
         data(){
             return{
                 formData:{
+                    articleCode:this.item.formInputs.articleCode,
+                    situationNumber: this.item.formInputs.situationNumber,
                     apoNum: this.item.formInputs.apoNum,
                     from: this.item.formInputs.from,
                     to: this.item.formInputs.to,

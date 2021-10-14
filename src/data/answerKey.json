@@ -1,6 +1,7 @@
 {
     "answers":[
         {
+            "articleCode":"20211013",
             "situationNumber":"Situation 1",
             "apoNum": "APO AE 09459",
             "from": "20211013",
@@ -47,7 +48,7 @@
             "items": ["RB339065331US", "RB290770790US"]
         },
         {
-            "situationNumber":"Situation 2",
+            "situationNumber": "Situation 2",
             "lockNo": "",
             "rotaryNo": "",
             "jacketNo": "",
