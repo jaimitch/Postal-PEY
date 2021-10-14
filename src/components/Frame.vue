@@ -916,49 +916,60 @@
           //console.log("unlock right arrow")
         }
       },
-      //checks to see if the correct amount of items exist in each level 1 item in a given situation
+      /*Accepts an item and and returns the number of errors it has
+      NOTE: Grading of forms takes place in gradeForm() since it's much more complex then other items
+      NOTE 2: At the time this is called, we assume that there is a match between the item and the answer key
+      */
+      gradeItem(item, keyItem) {
+        var errors = 0;
+        // console.log("grading item:", item)
+        let itemType = item.type;
+        // console.log(itemType)
+
+        switch(itemType) {
+            case "Package": {
+              // console.log("Its a package!")
+              break
+            }
+            default: {
+              console.log("Its a form!")
+              let code = item.type.replace(/\D/g,'');
+              
+              if(code == "2261") {
+                console.log(item.articleCode, keyItem, code)
+                this.gradeForm(item.articleCode, keyItem, code)
+              }
+              console.log(errors)
+              break
+            }
+        }
+      },
+      //facilitates the grading of each item for the current situation on submit
       gradeSituationContents() {
 
         var errors = 0;
 
         if(this.getSituationNumber == 1) {
           let situationItems = this.items.filter(x => x.situationNumber == "Situation 1")
+          let keyItems = this.answerKey.answers.filter(x => x.situationNumber == "Situation 1")
+          console.log(keyItems)
+          console.log(situationItems)
 
-          for(let item in situationItems) {
-
-
-            //Form case
-            if(situationItems[item].type.includes("FORM")) {
-              // console.log(situationItems[item].type)
-              if(situationItems[item].type == "DD FORM 2261") {
-                let keyForm = this.answerKey.answers.filter(x => x.from == situationItems[item].formInputs.from)
-                // console.log(keyForm)
-                if(keyForm.length == 0) {
-                  errors++;
-                }
-                else if(keyForm.length > 1) {
-                  errors++;
-                }
-                else {
-                  errors += this.gradeForm(situationItems[item].articleCode, keyForm[0], "DD FORM 2261")
-                }
-              }
+          for(let item in keyItems) {
+            //check to see if our filtered key list contains a matching article code
+            console.log(keyItems[item])
+            if(situationItems.filter(x => x.articleCode == keyItems[item].articleCode)) {
+              console.log("")
             }
-
-            //Package case
-            else if(situationItems[item].type == "Package") {
-              console.log("Its a package!")
-            }
-
-            //Pouch case
-            else if(situationItems[item].type == "Pouch") {
-              console.log("Its a pouch!")
-              errors++;
-            }
-
-          } //end for
+            
+            //if it doesn't we leave it on the
+            //if it does, we need to grade the item
+            this.gradeItem(situationItems[item], "keyItem");
+            //if gradeItem finds no errors, remove the item from both filtered arrays
+          }
 
           console.log("Situation 1 errors:", errors)
+          //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
             this.pageErrors[0] = false;
           }
@@ -1035,8 +1046,8 @@
                 items: ["RB339065331US", "RB290770790US"],
             }
 
-            let yest = this.getYYYYMMDD(-1)
-            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings)
+            // let yest = this.getYYYYMMDD(-1)
+            this.createItem('ddform2261', "20211013", 1, 2, true, '', newFormSettings)
             this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
             this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
