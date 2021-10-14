@@ -901,15 +901,15 @@
       return newArr;
       },
       submitPage() {
-        console.log("submit page")
+        //console.log("submit page")
         this.gradeSituationContents();
 
         if(this.getSituationNumber == 1) {
-          this.gradeForm("20211012", this.answerKey.answers[0], "2261");
+          this.gradeForm("20211013", this.answerKey.answers[0], "2261");
         }
 
         if(this.pageErrors[this.getSituationNumber - 1] == false) {
-          console.log("unlock right arrow")
+          //console.log("unlock right arrow")
         }
       },
       //checks to see if the correct amount of items exist in each level 1 item in a given situation
@@ -930,29 +930,26 @@
 
         if(formCode == "2261") {
           let errors = 0;
-
           for (let property in keyForm) {
             if(userForm[property] != keyForm[property] && property != "items") {
               console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
-
             if(Array.isArray(keyForm[property])) {  
               let startGrading = false;
-              for(let i = userForm.items.length - 1; i > 0; i--) {
-                let userItem = userForm.items[i].trim()
-                if(userItem.length != 0) {
-                  // console.log("userItem:", userItem)
-                  startGrading = true;
+              for(let i = userForm.items.length-1; i >= 0; i--) {
+                if(startGrading == true && (userForm.items[i] === "" || userForm.items[i] === undefined)){
+                  errors = errors+i+1;
+                  break;
                 }
-                if(startGrading) {
-                  if(!keyForm.items.includes(userItem)) {
-                  errors++;
+                else if(userForm.items[i].length){
+                  if(!keyForm.items.includes(userForm.items[i])){
+                    errors++;
                   }
+                  startGrading = true;
                 }
               }
               console.log(errors);
-
             }
           }
 
