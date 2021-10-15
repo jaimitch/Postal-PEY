@@ -631,7 +631,8 @@
             "showImage": false,
             "situationNumber": "Situation 1",
             "stampCounter": 0,
-            "type": "Package"
+            "type": "Package",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 290 770 790 US",
@@ -645,7 +646,8 @@
             "showImage": false,
             "situationNumber": "Situation 1",
             "stampCounter": 0,
-            "type": "Package"
+            "type": "Package",
+            "gradeAt":[]
         },
         {
             "articleCode": "SEAL #70948511",
@@ -658,7 +660,8 @@
             "level": 2,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Pouch"
+            "type": "Pouch",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 102 022 763 US",
@@ -672,7 +675,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Package"
+            "type": "Package",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 298 302 613 US",
@@ -686,7 +690,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Package"
+            "type": "Package",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 867 092 744 US",
@@ -700,7 +705,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Letter"
+            "type": "Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 309 266 140 US",
@@ -714,7 +720,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Letter" 
+            "type": "Letter",
+            "gradeAt":[] 
         },
         {
             "articleCode": "RB 143 899 161 US",
@@ -728,7 +735,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Letter" 
+            "type": "Letter",
+            "gradeAt":[] 
         },
         {
             "articleCode": "RB 218 344 488 US",
@@ -742,7 +750,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Letter" 
+            "type": "Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 888 122 361 US",
@@ -756,7 +765,8 @@
             "showImage": false,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Letter" 
+            "type": "Letter",
+            "gradeAt":[] 
         },
         {
             "articleCode": "SEAL #43000277",
@@ -769,7 +779,8 @@
             "level": 2,
             "situationNumber": "Situation 4",
             "stampCounter": 0,
-            "type": "Pouch"
+            "type": "Pouch",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 759 US",
@@ -783,7 +794,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Package"
+            "type":"Package",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 755 US",
@@ -797,7 +809,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 756 US",
@@ -811,7 +824,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 757 US",
@@ -825,7 +839,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 758 US",
@@ -839,7 +854,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 760 US",
@@ -853,7 +869,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 761 US",
@@ -867,7 +884,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Package"
+            "type":"Package",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 842 320 438 US",
@@ -881,7 +899,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 842 320 439 US",
@@ -895,7 +914,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 707 092 210 US",
@@ -909,7 +929,8 @@
             "showImage":false,
             "situationNumber":"Situation 4",
             "stampCounter":0,
-            "type":"Letter"
+            "type":"Letter",
+            "gradeAt":[]
         },
         {
             "id":1028,
@@ -923,7 +944,8 @@
             "formInputs":{},
             "type":"Package",
             "droppable":true,
-            "showImage":false
+            "showImage":false,
+            "gradeAt": []
         },
         {
             "id":1029,
@@ -936,7 +958,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt":[]
         },
         {
             "id":1030,
@@ -949,7 +972,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt":[]
         },
         {
             "id":1031,
@@ -962,7 +986,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt":[]
         },
         {
             "id":1032,
@@ -976,7 +1001,8 @@
             "formInputs":{},
             "type":"Package",
             "droppable":true,
-            "showImage":false
+            "showImage":false,
+            "gradeAt":[]
         },
         {
             "id":1033,
@@ -989,7 +1015,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt":[]
         },
         {
             "id":1034,
@@ -1002,7 +1029,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt":[]
         },
         {
             "id":1035,
@@ -1015,7 +1043,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt": []
         },
         {
             "id":1036,
@@ -1028,7 +1057,8 @@
             "stampCounter":0,
             "formInputs":{},
             "type":"Letter",
-            "droppable":true
+            "droppable":true,
+            "gradeAt": []
         }
     ]
 }
