@@ -246,7 +246,8 @@
 
 <style scoped>
     textarea  {
-        font-family:Arial;     
+        font-family:Arial;   
+        resize: none;  
     }
     .outline{
         position: relative;

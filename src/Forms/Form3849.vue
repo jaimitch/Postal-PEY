@@ -420,6 +420,7 @@
     }
     .delivery-address textarea{
         position: absolute;
+        resize: none;
         width: 75%;
         left: 22%;
         top:10%;

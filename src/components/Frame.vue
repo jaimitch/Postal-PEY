@@ -229,6 +229,8 @@
     ],
     data() {
       return {
+        studentName: "Bob",
+        payGrade: "1",
         error: false,
         answerKey: key,
         items: [
@@ -332,6 +334,7 @@
     },
     mounted() {
       this.updateSituation();
+      this.processAnswerKey();
     },
     computed: {
       currentPage() {
@@ -899,12 +902,13 @@
             this.items.push(newItem);
             if(defaultCreate) {
               this.items[1].children.push(newItem.id)
+              
             }
           }
 
 
         }
-        console.log(newItem)
+        //console.log(newItem)
         this.idCounter++;
         return newItem.id;
      
@@ -924,15 +928,25 @@
       NOTE 2: At the time this is called, we assume that there is a match between the item and the answer key
       */
       gradeItem(item, keyItem) {
+        console.log(item)
         let itemType = item.type;
-
         switch(itemType) {
             case "Package": {
+              return 0;
+            }
+            case "Pouch": {
+              return 0;
+            }
+            case "Truck": {
               return 0;
             }
             default: {              
               if(itemType == "DD FORM 2261") {
                 console.log(item.articleCode, keyItem, item.type)
+                return this.gradeForm(item.articleCode, keyItem, item.type)
+              }
+              if(itemType == "PS FORM 3854") {
+                //console.log(item.articleCode, keyItem, item.type)
                 return this.gradeForm(item.articleCode, keyItem, item.type)
               }
               break
@@ -941,38 +955,37 @@
       },
       //facilitates the grading of each item for the current situation on submit
       gradeSituationContents() {
-
         var errors = 0;
-
           let situationItems = this.items.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
           let keyItems = this.answerKey.answers.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
           keyItems.forEach((currentKeyItem) => {
+            
             //check to see if our filtered key list contains a matching article code
             let currentItem = situationItems.filter(x => 
               x.articleCode == currentKeyItem.articleCode
             )
-            if(currentItem != undefined) {
+            
+            if(currentItem[0] != undefined) {
+              //console.log("situationItems",situationItems.length)
               let itemErrors = this.gradeItem(currentItem[0], currentKeyItem);
-              console.log(itemErrors)
+              console.log("itemErrors",itemErrors)
+              
               //if there are no errors, remove item from both arrays
                 situationItems = situationItems.filter(x => 
                   x.articleCode != currentItem[0].articleCode
                   )
+                  //console.log("situationItems ",situationItems.length)
             }
           })
+          
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
             this.pageErrors[0] = false;
           }
-        
-
-
-
+        console.log(situationItems.length, keyItems.length)
       },
       gradeForm(articleCode, keyForm, formCode) {
-        // console.log(articleCode, keyForm, formCode);
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
-
         if(formCode == "DD FORM 2261") {
           let errors = 0;
           for (let property in keyForm) {
@@ -994,13 +1007,25 @@
                   startGrading = true;
                 }
               }
-              console.log(articleCode, "errors:", errors);
+             // console.log(articleCode, "errors:", errors);
               return errors;
             }
           }
-
         }
-
+        if(formCode == "PS FORM 3854") {
+          //console.log("Never here?")
+          //let errors = 0;
+          for (let property in keyForm) {
+            if(userForm[property] != keyForm[property] && property != "items") {
+              //console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
+              //errors++;
+            }
+            if(Array.isArray(keyForm[property])) {  
+              //console.log("found an array", keyForm[property])
+              }
+            return 0;
+          }
+        }
       },
 
       getItemByArticleCode(code) {
@@ -1037,8 +1062,8 @@
                 items: ["RB339065331US", "RB290770790US"],
             }
 
-            // let yest = this.getYYYYMMDD(-1)
-            this.createItem('ddform2261', "20211013", 1, 2, true, '', newFormSettings)
+            let yest = this.getYYYYMMDD(-1)
+            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings)
             this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
             this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
@@ -1073,7 +1098,7 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            this.createItem('psform3854', '', 2, 2, true, '', newFormSettings)
+            this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
             //42 - 47
             this.situationTwoPartOne = true;
           }
@@ -1260,6 +1285,42 @@
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;
+      },
+      // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
+      // to the correct ones for this student (name, date, etc..) 
+      // still needs functionality for time, working on that
+      processAnswerKey(){
+        this.answerKey.answers.forEach(obj => {
+          for(const property in obj ){
+            if(typeof obj[property] === 'string'){
+              if(obj[property].includes("Student") || obj[property].includes("PayGrade")){
+                //console.log("Before ", obj[property])
+                obj[property] = obj[property].replaceAll("Student", this.studentName);
+                obj[property] = obj[property].replaceAll("PayGrade", this.payGrade);
+                //console.log("After ", obj[property])
+              }
+              if(obj[property].includes("YESTERDAY")){
+                //console.log("Before ", obj[property])
+                obj[property] = obj[property].replaceAll("YESTERDAY", this.getYYYYMMDD(-1));
+                //console.log("After ", obj[property])
+              }
+              if(obj[property].includes("Current Date")){
+                //console.log("Before ", obj[property])
+                obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDD(0));
+                //console.log("After ", obj[property])
+              }
+            }
+            if(Array.isArray(obj[property])){
+              if(obj[property].includes("Student")){
+                //console.log("student in array")
+                let index = obj[property].indexOf("Student")
+                //console.log("Before ", obj[property][index])
+                obj[property][index] = obj[property][index].replaceAll("Student", this.studentName)
+                //console.log("After ", obj[property][index])
+              }
+            }
+          }
+        })
       }
     },
     watch: {
