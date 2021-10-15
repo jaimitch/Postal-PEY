@@ -555,7 +555,7 @@
             stampable: false,
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
-              articleCode: articleCode,
+              articleCode: "Bill #" + articleCode,
               lockNo: "",
               rotaryNo: "",
               jacketNo: "",
@@ -928,7 +928,7 @@
       NOTE 2: At the time this is called, we assume that there is a match between the item and the answer key
       */
       gradeItem(item, keyItem) {
-        console.log(item)
+        // console.log(item)
         let itemType = item.type;
         switch(itemType) {
             case "Package": {
@@ -1013,18 +1013,20 @@
           }
         }
         if(formCode == "PS FORM 3854") {
-          //console.log("Never here?")
-          //let errors = 0;
+          console.log("Its a 3854!")
+          let errors = 0;
+          console.log(keyForm)
           for (let property in keyForm) {
-            if(userForm[property] != keyForm[property] && property != "items") {
-              //console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
-              //errors++;
-            }
+            // console.log(property)
             if(Array.isArray(keyForm[property])) {  
               //console.log("found an array", keyForm[property])
               }
-            return 0;
+            else if(userForm[property] != keyForm[property]) {
+              console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
+              errors++;
+            }
           }
+          return errors;
         }
       },
 
@@ -1076,13 +1078,6 @@
             this.items[3].level = 1;
             this.items[4].level = 0;
 
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined)
-            this.assignItemToParent('Truck 1', item1)
-            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined)
-            this.assignItemToParent('Truck 1', item2)
-            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined)
-            this.assignItemToParent('Truck 1', item3)
-
             let newFormSettings = {
               billNo: "260",
               pageNo: "1X",
@@ -1098,11 +1093,24 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            this.createItem('psform3854', '260', 2, 2, true, '', newFormSettings)
+            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings)
+            this.assignItemToParent('Truck 1', form1)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined)
+            this.assignItemToParent('Bill #260', item1)
+            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined)
+            this.assignItemToParent('Bill #260', item2)
+            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined)
+            this.assignItemToParent('Bill #260', item3)
+            console.log(this.items)
+
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
+
+            //hardcode all truck visibility
+            this.items[3].level = 0;
+            this.items[4].level = 0;
 
             let newFormSettings = {
               billNo: "231",
