@@ -229,6 +229,8 @@
     ],
     data() {
       return {
+        studentName: "Bob",
+        payGrade: "1",
         error: false,
         answerKey: key,
         items: [
@@ -271,7 +273,6 @@
           },
           {
             id: 6,
-            articleCode: "Incoming Truck",
             title: "Incoming Truck",
             articleCode: "Truck 1",
             children: [],
@@ -333,6 +334,7 @@
     },
     mounted() {
       this.updateSituation();
+      this.processAnswerKey();
     },
     computed: {
       currentPage() {
@@ -900,6 +902,7 @@
             this.items.push(newItem);
             if(defaultCreate) {
               this.items[1].children.push(newItem.id)
+              
             }
           }
 
@@ -987,7 +990,7 @@
           let errors = 0;
           for (let property in keyForm) {
             if(userForm[property] != keyForm[property] && property != "items") {
-              //console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
+              console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
             if(Array.isArray(keyForm[property])) {
@@ -1059,8 +1062,8 @@
                 items: ["RB339065331US", "RB290770790US"],
             }
 
-            // let yest = this.getYYYYMMDD(-1)
-            this.createItem('ddform2261', "20211013", 1, 2, true, '', newFormSettings)
+            let yest = this.getYYYYMMDD(-1)
+            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings)
             this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
             this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
           }
@@ -1282,6 +1285,42 @@
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;
+      },
+      // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
+      // to the correct ones for this student (name, date, etc..) 
+      // still needs functionality for time, working on that
+      processAnswerKey(){
+        this.answerKey.answers.forEach(obj => {
+          for(const property in obj ){
+            if(typeof obj[property] === 'string'){
+              if(obj[property].includes("Student") || obj[property].includes("PayGrade")){
+                //console.log("Before ", obj[property])
+                obj[property] = obj[property].replaceAll("Student", this.studentName);
+                obj[property] = obj[property].replaceAll("PayGrade", this.payGrade);
+                //console.log("After ", obj[property])
+              }
+              if(obj[property].includes("YESTERDAY")){
+                //console.log("Before ", obj[property])
+                obj[property] = obj[property].replaceAll("YESTERDAY", this.getYYYYMMDD(-1));
+                //console.log("After ", obj[property])
+              }
+              if(obj[property].includes("Current Date")){
+                //console.log("Before ", obj[property])
+                obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDD(0));
+                //console.log("After ", obj[property])
+              }
+            }
+            if(Array.isArray(obj[property])){
+              if(obj[property].includes("Student")){
+                //console.log("student in array")
+                let index = obj[property].indexOf("Student")
+                //console.log("Before ", obj[property][index])
+                obj[property][index] = obj[property][index].replaceAll("Student", this.studentName)
+                //console.log("After ", obj[property][index])
+              }
+            }
+          }
+        })
       }
     },
     watch: {
