@@ -338,7 +338,7 @@
             "airmailRight": "",
             "sealNoRight": "70948511",
             "recieved": "5",
-            "recievingClerks": ["","WIT: George Forrest", "Student"],
+            "recievingClerks": ["WIT: George Forrest", "Student"],
             "totalArticlesSent": "6",
             "totalArticlesRecieved": "5",
             "postmasterSent": "Hark Smith",
