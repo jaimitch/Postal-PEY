@@ -224,12 +224,16 @@
                     bottomStamp1: this.item.formInputs.bottomStamp1,
                     bottomStamp2: this.item.formInputs.bottomStamp2,
                     witnessSent: this.item.formInputs.witnessSent,
-                    witnessRecieved: this.item.formInputs.witnessRecieved
+                    witnessRecieved: this.item.formInputs.witnessRecieved,
+                    backText: this.item.formInputs.backText
                 },
             }
         },
         methods: {
             changeForm() {
+                if(this.backText == undefined){
+                    this.backText = this.item.formInputs.backText
+                }
                 this.$emit('changeForm', this.formData)
             }
         },
