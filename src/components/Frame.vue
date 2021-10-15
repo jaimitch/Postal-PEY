@@ -273,6 +273,7 @@
             id: 6,
             articleCode: "Incoming Truck",
             title: "Incoming Truck",
+            articleCode: "Truck 1",
             children: [],
             level: 0,
             situationNumber: 'Situation ' + 2,
@@ -285,6 +286,7 @@
           {
             id: 7,
             title: "Outgoing Truck",
+            articleCode: "Truck 2",
             children: [],
             level: 0,
             situationNumber: 'Situation ' + 3,
@@ -988,7 +990,7 @@
               //console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
-            if(Array.isArray(keyForm[property])) {  
+            if(Array.isArray(keyForm[property])) {
               let startGrading = false;
               for(let i = userForm.items.length-1; i >= 0; i--) {
                 if(startGrading == true && (userForm.items[i] === "" || userForm.items[i] === undefined)){
@@ -1071,9 +1073,12 @@
             this.items[3].level = 1;
             this.items[4].level = 0;
 
-            this.createItem('pouch', '70948511', 2, 2, true, 'Bag-1', undefined)
-            this.createItem('package', 'RB 102 022 763 US', 2, 2, true, '763', undefined)
-            this.createItem('package', 'RB 298 302 613 US', 2, 2, true, '613', undefined)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined)
+            this.assignItemToParent('Truck 1', item1)
+            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined)
+            this.assignItemToParent('Truck 1', item2)
+            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined)
+            this.assignItemToParent('Truck 1', item3)
 
             let newFormSettings = {
               billNo: "260",
