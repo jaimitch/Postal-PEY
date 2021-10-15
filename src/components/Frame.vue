@@ -277,10 +277,12 @@
             articleCode: "Truck 1",
             children: [],
             level: 0,
-            situationNumber: 'Situation ' + 2,
+            situationNumber: "Situation 2",
             stampCounter: 0,
             stampable: false,
-            formInputs: {},
+            formInputs: {
+              situationNumber: "Situation 2"
+              },
             type: "Truck",
             droppable: true
           },
@@ -290,10 +292,12 @@
             articleCode: "Truck 2",
             children: [],
             level: 0,
-            situationNumber: 'Situation ' + 3,
+            situationNumber: "Situation 3",
             stampCounter: 0,
             stampable: false,
-            formInputs: {},
+            formInputs: {
+              situationNumber: "Situation 3"
+              },
             type: "Truck",
             droppable: true
           },
@@ -1037,12 +1041,12 @@
                       keyPairs.push(keyItem);
                     }
                   }
-                  //second pass to see if the items are in the right order
+                  //second pass to see if the items are in the wrong order
                   for(let i = 1; i < userForm.itemNums.length; i++) {
                     for(let j = 0; j < keyPairs.length; j++) {
                       //If left column item should have a match
                       if(userForm.itemNums[i] == keyPairs[j].left) {
-                        //Is the right hand column item is defined at the current index
+                        //If the right hand column item is defined at the current index
                         if(userForm.itemOrigins[i] != undefined) {
                           //It doesn't match
                           if(userForm.itemOrigins[i] != keyPairs[j].right) {
@@ -1060,7 +1064,7 @@
                   }
 
                 }
-              } // end recieving clerks processing
+              } // end itemOrigins processing
 
               else if(property == "recievingClerks") {
                 //If the student put nothing, but there should be something its wrong
@@ -1081,6 +1085,7 @@
 
 
               }
+            //Property is not an array, and is incorrect
             else if(userForm[property] != keyForm[property]) {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
