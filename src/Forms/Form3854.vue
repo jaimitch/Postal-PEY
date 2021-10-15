@@ -46,8 +46,8 @@
                     </div>
                 </div>
                 <div class="centered">
+                    Recieving Clerks<br>
                     <input type="text" v-model="formData.recievingClerks[0]"> <br>
-                    Recieving Clerks
                 </div>
                 <div class="centered">
                     <input type="text" v-model="formData.recievingClerks[1]"> <br>
