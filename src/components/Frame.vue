@@ -932,12 +932,19 @@
         let itemType = item.type;
         switch(itemType) {
             case "Package": {
+              console.log("Its a package")
+              return 0;
+            }
+            case "Letter": {
+              console.log("Its a letter")
               return 0;
             }
             case "Pouch": {
+              console.log("Its a pouch")
               return 0;
             }
             case "Truck": {
+              console.log("Its a Truck")
               return 0;
             }
             default: {              
@@ -1015,11 +1022,64 @@
         if(formCode == "PS FORM 3854") {
           console.log("Its a 3854!")
           let errors = 0;
-          console.log(keyForm)
+          let keyPairs = [];
           for (let property in keyForm) {
             // console.log(property)
-            if(Array.isArray(keyForm[property])) {  
-              //console.log("found an array", keyForm[property])
+            if(Array.isArray(keyForm[property])) {
+
+              if(property == "itemOrigins") {
+                //If there are item origins, we need to build an answer key
+                if(keyForm.itemOrigins.length > 1) {
+                  //first pass to build the answer key
+                  for(let i = 1; i < keyForm.itemOrigins.length; i++) {
+                    if(userForm.itemOrigins[i] != undefined) {
+                      let keyItem = {left: keyForm.itemNums[i], right: keyForm.itemOrigins[i]}
+                      keyPairs.push(keyItem);
+                    }
+                  }
+                  //second pass to see if the items are in the right order
+                  for(let i = 1; i < userForm.itemNums.length; i++) {
+                    for(let j = 0; j < keyPairs.length; j++) {
+                      //If left column item should have a match
+                      if(userForm.itemNums[i] == keyPairs[j].left) {
+                        //Is the right hand column item is defined at the current index
+                        if(userForm.itemOrigins[i] != undefined) {
+                          //It doesn't match
+                          if(userForm.itemOrigins[i] != keyPairs[j].right) {
+                            errors++
+                            break
+                          }
+                        }
+                        //Its undefined, so it must be wrong
+                        else { 
+                          errors++
+                          break
+                        }
+                      }
+                    }
+                  }
+
+                }
+              } // end recieving clerks processing
+
+              else if(property == "recievingClerks") {
+                //If the student put nothing, but there should be something its wrong
+                if(userForm[property].length == 0 && keyForm[property].length > 0) {
+                  errors+= keyForm[property].length;
+                }
+                else {
+                  //Make sure all entries are correct
+                  let keyItems = keyForm.recievingClerks;
+                  let userItems = userForm.recievingClerks;
+                  for(let i = 0; i < keyItems.length; i++) {
+                    if(!keyItems.includes(userItems[i])) {
+                      errors++;
+                    }
+                  }
+                }
+              }
+
+
               }
             else if(userForm[property] != keyForm[property]) {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
