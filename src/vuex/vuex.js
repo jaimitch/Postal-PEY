@@ -28,7 +28,7 @@ const store = createStore({
                 totalArticlesRecieved: "3",
                 postmasterSent: "Anthony Smith",
                 postmasterRecieved: "Student's",
-                recievingClerk: "Current Time",
+                currentTime: "Current Time",
                 dispatchingClerk: "0800",
                 itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
                 itemOrigins: ["", "AMF KENNEDY NY 00300"],

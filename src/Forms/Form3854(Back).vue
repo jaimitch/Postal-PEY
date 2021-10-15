@@ -38,7 +38,7 @@
                     totalArticlesRecieved: this.item.formInputs.totalArticlesRecieved,
                     postmasterSent: this.item.formInputs.postmasterSent,
                     postmasterRecieved: this.item.formInputs.postmasterRecieved,
-                    recievingClerk: this.item.formInputs.recievingClerk,
+                    currentTime: this.item.formInputs.currentTime,
                     dispatchingClerk: this.item.formInputs.dispatchingClerk,
                     itemNums: this.item.formInputs.itemNums,
                     itemOrigins: this.item.formInputs.itemOrigins,
