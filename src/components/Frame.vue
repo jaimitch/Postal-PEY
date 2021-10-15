@@ -578,7 +578,7 @@
               totalArticlesRecieved: "",
               postmasterSent: "",
               postmasterRecieved: "",
-              recievingClerk: "",
+              currentTime: "",
               dispatchingClerk: "",
               itemNums: [],
               itemOrigins: [],
@@ -1111,6 +1111,39 @@
           (dd>9 ? '' : '0') + dd
          ].join('');
       },
+      //gets the nearest time and sets in in the answer key
+      getNearestTime(){
+        this.answerKey.answers.forEach(obj => {
+          let d = new Date()
+          let hours = d.getHours()
+          let minutes = d.getMinutes()
+          let currentTime
+          if(hours < 10){
+            currentTime = "0" + hours
+          }
+          else{
+            currentTime = hours
+          }
+          if(minutes < 15){
+            currentTime = currentTime + "00"
+          }
+          else if(minutes >= 15 && minutes < 30){
+            currentTime = currentTime + "15"
+          }
+          else if(minutes >= 30 && minutes < 45){
+            currentTime = currentTime + "30"
+          }
+          else if(minutes >= 45 && minutes <= 59){
+            currentTime = currentTime + "45"
+          }
+          for(const property in obj){
+            if(property == "currentTime"){
+              obj[property] = currentTime;
+              //console.log(obj[property])
+            }
+          }
+        })
+      },
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
@@ -1322,7 +1355,7 @@
               totalArticlesRecieved: "",
               postmasterSent: "Michael Turner",
               postmasterRecieved: "",
-              recievingClerk: "",
+              currentTime: "",
               dispatchingClerk: "1400",
               itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
                "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US"],
@@ -1353,6 +1386,7 @@
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;
+        this.getNearestTime()
       },
       // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
       // to the correct ones for this student (name, date, etc..) 
@@ -1365,7 +1399,7 @@
                 //console.log("Before ", obj[property])
                 obj[property] = obj[property].replaceAll("Student", this.studentName);
                 obj[property] = obj[property].replaceAll("PayGrade", this.payGrade);
-                //console.log("After ", obj[property])
+                //console.log("After ", obj[property
               }
               if(obj[property].includes("YESTERDAY")){
                 //console.log("Before ", obj[property])
