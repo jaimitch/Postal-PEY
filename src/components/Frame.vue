@@ -1154,7 +1154,7 @@
               }
 
 
-              }
+            }
             //Property is not an array, and is incorrect
             else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
@@ -1226,7 +1226,7 @@
         return [d.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
-         ].join('');
+         ].join('-');
       },
       //gets the nearest time and sets in in the answer key
       getNearestTime(){
