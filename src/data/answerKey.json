@@ -81,8 +81,7 @@
             "bottomStamp1": true,
             "bottomStamp2": true,
             "witnessSent": "",
-            "witnessRecieved": "",
-            "backText": ""
+            "witnessRecieved": ""
         },
         {
             "situationNumber": "Situation 6",
@@ -163,8 +162,7 @@
             "bottomStamp1": true,
             "bottomStamp2": true,
             "witnessSent": "",
-            "witnessRecieved": "",
-            "backText": ""
+            "witnessRecieved": ""
           },
           {
             "situationNumber": "Situation 3",
@@ -315,8 +313,7 @@
             "bottomStamp1": true,
             "bottomStamp2": true,
             "witnessSent": "WIT: Scott Sanders",
-            "witnessRecieved": "WIT: George Forrest",
-            "backText": ""
+            "witnessRecieved": "WIT: George Forrest"
          },
          {
             "articleCode":"Bill #231",
@@ -352,8 +349,7 @@
             "bottomStamp1": true,
             "bottomStamp2": true,
             "witnessSent": "WIT: Larry Brown",
-            "witnessRecieved": "WIT: George Forrest",
-            "backText": "RB621758502US – NOT RECEIVED RB309266104US – SHOULD READ RB309266140US RB888122361US – MISSENT"
+            "witnessRecieved": "WIT: George Forrest"
         },
         {
             "situationNumber":"Situation 4",
@@ -400,8 +396,7 @@
             "bottomStamp1": true,
             "bottomStamp2": true,
             "witnessSent": "",
-            "witnessRecieved": "",
-            "backText": ""
+            "witnessRecieved": ""
         },
         {
             "situationNumber":"Situation 4",
@@ -580,8 +575,7 @@
             "bottomStamp1": false,
             "bottomStamp2": false,
             "witnessSent": "WIT: George Forrest",
-            "witnessRecieved": "",
-            "backText": "" 
+            "witnessRecieved": ""
         },
         {
             "situationNumber":"Situation 5",
@@ -616,8 +610,7 @@
             "bottomStamp1": false,
             "bottomStamp2": false,
             "witnessSent": "",
-            "witnessRecieved": "Kyle ",
-            "backText": ""
+            "witnessRecieved": "Kyle "
         },
         {
             "articleCode": "RB 339 065 331 US",

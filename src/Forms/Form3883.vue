@@ -50,32 +50,32 @@
            <div class="originOffice-2">Office of Origin <br> (International)</div>
            <div class="articleNum-1-area"> 
                <div v-for="i in 10" :key="i" class="articleNum-1-boxes">
-                    {{i}}. <input v-model="formData.article[i]">
+                    {{i}}. <input v-if="i <= 4" v-model="formData.article[i]">
                 </div>
            </div>
            <div class="code-1-area"> 
                <div v-for="i in 10" :key="i" class="code-1-boxes">
-                    <input v-model="formData.code[i]">
+                    <input v-if="i <= 4" v-model="formData.code[i]">
                 </div>
            </div>
            <div class="originOffice-1-area"> 
                <div v-for="i in 10" :key="i" class="originOffice-1-boxes">
-                    <input v-model="formData.origin[i]">
+                    <input v-if="i <= 4" v-model="formData.origin[i]">
                 </div>
            </div>
            <div class="articleNum-2-area"> 
                <div v-for="i in 10" :key="i" class="articleNum-2-boxes">
-                    {{i+10}}. <input v-model="formData.article[i+10]">
+                    {{i+10}}. <input v-model="formData.article[i+10]" disabled>
                 </div>
            </div>
            <div class="code-2-area"> 
                <div v-for="i in 10" :key="i" class="code-2-boxes">
-                    <input v-model="formData.code[i+10]">
+                    <input v-model="formData.code[i+10]" disabled>
                 </div>
            </div>
            <div class="originOffice-2-area"> 
                <div v-for="i in 10" :key="i" class="originOffice-2-boxes">
-                    <input v-model="formData.origin[i+10]">
+                    <input v-model="formData.origin[i+10]" disabled>
                 </div>
            </div>
        </div>

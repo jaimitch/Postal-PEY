@@ -97,7 +97,8 @@
 
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;{{i}} <input type="text" v-model="formData.itemNums[i]" class="box">
+                    &emsp;{{i}}
+                    <input type="text" v-model="formData.itemNums[i]" class="box">
                 </div>
             </div>
             <div class="center-area-content2">
@@ -106,7 +107,19 @@
                     Not required fo individual Reg. Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;<input type="text" v-model="formData.itemOrigins[i]" class="box">
+                    &emsp;
+                    <select v-model="formData.itemOrigins[i]" class="box">
+                        <option value="APO AE 09459">APO AE 09459</option>
+                        <option value="MISSENT">MISSENT</option>
+                        <option value="NOT RECIEVED">NOT RECIEVED</option>
+                        <option value="Should Read RB309266140US">
+                            Should Read RB309266140US
+                        </option>
+                        <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                        <option value="APO">APO</option>
+                        <option value="AE 09459">AE 09459</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="center-area-content3">
@@ -114,7 +127,8 @@
                     Reg. No. Jacket, Lock or Seal Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;{{i+15}} <input type="text" v-model="formData.itemNums[i+15]" class="box">
+                    &emsp;{{i+15}} 
+                    <input v-if="i <= 5" type="text" v-model="formData.itemNums[i+15]" class="box">
                 </div>
             </div>
             <div class="center-area-content4">
@@ -123,7 +137,19 @@
                     Not required fo individual Reg. Nos.
                 </div>
                 <div v-for="i in 15" :key = i class="box">
-                    &emsp;<input type="text" v-model="formData.itemOrigins[i+15]" class="box">
+                    &emsp;
+                    <select v-if="i <= 5" v-model="formData.itemOrigins[i+15]" class="box">
+                        <option value="APO AE 09459">APO AE 09459</option>
+                        <option value="MISSENT">MISSENT</option>
+                        <option value="NOT RECIEVED">NOT RECIEVED</option>
+                        <option value="Should Read RB309266140US">
+                            Should Read RB309266140US
+                        </option>
+                        <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                        <option value="APO">APO</option>
+                        <option value="AE 09459">AE 09459</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -231,18 +257,28 @@
         },
         methods: {
             changeForm() {
+                //this.changeBackText()
                 if(this.backText == undefined){
                     this.backText = this.item.formInputs.backText
                 }
+                this.formData.backText = this.changeBackText()
                 this.$emit('changeForm', this.formData)
+            },
+            changeBackText(){
+                let string = ""
+                for(let i = 1; i < this.formData.itemOrigins.length; i++){
+                    string = string + " " + this.formData.itemOrigins[i]
+                }
+                //console.log(string)
+                return string
             }
         },
         watch: {
             // whenever question changes, this function will run
             formData: {
                 deep: true,
-                handler: 'changeForm',
-            }
+                handler: 'changeForm'
+            },
         },
     }
 </script>
@@ -521,6 +557,22 @@
         position: relative;
         top:0;
         border:none;
+    }
+    .center-area select{
+        position: absolute;
+        top:-75%;
+        width: 90%;
+        height: 150%;
+        border:none;
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0 1em 0 0;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
     }
     .center-area-content1{
         position: absolute;
