@@ -7,11 +7,40 @@
             <div class="missed">
                 <div class="form">
                     <b>Sorry we missed you while you were out.</b><br>
-                    <!-- 4 selects -->
-                    <label>Date:</label> <span><input type="text" v-model="formData.date"></span><br>
-                    <label>The item was sent by:</label> <span><input type="text" v-model="formData.sentBy"></span><br>
-                    <label>It was sent to:</label> <span><input type="text" v-model="formData.sentTo"></span><br>
-                    <label>At this address:</label> <span><input type="text" v-model="formData.address"></span><br>
+                    <label>Date:</label> 
+                    <span>
+                        <input type="date" v-model="formData.date">
+                    </span><br>
+                    <label>The item was sent by:</label> 
+                    <span>
+                        <select v-model="formData.sentBy">
+                            <option value="David Campbell">David Campbell</option>
+                            <option value="Thomas Inman">Thomas Inman</option>
+                            <option value="Martha Gadsden">Martha Gadsden</option>
+                            <option value="Green Tower Corp.">Green Tower Corp.</option>
+                            <option value="George Forrest">George Forrest</option>
+                        </select>
+                    </span><br>
+                    <label>It was sent to:</label> 
+                    <span>
+                        <select v-model="formData.sentTo">
+                            <option value="SGT Ronald Cain">SGT Ronald Cain</option>
+                            <option value="PFC Carl Thompson">PFC Carl Thompson</option>
+                            <option value="SSG Donald Green">SSG Donald Green</option>
+                            <option value="SGM Mary Fulton">SGM Mary Fulton</option>
+                            <option value="SGT Earl Smith">SGT Earl Smith</option>
+                        </select>
+                    </span><br>
+                    <label>At this address:</label>
+                    <span>
+                    <select v-model="formData.address">
+                        <option value="14th ADMIN CO; PSC 37, Box 228 APO AE 09459">14th ADMIN CO; PSC 37, Box 228 APO AE 09459</option>
+                        <option value="14th ADMIN CO; PSC 37, Box 1901 APO AE 09459">14th ADMIN CO; PSC 37, Box 1901 APO AE 09459</option>
+                        <option value="14th ADMIN CO; PSC 37, Box 828 APO AE 09459">14th ADMIN CO; PSC 37, Box 828 APO AE 09459</option>
+                        <option value="11th ENGR DET; PSC 37, Box 92 APO AE 09459">11th ENGR DET; PSC 37, Box 92 APO AE 09459</option>
+                        <option value=""> </option>
+                    </select>
+                     </span><br>
                 </div>
             </div>
             <div class="about">
@@ -25,7 +54,11 @@
                     <div class="text">
                         <input type="checkbox" v-model="formData.parcelLockEligible">Parcel Locker Eligible <br>
                     </div>
-                    <label>Available for Pickup Date:</label> <span><input type="text" v-model="formData.pickupDate"></span><br>
+                    <!-- 1 date -->
+                    <label>Available for Pickup Date:</label> 
+                    <span>
+                        <input type="date" v-model="formData.pickupDate">
+                    </span><br>
                     <div class="text">
                         This is the:<br>
                     </div>
@@ -120,8 +153,13 @@
                         X
                         </p>
                     </div>
-                    <!-- 1 select -->
-                    <input v-model="formData.signature">
+                    <select v-model="formData.signature">
+                        <option value="SGT Ronald Cain">SGT Ronald Cain</option>
+                        <option value="PFC Carl Thompson">PFC Carl Thompson</option>
+                        <option value="SSG Donald Green">SSG Donald Green</option>
+                        <option value="SGM Mary Fulton">SGM Mary Fulton</option>
+                        <option value="SGT Earl Smith">SGT Earl Smith</option>
+                    </select>
                 </div>
                 <div class="name">
                     <div class="reason-text">
@@ -130,8 +168,13 @@
                         Name
                         </p>
                     </div>
-                    <!-- 1 select -->
-                    <input v-model="formData.name">
+                    <select v-model="formData.name">
+                        <option value="SGT Ronald Cain">SGT Ronald Cain</option>
+                        <option value="PFC Carl Thompson">PFC Carl Thompson</option>
+                        <option value="SSG Donald Green">SSG Donald Green</option>
+                        <option value="SGM Mary Fulton">SGM Mary Fulton</option>
+                        <option value="SGT Earl Smith">SGT Earl Smith</option>
+                    </select>
                 </div>
                 <div class="delivery-address">
                     <div class="reason-text">
@@ -139,8 +182,13 @@
                         Delivery Address
                         </p>
                     </div>
-                    <!-- 1 select -->
-                    <textarea v-model="formData.reverseAddress"></textarea>
+                    <select v-model="formData.reverseAddress">
+                        <option value="14th ADMIN CO; PSC 37, Box 228 APO AE 09459">14th ADMIN CO; PSC 37, Box 228 APO AE 09459</option>
+                        <option value="14th ADMIN CO; PSC 37, Box 1901 APO AE 09459">14th ADMIN CO; PSC 37, Box 1901 APO AE 09459</option>
+                        <option value="14th ADMIN CO; PSC 37, Box 828 APO AE 09459">14th ADMIN CO; PSC 37, Box 828 APO AE 09459</option>
+                        <option value="11th ENGR DET; PSC 37, Box 92 APO AE 09459">11th ENGR DET; PSC 37, Box 92 APO AE 09459</option>
+                        <option value=""> </option>
+                    </select>
                 </div>
                 <div class="usps">
                     <h3><b>USPS</b></h3> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1A2B 3C1A 2B3C 1A2B
@@ -318,7 +366,7 @@
         overflow: hidden;
         padding: 0 1em;
     }
-    .missed input[type = 'text'] {
+    .missed select {
         width: 100%;
         font-size: 1em;
         height: 1.5em;
@@ -327,7 +375,16 @@
         border-left: none;
         border-right: none;
     }
-    .about input[type = 'text'] {
+    .missed input {
+        width: 100%;
+        font-size: 1em;
+        height: 1.5em;
+        line-height: 1.5em;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    .about input[type="date"] {
         width: 100%;
         font-size: 1em;
         height: 1.5em;
@@ -410,7 +467,7 @@
     .reason-x{
         top:5%;
     }
-    .signature input{
+    .signature select{
         position: absolute;
         width: 75%;
         left: 22%;
@@ -418,7 +475,7 @@
         height: 60%;
         border: none;
     }
-    .name input{
+    .name select{
         position: absolute;
         width: 75%;
         left: 22%;
@@ -426,13 +483,14 @@
         height: 60%;
         border: none;
     }
-    .delivery-address textarea{
+    .delivery-address select{
         position: absolute;
         resize: none;
         width: 75%;
         left: 22%;
         top:10%;
         height: 75%;
+        font-size: 1vmin;
         border: none;
         font-family: Arial;
     }
