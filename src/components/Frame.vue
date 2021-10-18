@@ -22,7 +22,7 @@
       <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
 
       <div class= "form-creation">
-        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined, [])" :class="{'is-stamping': this.stamping == true}">
           Create New Form
         </button>
         <select class="form-creation-select" v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
@@ -35,7 +35,7 @@
       </div>
 
       <div class="pouch-creation">
-        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined)">
+        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined, [])">
           Create New Pouch
         </button>
       </div>
@@ -235,6 +235,7 @@
         answerKey: key,
         items: [
           {
+            articleCode: "Placeholder",
             id: 1,
             title: "Placeholder",
             children: [],
@@ -243,9 +244,11 @@
             stampable: false,
             formInputs: {},
             type: "Truck",
-            droppable: true
+            droppable: true,
+            gradeAt: []
           },
           {
+            articleCode: "Safe",
             id: 4,
             title: "Safe",
             children: [],
@@ -256,9 +259,11 @@
             stampable: false,
             formInputs: {},
             type: "safe",
-            droppable: true
+            droppable: true,
+            gradeAt: []
           },
           {
+            articleCode: "Forms",
             id: 5,
             title: "Forms",
             children: [],
@@ -269,7 +274,8 @@
             stampable: false,
             formInputs: {},
             type: "forms",
-            droppable: true
+            droppable: true,
+            gradeAt: []
           },
           {
             id: 6,
@@ -284,7 +290,8 @@
               situationNumber: "Situation 2"
               },
             type: "Truck",
-            droppable: true
+            droppable: true,
+            gradeAt: []
           },
           {
             id: 7,
@@ -299,7 +306,8 @@
               situationNumber: "Situation 3"
               },
             type: "Truck",
-            droppable: true
+            droppable: true,
+            gradeAt: []
           },
         ],
         //default assumes there is something wrong
@@ -427,7 +435,11 @@
       },
       getVuexPageNum() {
         return this.pageNum;
-      }
+      },
+      //returns items from items array that contain the current situation in their gradeAt array
+      getGradingItemList() {
+        return this.items.filter(x => x.gradeAt.includes(this.getSituationNumber))
+      },
     },
     methods: {
       startDrag (evt, item)  {
@@ -486,6 +498,7 @@
         return this.items[index].children = this.items[index].children.filter(x => x != itemID)
       },
       //returns the "items" array index of the given item id's parent
+      //broken?
       findParentIndex(itemID){
         for(var i = 0; i < this.items.length; i++){
           if(this.items[i].children.indexOf(itemID) == -1){
@@ -543,7 +556,7 @@
       NOTE: Default item creation causes forms to be added to the forms section, and all other things to be added to the safe.
       You would want to disable default behavior if you planned to add the item to another item's children array for example.
       */
-      createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings) {
+      createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings, gradeAt) {
         let newItem = {};
 
         if(itemType == "psform3854") {
@@ -557,6 +570,7 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
+            gradeAt: gradeAt,
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
               articleCode: "Bill #" + articleCode,
@@ -592,7 +606,7 @@
               bottomStamp2: false,
               witnessSent: "",
               witnessRecieved: "",
-              backText: ""
+              backText: "",
             },
             type: "PS FORM 3854",
             droppable: true
@@ -621,6 +635,7 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
+            gradeAt: gradeAt,
             formInputs: {
                situationNumber: 'Situation ' + situationNumber,
                articleCode: articleCode,
@@ -649,7 +664,7 @@
                address: "",
                sentTo: "",
                sentBy: "",
-               date: ""
+               date: "",
             },
             type: "PS FORM 3849",
             droppable: true
@@ -670,6 +685,7 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
+            gradeAt: gradeAt,
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -707,7 +723,7 @@
                 postmaster:"",
                 rows:[],
                 square:"",
-                stamped: false
+                stamped: false,
             },
             type: "PS FORM 3877",
             droppable: true
@@ -736,6 +752,7 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
+            gradeAt: gradeAt,
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -807,6 +824,7 @@
             currentImageIndex: 0,
             stampCounter: 0,
             stampable: false,
+            gradeAt: gradeAt,
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
               articleCode: articleCode,
@@ -829,7 +847,7 @@
               recievedBy: "",
               recievedNum: "",
               deliveredBy: "",
-              stamped: false
+              stamped: false,
             },
             type: "PS FORM 3883",
             droppable: true
@@ -856,7 +874,8 @@
             stampCounter: 0,
             formInputs: {},
             type: "Letter",
-            droppable: true
+            droppable: true,
+            gradeAt: gradeAt,
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -877,6 +896,7 @@
             type: "Package",
             droppable: true,
             showImage: false,
+            gradeAt: gradeAt,
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -895,7 +915,8 @@
             stampCounter: 0,
             formInputs: {},
             type: "Pouch",
-            droppable: true
+            droppable: true,
+            gradeAt: gradeAt,
           }
           //checking to see if the user has used all existing seals
           if(newItem.articleCode != undefined) {
@@ -927,6 +948,26 @@
       submitPage() {
         this.gradeSituationContents();
       },
+      //Returns an item given it's ID
+      findItemByID(id){
+        return this.items.filter(x => x.id == id);
+      },
+      /*Accepts an item and its corresponding key item and checks to see if the item is in the correct location
+      returns 0 if it's correct or 1 if it's incorrect
+      */
+      checkItemLocation(item, keyItem) {
+        console.log("checking location!")
+        let parentID = this.findParent(item.id)
+        let location = this.findItemByID(parentID)[0].articleCode
+        if(location == keyItem[`situation${this.getSituationNumber}Location`]) {
+          console.log(keyItem.articleCode, "is in the right spot")
+          return 0;
+        }
+        else {
+          console.log("ERROR:", keyItem.articleCode, "is in the wrong spot")
+          return 1;
+        }
+      },
       /*Accepts an item and and returns the number of errors it has
       NOTE: Grading of forms takes place in gradeForm() since it's much more complex then other items
       NOTE 2: At the time this is called, we assume that there is a match between the item and the answer key
@@ -937,28 +978,37 @@
         switch(itemType) {
             case "Package": {
               console.log("Its a package")
-              return 0;
+              let errors = this.checkItemLocation(item, keyItem);
+              return errors;
             }
             case "Letter": {
               console.log("Its a letter")
-              return 0;
+              let errors = this.checkItemLocation(item, keyItem);
+              return errors;
             }
             case "Pouch": {
               console.log("Its a pouch")
-              return 0;
+              let errors = this.checkItemLocation(item, keyItem);
+              return errors;
             }
             case "Truck": {
               console.log("Its a Truck")
-              return 0;
+              let errors = this.checkItemLocation(item, keyItem);
+              return errors;
             }
-            default: {              
+            default: {
+              let errors = 0;           
               if(itemType == "DD FORM 2261") {
-                console.log(item.articleCode, keyItem, item.type)
-                return this.gradeForm(item.articleCode, keyItem, item.type)
+                // console.log(item.articleCode, keyItem, item.type)
+                errors += this.checkItemLocation(item, keyItem)
+                errors += this.gradeForm(item.articleCode, keyItem, item.type)
+                return errors
               }
               if(itemType == "PS FORM 3854") {
-                //console.log(item.articleCode, keyItem, item.type)
-                return this.gradeForm(item.articleCode, keyItem, item.type)
+                // console.log(item.articleCode, keyItem, item.type)
+                errors += this.checkItemLocation(item, keyItem)
+                errors += this.gradeForm(item.articleCode, keyItem, item.type)
+                return errors
               }
               break
             }
@@ -967,7 +1017,9 @@
       //facilitates the grading of each item for the current situation on submit
       gradeSituationContents() {
         var errors = 0;
-          let situationItems = this.items.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
+          // let situationItems = this.items.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
+          let situationItems = this.getGradingItemList;
+          console.log("in grade situation", situationItems)
           let keyItems = this.answerKey.answers.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
           keyItems.forEach((currentKeyItem) => {
             
@@ -1163,9 +1215,9 @@
             }
 
             let yest = this.getYYYYMMDD(-1)
-            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings)
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined)
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined)
+            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1])
+            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1])
+            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1])
           }
           this.situationOneInit = true;
         }
@@ -1191,13 +1243,13 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings)
+            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2])
             this.assignItemToParent('Truck 1', form1)
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2])
             this.assignItemToParent('Bill #260', item1)
-            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined)
+            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2])
             this.assignItemToParent('Bill #260', item2)
-            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined)
+            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2])
             this.assignItemToParent('Bill #260', item3)
             console.log(this.items)
 
@@ -1228,17 +1280,17 @@
               bottomStamp2: false
             }
             
-            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings)
+            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2])
             this.assignItemToParent('SEAL #70948511', item1)
-            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined)
+            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2])
             this.assignItemToParent('SEAL #70948511', item2)
-            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined)
+            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined, [2])
             this.assignItemToParent('SEAL #70948511', item3)
-            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined)
+            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined, [2])
             this.assignItemToParent('SEAL #70948511', item4)
-            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined)
+            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined, [2])
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined)
+            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2])
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -1271,9 +1323,9 @@
               bottomStamp2: false,
             }
 
-            this.createItem('psform3854', '30', 4, 2, true, '', newFormSettings)
-            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined)
-            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined)
+            this.createItem('psform3854', '30', 4, 2, true, '', newFormSettings, [])
+            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined, [])
+            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined, [])
             //30-33
             this.situationFourPartOne = true;
           }
@@ -1297,19 +1349,19 @@
               witnessSent: "WIT: Scott Sanders",
             }
 
-            let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings)
+            let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [])
             this.assignItemToParent('SEAL #43000277', item1)
-            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined)
+            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [])
             this.assignItemToParent('SEAL #43000277', item2)
-            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined)
+            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [])
             this.assignItemToParent('SEAL #43000277', item3)
-            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined)
+            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [])
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined)
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [])
             this.assignItemToParent('SEAL #43000277', item5)
-            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined)
+            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [])
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined)
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [])
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
@@ -1329,9 +1381,9 @@
                 stamped: false
             }
 
-            this.createItem('psform3877', '24', 4, 2, true, '', newFormSettings)
-            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined)
-            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined)
+            this.createItem('psform3877', '24', 4, 2, true, '', newFormSettings, [])
+            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined, [])
+            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined, [])
             //18-21
             this.situationFourPartThree = true;
           }
@@ -1373,17 +1425,17 @@
               witnessRecieved: ""
             }
 
-            this.createItem('psform3854', '33', 4, 2, true, '', newFormSettings)
-            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined)
-            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined)
-            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined)
-            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213', undefined)
-            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214', undefined)
-            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215', undefined)
-            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216', undefined)
-            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217', undefined)
-            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218', undefined)
-            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219', undefined)
+            this.createItem('psform3854', '33', 4, 2, true, '', newFormSettings, [])
+            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined, [])
+            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined, [])
+            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined, [])
+            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213', undefined, [])
+            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214', undefined, [])
+            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215', undefined, [])
+            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216', undefined, [])
+            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217', undefined, [])
+            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218', undefined, [])
+            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219', undefined, [])
             //6-17
             this.situationFourPartFour = true;
           }
