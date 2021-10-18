@@ -7,6 +7,7 @@
             <div class="missed">
                 <div class="form">
                     <b>Sorry we missed you while you were out.</b><br>
+                    <!-- 4 selects -->
                     <label>Date:</label> <span><input type="text" v-model="formData.date"></span><br>
                     <label>The item was sent by:</label> <span><input type="text" v-model="formData.sentBy"></span><br>
                     <label>It was sent to:</label> <span><input type="text" v-model="formData.sentTo"></span><br>
@@ -119,6 +120,7 @@
                         X
                         </p>
                     </div>
+                    <!-- 1 select -->
                     <input v-model="formData.signature">
                 </div>
                 <div class="name">
@@ -128,6 +130,7 @@
                         Name
                         </p>
                     </div>
+                    <!-- 1 select -->
                     <input v-model="formData.name">
                 </div>
                 <div class="delivery-address">
@@ -136,6 +139,7 @@
                         Delivery Address
                         </p>
                     </div>
+                    <!-- 1 select -->
                     <textarea v-model="formData.reverseAddress"></textarea>
                 </div>
                 <div class="usps">
@@ -188,6 +192,10 @@
         },
         methods:{
             changeForm() {
+                if(this.item.articleCode == "created"){
+                    // this.item.articleCode = this.sigOfAgent
+                    this.formData.articleCode = this.formData.sentTo
+                }
                 this.$emit('changeForm', this.formData)
             }
         },
