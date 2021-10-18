@@ -497,7 +497,7 @@
       //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
         console.log(this.currentItemIndex, this.getItemIndex(id))
-        if(this.currentItemIndex != this.getItemIndex(id)){
+        if(this.currentFormIndex != this.getItemIndex(id)){
           this.currentItemIndex = this.getItemIndex(id)
           // console.log(this.items[this.currentItemIndex].type)
           if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
