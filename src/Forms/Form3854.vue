@@ -118,6 +118,7 @@
                         <option value="Should Read RB309265340US">Should Read RB309265340US</option>
                         <option value="APO">APO</option>
                         <option value="AE 09459">AE 09459</option>
+                        <option value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                         <option value=""></option>
                     </select>
                 </div>
