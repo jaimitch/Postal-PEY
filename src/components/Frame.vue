@@ -21,7 +21,7 @@
       <button :class="'page-submit-button'" @click="submitPage()">Submit</button>
 
       <div class= "form-creation">
-        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined)">
+        <button @click="createItem(createFormType, 'created', getSituationNumber, 2, true, '', undefined, this.updateGradeAt())">
           Create New Form
         </button>
         <select class="form-creation-select" v-model="createFormType">
@@ -34,7 +34,7 @@
       </div>
 
       <div class="pouch-creation">
-        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined, [])">
+        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined, this.updateGradeAt())">
           Create New Pouch
         </button>
       </div>
@@ -937,9 +937,14 @@
       findItemByID(id){
         return this.items.filter(x => x.id == id);
       },
-      //Accepts an item and an array of ints, and updates the given item's gradeAt array
-      updateGradeAt(item, newGradeAt) {
-        console.log("update grade at:", item, newGradeAt)
+      //Creates an array with current and all future situation numbers so that a user created item can be graded at every point it exists
+      //NOTE: CREATED ITEMS'S LOCATIONS WILL BE GRADED AT EVERY SITUATION TO SIMPLIFY THE ISSUE OF UPDATING THEM ON CREATE
+      updateGradeAt() {
+        let newGradeAt = [];
+        for(let i = this.getSituationNumber; i <= 6; i++) {
+          newGradeAt.push(i);
+        }
+        return newGradeAt;
       },
       /*Accepts an item and its corresponding key item and checks to see if the item is in the correct location
       returns 0 if it's correct or 1 if it's incorrect
@@ -949,11 +954,11 @@
         let parentID = this.findParent(item.id)
         let location = this.findItemByID(parentID)[0].articleCode
         if(location == keyItem[`situation${this.getSituationNumber}Location`]) {
-          console.log(keyItem.articleCode, "is in the right spot")
+          // console.log(keyItem.articleCode, "is in the right spot")
           return 0;
         }
         else {
-          console.log("ERROR:", keyItem.articleCode, "is in the wrong spot")
+          // console.log("ERROR:", keyItem.articleCode, "is in the wrong spot")
           return 1;
         }
       },
@@ -993,11 +998,17 @@
                 errors += this.gradeForm(item.articleCode, keyItem, item.type)
                 return errors
               }
-              if(itemType == "PS FORM 3854") {
+              else if(itemType == "PS FORM 3854") {
                 // console.log(item.articleCode, keyItem, item.type)
                 errors += this.checkItemLocation(item, keyItem)
                 errors += this.gradeForm(item.articleCode, keyItem, item.type)
                 return errors
+              }
+              else if(itemType == "PS FORM 3883") {
+                  console.log("Its a PS FORM 3883")
+                  errors += this.checkItemLocation(item, keyItem)
+                  errors += this.gradeForm(item.articleCode, keyItem, item.type)
+                  return errors
               }
               break
             }
@@ -1008,10 +1019,17 @@
         var errors = 0;
           // let situationItems = this.items.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
           let situationItems = this.getGradingItemList;
+          //Update any created items article code to the form input article code
+          for(let i = 0; i < situationItems.length; i++) {
+            if(situationItems[i].articleCode == "created") {
+              situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
+            }
+          }
+
           console.log("in grade situation", situationItems)
           let keyItems = this.answerKey.answers.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
           keyItems.forEach((currentKeyItem) => {
-            
+          
             //check to see if our filtered key list contains a matching article code
             let currentItem = situationItems.filter(x => 
               x.articleCode == currentKeyItem.articleCode
@@ -1023,10 +1041,15 @@
               console.log("itemErrors",itemErrors)
               
               //if there are no errors, remove item from both arrays
+              if(itemErrors == 0) {
                 situationItems = situationItems.filter(x => 
                   x.articleCode != currentItem[0].articleCode
                   )
-                  //console.log("situationItems ",situationItems.length)
+                keyItems = keyItems.filter(x => 
+                  x.articleCode != currentItem[0].articleCode
+                  )
+              }
+                
             }
           })
           
@@ -1064,7 +1087,7 @@
             }
           }
         }
-        if(formCode == "PS FORM 3854") {
+        else if(formCode == "PS FORM 3854") {
           console.log("Its a 3854!")
           let errors = 0;
           let keyPairs = [];
@@ -1133,6 +1156,11 @@
             }
           }
           return errors;
+        }
+        else if(formCode == "PS FORM 3883") {
+          let errors = 0
+          console.log("Its a 3883!")
+          return errors
         }
       },
 
