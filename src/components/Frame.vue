@@ -496,24 +496,15 @@
       },
       //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
-        console.log(this.currentItemIndex, this.getItemIndex(id))
-        if(this.currentFormIndex != this.getItemIndex(id)){
           this.currentItemIndex = this.getItemIndex(id)
-          // console.log(this.items[this.currentItemIndex].type)
           if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
-            this.currentFormIndex = this.currentItemIndex;
+            if(this.currentItemIndex == this.currentFormIndex){
+              this.currentFormIndex = ''
+            }
+            else{
+              this.currentFormIndex = this.currentItemIndex;
+            }
           }
-        } 
-        else if(this.showCurrentItem == true){
-          this.showCurrentItem = false
-          this.currentFormIndex = ''
-        }
-        else if(this.showCurrentItem == false){
-          this.showCurrentItem = true
-          if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
-            this.currentFormIndex = this.currentItemIndex;
-          }
-        }
         evt.stopPropagation()
       },
       //toggles the item to display or hide it's image
