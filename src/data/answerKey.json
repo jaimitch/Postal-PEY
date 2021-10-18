@@ -651,7 +651,8 @@
             "stampCounter": 0,
             "type": "Package",
             "gradeAt":[1],
-            "situation1Location": "Safe"
+            "situation1Location": "Safe",
+            "situation3Location": "Truck2"
         },
         {
             "articleCode": "RB 290 770 790 US",
@@ -667,7 +668,8 @@
             "stampCounter": 0,
             "type": "Package",
             "gradeAt":[1],
-            "situation1Location": "Safe"
+            "situation1Location": "Safe",
+            "situation3Location": "Truck2"
         },
         {
             "articleCode": "SEAL #70948511",
@@ -698,7 +700,8 @@
             "stampCounter": 0,
             "type": "Package",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck2"
         },
         {
             "articleCode": "RB 298 302 613 US",
@@ -714,7 +717,8 @@
             "stampCounter": 0,
             "type": "Package",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck2"
         },
         {
             "articleCode": "RB 867 092 744 US",
@@ -730,7 +734,8 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 309 266 140 US",
@@ -746,7 +751,8 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 143 899 161 US",
@@ -762,7 +768,8 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 218 344 488 US",
@@ -778,7 +785,8 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 888 122 361 US",
@@ -794,7 +802,8 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2]
+            "gradeAt":[2],
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "SEAL #43000277",

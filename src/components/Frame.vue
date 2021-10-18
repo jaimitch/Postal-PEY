@@ -1161,6 +1161,7 @@
               errors++;
             }
           }
+          console.log(keyPairs)
           return errors;
         }
         else if(formCode == "PS FORM 3883") {
@@ -1359,6 +1360,7 @@
         }
         else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
           this.situationThreeInit = true;
+          console.log(this.items);
           //hardcode all truck visibility
           this.items[3].level = 0;
           this.items[4].level = 1;
