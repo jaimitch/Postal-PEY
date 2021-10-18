@@ -177,7 +177,7 @@
             "other": false,
             "mustBe21": true,
             "mustBe18": false,
-            "sigReq": false,
+            "sigReq": true,
             "noRecip": false,
             "noSecLoc": false,
             "receptFull": false,
@@ -195,7 +195,9 @@
             "address": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459",
             "sentTo": "SGT Ronald Cain",
             "sentBy": "David Campbell",
-            "date": "Current Date"
+            "date": "Current Date",
+            "gradeAt": [3],
+            "situation3Location": "Truck 2"
          },
          {
             "situationNumber":"Situation 3",
@@ -206,7 +208,7 @@
             "other": false,
             "mustBe21": true,
             "mustBe18": false,
-            "sigReq": false,
+            "sigReq": true,
             "noRecip": false,
             "noSecLoc": false,
             "receptFull": false,
@@ -224,7 +226,9 @@
             "address": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459",
             "sentTo": "PFC Carl Thompson",
             "sentBy": "Green Tower Corp.",
-            "date": "Current Date"
+            "date": "Current Date",
+            "gradeAt": [3],
+            "situation3Location": "Truck 2"
          },
          {
             "situationNumber":"Situation 3",
@@ -235,7 +239,7 @@
             "other": false,
             "mustBe21": true,
             "mustBe18": false,
-            "sigReq": false,
+            "sigReq": true,
             "noRecip": false,
             "noSecLoc": false,
             "receptFull": false,
@@ -253,9 +257,12 @@
             "address": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459",
             "sentTo": "SSG Donald Green",
             "sentBy": "Martha Gadsden",
-            "date": "Current Date"
+            "date": "Current Date",
+            "gradeAt": [3],
+            "situation3Location": "Truck 2"
          },
          {
+            "articleCode": "SGM Mary Fulton",
             "situationNumber":"Situation 3",
             "reverseAddress": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
             "name": "Mary Fulton",
@@ -264,7 +271,7 @@
             "other": false,
             "mustBe21": true,
             "mustBe18": false,
-            "sigReq": false,
+            "sigReq": true,
             "noRecip": false,
             "noSecLoc": false,
             "receptFull": false,
@@ -282,7 +289,9 @@
             "address": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
             "sentTo": "SGM Mary Fulton",
             "sentBy": "Thomas Inman",
-            "date": "Current Date"
+            "date": "Current Date",
+            "situation3Location": "Truck 2",
+            "gradeAt": [3]
          },
          {
             "situationNumber":"Situation 4",

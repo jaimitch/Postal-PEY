@@ -1010,6 +1010,12 @@
                   errors += this.gradeForm(item.articleCode, keyItem, item.type)
                   return errors
               }
+              else if (itemType == "PS FORM 3849"){
+                console.log("Its a PS FORM 3849")
+                  errors += this.checkItemLocation(item, keyItem)
+                  errors += this.gradeForm(item.articleCode, keyItem, item.type)
+                  return errors
+              }
               break
             }
         }
@@ -1064,7 +1070,7 @@
         if(formCode == "DD FORM 2261") {
           let errors = 0;
           for (let property in keyForm) {
-            if(userForm[property] != keyForm[property] && property != "items") {
+            if(userForm[property] != keyForm[property] && property != "items" && property != "gradeAt" && !property.includes("Location")) {
               console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1150,7 +1156,7 @@
 
               }
             //Property is not an array, and is incorrect
-            else if(userForm[property] != keyForm[property]) {
+            else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1186,6 +1192,17 @@
             }
           }
 
+          return errors
+        }
+        else if(formCode == "PS FORM 3849"){
+          let errors = 0
+          console.log("Its a 3849")
+          for(let property in keyForm){
+            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
+              console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
+              errors++;
+            }
+          }
           return errors
         }
       },
