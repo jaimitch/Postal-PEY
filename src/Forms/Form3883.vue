@@ -37,7 +37,7 @@
            <div class="bill-no">
                Mail for/Bill No.
                <select v-model="formData.billNo">
-                   <option value="14th ADMIN CO">14th ADMIN CO</option>
+                   <option value="14TH ADMIN CO / 184">14TH ADMIN CO / 184</option>
                    <option value="13th EOC">13th EOC</option>
                    <option value="11th ENGR DET">11th ENGR DET</option>
                    <option value="45th MP CO">11th ENGR DET</option>
@@ -186,7 +186,8 @@
                     recievedBy: this.item.formInputs.recievedBy,
                     recievedNum: this.item.formInputs.recievedNum,
                     deliveredBy: this.item.formInputs.deliveredBy,
-                    stamped: this.item.formInputs.stamped
+                    stamped: this.item.formInputs.stamped,
+                    type: "PS FORM 3883"
                 }
             }
         },

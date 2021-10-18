@@ -1160,6 +1160,32 @@
         else if(formCode == "PS FORM 3883") {
           let errors = 0
           console.log("Its a 3883!")
+
+          for (let property in keyForm) {
+            // console.log(property)
+            if(Array.isArray(keyForm[property])) {
+
+              if(property == "article") {
+                //If there are item origins, we need to build an answer key
+                if(keyForm.article.length > 1) {
+                  //first pass to build the answer key
+                  for(let i = 1; i < keyForm.article.length; i++) {
+                    if(!keyForm[property].includes(userForm[property][i])) {
+                      console.log("It doesnt match")
+                      errors++;
+                    }
+                  }
+                }
+              }
+
+              }
+            //Property is not an array, and is incorrect
+            else if(userForm[property] != keyForm[property] && !property.includes("Location")) {
+              console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
+              errors++;
+            }
+          }
+
           return errors
         }
       },
