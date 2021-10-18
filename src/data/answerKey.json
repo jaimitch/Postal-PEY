@@ -45,7 +45,9 @@
             "itemsOnIncomingManifests": "",
             "itemsListedOnInsideBillsA": "",
             "itemsAccepted": "",
-            "items": ["RB339065331US", "RB290770790US"]
+            "items": ["RB339065331US", "RB290770790US"],
+            "situation1Location": "Forms",
+            "gradeAt": [1]
         },
         {
             "articleCode":"Bill #260",

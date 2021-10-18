@@ -946,6 +946,10 @@
       findItemByID(id){
         return this.items.filter(x => x.id == id);
       },
+      //Accepts an item and an array of ints, and updates the given item's gradeAt array
+      updateGradeAt(item, newGradeAt) {
+        console.log("update grade at:", item, newGradeAt)
+      },
       /*Accepts an item and its corresponding key item and checks to see if the item is in the correct location
       returns 0 if it's correct or 1 if it's incorrect
       */
