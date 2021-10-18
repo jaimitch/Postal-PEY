@@ -17,15 +17,14 @@
       </div>
 
     </div>
-    <div :class="{'frame': this.stamping == false, 'frame-is-stamping': this.stamping == true}">
+    <div class='frame'>
       <button :class="'page-submit-button'" @click="submitPage()">Submit</button>
-      <button :class="'stamp-button'" @click="changeCursor()">Stamp</button>
 
       <div class= "form-creation">
-        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined)" :class="{'is-stamping': this.stamping == true}">
+        <button @click="createItem(createFormType, '', getSituationNumber, 2, true, '', undefined)">
           Create New Form
         </button>
-        <select class="form-creation-select" v-model="createFormType" :class="{'is-stamping': this.stamping == true}">
+        <select class="form-creation-select" v-model="createFormType">
           <option value="psform3854">PS Form 3854</option>
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
@@ -43,7 +42,7 @@
     <div class="left-frame">
       <div
         id="left-frame"
-        :class="{'drop-zone, left-side-content': this.stamping == false, 'drop-zone-is-stamping': this.stamping == true}"
+        class='drop-zone'
         @dragover.prevent
         @dragenter.prevent
       >   
@@ -195,7 +194,6 @@
           </div>
         </div>
         <PageNav 
-          :class="{'is-stamping': this.stamping == true}"
           v-bind:pageErrors="pageErrors"
         />
     </div>
@@ -316,7 +314,6 @@
           true,
           true,
         ],
-        stamping: false,
         currentItemIndex: 2,
         currentFormIndex: '',
         idCounter: 1000,
@@ -334,6 +331,7 @@
         formKey: 0,
         form2261Back: false,
         form3854Back: false,
+        showCurrentItem: true,
       }   
     },
     mounted() {
@@ -493,33 +491,29 @@
           }
         }
       },
-      changeCursor(){
-        this.stamping = !this.stamping
-        this.$store.commit('stamp');
-      },
-      stamp(object) {
-        if(object.stampable){
-          if(object.stampCounter == 0){
-          object.currentImageIndex = 2
-          }else{
-            object.currentImageIndex = object.currentImageIndex+1
-          }
-        }
-        this.stamping = false
-        this.$store.commit('stamp');
-      },
       itemImage(object) {
         return object.images[object.currentImageIndex]
       },
       //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
-        this.currentItemIndex = this.getItemIndex(id);
-
-        // console.log(this.items[this.currentItemIndex].type)
-        if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
-          this.currentFormIndex = this.currentItemIndex;
+        console.log(this.currentItemIndex, this.getItemIndex(id))
+        if(this.currentItemIndex != this.getItemIndex(id)){
+          this.currentItemIndex = this.getItemIndex(id)
+          // console.log(this.items[this.currentItemIndex].type)
+          if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
+            this.currentFormIndex = this.currentItemIndex;
+          }
+        } 
+        else if(this.showCurrentItem == true){
+          this.showCurrentItem = false
+          this.currentFormIndex = ''
         }
-
+        else if(this.showCurrentItem == false){
+          this.showCurrentItem = true
+          if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
+            this.currentFormIndex = this.currentItemIndex;
+          }
+        }
         evt.stopPropagation()
       },
       //toggles the item to display or hide it's image
@@ -1458,31 +1452,10 @@
     justify-content: space-evenly;
     align-items: center;
   }
-  .frame-is-stamping{
-    display: flex;
-    cursor:  url("../assets/stamp.gif"), auto;
-    flex-direction: row;
-    position: absolute;
-    top: 5vh;
-    left: 0;
-    width: 100vw;
-    height: 95vh;
-    z-index: 1;
-    font-family: Arial;
-    background-color: #333366;
-    justify-content: space-evenly;
-    align-items: center;
-  }
   .drop-zone {
     order: 1;
     background-color: #333366;
     width: 22vw;
-  }
-  .drop-zone-is-stamping{
-    order: 1;
-    background-color: #333366;
-    pointer-events: none;
-    width: 15vw;
   }
   .right-side-content{
     order: 3;
@@ -1562,12 +1535,6 @@
     font-family: Arial;
     color: white;
   }
-  .stamp-button {
-    position: absolute;
-    top: 10px;
-    right: 1vw;
-    z-index: 2;
-  }
   .page-submit-button {
     position: absolute;
     top: 10px;
@@ -1575,12 +1542,6 @@
     z-index: 2;
   }
   .letter{
-    pointer-events: none;
-  }
-  .letter-stamping{
-    cursor:  url("../assets/stamp.gif"), auto;
-  }
-  .is-stamping{
     pointer-events: none;
   }
   .situation-text {

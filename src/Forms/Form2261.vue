@@ -177,20 +177,20 @@
                 <div class="space6"><input v-model="formData.sectionC6"></div>
             </div>
             <div class="row2">
-                <div class="space1"><input v-model="formData.sectionC7"></div>
-                <div class="space2"><input v-model="formData.sectionC8"></div>
-                <div class="space3"><input v-model="formData.sectionC9"></div>
-                <div class="space4"><input v-model="formData.sectionC10"></div>
-                <div class="space5"><input v-model="formData.sectionC11"></div>
-                <div class="space6"><input v-model="formData.sectionC12"></div>
+                <div class="space1"><input v-model="formData.sectionC7" disabled></div>
+                <div class="space2"><input v-model="formData.sectionC8" disabled></div>
+                <div class="space3"><input v-model="formData.sectionC9" disabled></div>
+                <div class="space4"><input v-model="formData.sectionC10" disabled></div>
+                <div class="space5"><input v-model="formData.sectionC11" disabled></div>
+                <div class="space6"><input v-model="formData.sectionC12" disabled></div>
             </div>
             <div class="row3">
-                <div class="space1"><input v-model="formData.sectionC13"></div>
-                <div class="space2"><input v-model="formData.sectionC14"></div>
-                <div class="space3"><input v-model="formData.sectionC15"></div>
-                <div class="space4"><input v-model="formData.sectionC16"></div>
-                <div class="space5"><input v-model="formData.sectionC17"></div>
-                <div class="space6"><input v-model="formData.sectionC18"></div>
+                <div class="space1"><input v-model="formData.sectionC13" disabled></div>
+                <div class="space2"><input v-model="formData.sectionC14" disabled></div>
+                <div class="space3"><input v-model="formData.sectionC15" disabled></div>
+                <div class="space4"><input v-model="formData.sectionC16" disabled></div>
+                <div class="space5"><input v-model="formData.sectionC17" disabled></div>
+                <div class="space6"><input v-model="formData.sectionC18" disabled></div>
             </div>
         </div>
         <div class="part2-banner">

@@ -149,7 +149,8 @@
             </div>
             <div class = "grid">
                 <div v-for="i in 104" :key="i" class="box">
-                    <input v-model="formData.rows[i-1]">
+                    <input v-if="i <= 26" v-model="formData.rows[i-1]">
+                    <input v-else disabled>
                 </div>
             </div>
         </div>
