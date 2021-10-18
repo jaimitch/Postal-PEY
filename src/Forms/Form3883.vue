@@ -38,9 +38,9 @@
                Mail for/Bill No.
                <select v-model="formData.billNo">
                    <option value="14TH ADMIN CO / 184">14TH ADMIN CO / 184</option>
-                   <option value="13th EOC">13th EOC</option>
+                   <option value="13TH EOC / 102">13TH EOC / 102</option>
                    <option value="11th ENGR DET">11th ENGR DET</option>
-                   <option value="45th MP CO">11th ENGR DET</option>
+                   <option value="45TH MP CO / 196">45TH MP CO / 196</option>
                </select>
            </div>
        </div>
