@@ -36,7 +36,12 @@
            </div>
            <div class="bill-no">
                Mail for/Bill No.
-               <input v-model="formData.billNo">
+               <select v-model="formData.billNo">
+                   <option value="14th ADMIN CO">14th ADMIN CO</option>
+                   <option value="13th EOC">13th EOC</option>
+                   <option value="11th ENGR DET">11th ENGR DET</option>
+                   <option value="45th MP CO">11th ENGR DET</option>
+               </select>
            </div>
        </div>
        <div class="article-area">
@@ -110,7 +115,12 @@
                    <div class="sig-area-text">
                      Recieved By:<br>
                      (Print Name)  
-                     <input v-model="formData.recievedBy">
+                     <select v-model="formData.recievedBy">
+                         <option value="Earl Smith">Earl Smith</option>
+                         <option value="John Thompson">John Thompson</option>
+                         <option value="Ronnie Carter">Ronnie Carter</option>
+                         <option value="Jerry Johnson">Jerry Johnson</option>
+                     </select>
                    </div>
                </div>
                <div class="sig-of-agent">
@@ -118,7 +128,12 @@
                      Signature of
                      <br>Addressee/
                      <br>Agent
-                     <input v-model="formData.sigOfAgent">
+                     <select v-model="formData.sigOfAgent">
+                         <option value="Earl Smith">Earl Smith</option>
+                         <option value="John Thompson">John Thompson</option>
+                         <option value="Ronnie Carter">Ronnie Carter</option>
+                         <option value="Jerry Johnson">Jerry Johnson</option>
+                     </select>
                    </div>
                </div>
            </div>
@@ -349,7 +364,7 @@
     .code-1-boxes input{
         position: absolute;
         width: 85%;
-        left: 2%;
+        left: 3%;
         border:none;
         height: 7%;
     }
@@ -520,7 +535,7 @@
         width: 56%;
         border-bottom: 1px solid black;
     }
-    .recieved-by input{
+    .recieved-by select{
         position: absolute;
         top: 7%;
         width: 400%;
@@ -535,7 +550,7 @@
         width: 56%;
         border-bottom: 1px solid black;
     }
-    .sig-of-agent input{
+    .sig-of-agent select{
         position: absolute;
         top: 7%;
         width: 400%;
@@ -615,7 +630,7 @@
         left: 75%;
         text-align: left;
     }
-    .bill-no input{
+    .bill-no select{
         position: absolute;
         width: 80%;
         top: 30%;
