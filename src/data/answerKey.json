@@ -625,7 +625,8 @@
             "situationNumber": "Situation 1",
             "stampCounter": 0,
             "type": "Package",
-            "gradeAt":[]
+            "gradeAt":[1],
+            "situation1Location": "Safe"
         },
         {
             "articleCode": "RB 290 770 790 US",
@@ -640,7 +641,8 @@
             "situationNumber": "Situation 1",
             "stampCounter": 0,
             "type": "Package",
-            "gradeAt":[]
+            "gradeAt":[1],
+            "situation1Location": "Safe"
         },
         {
             "articleCode": "SEAL #70948511",
