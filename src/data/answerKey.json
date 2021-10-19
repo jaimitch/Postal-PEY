@@ -370,6 +370,45 @@
             "gradeAt": [2]
         },
         {
+            "articleCode":"Bill #30",
+            "situationNumber":"Situation 4",
+            "lockNo": "",
+            "rotaryNo": "",
+            "jacketNo": "",
+            "controlNo": "",
+            "billNo": "30",
+            "pageNo": "1X",
+            "airmail": "",
+            "sealNo": "",
+            "to": "APO AE 09459",
+            "billNoRight": "30",
+            "amNo": "",
+            "jacketNoRight": "",
+            "lockNoRight": "",
+            "rotaryNoRight": "",
+            "airmailRight": "",
+            "sealNoRight": "",
+            "recieved": "",
+            "recievingClerks": [],
+            "totalArticlesSent": "2",
+            "totalArticlesRecieved": "2",
+            "postmasterSent": "Todd Edgar",
+            "postmasterRecieved": "Student",
+            "currentTime": "Current time",
+            "dispatchingClerk": "0800",
+            "itemNums": ["", "S/43000277", "O/RB300911759US"],
+            "itemOrigins": ["", "APO AE 09459 - 2"],
+            "topStamp1": true,
+            "topStamp2": true,
+            "bottomStamp1": true,
+            "bottomStamp2": true,
+            "witnessSent": "",
+            "witnessRecieved": "",
+            "situation2Location": "Forms",
+            "situation4Location": "Forms",
+            "gradeAt": [4]
+        },
+        {
             "situationNumber":"Situation 4",
             "lockNo": "",
             "rotaryNo": "",
@@ -841,7 +880,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Package",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 300 911 755 US",
@@ -856,7 +896,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 300 911 756 US",
@@ -871,7 +912,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 300 911 757 US",
@@ -886,7 +928,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 300 911 758 US",
@@ -901,7 +944,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 300 911 760 US",
@@ -916,7 +960,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 300 911 761 US",
@@ -931,7 +976,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Package",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 842 320 438 US",
@@ -946,7 +992,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 842 320 439 US",
@@ -961,7 +1008,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "articleCode": "RB 707 092 210 US",
@@ -976,7 +1024,8 @@
             "situationNumber":"Situation 4",
             "stampCounter":0,
             "type":"Letter",
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1028,
@@ -991,7 +1040,8 @@
             "type":"Package",
             "droppable":true,
             "showImage":false,
-            "gradeAt": []
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1029,
@@ -1005,7 +1055,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1030,
@@ -1019,7 +1070,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1031,
@@ -1033,7 +1085,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1032,
@@ -1048,7 +1101,8 @@
             "type":"Package",
             "droppable":true,
             "showImage":false,
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1033,
@@ -1062,7 +1116,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1034,
@@ -1076,7 +1131,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt":[]
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1035,
@@ -1090,7 +1146,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt": []
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         },
         {
             "id":1036,
@@ -1104,7 +1161,8 @@
             "formInputs":{},
             "type":"Letter",
             "droppable":true,
-            "gradeAt": []
+            "situation4Location": "Safe",
+            "gradeAt":[4]
         }
     ]
 }
