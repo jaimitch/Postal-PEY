@@ -462,7 +462,11 @@
         {
             "articleCode": "48",
             "situationNumber":"Situation 4",
+<<<<<<< HEAD
+            "senderAddress": "5th MP CO APO AE 09459",
+=======
             "senderAddress": "45th MP CO APO AE 09459",
+>>>>>>> ba28b2185d8d2b325284da4e5b2c0cf027390345
             "adultSigReq": false,
             "adultSigRest": false,
             "certMail": false,

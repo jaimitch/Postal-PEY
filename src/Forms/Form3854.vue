@@ -472,6 +472,10 @@
         },
         methods: {
             changeForm() {
+                if(this.item.articleCode == "created"){
+                    // this.item.articleCode = this.sigOfAgent
+                    this.formData.articleCode = this.formData.billNo
+                }
                 //this.changeBackText()
                 if(this.backText == undefined){
                     this.backText = this.item.formInputs.backText
