@@ -71,12 +71,12 @@
            </div>
            <div class="code-1-area"> 
                <div v-for="i in 10" :key="i" class="code-1-boxes">
-                    <input v-if="i <= 4" v-model="formData.code[i]">
+                    <input v-if="i <= 4" v-model="formData.code[i]" disabled>
                 </div>
            </div>
            <div class="originOffice-1-area"> 
                <div v-for="i in 10" :key="i" class="originOffice-1-boxes">
-                    <input v-if="i <= 4" v-model="formData.origin[i]">
+                    <input v-if="i <= 4" v-model="formData.origin[i]" disabled>
                 </div>
            </div>
            <div class="articleNum-2-area"> 
