@@ -307,6 +307,54 @@
             droppable: true,
             gradeAt: []
           },
+          {
+            id: 8,
+            title: "Incoming Truck 3",
+            articleCode: "Truck 3",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 9,
+            title: "Incoming Truck 4",
+            articleCode: "Truck 4",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 10,
+            title: "Incoming Truck 5",
+            articleCode: "Truck 5",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
         ],
         //default assumes there is something wrong
         //(this prevents next arrow from being clicked until they at least try and submit)
@@ -1365,6 +1413,12 @@
         else if(this.getSituationNumber == 4) {
           if(this.pageNum == 5 && !this.situationFourPartOne) {
 
+            //hardcode truck visibility
+            this.items[4].level = 0;
+            this.items[5].level = 1;
+            this.items[6].level = 0;
+
+
             let newFormSettings = {
               billNo: "30",
               pageNo: "1X",
@@ -1381,13 +1435,20 @@
               bottomStamp2: false,
             }
 
-            this.createItem('psform3854', '30', 4, 2, true, '', newFormSettings, [])
-            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined, [])
-            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined, [])
+            let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [])
+            this.assignItemToParent('Truck 3', form1)
+            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [])
+            this.assignItemToParent('Truck 3', item1)
+            let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [])
+            this.assignItemToParent('Truck 3', item2)
             //30-33
             this.situationFourPartOne = true;
           }
           else if(this.pageNum == 6 && !this.situationFourPartTwo) {
+
+            //hardcode truck visibility
+            this.items[5].level = 0;
+            this.items[6].level = 0;
 
             let newFormSettings = {
               billNo: "24",
@@ -1426,6 +1487,9 @@
           }
           else if(this.pageNum == 7 && !this.situationFourPartThree) {
 
+            //hardcode truck visibility
+            this.items[6].level = 1;
+
             let newFormSettings = {
               senderAddress: "45th MP CO APO AE 09459",
                 registeredMail: true,
@@ -1439,13 +1503,20 @@
                 stamped: false
             }
 
-            this.createItem('psform3877', '24', 4, 2, true, '', newFormSettings, [])
-            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined, [])
-            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined, [])
+            let form1 = this.createItem('psform3877', '24', 4, 2, false, '', newFormSettings, [])
+            this.assignItemToParent('Truck 4', form1)
+            let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [])
+            this.assignItemToParent('Truck 4', item1)
+            let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [])
+            this.assignItemToParent('Truck 4', item2)
             //18-21
             this.situationFourPartThree = true;
           }
           else if(this.pageNum == 8 && !this.situationFourPartFour) {
+
+            //hardcode truck visibility
+            this.items[6].level = 0;
+            this.items[7].level = 1;
 
             let newFormSettings = {
               lockNo: "",
@@ -1483,17 +1554,28 @@
               witnessRecieved: ""
             }
 
-            this.createItem('psform3854', '33', 4, 2, true, '', newFormSettings, [])
-            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined, [])
-            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined, [])
-            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined, [])
-            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213', undefined, [])
-            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214', undefined, [])
-            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215', undefined, [])
-            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216', undefined, [])
-            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217', undefined, [])
-            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218', undefined, [])
-            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219', undefined, [])
+            let form1 = this.createItem('psform3854', '33', 4, 2, false, '', newFormSettings, [])
+            this.assignItemToParent('Truck 5', form1)
+            let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [])
+            this.assignItemToParent('Truck 5', item1)
+            let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [])
+            this.assignItemToParent('Truck 5', item2)
+            let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [])
+            this.assignItemToParent('Truck 5', item3)
+            let item4 = this.createItem('letter', 'RB 707 092 213 US', 4, 2, false, '213', undefined, [])
+            this.assignItemToParent('Truck 5', item4)
+            let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [])
+            this.assignItemToParent('Truck 5', item5)
+            let item6 = this.createItem('package', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [])
+            this.assignItemToParent('Truck 5', item6)
+            let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [])
+            this.assignItemToParent('Truck 5', item7)
+            let item8 = this.createItem('letter', 'RB 707 092 217 US', 4, 2, false, '217', undefined, [])
+            this.assignItemToParent('Truck 5', item8)
+            let item9 = this.createItem('letter', 'RB 707 092 218 US', 4, 2, false, '218', undefined, [])
+            this.assignItemToParent('Truck 5', item9)
+            let item10 = this.createItem('letter', 'RB 707 092 219 US', 4, 2, false, '219', undefined, [])
+            this.assignItemToParent('Truck 5', item10)
             //6-17
             this.situationFourPartFour = true;
           }
