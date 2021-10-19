@@ -1576,6 +1576,8 @@
     order: 1;
     background-color: #333366;
     width: 22vw;
+    overflow: scroll;
+    height: 38vw;
   }
   .right-side-content{
     order: 3;
