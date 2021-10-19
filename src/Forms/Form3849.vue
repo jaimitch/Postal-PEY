@@ -157,7 +157,7 @@
                         <option value="SGT Ronald Cain">SGT Ronald Cain</option>
                         <option value="PFC Carl Thompson">PFC Carl Thompson</option>
                         <option value="SSG Donald Green">SSG Donald Green</option>
-                        <option value="SGM Mary Fulton">SGM Mary Fulton</option>
+                        <option value="Mary Fulton">Mary Fulton</option>
                         <option value="SGT Earl Smith">SGT Earl Smith</option>
                     </select>
                 </div>
@@ -172,7 +172,7 @@
                         <option value="SGT Ronald Cain">SGT Ronald Cain</option>
                         <option value="PFC Carl Thompson">PFC Carl Thompson</option>
                         <option value="SSG Donald Green">SSG Donald Green</option>
-                        <option value="SGM Mary Fulton">SGM Mary Fulton</option>
+                        <option value="Mary Fulton">Mary Fulton</option>
                         <option value="SGT Earl Smith">SGT Earl Smith</option>
                     </select>
                 </div>
