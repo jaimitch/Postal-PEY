@@ -458,7 +458,7 @@
         },
         {
             "situationNumber":"Situation 4",
-            "senderAddress": "",
+            "senderAddress": "5th MP CO APO AE 09459",
             "adultSigReq": false,
             "adultSigRest": false,
             "certMail": false,
