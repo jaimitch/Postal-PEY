@@ -793,9 +793,6 @@
             type: "PS FORM 3877",
             droppable: true
           }
-          if(newItem.articleCode != '') {
-            newItem.articleCode = 'Bill #' + newItem.articleCode;
-          }
 
           if(formSettings != undefined) {
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
@@ -1096,6 +1093,12 @@
                   errors += this.gradeForm(item.articleCode, keyItem, item.type)
                   return errors
               }
+              else if(itemType == "PS FORM 3877") {
+                console.log("PS FORM 3877")
+                errors += this.checkItemLocation(item, keyItem)
+                errors += this.gradeForm(item.articleCode, keyItem, item.type)
+                return errors
+              }
               break
             }
         }
@@ -1284,6 +1287,20 @@
             }
           }
           return errors
+        }
+        else if(formCode == "PS FORM 3877") {
+          let errors = 0;
+          console.log("Attempting to grade a 3877!")
+          for(let property in keyForm){
+             if(!Array.isArray(keyForm[property])) {
+               if(userForm[property] != keyForm[property] && property != "gradeAt" && property != "square" && !property.includes("Location")) {
+                console.log(property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
+                errors++;
+              }
+            }
+          }
+          return errors;
+
         }
       },
 
@@ -1529,14 +1546,14 @@
                 trackingNum1: "RB842320438US",
                 trackingNum2: "RB842320439US",
                 trackingTextInput1: "HQ CAC FT KNOX, KY 40121",
-                trackingTextInput2: "545 MP CO FT JACKSON, SC 29207",
+                trackingTextInput2: "545 MP CO FORT JACKSON, SC 29207",
                 piecesSent: "2",
                 rows:["0.87", "9.50", "N/A", "", "", "", "", "", "", "", "", "", "",
                       "1.83", "9.50", "N/A"],
                 stamped: false
             }
 
-            let form1 = this.createItem('psform3877', '24', 4, 2, false, '', newFormSettings, [4])
+            let form1 = this.createItem('psform3877', '48', 4, 2, false, '', newFormSettings, [4])
             this.assignItemToParent('Truck 4', form1)
             let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4])
             this.assignItemToParent('Truck 4', item1)

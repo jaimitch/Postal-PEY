@@ -171,6 +171,7 @@
             "gradeAt": []
           },
           {
+            "articleCode": "Ronald Cain",
             "situationNumber": "Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459 ",
             "name": "Ronald Cain",
@@ -202,6 +203,7 @@
             "situation3Location": "Truck 2"
          },
          {
+            "articleCode": "Carl Thompson",
             "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459 ",
             "name": "Carl Thompson",
@@ -233,6 +235,7 @@
             "situation3Location": "Truck 2"
          },
          {
+             "articleCode": "Donald Green",
             "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459 ",
             "name": "Donald Green",
@@ -457,8 +460,13 @@
             "gradeAt": []
         },
         {
+            "articleCode": "48",
             "situationNumber":"Situation 4",
+<<<<<<< HEAD
             "senderAddress": "5th MP CO APO AE 09459",
+=======
+            "senderAddress": "45th MP CO APO AE 09459",
+>>>>>>> ba28b2185d8d2b325284da4e5b2c0cf027390345
             "adultSigReq": false,
             "adultSigRest": false,
             "certMail": false,
@@ -509,7 +517,8 @@
             ],
             "square":"",
             "stamped": true,
-            "gradeAt": []
+            "gradeAt": [4],
+            "situation4Location": "Forms"
         },
         {
             "articleCode": "John Thompson",
