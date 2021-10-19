@@ -226,7 +226,8 @@
                     <select v-model="formData.itemOrigins[i]" class="box">
                         <option value="APO AE 09459">APO AE 09459</option>
                         <option value="MISSENT">MISSENT</option>
-                        <option value="NOT RECIEVED">NOT RECIEVED</option>
+                        <option value="NOT RECEIVED">NOT RECEIVED</option>
+                        <option value="APO AE 09459 - 2">APO AE 09459 - 2</option>
                         <option value="Should Read RB309266140US">
                             Should Read RB309266140US
                         </option>

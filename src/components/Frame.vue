@@ -321,6 +321,70 @@
             droppable: true,
             gradeAt: []
           },
+          {
+            id: 8,
+            title: "Incoming Truck 3",
+            articleCode: "Truck 3",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 9,
+            title: "Incoming Truck 4",
+            articleCode: "Truck 4",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 10,
+            title: "Incoming Truck 5",
+            articleCode: "Truck 5",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 11,
+            title: "Outgoing Truck 6",
+            articleCode: "Truck 6",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 5",
+            stampCounter: 0,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 5"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
         ],
         //default assumes there is something wrong
         //(this prevents next arrow from being clicked until they at least try and submit)
@@ -350,6 +414,8 @@
         situationFourPartTwo: false,
         situationFourPartThree: false,
         situationFourPartFour: false,
+        situationFivePartOne: false,
+        situationFivePartTwo: false,
         formKey: 0,
         form2261Back: false,
         form3854Back: false,
@@ -981,7 +1047,7 @@
       NOTE 2: At the time this is called, we assume that there is a match between the item and the answer key
       */
       gradeItem(item, keyItem) {
-        // console.log(item)
+        // console.log("gradeItem got:", item)
         let itemType = item.type;
         switch(itemType) {
             case "Package": {
@@ -1037,7 +1103,6 @@
       //facilitates the grading of each item for the current situation on submit
       gradeSituationContents() {
         var errors = 0;
-          // let situationItems = this.items.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
           let situationItems = this.getGradingItemList;
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
@@ -1047,7 +1112,8 @@
           }
 
           console.log("in grade situation", situationItems)
-          let keyItems = this.answerKey.answers.filter(x => x.situationNumber == `Situation ${this.getSituationNumber}`)
+          let keyItems = this.answerKey.answers.filter(x => x.gradeAt.includes(this.getSituationNumber))
+
           keyItems.forEach((currentKeyItem) => {
           
             //check to see if our filtered key list contains a matching article code
@@ -1056,7 +1122,7 @@
             )
             
             if(currentItem[0] != undefined) {
-              //console.log("situationItems",situationItems.length)
+              console.log("situationItems",situationItems.length)
               let itemErrors = this.gradeItem(currentItem[0], currentKeyItem);
               console.log("itemErrors",itemErrors)
               
@@ -1077,7 +1143,7 @@
           if(errors == 0) {
             this.pageErrors[0] = false;
           }
-        console.log(situationItems.length, keyItems.length)
+        console.log("situationItems: ", situationItems, "keyItems", keyItems)
       },
       gradeForm(articleCode, keyForm, formCode) {
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
@@ -1135,6 +1201,7 @@
                           //It doesn't match
                           if(userForm.itemOrigins[i] != keyPairs[j].right) {
                             errors++
+                            console.log("mismatch:", userForm.itemOrigins[i],  keyPairs[j].right)
                             break
                           }
                         }
@@ -1187,9 +1254,7 @@
             if(Array.isArray(keyForm[property])) {
 
               if(property == "article") {
-                //If there are item origins, we need to build an answer key
                 if(keyForm.article.length > 1) {
-                  //first pass to build the answer key
                   for(let i = 1; i < keyForm.article.length; i++) {
                     if(!keyForm[property].includes(userForm[property][i])) {
                       console.log("It doesnt match")
@@ -1291,8 +1356,8 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1])
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1])
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1])
+            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 2, 3])
+            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 2, 3])
           }
           this.situationOneInit = true;
         }
@@ -1318,13 +1383,13 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2])
+            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2, 3])
             this.assignItemToParent('Truck 1', form1)
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2])
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2, 3])
             this.assignItemToParent('Bill #260', item1)
-            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2])
+            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3])
             this.assignItemToParent('Bill #260', item2)
-            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2])
+            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3])
             this.assignItemToParent('Bill #260', item3)
             console.log(this.items)
 
@@ -1355,17 +1420,17 @@
               bottomStamp2: false
             }
             
-            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2])
+            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2, 3])
             this.assignItemToParent('SEAL #70948511', item1)
-            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2])
+            let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2, 3])
             this.assignItemToParent('SEAL #70948511', item2)
-            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined, [2])
+            let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined, [2, 3])
             this.assignItemToParent('SEAL #70948511', item3)
-            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined, [2])
+            let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined, [2, 3])
             this.assignItemToParent('SEAL #70948511', item4)
-            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined, [2])
+            let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined, [2, 3])
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2])
+            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2, 3])
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -1374,14 +1439,18 @@
         }
         else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
           this.situationThreeInit = true;
-          console.log(this.items);
           //hardcode all truck visibility
           this.items[3].level = 0;
           this.items[4].level = 1;
-          console.log(this.items)
         }
         else if(this.getSituationNumber == 4) {
           if(this.pageNum == 5 && !this.situationFourPartOne) {
+
+            //hardcode truck visibility
+            this.items[4].level = 0;
+            this.items[5].level = 1;
+            this.items[6].level = 0;
+
 
             let newFormSettings = {
               billNo: "30",
@@ -1399,13 +1468,20 @@
               bottomStamp2: false,
             }
 
-            this.createItem('psform3854', '30', 4, 2, true, '', newFormSettings, [])
-            this.createItem('pouch', '43000277', 4, 2, true, 'Bag-1', undefined, [])
-            this.createItem('package', 'RB 300 911 759 US', 4, 2, true, '759', undefined, [])
+            let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [4])
+            this.assignItemToParent('Truck 3', form1)
+            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4])
+            this.assignItemToParent('Truck 3', item1)
+            let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4])
+            this.assignItemToParent('Truck 3', item2)
             //30-33
             this.situationFourPartOne = true;
           }
           else if(this.pageNum == 6 && !this.situationFourPartTwo) {
+
+            //hardcode truck visibility
+            this.items[5].level = 0;
+            this.items[6].level = 0;
 
             let newFormSettings = {
               billNo: "24",
@@ -1425,24 +1501,27 @@
               witnessSent: "WIT: Scott Sanders",
             }
 
-            let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [])
+            let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [4])
             this.assignItemToParent('SEAL #43000277', item1)
-            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [])
+            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [4])
             this.assignItemToParent('SEAL #43000277', item2)
-            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [])
+            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [4])
             this.assignItemToParent('SEAL #43000277', item3)
-            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [])
+            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4])
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [])
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4])
             this.assignItemToParent('SEAL #43000277', item5)
-            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [])
+            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4])
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [])
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4])
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
           }
           else if(this.pageNum == 7 && !this.situationFourPartThree) {
+
+            //hardcode truck visibility
+            this.items[6].level = 1;
 
             let newFormSettings = {
               senderAddress: "45th MP CO APO AE 09459",
@@ -1457,13 +1536,20 @@
                 stamped: false
             }
 
-            this.createItem('psform3877', '24', 4, 2, true, '', newFormSettings, [])
-            this.createItem('letter', 'RB 842 320 438 US', 4, 2, true, '438', undefined, [])
-            this.createItem('letter', 'RB 842 320 439 US', 4, 2, true, '439', undefined, [])
+            let form1 = this.createItem('psform3877', '24', 4, 2, false, '', newFormSettings, [4])
+            this.assignItemToParent('Truck 4', form1)
+            let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4])
+            this.assignItemToParent('Truck 4', item1)
+            let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4])
+            this.assignItemToParent('Truck 4', item2)
             //18-21
             this.situationFourPartThree = true;
           }
           else if(this.pageNum == 8 && !this.situationFourPartFour) {
+
+            //hardcode truck visibility
+            this.items[6].level = 0;
+            this.items[7].level = 1;
 
             let newFormSettings = {
               lockNo: "",
@@ -1501,19 +1587,42 @@
               witnessRecieved: ""
             }
 
-            this.createItem('psform3854', '33', 4, 2, true, '', newFormSettings, [])
-            this.createItem('letter', 'RB 707 092 210 US', 4, 2, true, '210', undefined, [])
-            this.createItem('package', 'RB 707 092 211 US', 4, 2, true, '211', undefined, [])
-            this.createItem('letter', 'RB 707 092 212 US', 4, 2, true, '212', undefined, [])
-            this.createItem('letter', 'RB 707 092 213 US', 4, 2, true, '213', undefined, [])
-            this.createItem('letter', 'RB 707 092 214 US', 4, 2, true, '214', undefined, [])
-            this.createItem('package', 'RB 707 092 215 US', 4, 2, true, '215', undefined, [])
-            this.createItem('letter', 'RB 707 092 216 US', 4, 2, true, '216', undefined, [])
-            this.createItem('letter', 'RB 707 092 217 US', 4, 2, true, '217', undefined, [])
-            this.createItem('letter', 'RB 707 092 218 US', 4, 2, true, '218', undefined, [])
-            this.createItem('letter', 'RB 707 092 219 US', 4, 2, true, '219', undefined, [])
+            let form1 = this.createItem('psform3854', '33', 4, 2, false, '', newFormSettings, [4])
+            this.assignItemToParent('Truck 5', form1)
+            let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4])
+            this.assignItemToParent('Truck 5', item1)
+            let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4])
+            this.assignItemToParent('Truck 5', item2)
+            let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [4])
+            this.assignItemToParent('Truck 5', item3)
+            let item4 = this.createItem('letter', 'RB 707 092 213 US', 4, 2, false, '213', undefined, [4])
+            this.assignItemToParent('Truck 5', item4)
+            let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [4])
+            this.assignItemToParent('Truck 5', item5)
+            let item6 = this.createItem('package', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4])
+            this.assignItemToParent('Truck 5', item6)
+            let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [4])
+            this.assignItemToParent('Truck 5', item7)
+            let item8 = this.createItem('letter', 'RB 707 092 217 US', 4, 2, false, '217', undefined, [4])
+            this.assignItemToParent('Truck 5', item8)
+            let item9 = this.createItem('letter', 'RB 707 092 218 US', 4, 2, false, '218', undefined, [4])
+            this.assignItemToParent('Truck 5', item9)
+            let item10 = this.createItem('letter', 'RB 707 092 219 US', 4, 2, false, '219', undefined, [4])
+            this.assignItemToParent('Truck 5', item10)
             //6-17
             this.situationFourPartFour = true;
+          }
+        }
+        else if(this.getSituationNumber == 5) {
+          console.log("its part 5!")
+          if(this.pageNum == 9 && !this.situationFivePartOne) {
+            //hardcode truck visibility
+            this.items[7].level = 0;
+            this.items[8].level = 1;
+
+
+
+            this.situationFivePartOne = true;
           }
         }
       },
@@ -1590,6 +1699,8 @@
     order: 1;
     background-color: #333366;
     width: 22vw;
+    overflow: scroll;
+    height: 38vw;
   }
   .right-side-content{
     order: 3;
@@ -1613,7 +1724,7 @@
   .parent-level {
     background-color: #D5D5D5;
     margin-bottom: 15px;
-    padding: 15px;
+    padding: 22px;
     color: #42426A;
     border-radius: 5px;
     z-index: 1;
@@ -1770,7 +1881,7 @@
   .scroll-zone-down {
     position:absolute;
     left: 7vw;
-    top: 48.5vw;
+    top: 50vw;
     width: 27vw;
     /* border: 2px solid green; */
     padding: 2vw;
