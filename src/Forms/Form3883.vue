@@ -116,7 +116,7 @@
                             <option value="John Thompson">John Thompson</option>
                             <option value="Ronnie Carter">Ronnie Carter</option>
                             <option value="Jerry Johnson">Jerry Johnson</option>
-                            <option value="Bob">Bob</option>
+                            <option :value="studentName">{{studentName}}</option>
                         </select>
                    </div>
                </div>
@@ -192,7 +192,7 @@
 
 <script>
     export default {
-        props: ['item'],
+        props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
                 formData: {

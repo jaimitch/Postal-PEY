@@ -141,6 +141,8 @@
             <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
             <Form3854 
               v-bind:item="items[currentFormIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -149,6 +151,8 @@
           <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == true">
             <Form3854Back 
               v-bind:item="items[currentItemIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -157,6 +161,8 @@
           <div v-if="this.items[currentFormIndex].type == 'PS FORM 3877'" >
             <Form3877 
               v-bind:item="items[currentFormIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -164,6 +170,8 @@
           <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == false">
             <Form2261 
               v-bind:item="items[currentFormIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -172,6 +180,8 @@
           <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == true">
             <Form2261Back 
               v-bind:item="items[currentFormIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -180,6 +190,8 @@
           <div v-if="this.items[currentFormIndex].type == 'PS FORM 3883'" class="form-3883">
             <Form3883 
               v-bind:item="items[currentFormIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />
@@ -187,6 +199,8 @@
           <div v-if="this.items[currentFormIndex].type == 'PS FORM 3849'">
             <Form3849
               v-bind:item="items[currentFormIndex]"
+              v-bind:studentName="studentName"
+              v-bind:studentPG="payGrade"
               @changeForm="changeForm($event, data)"
               :key="formKey"
             />

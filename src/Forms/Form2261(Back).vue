@@ -6,7 +6,7 @@
         </div>
         <div class="grid">
             <div v-for="i in 96" :key="i" class="box">
-                <input v-if="i <= 6" placeholder=" " v-model="formData.items[i-1]">
+                <input v-if="i <= 6" placeholder=" " v-model="formData.items[i-1]" disabled>
             </div>
         </div>
         <div class="bottom-text">
@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        props:['item'],
+        props: ['item', 'studentName', 'studentPG'],
         data(){
             return{
                 formData:{

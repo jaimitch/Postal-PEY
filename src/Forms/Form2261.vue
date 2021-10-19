@@ -618,15 +618,9 @@
         </div>
         <div class="remarks">
             <!-- <textarea v-model="formData.remarks"></textarea> -->
-            <select v-model="formData.remarks"> 
-                <option value="WIT: George Forrest, PFC Bob 1">WIT: George Forrest, PFC Bob 1</option>
-                <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                <option value="Kyle">Kyle</option>
-                <option value="WIT: Larry Brown">WIT: Larry Brown</option>
-                <option value="Bob">Bob</option>
-                <option value="Matthew L. Long">Matthew L. Long</option>
+            <select v-model="formData.remarks">
+               <option :value="remarks[index]" v-for="index in remarks.length" :key="index">{{ remarks[index-1] }}</option> 
             </select>
-
         </div>
         <div class="part3-banner">
             <b>PART III-VERIFICATION AND TRANSFER OF ACCOUNTABILITY</b>
@@ -643,7 +637,7 @@
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                         <option value="Kyle">Kyle</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
-                        <option value="Bob">Bob</option>
+                        <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
                 </select>
             </div>
@@ -655,7 +649,7 @@
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                         <option value="Kyle">Kyle</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
-                        <option value="Bob">Bob</option>
+                        <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
                 </select>
             </div>
@@ -673,7 +667,7 @@
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                         <option value="Kyle">Kyle</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
-                        <option value="Bob">Bob</option>
+                        <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
                     </select>
             </div>
@@ -701,7 +695,7 @@
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                         <option value="Kyle">Kyle</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
-                        <option value="Bob">Bob</option>
+                        <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
                     </select>
             </div>
@@ -715,7 +709,7 @@
 
 <script>
     export default {
-        props: ['item'],
+        props: ['item', 'studentName', 'studentPG'],
         data() {
             return{
                 formData:{
@@ -765,6 +759,18 @@
                     itemsAccepted: this.item.formInputs.itemsAccepted,
                     items: this.item.formInputs.items,
                 },   
+            }
+        },
+        computed:{
+            remarks(){
+                let x = [
+                    "WIT: George Forrest, PFC "+this.studentName+" "+ this.studentPG ,
+                    "WIT: Scott Sanders",
+                    "Kyle",
+                    "WIT: Larry Brown",
+                    "Matthew L. Long"
+                ]
+                return x;
             }
         },
         methods:{
