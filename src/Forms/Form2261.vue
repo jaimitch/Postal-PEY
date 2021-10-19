@@ -349,12 +349,252 @@
                 <b>SECTION C-INVENTORY BY NUMBER OF EACH ITEM DELIVERED ON PS FORM 3849(Continue in remarks if necessary)</b>
             </div>
             <div class="row1">
-                <div class="space1"><input v-model="formData.sectionC1"></div>
-                <div class="space2"><input v-model="formData.sectionC2"></div>
-                <div class="space3"><input v-model="formData.sectionC3"></div>
-                <div class="space4"><input v-model="formData.sectionC4"></div>
-                <div class="space5"><input v-model="formData.sectionC5"></div>
-                <div class="space6"><input v-model="formData.sectionC6"></div>
+                <div class="space1">
+                    <!-- <input v-model="formData.sectionC1"> -->
+                    <select v-model="formData.sectionC1">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space2">
+                    <!-- <input v-model="formData.sectionC2"> -->
+                    <select v-model="formData.sectionC2">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space3">
+                    <!-- <input v-model="formData.sectionC3"> -->
+                    <select v-model="formData.sectionC3">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space4">
+                    <select v-model="formData.sectionC4">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
+                    <!-- <input v-model="formData.sectionC4"> -->
+                </div>
+                <div class="space5">
+                    <!-- <input v-model="formData.sectionC5"> -->
+                    <select v-model="formData.sectionC5">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space6">
+                    <!-- <input v-model="formData.sectionC6"> -->
+                    <select v-model="formData.sectionC6">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
+                </div>
             </div>
             <div class="row2">
                 <div class="space1"><input v-model="formData.sectionC7" disabled></div>
@@ -377,7 +617,16 @@
             <b>PART II-REMARKS</b>
         </div>
         <div class="remarks">
-            <textarea v-model="formData.remarks"></textarea>
+            <!-- <textarea v-model="formData.remarks"></textarea> -->
+            <select v-model="formData.remarks"> 
+                <option value="WIT: George Forrest, PFC Bob 1">WIT: George Forrest, PFC Bob 1</option>
+                <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                <option value="Kyle">Kyle</option>
+                <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                <option value="Bob">Bob</option>
+                <option value="Matthew L. Long">Matthew L. Long</option>
+            </select>
+
         </div>
         <div class="part3-banner">
             <b>PART III-VERIFICATION AND TRANSFER OF ACCOUNTABILITY</b>
@@ -388,11 +637,27 @@
             </div>
             <div class="prep-sign">
                 1.SIGNATURE OF PERSON PREPARING FORM
-                <input v-model="formData.prepSig">
+                <!-- <input v-model="formData.prepSig"> -->
+                <select v-model="formData.prepSig"> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle">Kyle</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option value="Bob">Bob</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                </select>
             </div>
             <div class="official-sign">
                 2.SIGNATURE OF VERIFYING OFFICIAL
-                <input v-model="formData.officialSig">
+                <!-- <input v-model="formData.officialSig"> -->
+                <select v-model="formData.officialSig"> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle">Kyle</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option value="Bob">Bob</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                </select>
             </div>
         </div>
         <div class="B">
@@ -402,15 +667,43 @@
             <div class="name-print">
                 1.TYPED/PRINTED NAME OF ACCEPTOR
                 (Last,First,Middle Initial)
-                <input v-model="formData.typedName">
+                <!-- <input v-model="formData.typedName"> -->
+                <select v-model="formData.typedName"> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle">Kyle</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option value="Bob">Bob</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                    </select>
             </div>
             <div class="pay-grade">
                 2.PAY GRADE
-                <input v-model="formData.payGrade">
+                <!-- <input v-model="formData.payGrade"> -->
+                <select v-model="formData.payGrade">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="official-sign">
                 3.SIGNATURE
-                <input v-model="formData.signature">
+                <!-- <input v-model="formData.signature"> -->
+                <select v-model="formData.signature"> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle">Kyle</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option value="Bob">Bob</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                    </select>
             </div>
         </div>
         <div class="bottom-text">
@@ -940,6 +1233,15 @@
         height: 70%;
         border:none;
     }
+    .sectionC select{
+        position: absolute;
+        top:10%;
+        left: 5%;
+        width:90%;
+        height: 70%;
+        border:none;
+        font-size: 1vmin;
+    }
     .sectionC-banner{
         position: absolute;
         top:0;
@@ -1028,7 +1330,7 @@
         width: 100%;
         height: 13%;
     }
-    .remarks textarea{
+    .remarks select{
         resize: none;
         position: absolute;
         top:2%;
@@ -1059,6 +1361,14 @@
         height: 55%;
         border: none;
     }
+    .A select{
+        position: absolute;
+        top:30%;
+        left:1%;
+        width: 90%;
+        height: 55%;
+        border: none;
+    }
     .a-banner{
         position: absolute;
         width: 100%;
@@ -1074,6 +1384,15 @@
         border-bottom: 1px solid black;
     }
     .B input{
+        position: absolute;
+        top:50%;
+        left:1%;
+        width: 80%;
+        height: 35%;
+        border: none;
+        
+    }
+    .B select{
         position: absolute;
         top:50%;
         left:1%;
