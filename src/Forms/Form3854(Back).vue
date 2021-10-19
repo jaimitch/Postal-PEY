@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        props: ['item'],
+        props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
                 formData: {

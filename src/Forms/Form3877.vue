@@ -201,7 +201,7 @@
                         <option value="Hark Smith">Hark Smith</option>
                         <option value="Leroy Brown">Leroy Brown</option>
                         <option value="Michael Turner">Michael Turner</option>
-                        <option value="Bob">Bob</option>
+                        <option :value="studentName">{{studentName}}</option>
                         <option value=""></option>
                     </select>
         </div>
@@ -220,7 +220,7 @@
 
 <script>
     export default{
-        props: ['item'],
+        props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
                 formData: {
