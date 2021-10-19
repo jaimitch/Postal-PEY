@@ -154,11 +154,11 @@
                         </p>
                     </div>
                     <select v-model="formData.signature">
-                        <option value="SGT Ronald Cain">SGT Ronald Cain</option>
-                        <option value="PFC Carl Thompson">PFC Carl Thompson</option>
-                        <option value="SSG Donald Green">SSG Donald Green</option>
+                        <option value="Ronald Cain">Ronald Cain</option>
+                        <option value="Carl Thompson">Carl Thompson</option>
+                        <option value="Donald Green">Donald Green</option>
                         <option value="Mary Fulton">Mary Fulton</option>
-                        <option value="SGT Earl Smith">SGT Earl Smith</option>
+                        <option value="Earl Smith">Earl Smith</option>
                     </select>
                 </div>
                 <div class="name">
@@ -169,11 +169,11 @@
                         </p>
                     </div>
                     <select v-model="formData.name">
-                        <option value="SGT Ronald Cain">SGT Ronald Cain</option>
-                        <option value="PFC Carl Thompson">PFC Carl Thompson</option>
-                        <option value="SSG Donald Green">SSG Donald Green</option>
+                        <option value="Ronald Cain">Ronald Cain</option>
+                        <option value="Carl Thompson">Carl Thompson</option>
+                        <option value="Donald Green">Donald Green</option>
                         <option value="Mary Fulton">Mary Fulton</option>
-                        <option value="SGT Earl Smith">SGT Earl Smith</option>
+                        <option value="Earl Smith">Earl Smith</option>
                     </select>
                 </div>
                 <div class="delivery-address">
