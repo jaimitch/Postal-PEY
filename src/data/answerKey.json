@@ -660,7 +660,7 @@
             "gradeAt":[1, 2, 3],
             "situation1Location": "Safe",
             "situation2Location": "Safe",
-            "situation3Location": "Truck2"
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 290 770 790 US",
@@ -678,7 +678,7 @@
             "gradeAt":[1, 2, 3],
             "situation1Location": "Safe",
             "situation2Location": "Safe",
-            "situation3Location": "Truck2"
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "SEAL #70948511",
@@ -710,7 +710,7 @@
             "type": "Package",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck2"
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 298 302 613 US",
@@ -727,7 +727,7 @@
             "type": "Package",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck2"
+            "situation3Location": "Truck 2"
         },
         {
             "articleCode": "RB 867 092 744 US",
