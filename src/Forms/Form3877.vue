@@ -10,7 +10,7 @@
             <div class="sender-text">
                 Name and Address of Sender
             </div>
-            <textarea class="sender-input" v-model="formData.senderAddress"></textarea>
+            <textarea class="sender-input" v-model="formData.senderAddress" disabled></textarea>
         </div>
         <div class="type-area">
             <div class="sender-text">
@@ -149,7 +149,7 @@
             </div>
             <div class = "grid">
                 <div v-for="i in 104" :key="i" class="box">
-                    <input v-if="i <= 26" v-model="formData.rows[i-1]">
+                    <input v-if="i <= 26" v-model="formData.rows[i-1]" disabled>
                     <input v-else disabled>
                 </div>
             </div>
@@ -158,19 +158,52 @@
             <div class="pieces-text">
                 Total Number of Pieces
                 Listed by Sender
-                <input class="pieces-input" v-model="formData.piecesSent">
+                <!-- <input class="pieces-input" v-model="formData.piecesSent"> -->
+                <select v-model="formData.piecesSent">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
             </div>
         </div>
         <div class="pieces-recieved" >
             <div class="pieces-text">
                 Total Number of Pieces
                 Recieved at Post Office
-                <input class="pieces-input" v-model="formData.piecesRecieved">
+                <!-- <input class="pieces-input" v-model="formData.piecesRecieved"> -->
+                <select v-model="formData.piecesRecieved">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
             </div>
         </div>
         <div class="postmaster">
             Postmaster, Per (Name of receiving employee)
-            <input class="postmaster-input" v-model="formData.postmaster">
+            <!-- <input class="postmaster-input" v-model="formData.postmaster"> -->
+            <select v-model="formData.postmaster"> 
+                        <option value="Todd Edgar">Todd Edgar</option>
+                        <option value="Anthony Smith">Anthony Smith</option>
+                        <option value="Hark Smith">Hark Smith</option>
+                        <option value="Leroy Brown">Leroy Brown</option>
+                        <option value="Michael Turner">Michael Turner</option>
+                        <option value="Bob">Bob</option>
+                        <option value=""></option>
+                    </select>
         </div>
         <div class="blank"/>
         <div class="bottom-text1">
@@ -407,12 +440,13 @@
         border: 1px solid black;
         border-top: none;
     }
-    .postmaster-input{
+    .postmaster select{
         position: absolute;
         border:none;
         top: 40%;
         left: 20%;
-        height: 45% ;
+        height: 55%;
+        width: 60%;
     }
     .blank{
         position: absolute;
@@ -487,10 +521,11 @@
         text-align: left;
         font-size: 0.8vmin;
     }
-    .pieces-input{
+    .pieces-text select{
         position: absolute;
-        width: 50%;
-        height: 30%;
+        top:25%;
+        width: 30%;
+        height: 45%;
         bottom: 0;
         right:0;
         border:none;
@@ -593,6 +628,7 @@
         height: 80%;
         border:none;
         background-color: transparent;
+        font-size: 1vmin;
     }
     .postage-text{
         display: grid;

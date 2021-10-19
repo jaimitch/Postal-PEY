@@ -72,28 +72,124 @@
                 <p>TOTAL OF ITEMS 1 THROUGH 7</p>
             </div>
             <div class="right-box1">
-                <input v-model="formData.itemsAtStart">
+                <!-- <input v-model="formData.itemsAtStart"> -->
+                <select v-model="formData.itemsAtStart">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box2">
-                <input v-model="formData.itemsAccepted">
+                <!-- <input v-model="formData.itemsAccepted"> -->
+                <select v-model="formData.itemsAccepted">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box3">
-                <input v-model="formData.itemsListedOnInsideBillsA">
+                <!-- <input v-model="formData.itemsListedOnInsideBillsA"> -->
+                <select v-model="formData.itemsListedOnInsideBillsA">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box4">
-                <input v-model="formData.itemsOnIncomingManifests">
+                <!-- <input v-model="formData.itemsOnIncomingManifests"> -->
+                <select v-model="formData.itemsOnIncomingManifests">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box5">
-                <input v-model="formData.itemsOnIncomingTruck">
+                <!-- <input v-model="formData.itemsOnIncomingTruck"> -->
+                <select v-model="formData.itemsOnIncomingTruck">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box6">
-                <input v-model="formData.numberOfPouchesClosed">
+                <!-- <input v-model="formData.numberOfPouchesClosed"> -->
+                <select v-model="formData.numberOfPouchesClosed">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box7">
-                <input v-model="formData.itemsRecievedFromOther">
+                <!-- <input v-model="formData.itemsRecievedFromOther"> -->
+                <select v-model="formData.itemsRecievedFromOther">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box8">
-                <input v-model="formData.total1thru7">
+                <!-- <input v-model="formData.total1thru7"> -->
+                <select v-model="formData.total1thru7">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
         </div>
         <div class="sectionB">
@@ -143,25 +239,109 @@
                 <b>TOTAL OF ITEMS 9 THROUGH 14(This total must be the same as the total shown in item 8)</b>
             </div>
             <div class="right-box1">
-                <input v-model="formData.itemsDelivered">
+                <!-- <input v-model="formData.itemsDelivered"> -->
+                <select v-model="formData.itemsDelivered">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box2">
-                <input v-model="formData.itemsListedOnInsideBillsB">
+                <!-- <input v-model="formData.itemsListedOnInsideBillsB"> -->
+                <select v-model="formData.itemsListedOnInsideBillsB">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box3">
-                <input v-model="formData.itemsOnOutgoingManifests">
+                <!-- <input v-model="formData.itemsOnOutgoingManifests"> -->
+                <select v-model="formData.itemsOnOutgoingManifests">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box4">
-                <input v-model="formData.itemsOnOutgoingTruck">
+                <!-- <input v-model="formData.itemsOnOutgoingTruck"> -->
+                <select v-model="formData.itemsOnOutgoingTruck">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box5">
-                <input v-model="formData.numberOfPouchesOpened">
+                <!-- <input v-model="formData.numberOfPouchesOpened"> -->
+                <select v-model="formData.numberOfPouchesOpened">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box6">
-                <input v-model="formData.itemsOnHandAtEnd">
+                <!-- <input v-model="formData.itemsOnHandAtEnd"> -->
+                <select v-model="formData.itemsOnHandAtEnd">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
             <div class="right-box15">
-                <input v-model="formData.totalItems9thru14">
+                <!-- <input v-model="formData.totalItems9thru14"> -->
+                <select v-model="formData.totalItems9thru14">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
         </div>
         <div class="sectionC">
@@ -411,11 +591,27 @@
         height: 75%;
         border: none;
     }
+    .sectionA select{
+        position: absolute;
+        left:5%;
+        top:5%;
+        width:85%;
+        height: 75%;
+        border: none;
+    }
     .sectionB input{
         position: absolute;
         left:5%;
         top:5%;
         width:75%;
+        height: 75%;
+        border: none;
+    }
+    .sectionB select{
+        position: absolute;
+        left:5%;
+        top:5%;
+        width:85%;
         height: 75%;
         border: none;
     }

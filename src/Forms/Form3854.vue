@@ -15,29 +15,59 @@
             </div>
             <div  class="right-area-content">
                 <div>
-                    &emsp;Bill No. <input type="text" v-model="formData.billNoRight">
+                    &emsp;Bill No.
+                    <select v-model="formData.billNoRight">
+                        <option value="231">231</option>
+                        <option value="30">30</option>
+                        <option value="260">260</option>
+                        <option value="24">24</option>
+                        <option value="33">33</option>
+                        <option value="129">129</option>
+                        <option value="144">144</option>
+                        <option value=""></option>
+                    </select>
                 </div>
                 <div> 
                     &emsp;A.M. Rte.<br> 
-                    &emsp;& Fit. No. <input type="text" v-model="formData.amNo">
+                    &emsp;& Fit. No. <input type="text" v-model="formData.amNo" disabled>
                 </div>
                 <div> 
-                    &emsp;Jacket No. <input type="text" v-model="formData.jacketNoRight">
+                    &emsp;Jacket No. <input type="text" v-model="formData.jacketNoRight" disabled>
                 </div>
                 <div> 
-                    &emsp;Lock No. <input type="text" v-model="formData.lockNoRight">
+                    &emsp;Lock No. <input type="text" v-model="formData.lockNoRight" disabled>
                 </div>
                 <div> 
-                    &emsp;Rotary No. <input type="text" v-model="formData.rotaryNoRight">
+                    &emsp;Rotary No. <input type="text" v-model="formData.rotaryNoRight" disabled>
                 </div>
                 <div> 
-                    &emsp;Airmail <input type="text" v-model="formData.airmailRight">
+                    &emsp;Airmail <input type="text" v-model="formData.airmailRight" disabled>
                 </div>
                 <div> 
-                    &emsp;Seal No. <input type="text" v-model="formData.sealNoRight">
+                    &emsp;Seal No. 
+                    <select v-model="formData.sealNoRight">
+                        <option value="43000277">43000277</option>
+                        <option value="70948511">70948511</option>
+                        <option value="H/C">H/C</option>
+                        <option value="Seal # Used">Seal # Used</option>
+                        <option value=""></option>
+                    </select>
                 </div>
                 <div> 
-                    &emsp;Recieved. <input type="text" v-model="formData.recieved">
+                    &emsp;Recieved. 
+                    <!-- <input type="text" v-model="formData.recieved"> -->
+                    <select v-model="formData.recieved">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
                     <div class="centered">
                         Articles described
                         on above-specified
@@ -47,10 +77,23 @@
                 </div>
                 <div class="centered">
                     Recieving Clerks<br>
-                    <input type="text" v-model="formData.recievingClerks[0]"> <br>
+                    <select v-model="formData.recievingClerks[0]"> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle">Kyle</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                    </select>
+                    <br>
                 </div>
                 <div class="centered">
-                    <input type="text" v-model="formData.recievingClerks[1]"> <br>
+                    <select v-model="formData.recievingClerks[1]"> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle">Kyle</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option value="Bob">Bob</option>
+                    </select>
+                    <br>
                 </div>
                 
             </div>
@@ -58,33 +101,67 @@
         <div class="top-left-area">
             <div class="top-left-inputs">
                 <div>
-                    &emsp;Lock No. <input type="text" v-model="formData.lockNo">
+                    &emsp;Lock No. <input type="text" v-model="formData.lockNo" disabled>
                 </div>
                 <div> 
-                    Rotary No. <input type="text" v-model="formData.rotaryNo">
+                    Rotary No. <input type="text" v-model="formData.rotaryNo" disabled>
                 </div>
                 <div> 
-                    Jacket No. <input type="text" v-model="formData.jacketNo">
+                    Jacket No. <input type="text" v-model="formData.jacketNo" disabled>
                 </div>
                 <div> 
-                    Control No. <input type="text" v-model="formData.controlNo">
+                    Control No. <input type="text" v-model="formData.controlNo" disabled>
                 </div>
                 <div> 
-                    &emsp;Bill No. <input type="text" v-model="formData.billNo">
+                    &emsp;Bill No. 
+                    <select v-model="formData.billNo">
+                        <option value="231">231</option>
+                        <option value="30">30</option>
+                        <option value="260">260</option>
+                        <option value="24">24</option>
+                        <option value="33">33</option>
+                        <option value="129">129</option>
+                        <option value="144">144</option>
+                        <option value=""></option>
+                    </select>
                 </div>
                 <div> 
-                    Page No. <input type="text" v-model="formData.pageNo">
+                    Page No. 
+                    <select v-model="formData.pageNo">
+                        <option value="1X">1X</option>
+                        <option value="2X">2X</option>
+                        <option value="3X">3X</option>
+                        <option value="4X">4X</option>
+                        <option value="5X">5X</option>
+                        <option value=""></option>
+                    </select>
                 </div>
                 <div> 
-                    Airmail <input type="text" v-model="formData.airmail">
+                    Airmail <input type="text" v-model="formData.airmail" disabled>
                 </div>
                 <div> 
-                    Seal No. <input type="text" v-model="formData.sealNo">
+                    Seal No.
+                    <select v-model="formData.sealNo">
+                        <option value="43000277">43000277</option>
+                        <option value="70948511">70948511</option>
+                        <option value="H/C">H/C</option>
+                        <option value="Seal # Used">Seal # Used</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
         </div>
         <div class="to-input"> 
-            &emsp;To <input type="text" id="fname" name="fname" class="to-input" v-model="formData.to">
+            &emsp;To 
+            <!-- <input type="text" id="fname" name="fname" class="to-input" v-model="formData.to"> -->
+            <select class="to-input" v-model="formData.to">
+                <option value="APO AE 09459">APO AE 09459</option>
+                <option value="AMT APO AE  09463">AMT APO AE  09463</option>
+                <option value="AMF KENNEDY, NY  00300">AMF KENNEDY, NY  00300</option>
+                <option value="APO AE  09824">APO AE  09824</option>
+                <option value="APO AE  09459">APO AE  09459</option>
+                <option value=""></option>
+            </select>
             <br>
             <div class="to-text">
                 (P.O. or R.P.O and Tr. No.)
@@ -98,7 +175,44 @@
                 </div>
                 <div v-for="i in 15" :key = i class="box">
                     &emsp;{{i}}
-                    <input type="text" v-model="formData.itemNums[i]" class="box">
+                    <select v-model="formData.itemNums[i]" class="box">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="center-area-content2">
@@ -156,16 +270,46 @@
         </div>
         <div class="bottom-area1">
             <div class="sub-area1">
-                A total of <input type="text" v-model="formData.totalArticlesSent"> articles
+                A total of 
+                <!-- <input type="text" v-model="formData.totalArticlesSent"> -->
+                <select v-model="formData.totalArticlesSent">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                articles
                 <br> sent by this dispatch
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
                 <div class="witness">
-                     &emsp;<input type="text" v-model="formData.witnessSent">
+                     &emsp;
+                     <select v-model="formData.witnessSent">
+                         <option value="WIT: George Forrest">WIT: George Forrest</option>
+                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                         <option value="Kyle">Kyle</option>
+                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                     </select>
                 </div>
                 <div class="postmaster">
-                     &emsp;<input type="text" v-model="formData.postmasterSent">
+                     &emsp;
+                     <!-- <input type="text" v-model="formData.postmasterSent"> -->
+                     <select v-model="formData.postmasterSent"> 
+                        <option value="Todd Edgar">Todd Edgar</option>
+                        <option value="Anthony Smith">Anthony Smith</option>
+                        <option value="Hark Smith">Hark Smith</option>
+                        <option value="Leroy Brown">Leroy Brown</option>
+                        <option value="Michael Turner">Michael Turner</option>
+                        <option value="Bob">Bob</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="sub-area3">
@@ -175,16 +319,46 @@
         </div>
         <div class="bottom-area2">
             <div class="sub-area1">
-                A total of <input type="text" v-model="formData.totalArticlesRecieved"> articles
+                A total of 
+                <!-- <input type="text" v-model="formData.totalArticlesRecieved">  -->
+                <select v-model="formData.totalArticlesRecieved">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                articles
                 <br> recieved in this dispatch
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
                 <div class="witness">
-                     &emsp;<input type="text" v-model="formData.witnessRecieved">
+                     &emsp;
+                     <select v-model="formData.witnessRecieved">
+                         <option value="WIT: George Forrest">WIT: George Forrest</option>
+                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                         <option value="Kyle">Kyle</option>
+                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                     </select>
                 </div>
                 <div class="postmaster">
-                     &emsp;<input type="text" v-model="formData.postmasterRecieved">
+                     &emsp;
+                     <!-- <input type="text" v-model="formData.postmasterRecieved"> -->
+                     <select v-model="formData.postmasterRecieved"> 
+                        <option value="Todd Edgar">Todd Edgar</option>
+                        <option value="Anthony Smith">Anthony Smith</option>
+                        <option value="Hark Smith">Hark Smith</option>
+                        <option value="Leroy Brown">Leroy Brown</option>
+                        <option value="Michael Turner">Michael Turner</option>
+                        <option value="Bob">Bob</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="sub-area3">
@@ -399,7 +573,14 @@
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
-        width: 30%;
+        width: 45%;
+    }
+    .right-area select{
+        border: none;
+        border-bottom: 2px dotted black;
+        position: relative;
+        font-size: 0.97vmin;
+        width: 80%;
     }
     .bottom-area1{
         position: absolute;
@@ -414,7 +595,19 @@
         position: relative;
         width: 30%;
     }
+    .bottom-area1 select{
+        border: none;
+        border-bottom: 2px dotted black;
+        position: relative;
+        width: 30%;
+    }
     .bottom-area2 input{
+        border: none;
+        border-bottom: 2px dotted black;
+        position: relative;
+        width: 30%;
+    }
+    .bottom-area2 select{
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
@@ -447,11 +640,32 @@
         height: 40%;
         top:0%;
     }
+    .sub-area2 select{
+        position: relative;
+        border-bottom: 2px dotted black;
+        width: 80%;
+        text-align: left;
+        font-size: 1vmin;
+        height: 60%;
+        top:0%;
+    }
     .witness{
         position: absolute;
         top: 20%;
         height: 30%;
         width: 100%;
+    }
+    .witness select{
+        position: relative;
+        border-top: none ;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px dotted black;
+        width: 80%;
+        text-align: left;
+        font-size: 1vmin;
+        height: 100%;
+        top:0%;
     }
     .postmaster{
         position: absolute;
@@ -538,7 +752,13 @@
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
-        width: 30%;
+        width: 45%;
+    }
+    .top-left-area select {
+        border: none;
+        border-bottom: 2px dotted black;
+        position: relative;
+        width: 45%;
     }
     .to-input {
         position: absolute;
@@ -548,7 +768,7 @@
         font-size: 1vmin;
         width: 100%;
     }
-    .to-input input{
+    .to-input select{
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
