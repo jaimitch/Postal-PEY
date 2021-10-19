@@ -2,7 +2,7 @@
     <div class="outline">
         <div class="right-area">
             <div class="right-area-content">
-                <textarea v-model="formData.backText"></textarea>
+                <textarea v-model="formData.backText" disabled></textarea>
             </div>
         </div>
     </div>

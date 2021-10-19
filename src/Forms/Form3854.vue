@@ -244,7 +244,45 @@
                 </div>
                 <div v-for="i in 15" :key = i class="box">
                     &emsp;{{i+15}} 
-                    <input v-if="i <= 5" type="text" v-model="formData.itemNums[i+15]" class="box">
+                    <!-- <input v-if="i <= 5" type="text" v-model="formData.itemNums[i+15]" class="box"> -->
+                    <select v-model="formData.itemNums[i+15]" class="box">
+                        <option value="RB888122361US">RB888122361US</option>
+                        <option value="RB300911755US">RB300911755US</option>
+                        <option value="RB300911756US">RB300911756US</option>
+                        <option value="RB300911757US">RB300911757US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB707092213US">RB707092213US</option>
+                        <option value="RB707092214US">RB707092214US</option>
+                        <option value="RB707092215US">RB707092215US</option>
+                        <option value="RB707092216US">RB707092216US</option>
+                        <option value="RB707092217US">RB707092217US</option>
+                        <option value="RB707092218US">RB707092218US</option>
+                        <option value="RB707092219US">RB707092219US</option>
+                        <option value="RB842320438US">RB842320438US</option>
+                        <option value="RB842320439US">RB842320439US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value="S/43000277">S/43000277</option>
+                        <option value="O/RB300911759US">O/RB300911759US</option>
+                        <option value="S/70948511">S/70948511</option>
+                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB621758502US">RB621758502US</option>
+                        <option value="RB309266104US">RB309266104US</option>
+                        <option value="Seal # used">Seal # used</option>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="center-area-content4">
@@ -254,7 +292,7 @@
                 </div>
                 <div v-for="i in 15" :key = i class="box">
                     &emsp;
-                    <select v-if="i <= 5" v-model="formData.itemOrigins[i+15]" class="box">
+                    <select v-if="i <= 5" v-model="formData.itemOrigins[i+15]" class="box" disabled>
                         <option value="APO AE 09459">APO AE 09459</option>
                         <option value="MISSENT">MISSENT</option>
                         <option value="NOT RECIEVED">NOT RECIEVED</option>

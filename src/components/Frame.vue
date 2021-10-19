@@ -241,8 +241,8 @@
     ],
     data() {
       return {
-        studentName: "Bob",
-        payGrade: "1",
+        studentName: "John",
+        payGrade: "2",
         error: false,
         answerKey: key,
         items: [

@@ -119,10 +119,10 @@
                     3. Let your carrier know when and where you'd like them to leave the item, then leave this form in your
                     mailbox. (<i>Sorry, not an option for Restricted Delivery or Adult Signature items</i>)<br>
                     <b>Please redeliver on this date: ______________ and leave at (check one):</b><br>
-                    <input type="checkbox">Front door <input type="checkbox">Back door 
-                    <input type="checkbox">Porch <input type="checkbox">Garage <br>
+                    <input type="checkbox" disabled>Front door <input type="checkbox" disabled>Back door 
+                    <input type="checkbox" disabled>Porch <input type="checkbox" disabled>Garage <br>
                     <div class="other-text">
-                      <input type="checkbox"> Other: _________________________________<br>
+                      <input type="checkbox" disabled> Other: _________________________________<br>
                     </div>
                     4. Go to your local Post Office, located at <br>
                     123 Any Street<br>
