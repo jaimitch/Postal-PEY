@@ -55,7 +55,18 @@
            <div class="originOffice-2">Office of Origin <br> (International)</div>
            <div class="articleNum-1-area"> 
                <div v-for="i in 10" :key="i" class="articleNum-1-boxes">
-                    {{i}}. <input v-if="i <= 4" v-model="formData.article[i]">
+                    {{i}}. 
+                    <select v-if="i <= 8" v-model="formData.article[i]">
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB218344488US">RB218344488US</option>
+                        <option value="RB143899161US">RB143899161US</option>
+                        <option value="RB867092744US">RB867092744US</option>
+                        <option value="RB102022763US">RB102022763US</option>
+                        <option value=""></option>
+                    </select>
                 </div>
            </div>
            <div class="code-1-area"> 
@@ -93,19 +104,39 @@
            <div class="sig-area-top">
                <div class="date-of-delivery">
                    <div class="sig-area-text">
-                        Date of Delivery <input v-model="formData.dateOfDeliv">
+                        Date of Delivery <input type="date" v-model="formData.dateOfDeliv">
                    </div>
                </div>
                <div class="delivered-by">
                    <div class="sig-area-text">
                         Delivered By: <br>
                         (Clerk/Carrier)
-                        <input v-model="formData.deliveredBy">
+                        <select v-model="formData.deliveredBy">
+                            <option value="Earl Smith">Earl Smith</option>
+                            <option value="John Thompson">John Thompson</option>
+                            <option value="Ronnie Carter">Ronnie Carter</option>
+                            <option value="Jerry Johnson">Jerry Johnson</option>
+                            <option value="Bob">Bob</option>
+                        </select>
                    </div>
                </div>
                <div class="recieved">
                    <div class="recieved-text">
-                        <b>Recieved the <input v-model="formData.recievedNum"><br> pieces described above</b>
+                        <b>Recieved the 
+                        <!-- <input v-model="formData.recievedNum"> -->
+                        <select v-model="formData.recievedNum">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                        <br> pieces described above</b>
                    </div>
                    <div class="arrow-right">
                    </div>
@@ -346,10 +377,12 @@
         border-right: 1px solid black; 
         text-align: left;
     }
-    .articleNum-1-boxes input{
+    .articleNum-1-boxes select{
         position: absolute;
         width: 90%;
         border:none;
+        border:none;
+        appearance: none;
         height: 7%;
     }
     .code-1-area{
@@ -505,9 +538,11 @@
     }
     .date-of-delivery input{
         position: absolute;
-        top: 15%;
-        width: 150%;
+        top: 100%;
+        left:0;
+        width: 175%;
         height: 175%;
+        font-family: Arial;
         border: none;
     }
     .delivered-by{
@@ -517,7 +552,7 @@
         width: 30%;
         border-right: 1px solid black;
     }
-    .delivered-by input{
+    .delivered-by select{
         position: absolute;
         top: 7%;
         width: 175%;
@@ -580,10 +615,11 @@
         text-align: left;
         
     }
-    .recieved-text input{
+    .recieved-text select{
         position: absolute;
-        width: 40%;
-        height: 17%;
+        top: 15%;
+        width: 70%;
+        height: 29%;
         border-right: none;
         border-top: none;
         border-left: none;
