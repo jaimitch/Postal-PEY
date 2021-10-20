@@ -1152,8 +1152,19 @@
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
         if(formCode == "DD FORM 2261") {
           let errors = 0;
+          let sectionC = []
+          for(let property in keyForm){
+            if(property.includes("sectionC") && keyForm[property] != ""){
+              sectionC.push(keyForm[property])
+            }
+          }
           for (let property in keyForm) {
-            if(userForm[property] != keyForm[property] && property != "items" && property != "gradeAt" && !property.includes("Location")) {
+            if(property.includes("sectionC") && keyForm[property] != ""){
+              if(!sectionC.includes(userForm[property])){
+                errors++;
+              }
+            }
+            else if(userForm[property] != keyForm[property] && property != "items" && property != "gradeAt" && !property.includes("Location")) {
               console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
