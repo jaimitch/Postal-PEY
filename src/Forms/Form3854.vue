@@ -323,6 +323,16 @@
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
                 </select>
                 articles
                 <br> sent by this dispatch
@@ -336,6 +346,7 @@
                          <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                          <option value="Kyle">Kyle</option>
                          <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                         <option value=""></option>
                      </select>
                 </div>
                 <div class="postmaster">
@@ -372,6 +383,16 @@
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
                 </select>
                 articles
                 <br> recieved in this dispatch
@@ -385,6 +406,7 @@
                          <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                          <option value="Kyle">Kyle</option>
                          <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                         <option value=""></option>
                      </select>
                 </div>
                 <div class="postmaster">
