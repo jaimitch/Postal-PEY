@@ -695,7 +695,7 @@
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           if(articleCode == "created"){
-            newItem.created = true
+            newItem.userCreated= true
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -750,7 +750,7 @@
             droppable: true
           }
           if(articleCode == "created"){
-            newItem.created = true
+            newItem.userCreated= true
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -818,7 +818,7 @@
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           if(articleCode == "created"){
-            newItem.created = true
+            newItem.userCreated= true
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -894,7 +894,7 @@
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           if(articleCode == "created"){
-            newItem.created = true
+            newItem.userCreated= true
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -947,7 +947,7 @@
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
           if(articleCode == "created"){
-            newItem.created = true
+            newItem.userCreated= true
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -1139,7 +1139,7 @@
           let situationItems = this.getGradingItemList;
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
-            if(situationItems[i].created == true) {
+            if(situationItems[i].userCreated == true) {
               situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
