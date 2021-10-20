@@ -88,6 +88,7 @@
             "gradeAt": [2]
         },
         {
+            "articleCode": "Current Date",
             "situationNumber": "Situation 6",
             "apoNum": "APO AE 09459",
             "from": "Current Date",
@@ -132,44 +133,9 @@
             "itemsListedOnInsideBillsA": "11",
             "itemsAccepted": "2",
             "items": [],
-            "gradeAt": []
+            "gradeAt": [6],
+            "situation6Location":"Forms"
         },
-        {
-            "situationNumber": "Situation 4",
-            "lockNo": "",
-            "rotaryNo": "",
-            "jacketNo": "",
-            "controlNo": "",
-            "billNo": "30",
-            "pageNo": "1X",
-            "airmail": "",
-            "sealNo": "",
-            "to": "APO AE 09459",
-            "billNoRight": "30",
-            "amNo": "",
-            "jacketNoRight": "",
-            "lockNoRight": "",
-            "rotaryNoRight": "",
-            "airmailRight": "",
-            "sealNoRight": "",
-            "recieved": "",
-            "recievingClerks": [],
-            "totalArticlesSent": "2",
-            "totalArticlesRecieved": "2",
-            "postmasterSent": "Todd Edgar",
-            "postmasterRecieved": "Student",
-            "currentTime": "Current time",
-            "dispatchingClerk": "0800",
-            "itemNums": ["", "S/43000277", "O/RB300911759US"],
-            "itemOrigins": ["","APO AE  09459 - 2"],
-            "topStamp1": true,
-            "topStamp2": true,
-            "bottomStamp1": true,
-            "bottomStamp2": true,
-            "witnessSent": "",
-            "witnessRecieved": "",
-            "gradeAt": []
-          },
           {
             "articleCode": "Ronald Cain",
             "situationNumber": "Situation 3",
@@ -299,6 +265,7 @@
             "gradeAt": [3]
          },
          {
+            "articleCode":"Bill #24",
             "situationNumber":"Situation 4",
             "lockNo": "",
             "rotaryNo": "",
@@ -332,7 +299,8 @@
             "bottomStamp2": true,
             "witnessSent": "WIT: Scott Sanders",
             "witnessRecieved": "WIT: George Forrest",
-            "gradeAt": []
+            "gradeAt": [4],
+            "situation4Location":"Forms"
          },
          {
             "articleCode":"Bill #231",
@@ -412,6 +380,7 @@
             "gradeAt": [4]
         },
         {
+            "articleCode":"Bill #33",
             "situationNumber":"Situation 4",
             "lockNo": "",
             "rotaryNo": "",
@@ -457,7 +426,8 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "gradeAt": []
+            "gradeAt": [4],
+            "location":"Forms"
         },
         {
             "articleCode": "48",
@@ -596,6 +566,7 @@
             "situation3Location": "Truck 2"
         },
         {
+            "articleCode":"Bill #129",
             "situationNumber":"Situation 5",
             "lockNo": "",
             "rotaryNo": "",
@@ -650,9 +621,11 @@
             "bottomStamp2": false,
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
-            "gradeAt": []
+            "gradeAt": [5],
+            "situation5Location": "Forms"
         },
         {
+            "articleCode":"Bill #144",
             "situationNumber":"Situation 5",
             "lockNo": "",
             "rotaryNo": "",
@@ -686,7 +659,8 @@
             "bottomStamp2": false,
             "witnessSent": "",
             "witnessRecieved": "Kyle ",
-            "gradeAt": []
+            "gradeAt": [5],
+            "situation5Location":"Forms"
         },
         {
             "articleCode": "RB 339 065 331 US",
