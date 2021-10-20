@@ -636,6 +636,7 @@
             stampCounter: 0,
             stampable: false,
             gradeAt: gradeAt,
+            created: false,
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
               articleCode: "Bill #" + articleCode,
@@ -683,11 +684,14 @@
           if(formSettings != undefined) {
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
-          
+          if(articleCode == "created"){
+            newItem.created = true
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
           }
+          
         }
         else if(itemType == "psform3849") {
           newItem = {
@@ -701,6 +705,7 @@
             stampCounter: 0,
             stampable: false,
             gradeAt: gradeAt,
+            created: false,
             formInputs: {
                situationNumber: 'Situation ' + situationNumber,
                articleCode: articleCode,
@@ -734,10 +739,14 @@
             type: "PS FORM 3849",
             droppable: true
           }
+          if(articleCode == "created"){
+            newItem.created = true
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
           }
+          
         }
         else if(itemType == "psform3877") {
           newItem = {
@@ -751,6 +760,7 @@
             stampCounter: 0,
             stampable: false,
             gradeAt: gradeAt,
+            created: false,
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -797,11 +807,14 @@
           if(formSettings != undefined) {
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
-
+          if(articleCode == "created"){
+            newItem.created = true
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
           }
+          
         }
         else if(itemType == "ddform2261") {
           newItem = {
@@ -815,6 +828,7 @@
             stampCounter: 0,
             stampable: false,
             gradeAt: gradeAt,
+            created: false,
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -869,11 +883,14 @@
           if(formSettings != undefined) {
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
-
+          if(articleCode == "created"){
+            newItem.created = true
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
           }
+          
         }
         else if(itemType == "psform3883") {
           newItem = {
@@ -887,6 +904,7 @@
             stampCounter: 0,
             stampable: false,
             gradeAt: gradeAt,
+            created: false,
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
               articleCode: articleCode,
@@ -918,7 +936,9 @@
           if(formSettings != undefined) {
             newItem.formInputs = {...newItem.formInputs, ...formSettings}
           }
-
+          if(articleCode == "created"){
+            newItem.created = true
+          }
           this.items.push(newItem);
           if(defaultCreate) {
             this.items[2].children.push(newItem.id)
@@ -1109,7 +1129,7 @@
           let situationItems = this.getGradingItemList;
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
-            if(situationItems[i].articleCode == "created") {
+            if(situationItems[i].created == true) {
               situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
