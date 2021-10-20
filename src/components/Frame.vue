@@ -2,6 +2,8 @@
   <div>
     <Error 
       v-bind:showError="showError"
+      v-bind:problemItems="problemItems"
+      v-bind:totalErrors="totalErrors"
       @changeShow="this.showError = false"
     />
 
@@ -247,6 +249,8 @@
     data() {
       return {
         showError: false,
+        problemItems: [],
+        totalErrors: 0,
         studentName: "John",
         payGrade: "2",
         error: false,
@@ -1174,9 +1178,12 @@
           }
           else{
             console.log("**************ERRORS**************",errors)
-            console.log(this.showError)
+            console.log(situationItems[0].type)
+            for(let i = 0; i < situationItems.length; i++){
+              this.problemItems.push(situationItems[i].type)
+            }
+            this.totalErrors = errors
             this.showError = true
-            console.log(this.showError)
           }
         console.log("situationItems: ", situationItems, "keyItems", keyItems)
       },

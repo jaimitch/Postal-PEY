@@ -8,7 +8,7 @@
           @click="closeModal()">
           x
         </button>
-          <div class="gold">You have unresolved errors!</div>
+          <div class="gold">You have {{totalErrors}} unresolved errors!</div>
     </div>
 </div>
   </div>
@@ -17,7 +17,7 @@
 <script>
   export default {
     name: 'Warning',
-    props: ['showError'],
+    props: ['showError', 'totalErrors', 'problemItems'],
     methods: {
       closeModal() {
         this.$emit('changeShow')
