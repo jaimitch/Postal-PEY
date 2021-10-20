@@ -842,6 +842,7 @@
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
                 </select>
             </div>
             <div class="official-sign">
@@ -854,6 +855,7 @@
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
                 </select>
             </div>
         </div>
@@ -872,6 +874,7 @@
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
                     </select>
             </div>
             <div class="pay-grade">
@@ -900,7 +903,8 @@
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
-                    </select>
+                        <option value=""></option>
+                </select>
             </div>
         </div>
         <div class="bottom-text">
@@ -971,7 +975,8 @@
                     "WIT: Scott Sanders",
                     "Kyle",
                     "WIT: Larry Brown",
-                    "Matthew L. Long"
+                    "Matthew L. Long",
+                    ""
                 ]
                 return x;
             }
