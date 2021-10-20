@@ -47,6 +47,8 @@
             "itemsAccepted": "",
             "items": ["RB339065331US", "RB290770790US"],
             "situation1Location": "Forms",
+            "situation2Location": "Forms",
+            "situation6Location": "Forms",
             "gradeAt": [1, 2, 3, 4, 5, 6]
         },
         {

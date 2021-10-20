@@ -1200,8 +1200,9 @@
           }
           else{
             console.log("**************ERRORS**************",errors)
-            console.log(situationItems[0].type)
+            //console.log(situationItems[0].type)
             for(let i = 0; i < situationItems.length; i++){
+              //console.log(situationItems[i])
               let newItem = {
                 type: situationItems[i].type,
                 detail: situationItems[i].articleCode
