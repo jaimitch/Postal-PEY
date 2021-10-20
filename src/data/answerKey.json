@@ -102,17 +102,17 @@
             "remarks": "WIT: George Forrest, PFC Student PayGrade",
             "sectionC1": "RB309266140US",
             "sectionC2": "RB298302613US",
-            "sectionC3": "",
-            "sectionC4": "",
+            "sectionC3": "RB290770790US",
+            "sectionC4": "RB339065331US",
             "sectionC5": "",
             "sectionC6": "",
-            "sectionC7": "RB290770790US",
+            "sectionC7": "",
             "sectionC8": "",
             "sectionC9": "",
             "sectionC10": "",
             "sectionC11": "",
             "sectionC12": "",
-            "sectionC13": "RB339065331US",
+            "sectionC13": "",
             "sectionC14": "",
             "sectionC15": "",
             "sectionC16": "",
@@ -136,7 +136,7 @@
             "gradeAt": [6],
             "situation6Location":"Forms"
         },
-          {
+        {
             "articleCode": "Ronald Cain",
             "situationNumber": "Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459 ",
@@ -167,7 +167,7 @@
             "date": "Current Date",
             "gradeAt": [3],
             "situation3Location": "Truck 2"
-         },
+        },
          {
             "articleCode": "Carl Thompson",
             "situationNumber":"Situation 3",
