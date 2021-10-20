@@ -978,9 +978,11 @@
         },
         methods:{
             changeForm() {
-                if(this.item.articleCode == "created"){
+                if(this.item.created == true){
                     // this.item.articleCode = this.sigOfAgent
+                    console.log(this.formData.articleCode)
                     this.formData.articleCode = this.formData.to
+                    console.log(this.formData.articleCode)
                 }
                 this.$emit('changeForm', this.formData)
             }
