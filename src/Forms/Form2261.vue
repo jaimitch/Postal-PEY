@@ -2,7 +2,12 @@
     <div class="outline">
         <div class="preparing-activity">
             PREPARING ACTIVITY
-            <input v-model="formData.apoNum">
+            <!-- <input v-model="formData.apoNum"> -->
+            <select v-model="formData.apoNum">
+                <option value="APO AE 09459">APO AE 09459</option>
+                <option value="AMT APO AE  09463">AMT APO AE  09463</option>
+                <option value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
+            </select>
         </div>
         <div class="period-covered">
             <div class="period-covered-top">
@@ -1013,7 +1018,7 @@
         border-left: none;
         text-align: left;
     }
-    .preparing-activity input{
+    .preparing-activity select{
         position: absolute;
         top: 25%;
         left:5%;
