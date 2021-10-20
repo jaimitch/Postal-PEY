@@ -1,5 +1,5 @@
 <template>
-<div v-show="show">
+<div v-show="showError">
   <div class="modal-backdrop" @click="closeModal()">
     <div class="modal">
         <button
@@ -17,14 +17,10 @@
 <script>
   export default {
     name: 'Warning',
-    data() {
-        return {
-            show:true
-        }
-    },
+    props: ['showError'],
     methods: {
       closeModal() {
-            this.show = false;
+        this.$emit('changeShow')
       },
     },
     computed: {
