@@ -431,6 +431,8 @@
         props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
+                currentTime: 0,
+                prevTime: 0,
                 formData: {
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
@@ -470,9 +472,11 @@
                 },
             }
         },
+        mounted(){
+        },
         methods: {
             changeForm() {
-                if(this.item.articleCode == "created"){
+                if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
                     this.formData.articleCode = this.formData.billNo
                 }
@@ -637,7 +641,8 @@
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
-        width: 30%;
+        text-align: right;
+        width: 70%;
     }
     .bottom-area1 select{
         border: none;
@@ -649,7 +654,8 @@
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
-        width: 30%;
+        text-align: right;
+        width: 70%;
     }
     .bottom-area2 select{
         border: none;

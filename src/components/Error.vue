@@ -1,5 +1,5 @@
 <template>
-<div v-show="show">
+<div v-show="showError">
   <div class="modal-backdrop" @click="closeModal()">
     <div class="modal">
         <button
@@ -8,7 +8,7 @@
           @click="closeModal()">
           x
         </button>
-          <div class="gold">You have unresolved errors!</div>
+          <div class="gold">You have {{totalErrors}} unresolved errors!</div>
     </div>
 </div>
   </div>
@@ -17,14 +17,10 @@
 <script>
   export default {
     name: 'Warning',
-    data() {
-        return {
-            show:true
-        }
-    },
+    props: ['showError', 'totalErrors', 'problemItems'],
     methods: {
       closeModal() {
-            this.show = false;
+        this.$emit('changeShow')
       },
     },
     computed: {
