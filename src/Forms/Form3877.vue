@@ -265,7 +265,7 @@
         },
         methods:{
             changeForm() {
-                if(this.item.articleCode == "created"){
+                if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
                     this.formData.articleCode = this.formData.senderAddress
                 }

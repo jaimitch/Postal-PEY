@@ -1,6 +1,11 @@
 <template>
   <div>
-    <!-- <Error v-if="error"/> -->
+    <Error 
+      v-bind:showError="showError"
+      v-bind:problemItems="problemItems"
+      v-bind:totalErrors="totalErrors"
+      @changeShow="this.showError = false"
+    />
 
     <div class="top-bar">
       <p class="left-text">Left side text</p>
@@ -224,6 +229,7 @@
   import Form3883 from '../Forms/Form3883.vue'
   import Form3849 from '../Forms/Form3849.vue'
   import key from '../data/answerKey.json'
+  import Error from '../components/Error.vue'
   export default {
     name: 'Frame',
     components: {
@@ -234,13 +240,17 @@
       Form2261Back,
       Form3883,
       Form3849,
-      Form3854Back
+      Form3854Back,
+      Error
     },
     props: [
       'pageNum'
     ],
     data() {
       return {
+        showError: false,
+        problemItems: [],
+        totalErrors: 0,
         studentName: "John",
         payGrade: "2",
         error: false,
@@ -1125,7 +1135,7 @@
       },
       //facilitates the grading of each item for the current situation on submit
       gradeSituationContents() {
-        var errors = 0;
+          var errors = 0;
           let situationItems = this.getGradingItemList;
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
@@ -1133,12 +1143,11 @@
               situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
-
           console.log("in grade situation", situationItems)
           let keyItems = this.answerKey.answers.filter(x => x.gradeAt.includes(this.getSituationNumber))
 
           keyItems.forEach((currentKeyItem) => {
-          
+
             //check to see if our filtered key list contains a matching article code
             let currentItem = situationItems.filter(x => 
               x.articleCode == currentKeyItem.articleCode
@@ -1158,13 +1167,23 @@
                   x.articleCode != currentItem[0].articleCode
                   )
               }
-                
+              else{
+                errors++
+              }   
             }
           })
-          
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
             this.pageErrors[0] = false;
+          }
+          else{
+            console.log("**************ERRORS**************",errors)
+            console.log(situationItems[0].type)
+            for(let i = 0; i < situationItems.length; i++){
+              this.problemItems.push(situationItems[i].type)
+            }
+            this.totalErrors = errors
+            this.showError = true
           }
         console.log("situationItems: ", situationItems, "keyItems", keyItems)
       },
