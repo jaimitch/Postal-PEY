@@ -8,7 +8,12 @@
           @click="closeModal()">
           x
         </button>
-          <div class="gold">You have {{totalErrors}} unresolved errors!</div>
+          <div class="gold">
+            You have {{totalErrors}} unresolved errors in:
+            <div v-for="item in problemItems" :key="item">
+              {{item.type}}: {{item.detail}}
+            </div>
+          </div>
     </div>
 </div>
   </div>

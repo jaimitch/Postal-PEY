@@ -1137,6 +1137,7 @@
       gradeSituationContents() {
           var errors = 0;
           let situationItems = this.getGradingItemList;
+          this.problemItems = []
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
             if(situationItems[i].userCreated == true) {
@@ -1180,7 +1181,11 @@
             console.log("**************ERRORS**************",errors)
             console.log(situationItems[0].type)
             for(let i = 0; i < situationItems.length; i++){
-              this.problemItems.push(situationItems[i].type)
+              let newItem = {
+                type: situationItems[i].type,
+                detail: situationItems[i].articleCode
+              }
+              this.problemItems.push(newItem)
             }
             this.totalErrors = errors
             this.showError = true
