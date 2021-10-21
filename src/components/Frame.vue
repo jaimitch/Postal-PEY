@@ -8,7 +8,7 @@
     />
 
     <div class="top-bar">
-      <p class="left-text">Left side text</p>
+      <p class="left-text">Left side text <b>Current Time {{time}} </b></p>
       <p class="right-text">Right side text</p>
 
       <div class="scroll-zone-up"
@@ -445,10 +445,12 @@
         form2261Back: false,
         form3854Back: false,
         showCurrentItem: true,
+        time: ""
       }   
     },
     mounted() {
       this.updateSituation();
+      this.time = this.getNearestTime();
       this.processAnswerKey();
     },
     computed: {
@@ -1425,11 +1427,11 @@
       },
       //gets the nearest time and sets in in the answer key
       getNearestTime(){
+        let currentTime
         this.answerKey.answers.forEach(obj => {
           let d = new Date()
           let hours = d.getHours()
           let minutes = d.getMinutes()
-          let currentTime
           if(hours < 10){
             currentTime = "0" + hours
           }
@@ -1455,6 +1457,7 @@
             }
           }
         })
+        return currentTime
       },
       //function that handles events as the situation is changed
       updateSituation() {
@@ -1743,7 +1746,7 @@
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;
-        this.getNearestTime()
+        //this.getNearestTime()
       },
       // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
       // to the correct ones for this student (name, date, etc..) 
