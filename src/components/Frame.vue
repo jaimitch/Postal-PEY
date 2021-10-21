@@ -1226,7 +1226,16 @@
               }
               this.problemItems.push(newItem)
             }
-            this.totalErrors = errors
+            for(let i = 0; i < keyItems.length; i++){
+              if(!this.problemItems.some(e => e.detail === keyItems[i].articleCode)){
+                let newItem = {
+                  type: keyItems[i].type,
+                  detail: keyItems[i].articleCode
+                }
+                this.problemItems.push(newItem)
+              }
+            }
+            this.totalErrors = this.problemItems.length
             this.showError = true
           }
         console.log("situationItems: ", situationItems, "keyItems", keyItems)
@@ -1334,7 +1343,7 @@
 
             }
             //Property is not an array, and is incorrect
-            else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
+            else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1361,9 +1370,9 @@
                 }
               }
 
-              }
+            }
             //Property is not an array, and is incorrect
-            else if(userForm[property] != keyForm[property] && !property.includes("Location")) {
+            else if(userForm[property] != keyForm[property] && !property.includes("Location") && !property == "type") {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1375,7 +1384,7 @@
           let errors = 0
           console.log("Its a 3849")
           for(let property in keyForm){
-            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
+            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
               console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1387,7 +1396,7 @@
           console.log("Attempting to grade a 3877!")
           for(let property in keyForm){
              if(!Array.isArray(keyForm[property])) {
-               if(userForm[property] != keyForm[property] && property != "gradeAt" && property != "square" && !property.includes("Location")) {
+               if(userForm[property] != keyForm[property] && property != "gradeAt" && property != "square" && !property.includes("Location") && !property == "type") {
                 console.log(property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
                 errors++;
               }
