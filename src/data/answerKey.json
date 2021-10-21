@@ -500,7 +500,7 @@
         },
         {
             "type":"PS FORM 3883",
-            "articleCode": "John Thompson",
+            "articleCode": "102",
             "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
@@ -527,7 +527,7 @@
         },
         {
             "type":"PS FORM 3883",
-            "articleCode": "Jerry Johnson",
+            "articleCode": "196",
             "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
@@ -553,7 +553,7 @@
             "situation3Location": "Truck 2"
         },
         {
-            "articleCode": "Earl Smith",
+            "articleCode": "184",
             "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
