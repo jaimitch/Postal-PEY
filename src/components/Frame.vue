@@ -1478,6 +1478,15 @@
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
+          
+          //hardcode truck visibility
+            this.items[3].level = 0;
+            this.items[4].level = 0;
+            this.items[5].level = 0;
+            this.items[6].level = 0;
+            this.items[7].level = 0;
+            this.items[8].level = 0;
+
           if(!this.situationOneInit){
 
             let newFormSettings = {
@@ -1496,12 +1505,17 @@
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
+
+          //hardcode all truck visibility
+          this.items[3].level = 1;
+          this.items[4].level = 0;
+          this.items[5].level = 0;
+          this.items[6].level = 0;
+          this.items[7].level = 0;
+          this.items[8].level = 0;
+
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
             
-            //hardcode all truck visibility
-            this.items[3].level = 1;
-            this.items[4].level = 0;
-
             let newFormSettings = {
               billNo: "260",
               pageNo: "1X",
@@ -1530,13 +1544,17 @@
             //42 - 47
             this.situationTwoPartOne = true;
           }
-          else if(this.pageNum == 3 && !this.situationTwoPartTwo) {
-
+          else if(this.pageNum == 3) {
             //hardcode all truck visibility
             this.items[3].level = 0;
             this.items[4].level = 0;
+            this.items[5].level = 0;
+            this.items[6].level = 0;
+            this.items[7].level = 0;
+            this.items[8].level = 0;
 
-            let newFormSettings = {
+            if(!this.situationTwoPartTwo) {
+              let newFormSettings = {
               billNo: "231",
               pageNo: "1X",
               sealNo: "70948511",
@@ -1568,25 +1586,38 @@
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
+            }
           }
           
         }
-        else if(this.getSituationNumber == 3 && !this.situationThreeInit) {
-          this.situationThreeInit = true;
+        else if(this.getSituationNumber == 3) {
+
           //hardcode all truck visibility
           this.items[3].level = 0;
           this.items[4].level = 1;
+          this.items[5].level = 0;
+          this.items[6].level = 0;
+          this.items[7].level = 0;
+          this.items[8].level = 0;
+
+          if(!this.situationThreeInit) {
+            this.situationThreeInit = true;
+          }
         }
+
         else if(this.getSituationNumber == 4) {
-          if(this.pageNum == 5 && !this.situationFourPartOne) {
 
-            //hardcode truck visibility
-            this.items[4].level = 0;
-            this.items[5].level = 1;
-            this.items[6].level = 0;
+          if(this.pageNum == 5) {
+          //hardcode truck visibility
+          this.items[3].level = 0;
+          this.items[4].level = 0;
+          this.items[5].level = 1;
+          this.items[6].level = 0;
+          this.items[7].level = 0;
+          this.items[8].level = 0;
 
-
-            let newFormSettings = {
+            if(!this.situationFourPartOne) {
+              let newFormSettings = {
               billNo: "30",
               pageNo: "1X",
               to: "APO AE 09459",
@@ -1610,14 +1641,22 @@
             this.assignItemToParent('Truck 3', item2)
             //30-33
             this.situationFourPartOne = true;
+            }
+
           }
-          else if(this.pageNum == 6 && !this.situationFourPartTwo) {
+          else if(this.pageNum == 6) {
 
             //hardcode truck visibility
+            this.items[3].level = 0;
+            this.items[4].level = 0;
             this.items[5].level = 0;
             this.items[6].level = 0;
+            this.items[7].level = 0;
+            this.items[8].level = 0;
 
-            let newFormSettings = {
+            if(!this.situationFourPartTwo){
+
+              let newFormSettings = {
               billNo: "24",
               pageNo: "1X",
               sealNo: "43000277",
@@ -1651,14 +1690,23 @@
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
+
+            }
+            
           }
-          else if(this.pageNum == 7 && !this.situationFourPartThree) {
+          else if(this.pageNum == 7) {
 
             //hardcode truck visibility
+            this.items[3].level = 0;
+            this.items[4].level = 0;
+            this.items[5].level = 0;
             this.items[6].level = 1;
+            this.items[7].level = 0;
+            this.items[8].level = 0;
 
-            let newFormSettings = {
-              senderAddress: "45th MP CO APO AE 09459",
+            if(!this.situationFourPartThree) {
+              let newFormSettings = {
+                senderAddress: "45th MP CO APO AE 09459",
                 registeredMail: true,
                 trackingNum1: "RB842320438US",
                 trackingNum2: "RB842320439US",
@@ -1678,14 +1726,21 @@
             this.assignItemToParent('Truck 4', item2)
             //18-21
             this.situationFourPartThree = true;
+            }
+
           }
-          else if(this.pageNum == 8 && !this.situationFourPartFour) {
+          else if(this.pageNum == 8) {
 
             //hardcode truck visibility
+            this.items[3].level = 0;
+            this.items[4].level = 0;
+            this.items[5].level = 0;
             this.items[6].level = 0;
             this.items[7].level = 1;
+            this.items[8].level = 0;
 
-            let newFormSettings = {
+            if(!this.situationFourPartFour) {
+              let newFormSettings = {
               lockNo: "",
               rotaryNo: "",
               jacketNo: "",
@@ -1745,20 +1800,39 @@
             this.assignItemToParent('Truck 5', item10)
             //6-17
             this.situationFourPartFour = true;
+            }
+
+            
           }
         }
         else if(this.getSituationNumber == 5) {
-          console.log("its part 5!")
-          if(this.pageNum == 9 && !this.situationFivePartOne) {
+
+          if(this.pageNum == 9) {
+
             //hardcode truck visibility
+            this.items[3].level = 0;
+            this.items[4].level = 0;
+            this.items[5].level = 0;
+            this.items[6].level = 0;
             this.items[7].level = 0;
             this.items[8].level = 1;
 
+            if(!this.situationFivePartOne) {
+              this.situationFivePartOne = true;
+            }
 
-
-            this.situationFivePartOne = true;
           }
         }
+        else if(this.getSituationNumber == 6) {
+          //hardcode truck visibility
+          this.items[3].level = 1;
+          this.items[4].level = 1;
+          this.items[5].level = 1;
+          this.items[6].level = 1;
+          this.items[7].level = 1;
+          this.items[8].level = 1;
+        }
+
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;

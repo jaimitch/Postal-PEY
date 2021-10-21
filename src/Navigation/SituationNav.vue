@@ -23,7 +23,7 @@ class="drawer"
         <div  class="in-menu">
           <div :key="section" v-for="section in situations">
             <!-- comment this div if you want to turn on the sit nav buttons -->
-            <div v-if="section.clickable === false" >
+            <div v-if="section.clickable === true" >
               <button class="buttons" @click="jumpToPage(section.page), $emit('jump')">{{ section.name }}</button>
             </div>
           </div>
