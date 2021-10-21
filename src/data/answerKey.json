@@ -48,6 +48,9 @@
             "items": ["RB339065331US", "RB290770790US"],
             "situation1Location": "Forms",
             "situation2Location": "Forms",
+            "situation3Location": "Forms",
+            "situation4Location": "Forms",
+            "situation5Location": "Forms",
             "situation6Location": "Forms",
             "gradeAt": [1, 2, 3, 4, 5, 6]
         },
@@ -87,7 +90,11 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "situation2Location": "Forms",
-            "gradeAt": [2]
+            "situation3Location": "Forms",
+            "situation4Location": "Forms",
+            "situation5Location": "Forms",
+            "situation6Location": "Forms",
+            "gradeAt": [2, 3, 4, 5, 6]
         },
         {
             "articleCode": "Current Date",
@@ -340,7 +347,11 @@
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
             "situation2Location": "Forms",
-            "gradeAt": [2]
+            "situation3Location": "Forms",
+            "situation4Location": "Forms",
+            "situation5Location": "Forms",
+            "situation6Location": "Forms",
+            "gradeAt": [2, 3, 4, 5, 6]
         },
         {
             "articleCode":"Bill #30",
@@ -377,7 +388,6 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "situation2Location": "Forms",
             "situation4Location": "Forms",
             "gradeAt": [4]
         },
@@ -428,8 +438,11 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "gradeAt": [4],
-            "location":"Forms"
+            "gradeAt": [4, 5, 6],
+            "situation4Location":"Forms",
+            "situation5Location":"Forms",
+            "situation6Location":"Forms"
+
         },
         {
             "articleCode": "48",
@@ -831,8 +844,10 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2, 3],
-            "situation3Location": "Safe"
+            "gradeAt":[2, 3, 4],
+            "situation3Location": "Safe",
+            "situation4Location": "Safe"
+
         },
         {
             "articleCode": "SEAL #43000277",
@@ -846,7 +861,8 @@
             "situationNumber": "Situation 4",
             "stampCounter": 0,
             "type": "Pouch",
-            "gradeAt":[]
+            "gradeAt":[4],
+            "situation4Location": "Safe"
         },
         {
             "articleCode": "RB 300 911 759 US",
