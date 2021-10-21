@@ -46,7 +46,7 @@
                 <label>Registered Mail</label>
                 <br>
                 <input type="checkbox" class="checkboxes" v-model="formData.returnReciept">
-                <label>Return Reciept for Merchandise</label>
+                <label>Return Receipt for Merchandise</label>
                 <br>
                 <input type="checkbox" class="checkboxes" v-model="formData.sigConfirm">
                 <label>Signature Confirmation</label>
