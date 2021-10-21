@@ -954,12 +954,13 @@
     }
     .sectionA select{
         position: absolute;
-        left:1%;
+        left:7%;
         appearance: none;
-        top:5%;
-        width:99%;
+        top:10%;
+        width:90%;
         height: 75%;
         border: none;
+        text-align: center;
     }
     .sectionB input{
         position: absolute;
@@ -971,12 +972,13 @@
     }
     .sectionB select{
         position: absolute;
+        left:7%;
         appearance: none;
-        left:1%;
-        top:5%;
-        width:99%;
+        top:10%;
+        width:90%;
         height: 75%;
         border: none;
+        text-align: center;
     }
     .sectionA-banner{
         position: absolute;

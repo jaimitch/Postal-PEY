@@ -267,10 +267,10 @@
         showError: false,
         problemItems: [],
         totalErrors: 0,
-        studentName: "John",
+        studentName: "Student",
         showPouchCreation: [9,10],
         showSubmit: [1, 3, 4, 8, 10, 11],
-        payGrade: "2",
+        payGrade: "0",
         error: false,
         answerKey: key,
         items: [
@@ -1808,7 +1808,7 @@
   .drop-zone {
     order: 1;
     background-color: #333366;
-    width: 35vw;
+    width: 29vw;
     overflow: scroll;
     height: 38vw;
   }
