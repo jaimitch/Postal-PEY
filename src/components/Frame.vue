@@ -75,7 +75,7 @@
               <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
-              <button v-if="items[child].created" @click="deleteItem(items[child])" class="delete-button">X</button>
+              <button v-if="items[child].created" @click="deleteItem($event, items[child])" class="delete-button">X</button>
 
               <div class = "child-text">
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
@@ -599,7 +599,7 @@
         }
       },
       //removes an item given it's id
-      deleteItem(item) {
+      deleteItem(evt, item) {
         console.log("Delete item:", item)
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
@@ -612,6 +612,7 @@
         this.items[itemIndex].showImage = false
         console.log("'deleted'")
         console.log(this.items)
+        evt.stopPropagation()
       },
       //deletes an item from it's original position
       removeItemOnDrop(itemID,parentID){
