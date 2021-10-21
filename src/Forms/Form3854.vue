@@ -54,7 +54,7 @@
                     </select>
                 </div>
                 <div> 
-                    &emsp;Recieved. 
+                    &emsp;Received. 
                     <!-- <input type="text" v-model="formData.recieved"> -->
                     <select v-model="formData.recieved">
                             <option value="0">0</option>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="centered">
-                    Recieving Clerks<br>
+                    Receiving Clerks<br>
                     <select v-model="formData.recievingClerks[0]"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
@@ -296,7 +296,7 @@
                     <select v-if="i <= 5" v-model="formData.itemOrigins[i+15]" class="box" disabled>
                         <option value="APO AE 09459">APO AE 09459</option>
                         <option value="MISSENT">MISSENT</option>
-                        <option value="NOT RECIEVED">NOT RECIEVED</option>
+                        <option value="NOT RECEIVED">NOT RECEIVED</option>
                         <option value="Should Read RB309266140US">
                             Should Read RB309266140US
                         </option>
@@ -374,7 +374,7 @@
                     <option value="9">9</option>
                 </select>
                 articles
-                <br> recieved in this dispatch
+                <br> received in this dispatch
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
@@ -403,7 +403,7 @@
             </div>
             <div class="sub-area3">
                 <input type="text" v-model="formData.currentTime"> M.
-                <br> Recieving Clerk
+                <br> Receiving Clerk
             </div>
         </div>
         <div class="bottom">
@@ -413,14 +413,14 @@
             <div class="stamp-inner">
                 <p class="top-text">Postmark of</p>
                 <input type="checkbox" v-model="formData.bottomStamp1">
-                <p class="bottom-text">Recieving Office</p>
+                <p class="bottom-text">Receiving Office</p>
             </div>
         </div>
         <div class="bottom-stamp2">
             <div class="stamp2-inner">
                 <p class="top-text">Postmark of</p>
                 <input type="checkbox" v-model="formData.bottomStamp2">
-                <p class="bottom-text">Recieving Office</p>
+                <p class="bottom-text">Receiving Office</p>
             </div>
         </div>
     </div>

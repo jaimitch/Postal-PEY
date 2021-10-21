@@ -479,7 +479,7 @@
           text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
         }
         else if(this.pageNum == 6) {
-          text = "2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2."
+          text = "2. You and PFC George Forrest, the witness, opened the pouch received from Unit 2."
         }
         else if(this.pageNum == 7) {
           text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877."
@@ -490,13 +490,13 @@
         else if(this.pageNum == 9) {
           text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
           registered mail.\
-          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300."
+          1. Prepare the necessary documentation for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300."
         }
         else if(this.pageNum == 10) {
           text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
         }
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail\
           that is still on hand and has not been delivered."
         }
         return text;

@@ -96,7 +96,7 @@
            </div>
        </div>
        <div class="code-area">
-           <b>* CODE: DC = Recieved in Damaged Condition. OS = Officially Sealed. 
+           <b>* CODE: DC = Received in Damaged Condition. OS = Officially Sealed. 
                R = Return Requested. RE = Re-enveloped. RW =  Returned to Writer
            </b>
        </div>
@@ -122,7 +122,7 @@
                </div>
                <div class="recieved">
                    <div class="recieved-text">
-                        <b>Recieved the 
+                        <b>Received the 
                         <!-- <input v-model="formData.recievedNum"> -->
                         <select v-model="formData.recievedNum">
                             <option value="0">0</option>
@@ -144,7 +144,7 @@
                </div>
                <div class="recieved-by">
                    <div class="sig-area-text">
-                     Recieved By:<br>
+                     Received By:<br>
                      (Print Name)  
                      <select v-model="formData.recievedBy">
                          <option value="Earl Smith">Earl Smith</option>
