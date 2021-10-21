@@ -39,7 +39,7 @@
       </div>
 
       <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
-        <button @click="createItem('pouch', getSeal(), getSituationNumber, 2, true, 'Bag-1', undefined, this.updateGradeAt(), false)">
+        <button @click="createPouch()">
           Create New Pouch
         </button>
       </div>
@@ -268,7 +268,7 @@
         problemItems: [],
         totalErrors: 0,
         studentName: "Student",
-        showPouchCreation: [9,10],
+        showPouchCreation: [9],
         showSubmit: [1, 3, 4, 8, 10, 11],
         payGrade: "0",
         error: false,
@@ -429,7 +429,8 @@
         idCounter: 1000,
         draggedItem: {},
         createFormType: "",
-        definedSeals: [12345678, 22345678, 32345678, 42345678, 52345678, 62345678],
+        definedSeal: 62345678,
+        createdPouch: false,
         situationOneInit: false,
         situationTwoPartOne: false,
         situationTwoPartTwo: false,
@@ -627,6 +628,13 @@
       itemImage(object) {
         return object.images[object.currentImageIndex]
       },
+
+      createPouch() {
+        if(!this.createdPouch) {
+          this.createItem('pouch', this.definedSeal, this.getSituationNumber, 2, true, 'Bag-1', undefined, this.updateGradeAt(), false);
+          this.createdPouch = true;
+        }
+      },
       //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
           this.currentItemIndex = this.getItemIndex(id)
@@ -643,17 +651,6 @@
       //toggles the item to display or hide it's image
       toggleItemImage(item) {
         item.showImage = !item.showImage;
-      },
-      //returns a seal off of the seal array, and then removes it so it cant be duplicated
-      getSeal() {
-        let seal = this.definedSeals[0];
-        this.definedSeals.shift();
-        if(seal == undefined) {
-          alert("There are no remaining pouches!")
-        }
-        else {
-          return seal;
-        }
       },
       /*creates a new item given information:
       ['string'] type of item, ['string'] unique article identifer, ['int'] situation number, ['int'] level, ['boolean'] default item creation behavior, ['string'] image code, ['object'] form settings,
