@@ -722,6 +722,7 @@
             "images": ["/img/Bag-1.141db596.svg"],
             "level": 2,
             "situationNumber": "Situation 2",
+            "gradeAt":[],
             "stampCounter": 0,
             "type": "Pouch"
         },
