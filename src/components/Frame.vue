@@ -6,7 +6,12 @@
       v-bind:totalErrors="totalErrors"
       @changeShow="this.showError = false"
     />
-
+    <Delete 
+      v-bind:deleteModalShow="deleteModalShow"
+      v-bind:deletingItem="deletingItem"
+      @deleteChoice="deleteItem($event, data)"
+      @doNothing="deleteModalShow = false"
+    />
     <div class="top-bar">
       <p class="left-text">Left side text <b>Current Time {{time}} </b></p>
       <p class="right-text">Right side text</p>
@@ -75,7 +80,7 @@
               <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
-              <button v-if="items[child].created" @click="deleteItem($event, items[child])" class="delete-button">X</button>
+              <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
               <div class = "child-text">
               {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
@@ -246,6 +251,7 @@
   import Form3849 from '../Forms/Form3849.vue'
   import key from '../data/answerKey.json'
   import Error from '../components/Error.vue'
+  import Delete from '../components/Delete.vue'
   export default {
     name: 'Frame',
     components: {
@@ -257,7 +263,8 @@
       Form3883,
       Form3849,
       Form3854Back,
-      Error
+      Error,
+      Delete
     },
     props: [
       'pageNum'
@@ -445,12 +452,15 @@
         form2261Back: false,
         form3854Back: false,
         showCurrentItem: true,
-        time: ""
+        time: "",
+        deleteModalShow: false,
+        deletingItem: 0,
       }   
     },
     mounted() {
       this.updateSituation();
       this.time = this.getNearestTime();
+      console.log("hi")
       this.processAnswerKey();
     },
     computed: {
@@ -597,21 +607,27 @@
           }
         }
       },
+      //starts the deletion process
+      startDelete(evt, item){
+        this.deleteModalShow = true
+        this.deletingItem = item
+        evt.stopPropagation()
+      },
       //removes an item given it's id
-      deleteItem(evt, item) {
+      deleteItem(item) {
         console.log("Delete item:", item)
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
         //remove id from parent's children array
         parent.children = parent.children.filter(x => x != item.id)
-        
         //NOTE:Filtering the item from this.items causes errors with anything to do with currentItem
         let itemIndex = this.getItemIndex(item.id)
         this.items[itemIndex].id = undefined
         this.items[itemIndex].showImage = false
         console.log("'deleted'")
         console.log(this.items)
-        evt.stopPropagation()
+        this.deleteModalShow = false
+        // evt.stopPropagation()
       },
       //deletes an item from it's original position
       removeItemOnDrop(itemID,parentID){
