@@ -26,7 +26,7 @@
         <div class="mid-line"/>
         <div class="sectionA">
             <div class="sectionA-banner">
-                <b>SECTION A-ON HAND,ACCEPTED,RECIEVED AND PREPARED FOR DISPATCH</b>
+                <b>SECTION A-ON HAND,ACCEPTED,RECEIVED AND PREPARED FOR DISPATCH</b>
             </div>
             <div class="box1">
                 <p>1</p>
@@ -68,7 +68,7 @@
                 <p>7</p>
             </div>
             <div class="center-box7">
-                <p>ITEMS RECIEVED FROM OTHER SOURCES</p>
+                <p>ITEMS RECEIVED FROM OTHER SOURCES</p>
             </div>
             <div class="box8">
                 <p>8</p>
@@ -954,12 +954,13 @@
     }
     .sectionA select{
         position: absolute;
-        left:1%;
+        left:7%;
         appearance: none;
-        top:5%;
-        width:99%;
+        top:10%;
+        width:90%;
         height: 75%;
         border: none;
+        text-align: center;
     }
     .sectionB input{
         position: absolute;
@@ -971,12 +972,13 @@
     }
     .sectionB select{
         position: absolute;
+        left:7%;
         appearance: none;
-        left:1%;
-        top:5%;
-        width:99%;
+        top:10%;
+        width:90%;
         height: 75%;
         border: none;
+        text-align: center;
     }
     .sectionA-banner{
         position: absolute;

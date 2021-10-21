@@ -54,7 +54,7 @@
                     </select>
                 </div>
                 <div> 
-                    &emsp;Recieved. 
+                    &emsp;Received. 
                     <!-- <input type="text" v-model="formData.recieved"> -->
                     <select v-model="formData.recieved">
                             <option value="0">0</option>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="centered">
-                    Recieving Clerks<br>
+                    Receiving Clerks<br>
                     <select v-model="formData.recievingClerks[0]"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
@@ -178,22 +178,54 @@
                     &emsp;{{i}}
                     <select v-model="formData.itemNums[i]" class="box">
                         <option value="RB888122361US">RB888122361US</option>
-                        <option value="RB300911755US">RB300911755US</option>
-                        <option value="RB300911756US">RB300911756US</option>
-                        <option value="RB300911757US">RB300911757US</option>
-                        <option value="RB300911758US">RB300911758US</option>
-                        <option value="RB300911760US">RB300911760US</option>
-                        <option value="RB300911761US">RB300911761US</option>
-                        <option value="RB707092210US">RB707092210US</option>
-                        <option value="RB707092211US">RB707092211US</option>
-                        <option value="RB707092212US">RB707092212US</option>
-                        <option value="RB707092213US">RB707092213US</option>
-                        <option value="RB707092214US">RB707092214US</option>
-                        <option value="RB707092215US">RB707092215US</option>
-                        <option value="RB707092216US">RB707092216US</option>
-                        <option value="RB707092217US">RB707092217US</option>
-                        <option value="RB707092218US">RB707092218US</option>
-                        <option value="RB707092219US">RB707092219US</option>
+                        <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB300911755US">
+                            RB300911755US
+                        </option>
+                        <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB300911756US">
+                            RB300911756US
+                        </option>
+                        <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB300911757US">
+                            RB300911757US
+                        </option>
+                        <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB300911758US">
+                            RB300911758US
+                        </option>
+                        <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB300911760US">
+                            RB300911760US
+                        </option>
+                        <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB300911761US">
+                            RB300911761US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092210US">
+                            RB707092210US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092211US">
+                            RB707092211US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092212US">
+                            RB707092212US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092213US">
+                            RB707092213US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092214US">
+                            RB707092214US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092215US">
+                            RB707092215US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092216US">
+                            RB707092216US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092217US">
+                            RB707092217US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092218US">
+                            RB707092218US
+                        </option>
+                        <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092219US">
+                            RB707092219US
+                        </option>
                         <option value="RB842320438US">RB842320438US</option>
                         <option value="RB842320439US">RB842320439US</option>
                         <option value="RB298302613US">RB298302613US</option>
@@ -204,10 +236,13 @@
                         <option value="RB143899161US">RB143899161US</option>
                         <option value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
-                        <option value="S/43000277">S/43000277</option>
-                        <option value="O/RB300911759US">O/RB300911759US</option>
-                        <option value="S/70948511">S/70948511</option>
-                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option v-if="formData.billNo == 30" value="S/43000277">S/43000277</option>
+                        <option v-if="formData.billNo == 30 || formData.billNo ==144" value="O/RB300911759US">
+                            O/RB300911759US
+                        </option>
+                        <option v-if="formData.billNo == 260" value="S/70948511">S/70948511</option>
+                        <option v-if="formData.billNo == 260" value="O/RB102022763US">O/RB102022763US</option>
+                        <option v-if="formData.billNo == 260" value="O/RB298302613US">O/RB298302613US</option>
                         <option value="RB300911758US">RB300911758US</option>
                         <option value="RB621758502US">RB621758502US</option>
                         <option value="RB309266104US">RB309266104US</option>
@@ -227,10 +262,8 @@
                         <option value="APO AE 09459">APO AE 09459</option>
                         <option value="MISSENT">MISSENT</option>
                         <option value="NOT RECEIVED">NOT RECEIVED</option>
-                        <option value="APO AE 09459 - 2">APO AE 09459 - 2</option>
-                        <option value="Should Read RB309266140US">
-                            Should Read RB309266140US
-                        </option>
+                        <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
+                        <option value="Should Read RB309266140US">Should Read RB309266140US</option>
                         <option value="Should Read RB309265340US">Should Read RB309265340US</option>
                         <option value="APO">APO</option>
                         <option value="AE 09459">AE 09459</option>
@@ -274,10 +307,13 @@
                         <option value="RB143899161US">RB143899161US</option>
                         <option value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
-                        <option value="S/43000277">S/43000277</option>
-                        <option value="O/RB300911759US">O/RB300911759US</option>
-                        <option value="S/70948511">S/70948511</option>
-                        <option value="O/RB102022763US">O/RB102022763US</option>
+                        <option v-if="formData.billNo == 30" value="S/43000277">S/43000277</option>
+                        <option v-if="formData.billNo == 30 || formData.billNo ==144" value="O/RB300911759US">
+                            O/RB300911759US
+                        </option>
+                        <option v-if="formData.billNo == 260" value="S/70948511">S/70948511</option>
+                        <option v-if="formData.billNo == 260" value="O/RB102022763US">O/RB102022763US</option>
+                        <option v-if="formData.billNo == 260" value="O/RB298302613US">O/RB298302613US</option>
                         <option value="RB300911758US">RB300911758US</option>
                         <option value="RB621758502US">RB621758502US</option>
                         <option value="RB309266104US">RB309266104US</option>
@@ -296,7 +332,7 @@
                     <select v-if="i <= 5" v-model="formData.itemOrigins[i+15]" class="box" disabled>
                         <option value="APO AE 09459">APO AE 09459</option>
                         <option value="MISSENT">MISSENT</option>
-                        <option value="NOT RECIEVED">NOT RECIEVED</option>
+                        <option value="NOT RECEIVED">NOT RECEIVED</option>
                         <option value="Should Read RB309266140US">
                             Should Read RB309266140US
                         </option>
@@ -395,7 +431,7 @@
                     <option value="19">19</option>
                 </select>
                 articles
-                <br> recieved in this dispatch
+                <br> received in this dispatch
             </div>
             <div class="sub-area2">
                 &emsp;Postmaster,
@@ -425,7 +461,7 @@
             </div>
             <div class="sub-area3">
                 <input type="text" v-model="formData.currentTime"> M.
-                <br> Recieving Clerk
+                <br> Receiving Clerk
             </div>
         </div>
         <div class="bottom">
@@ -435,14 +471,14 @@
             <div class="stamp-inner">
                 <p class="top-text">Postmark of</p>
                 <input type="checkbox" v-model="formData.bottomStamp1">
-                <p class="bottom-text">Recieving Office</p>
+                <p class="bottom-text">Receiving Office</p>
             </div>
         </div>
         <div class="bottom-stamp2">
             <div class="stamp2-inner">
                 <p class="top-text">Postmark of</p>
                 <input type="checkbox" v-model="formData.bottomStamp2">
-                <p class="bottom-text">Recieving Office</p>
+                <p class="bottom-text">Receiving Office</p>
             </div>
         </div>
     </div>

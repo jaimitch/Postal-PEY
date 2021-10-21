@@ -48,9 +48,11 @@
             "items": ["RB339065331US", "RB290770790US"],
             "situation1Location": "Forms",
             "situation6Location": "Forms",
-            "gradeAt": [1, 6]
+            "gradeAt": [1, 6],
+            "type":"DD FORM 2261"
         },
         {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #260",
             "situationNumber": "Situation 2",
             "lockNo": "",
@@ -89,6 +91,7 @@
             "gradeAt": [2]
         },
         {
+            "type":"DD FORM 2261",
             "articleCode": "Current Date",
             "situationNumber": "Situation 6",
             "apoNum": "APO AE 09459",
@@ -138,6 +141,7 @@
             "situation6Location":"Forms"
         },
         {
+            "type":"PS FORM 3849",
             "articleCode": "SGT Ronald Cain",
             "situationNumber": "Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459 ",
@@ -170,6 +174,7 @@
             "situation3Location": "Truck 2"
         },
          {
+            "type":"PS FORM 3849",
             "articleCode": "PFC Carl Thompson",
             "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459 ",
@@ -202,6 +207,7 @@
             "situation3Location": "Truck 2"
          },
          {
+            "type":"PS FORM 3849",
             "articleCode": "SSG Donald Green",
             "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459 ",
@@ -234,6 +240,7 @@
             "situation3Location": "Truck 2"
          },
          {
+            "type":"PS FORM 3849",
             "articleCode": "SGM Mary Fulton",
             "situationNumber":"Situation 3",
             "reverseAddress": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
@@ -266,6 +273,7 @@
             "gradeAt": [3]
          },
          {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #24",
             "situationNumber":"Situation 4",
             "lockNo": "",
@@ -304,6 +312,7 @@
             "situation4Location":"Forms"
          },
          {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #231",
             "situationNumber":"Situation 2",
             "lockNo": "",
@@ -342,6 +351,7 @@
             "gradeAt": [2]
         },
         {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #30",
             "situationNumber":"Situation 4",
             "lockNo": "",
@@ -380,6 +390,7 @@
             "gradeAt": [4]
         },
         {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #33",
             "situationNumber":"Situation 4",
             "lockNo": "",
@@ -430,6 +441,7 @@
             "situation4Location":"Forms"
         },
         {
+            "type":"PS FORM 3877",
             "articleCode": "48",
             "situationNumber":"Situation 4",
             "senderAddress": "45th MP CO APO AE 09459",
@@ -487,6 +499,7 @@
             "situation4Location": "Forms"
         },
         {
+            "type":"PS FORM 3883",
             "articleCode": "John Thompson",
             "situationNumber":"Situation 3",
             "certified": false,
@@ -513,6 +526,7 @@
             "situation3Location": "Truck 2"
         },
         {
+            "type":"PS FORM 3883",
             "articleCode": "Jerry Johnson",
             "situationNumber":"Situation 3",
             "certified": false,
@@ -566,6 +580,7 @@
             "situation3Location": "Truck 2"
         },
         {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #129",
             "situationNumber":"Situation 5",
             "lockNo": "",
@@ -625,6 +640,7 @@
             "situation5Location": "Truck 6"
         },
         {
+            "type":"PS FORM 3854",
             "articleCode":"Bill #144",
             "situationNumber":"Situation 5",
             "lockNo": "",

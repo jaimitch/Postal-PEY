@@ -267,10 +267,10 @@
         showError: false,
         problemItems: [],
         totalErrors: 0,
-        studentName: "John",
+        studentName: "Student",
         showPouchCreation: [9,10],
         showSubmit: [1, 3, 4, 8, 10, 11],
-        payGrade: "2",
+        payGrade: "0",
         error: false,
         answerKey: key,
         items: [
@@ -495,7 +495,7 @@
           text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
         }
         else if(this.pageNum == 6) {
-          text = "2. You and PFC George Forrest, the witness, opened the pouch recieved from Unit 2."
+          text = "2. You and PFC George Forrest, the witness, opened the pouch received from Unit 2."
         }
         else if(this.pageNum == 7) {
           text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877."
@@ -506,13 +506,13 @@
         else if(this.pageNum == 9) {
           text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
           registered mail.\
-          1. Prepare the necessary documentation for dispatching all pouchable outing registeted mail to AMF Kennedy, NY 00300."
+          1. Prepare the necessary documentation for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300."
         }
         else if(this.pageNum == 10) {
           text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
         }
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail recieved, delivered, dispatched, and mail\
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail\
           that is still on hand and has not been delivered."
         }
         return text;
@@ -1226,7 +1226,16 @@
               }
               this.problemItems.push(newItem)
             }
-            this.totalErrors = errors
+            for(let i = 0; i < keyItems.length; i++){
+              if(!this.problemItems.some(e => e.detail === keyItems[i].articleCode)){
+                let newItem = {
+                  type: keyItems[i].type,
+                  detail: keyItems[i].articleCode
+                }
+                this.problemItems.push(newItem)
+              }
+            }
+            this.totalErrors = this.problemItems.length
             this.showError = true
           }
         console.log("situationItems: ", situationItems, "keyItems", keyItems)
@@ -1334,7 +1343,7 @@
 
             }
             //Property is not an array, and is incorrect
-            else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
+            else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1361,9 +1370,9 @@
                 }
               }
 
-              }
+            }
             //Property is not an array, and is incorrect
-            else if(userForm[property] != keyForm[property] && !property.includes("Location")) {
+            else if(userForm[property] != keyForm[property] && !property.includes("Location") && !property == "type") {
               console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1375,7 +1384,7 @@
           let errors = 0
           console.log("Its a 3849")
           for(let property in keyForm){
-            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location")) {
+            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
               console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
@@ -1387,7 +1396,7 @@
           console.log("Attempting to grade a 3877!")
           for(let property in keyForm){
              if(!Array.isArray(keyForm[property])) {
-               if(userForm[property] != keyForm[property] && property != "gradeAt" && property != "square" && !property.includes("Location")) {
+               if(userForm[property] != keyForm[property] && property != "gradeAt" && property != "square" && !property.includes("Location") && !property == "type") {
                 console.log(property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
                 errors++;
               }
@@ -1809,7 +1818,7 @@
   .drop-zone {
     order: 1;
     background-color: #333366;
-    width: 35vw;
+    width: 29vw;
     overflow: scroll;
     height: 38vw;
   }
