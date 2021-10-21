@@ -741,7 +741,7 @@
             "type": "Package",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck 2"
+            "situation3Location": "102"
         },
         {
             "articleCode": "RB 298 302 613 US",
@@ -775,7 +775,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck 2"
+            "situation3Location": "196"
         },
         {
             "articleCode": "RB 309 266 140 US",
@@ -809,7 +809,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck 2"
+            "situation3Location": "184"
         },
         {
             "articleCode": "RB 218 344 488 US",
@@ -826,7 +826,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck 2"
+            "situation3Location": "184"
         },
         {
             "articleCode": "RB 888 122 361 US",
