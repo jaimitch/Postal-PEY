@@ -36,12 +36,21 @@
            </div>
            <div class="bill-no">
                Mail for/Bill No.
-               <select v-model="formData.billNo">
-                   <option value="14TH ADMIN CO / 184">14TH ADMIN CO / 184</option>
-                   <option value="13TH EOC / 102">13TH EOC / 102</option>
+               <select v-model="address">
+                   <option value="14TH ADMIN CO ">14TH ADMIN CO</option>
+                   <option value="13TH EOC ">13TH EOC</option>
                    <option value="11th ENGR DET">11th ENGR DET</option>
-                   <option value="45TH MP CO / 196">45TH MP CO / 196</option>
+                   <option value="45TH MP CO ">45TH MP CO</option>
                </select>
+               
+               <div class="bill-no2">
+                    <select v-model="bill"> 
+                        <option value="/ 184">/ 184</option>
+                        <option value="/ 102">/ 102</option>
+                        <option value="">/ 115</option>
+                        <option value="/ 196">/ 196</option>
+                    </select>
+               </div>
            </div>
        </div>
        <div class="article-area">
@@ -195,6 +204,8 @@
         props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
+                address: "",
+                bill: "",
                 formData: {
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
@@ -228,6 +239,7 @@
                     // this.item.articleCode = this.sigOfAgent
                     this.formData.articleCode = this.formData.sigOfAgent
                 }
+                this.formData.billNo = this.address + this.bill
                 this.$emit('changeForm', this.formData)
             }
         },
@@ -673,9 +685,17 @@
     }
     .bill-no select{
         position: absolute;
-        width: 80%;
+        width: 70%;
         top: 30%;
-        left:2%;
+        left: 1%;
+        height: 70%;
+        border: none;
+    }
+    .bill-no2 select{
+        position: absolute;
+        width: 35%;
+        top: 30%;
+        left: 75%;
         height: 70%;
         border: none;
     }
