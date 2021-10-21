@@ -423,10 +423,6 @@
           true,
           true,
           true,
-          true,
-          true,
-          true,
-          true,
         ],
         currentItemIndex: 2,
         currentFormIndex: '',
@@ -1213,7 +1209,9 @@
           })
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
-            this.pageErrors[0] = false;
+            
+            this.pageErrors[this.getSituationNumber-1] = false;
+            this.$emit('errorChange', this.pageErrors)
           }
           else{
             console.log("**************ERRORS**************",errors)

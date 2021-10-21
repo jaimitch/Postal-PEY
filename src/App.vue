@@ -1,8 +1,16 @@
 <template>
   <div>
-    <Frame v-bind:pageNum="this.$store.state.pageNum"/>
+    <Frame 
+      v-bind:pageNum="this.$store.state.pageNum"
+      @errorChange="changeError($event, data)"
+    />
     <TLO/>
-    <SituationNav v-on:jump="jumpPage()" :class="{'is-stamping': this.$store.state.stamping == true}"/>
+    <SituationNav 
+      v-on:jump="jumpPage()" 
+      :class="{'is-stamping': this.$store.state.stamping == true}"
+      v-bind:pageErrors="this.pageErrors"
+      :key="navKey"
+    />
   </div>
 </template>
 
@@ -18,6 +26,15 @@ export default {
   data() {
     return {
       globalPageNum: this.vuexPageNum,
+      pageErrors: [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ],
+        navKey: 0,
     }
   },
   components: {
@@ -29,12 +46,25 @@ export default {
     jumpPage() {
       console.log("jump page")
     },
+    changeError(data){
+      this.pageErrors = data
+    },
+    changeKey(){
+      this.navKey++
+    }
   },
   computed: {
     vuexPageNum() {
       return this.$store.state.pageNum
     }
-  }
+  },
+  watch: {
+        // whenever question changes, this function will run
+        pageErrors: {
+            deep: true,
+            handler: 'changeKey'
+       },
+    },
 }
 </script>
 

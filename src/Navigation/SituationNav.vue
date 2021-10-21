@@ -21,7 +21,11 @@ class="drawer"
   </button>
   </div>
         <div  class="in-menu">
-          <button class="buttons" @click="jumpToPage(section.page), $emit('jump')" :key="section" v-for="section in situations" >{{ section.name }}</button>
+          <div :key="section" v-for="section in situations">
+            <div v-if="section.clickable === false" >
+              <button class="buttons" @click="jumpToPage(section.page), $emit('jump')">{{ section.name }}</button>
+            </div>
+          </div>
         </div>   
   </div>
     
@@ -47,16 +51,18 @@ class="drawer"
 
 export default {
     name: "SituationNav",
+    props: ["pageErrors"],
     data () {
       return {
         drawerVisible: false,
-        situations: [{name: 'Situation 1', page: 1}, {name: 'Situation 2', page: 2}, {name: 'Situation 3', page: 4}, {name: 'Situation 4', page: 5},{name: 'Situation 5', page: 9}, {name: 'Situation 6', page: 11},],
+        situations: [{name: 'Situation 1', page: 1, clickable: this.pageErrors[0]}, {name: 'Situation 2', page: 2, clickable: this.pageErrors[1]}, {name: 'Situation 3', page: 4, clickable: this.pageErrors[2]}, {name: 'Situation 4', page: 5, clickable: this.pageErrors[3]},{name: 'Situation 5', page: 9 , clickable: this.pageErrors[4]}, {name: 'Situation 6', page: 11, clickable: this.pageErrors[5]},],
         }
       
     },
     methods: {
         jumpToPage(num) {
             this.$store.commit('jumpToPage', num);
+            console.log(this.pageErrors[0])
         }
     }
 
