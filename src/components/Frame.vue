@@ -111,17 +111,33 @@
               <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
                 <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
-              
-              <!-- <div 
-                class='child-level' 
-                v-for='greatGrand in getChildrenIndexes(items[grandchild].id)'
-                :key='greatGrand' 
-                :draggable ='true'
-                @dragstart='startDrag($event, items[greatGrand])'
-                @click="changeCurrentItem($event, items[greatGrand].id)"
-              >
-                {{items[greatGrand].title}}
-              </div> -->
+              <div 
+              class='great-grand-level' 
+              v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
+              :key='greatgrand'
+              :draggable ='true'
+              @dragstart='startDrag($event, items[greatgrand])'
+              @drop="onDrop($event,items[greatgrand].id)"
+              @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
+            >
+            
+              <div class="grand-child-content">
+              <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+              <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+              <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+              <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+
+            <!-- <div class='space-bar'>|</div> -->
+
+              <div class='great-grand-text'>
+              {{ items[greatgrand].type }} <br> {{ items[greatgrand].articleCode }} <br> {{ items[greatgrand].situationNumber }}
+              </div>
+              </div>
+
+              <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1792,7 +1808,7 @@
   .drop-zone {
     order: 1;
     background-color: #333366;
-    width: 22vw;
+    width: 35vw;
     overflow: scroll;
     height: 38vw;
   }
@@ -1813,10 +1829,11 @@
     flex-direction: column;
     overflow: scroll;
     height: 35vw;
-    width: 28vw;
   }
   .parent-level {
+    position: relative;
     background-color: #D5D5D5;
+    width: 27vw;
     margin-bottom: 15px;
     padding: 22px;
     color: #42426A;
@@ -1830,17 +1847,29 @@
     border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
-
+    max-width: 20.4vw;
   }
   .grand-child-level {
     position:relative;
-    left: 5vw;
+    left: 3vw;
     max-width: 20.4vw;;
     padding: 5px;
     color: #D5D5D5;
     border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
+    margin-bottom: 10px;
+  }
+  .great-grand-level {
+    position:relative;
+    left: 3vw;
+    max-width: 20.4vw;;
+    padding: 5px;
+    color: #D5D5D5;
+    border-radius: 5px;
+    z-index: 2;
+    font-size: 1vw;
+    margin-bottom: 10px;
   }
   .vertical-line {
     order: 2;
@@ -1931,11 +1960,22 @@
     border-radius: 5px;
     margin-top: 0.15vw;
   }
+  .great-grand-content {
+    background-color: #42426A;
+    border-radius: 5px;
+    margin-top: 0.15vw;
+  }
   .child{
     display: flex;
     flex-direction: row;
   }
   .grand-text{
+    position: relative;
+    margin-left: 40px;
+    left: 3vw;
+    bottom: 1vw; 
+  }
+  .great-grand-text{
     position: relative;
     margin-left: 40px;
     left: 3vw;
