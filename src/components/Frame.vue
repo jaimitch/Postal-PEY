@@ -1466,9 +1466,9 @@
             }
 
             let yest = this.getYYYYMMDD(-1)
-            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 2, 3, 4, 5, 6], false)
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 2, 3], false)
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 2, 3], false)
+            this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
+            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
+            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
           }
           this.situationOneInit = true;
         }
@@ -1496,7 +1496,7 @@
             }
             let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2, 3], false)
             this.assignItemToParent('Truck 1', form1)
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2, 3], false)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [], false)
             this.assignItemToParent('Bill #260', item1)
             let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item2)
@@ -1531,7 +1531,7 @@
               bottomStamp2: false
             }
             
-            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2, 3], false)
+            let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2], false)
             this.assignItemToParent('SEAL #70948511', item1)
             let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2, 3], false)
             this.assignItemToParent('SEAL #70948511', item2)
@@ -1541,7 +1541,7 @@
             this.assignItemToParent('SEAL #70948511', item4)
             let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined, [2, 3], false)
             this.assignItemToParent('SEAL #70948511', item5)
-            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2, 3], false)
+            let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2, 3, 5], false)
             this.assignItemToParent('SEAL #70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
@@ -1581,9 +1581,9 @@
 
             let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 3', form1)
-            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4], false)
+            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [], false)
             this.assignItemToParent('Truck 3', item1)
-            let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4], false)
+            let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
             this.assignItemToParent('Truck 3', item2)
             //30-33
             this.situationFourPartOne = true;
@@ -1614,17 +1614,17 @@
 
             let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [4], false)
             this.assignItemToParent('SEAL #43000277', item1)
-            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [4], false)
+            let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item2)
-            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [4], false)
+            let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item3)
-            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4], false)
+            let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4], false)
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item5)
-            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4], false)
+            let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4], false)
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
@@ -1649,9 +1649,9 @@
 
             let form1 = this.createItem('psform3877', '48', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 4', form1)
-            let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4], false)
+            let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4, 5], false)
             this.assignItemToParent('Truck 4', item1)
-            let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4], false)
+            let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4, 5], false)
             this.assignItemToParent('Truck 4', item2)
             //18-21
             this.situationFourPartThree = true;
@@ -1700,25 +1700,25 @@
 
             let form1 = this.createItem('psform3854', '33', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 5', form1)
-            let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4], false)
+            let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item1)
-            let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4], false)
+            let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item2)
-            let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [4], false)
+            let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item3)
-            let item4 = this.createItem('letter', 'RB 707 092 213 US', 4, 2, false, '213', undefined, [4], false)
+            let item4 = this.createItem('letter', 'RB 707 092 213 US', 4, 2, false, '213', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item4)
-            let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [4], false)
+            let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item5)
-            let item6 = this.createItem('package', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4], false)
+            let item6 = this.createItem('package', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item6)
-            let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [4], false)
+            let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item7)
-            let item8 = this.createItem('letter', 'RB 707 092 217 US', 4, 2, false, '217', undefined, [4], false)
+            let item8 = this.createItem('letter', 'RB 707 092 217 US', 4, 2, false, '217', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item8)
-            let item9 = this.createItem('letter', 'RB 707 092 218 US', 4, 2, false, '218', undefined, [4], false)
+            let item9 = this.createItem('letter', 'RB 707 092 218 US', 4, 2, false, '218', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item9)
-            let item10 = this.createItem('letter', 'RB 707 092 219 US', 4, 2, false, '219', undefined, [4], false)
+            let item10 = this.createItem('letter', 'RB 707 092 219 US', 4, 2, false, '219', undefined, [4, 5], false)
             this.assignItemToParent('Truck 5', item10)
             //6-17
             this.situationFourPartFour = true;

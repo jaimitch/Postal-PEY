@@ -47,12 +47,8 @@
             "itemsAccepted": "",
             "items": ["RB339065331US", "RB290770790US"],
             "situation1Location": "Forms",
-            "situation2Location": "Forms",
-            "situation3Location": "Forms",
-            "situation4Location": "Forms",
-            "situation5Location": "Forms",
             "situation6Location": "Forms",
-            "gradeAt": [1, 2, 3, 4, 5, 6]
+            "gradeAt": [1, 6]
         },
         {
             "articleCode":"Bill #260",
@@ -90,11 +86,7 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "situation2Location": "Forms",
-            "situation3Location": "Forms",
-            "situation4Location": "Forms",
-            "situation5Location": "Forms",
-            "situation6Location": "Forms",
-            "gradeAt": [2, 3, 4, 5, 6]
+            "gradeAt": [2]
         },
         {
             "articleCode": "Current Date",
@@ -347,11 +339,7 @@
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
             "situation2Location": "Forms",
-            "situation3Location": "Forms",
-            "situation4Location": "Forms",
-            "situation5Location": "Forms",
-            "situation6Location": "Forms",
-            "gradeAt": [2, 3, 4, 5, 6]
+            "gradeAt": [2]
         },
         {
             "articleCode":"Bill #30",
@@ -438,11 +426,8 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "gradeAt": [4, 5, 6],
-            "situation4Location":"Forms",
-            "situation5Location":"Forms",
-            "situation6Location":"Forms"
-
+            "gradeAt": [4],
+            "situation4Location":"Forms"
         },
         {
             "articleCode": "48",
@@ -637,7 +622,7 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5],
-            "situation5Location": "Forms"
+            "situation5Location": "Truck 6"
         },
         {
             "articleCode":"Bill #144",
@@ -675,7 +660,7 @@
             "witnessSent": "",
             "witnessRecieved": "Kyle ",
             "gradeAt": [5],
-            "situation5Location":"Forms"
+            "situation5Location":"Truck 6"
         },
         {
             "articleCode": "RB 339 065 331 US",
@@ -690,10 +675,9 @@
             "situationNumber": "Situation 1",
             "stampCounter": 0,
             "type": "Package",
-            "gradeAt":[1, 2, 3],
+            "gradeAt":[1, 3],
             "situation1Location": "Safe",
-            "situation2Location": "Safe",
-            "situation3Location": "Truck 2"
+            "situation3Location": "SSG Donald Green"
         },
         {
             "articleCode": "RB 290 770 790 US",
@@ -708,10 +692,9 @@
             "situationNumber": "Situation 1",
             "stampCounter": 0,
             "type": "Package",
-            "gradeAt":[1, 2, 3],
+            "gradeAt":[1, 3],
             "situation1Location": "Safe",
-            "situation2Location": "Safe",
-            "situation3Location": "Truck 2"
+            "situation3Location": "PFC Carl Thompson"
         },
         {
             "articleCode": "SEAL #70948511",
@@ -724,9 +707,7 @@
             "level": 2,
             "situationNumber": "Situation 2",
             "stampCounter": 0,
-            "type": "Pouch",
-            "situation2Location": "Safe",
-            "gradeAt":[2]
+            "type": "Pouch"
         },
         {
             "articleCode": "RB 102 022 763 US",
@@ -760,7 +741,7 @@
             "type": "Package",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck 2"
+            "situation3Location": "SGM Mary Fulton"
         },
         {
             "articleCode": "RB 867 092 744 US",
@@ -794,7 +775,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "Truck 2"
+            "situation3Location": "SGT Ronald Cain"
         },
         {
             "articleCode": "RB 143 899 161 US",
@@ -844,9 +825,9 @@
             "stampCounter": 0,
             "type": "Letter",
             "situation2Location": "Safe",
-            "gradeAt":[2, 3, 4],
+            "gradeAt":[2, 3, 5],
             "situation3Location": "Safe",
-            "situation4Location": "Safe"
+            "situation5Location": "Truck 6"
 
         },
         {
@@ -861,8 +842,7 @@
             "situationNumber": "Situation 4",
             "stampCounter": 0,
             "type": "Pouch",
-            "gradeAt":[4],
-            "situation4Location": "Safe"
+            "gradeAt":[]
         },
         {
             "articleCode": "RB 300 911 759 US",
@@ -878,7 +858,8 @@
             "stampCounter":0,
             "type":"Package",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #144",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 300 911 755 US",
@@ -894,7 +875,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 300 911 756 US",
@@ -910,7 +892,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 300 911 757 US",
@@ -926,7 +909,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 300 911 758 US",
@@ -942,7 +926,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 300 911 760 US",
@@ -958,7 +943,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 300 911 761 US",
@@ -974,7 +960,8 @@
             "stampCounter":0,
             "type":"Package",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 842 320 438 US",
@@ -990,7 +977,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 842 320 439 US",
@@ -1006,7 +994,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "articleCode": "RB 707 092 210 US",
@@ -1022,7 +1011,8 @@
             "stampCounter":0,
             "type":"Letter",
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1028,
@@ -1038,7 +1028,8 @@
             "droppable":true,
             "showImage":false,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1029,
@@ -1053,7 +1044,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1030,
@@ -1068,7 +1060,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1031,
@@ -1083,7 +1076,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1032,
@@ -1099,7 +1093,8 @@
             "droppable":true,
             "showImage":false,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1033,
@@ -1114,7 +1109,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1034,
@@ -1129,7 +1125,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1035,
@@ -1144,7 +1141,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         },
         {
             "id":1036,
@@ -1159,7 +1157,8 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "gradeAt":[4]
+            "situation5Location": "Bill #129",
+            "gradeAt":[4, 5]
         }
     ]
 }
