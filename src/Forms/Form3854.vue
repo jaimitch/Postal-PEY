@@ -536,7 +536,7 @@
             changeForm() {
                 if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.formData.billNo
+                    this.formData.articleCode = "Bill #" + this.formData.billNo
                 }
                 //this.changeBackText()
                 if(this.backText == undefined){
