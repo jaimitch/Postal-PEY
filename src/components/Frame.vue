@@ -1531,7 +1531,7 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2, 3], false)
+            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
             let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [], false)
             this.assignItemToParent('Bill #260', item1)
