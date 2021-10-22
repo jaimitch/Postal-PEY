@@ -1224,7 +1224,6 @@
           })
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
-            
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
           }
@@ -1251,7 +1250,7 @@
             this.totalErrors = this.problemItems.length
             this.showError = true
           }
-        console.log("situationItems: ", situationItems, "keyItems", keyItems)
+        console.log(this.problemItems.length)
       },
       gradeForm(articleCode, keyForm, formCode) {
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
@@ -1538,7 +1537,7 @@
               bottomStamp1: false,
               bottomStamp2: false
             }
-            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2, 3], false)
+            let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
             let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [], false)
             this.assignItemToParent('Bill #260', item1)

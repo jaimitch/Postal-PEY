@@ -91,7 +91,6 @@
             "gradeAt": [2]
         },
         {
-            "type":"DD FORM 2261",
             "articleCode": "Current Date",
             "situationNumber": "Situation 6",
             "apoNum": "APO AE 09459",
@@ -138,7 +137,8 @@
             "itemsAccepted": "2",
             "items": [],
             "gradeAt": [6],
-            "situation6Location":"Forms"
+            "situation6Location":"Forms",
+            "type":"DD FORM 2261"
         },
         {
             "type":"PS FORM 3849",
@@ -401,7 +401,7 @@
             "pageNo": "1X",
             "airmail": "",
             "sealNo": "H/C",
-            "to": "APO AE 09459",
+            "to": "APO AE 09824",
             "billNoRight": "33",
             "amNo": "",
             "jacketNoRight": "",
