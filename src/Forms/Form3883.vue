@@ -36,7 +36,7 @@
            </div>
            <div class="bill-no">
                Mail for/Bill No.
-               <select v-model="address">
+               <select v-model="formData.address">
                    <option value="14TH ADMIN CO / ">14TH ADMIN CO</option>
                    <option value="13TH EOC / ">13TH EOC</option>
                    <option value="11th ENGR DET / ">11th ENGR DET</option>
@@ -44,10 +44,10 @@
                </select>
                
                <div class="bill-no2">
-                    <select v-model="bill"> 
+                    <select v-model="formData.billNo">
                         <option value="184">/ 184</option>
                         <option value="102">/ 102</option>
-                        <option value="">/ 115</option>
+                        <option value="115">/ 115</option>
                         <option value="196">/ 196</option>
                     </select>
                </div>
@@ -219,6 +219,7 @@
                     returnReceipt: this.item.formInputs.returnReceipt,
                     SCS: this.item.formInputs.SCS,
                     billNo: this.item.formInputs.billNo,
+                    address: this.item.formInputs.address,
                     article: this.item.formInputs.article,
                     code: this.item.formInputs.code,
                     origin: this.item.formInputs.origin,
@@ -237,9 +238,9 @@
             changeForm() {
                 if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.bill
+                    this.formData.articleCode = this.formData.billNo
                 }
-                this.formData.billNo = this.address + this.bill
+                // this.formData.billNo = this.address + this.formData.billNo
                 this.$emit('changeForm', this.formData)
             }
         },
