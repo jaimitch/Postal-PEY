@@ -1299,35 +1299,39 @@
           for (let property in keyForm) {
             // console.log(property)
             if(Array.isArray(keyForm[property])) {
-
               if(property == "itemOrigins") {
                 //If there are item origins, we need to build an answer key
                 if(keyForm.itemOrigins.length > 1) {
                   //first pass to build the answer key
                   for(let i = 1; i < keyForm.itemOrigins.length; i++) {
-                    if(userForm.itemOrigins[i] != undefined) {
+                    if(keyForm.itemOrigins[i] != undefined) {
                       let keyItem = {left: keyForm.itemNums[i], right: keyForm.itemOrigins[i]}
                       keyPairs.push(keyItem);
                     }
                   }
+                  console.log("+++++HERE+++++",keyPairs)
                   //second pass to see if the items are in the wrong order
                   for(let i = 1; i < userForm.itemNums.length; i++) {
                     for(let j = 0; j < keyPairs.length; j++) {
                       //If left column item should have a match
                       if(userForm.itemNums[i] == keyPairs[j].left) {
                         //If the right hand column item is defined at the current index
-                        if(userForm.itemOrigins[i] != undefined) {
-                          //It doesn't match
+                        if(keyPairs[j].right == undefined || keyPairs[j].right == ""){
+                          //console.log("User Form: ", userForm.itemOrigins[i], "Key Pair: ", keyPairs[j].right)
+                          if(userForm.itemOrigins[i] != undefined){
+                            if(userForm.itemOrigins[i] != ""){
+                              //console.log("ERROR")
+                              errors++
+                              break
+                            }
+                          }
+                        }
+                        else{
                           if(userForm.itemOrigins[i] != keyPairs[j].right) {
                             errors++
                             console.log("mismatch:", userForm.itemOrigins[i],  keyPairs[j].right)
                             break
                           }
-                        }
-                        //Its undefined, so it must be wrong
-                        else { 
-                          errors++
-                          break
                         }
                       }
                     }
@@ -1352,16 +1356,19 @@
                   }
                 }
               }
-
-
             }
             //Property is not an array, and is incorrect
-            else if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
-              console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
-              errors++;
+            else if(userForm[property] != keyForm[property]) {
+              if(property === "type" || property.includes("Location")){
+                // console.log("hello")
+              }
+              else{
+                console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
+                errors++;
+              }
             }
           }
-          console.log(keyPairs)
+          // console.log(keyPairs)
           return errors;
         }
         else if(formCode == "PS FORM 3883") {
