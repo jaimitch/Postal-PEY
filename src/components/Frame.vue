@@ -390,7 +390,7 @@
           },
           {
             id: 10,
-            title: "Incoming Truck 5",
+            title: "Incoming Transfer Bill 5",
             articleCode: "Truck 5",
             children: [],
             level: 0,
