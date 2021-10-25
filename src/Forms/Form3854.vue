@@ -67,7 +67,7 @@
                             <option value="7">7</option>
                             <option value="8">8</option>
                             <option value="9">9</option>
-                            <option value=""></option>
+                            <option value=""> </option>
                         </select>
                     <div class="centered">
                         Articles described
@@ -158,10 +158,11 @@
             <!-- <input type="text" id="fname" name="fname" class="to-input" v-model="formData.to"> -->
             <select class="to-input" v-model="formData.to">
                 <option value="APO AE 09459" selected>APO AE 09459</option>
+
                 <option value="AMT APO AE  09463">AMT APO AE  09463</option>
                 <option value="AMF KENNEDY, NY 00300">AMF KENNEDY, NY  00300</option>
                 <option value="APO AE 09824">APO AE  09824</option>
-                <option value="APO AE  09459">APO AE  09459</option>
+                <option value="APO AE 09459">APO AE  09459</option>
                 <option value=""></option>
             </select>
             <br>
@@ -462,6 +463,7 @@
                     <option value="17">17</option>
                     <option value="18">18</option>
                     <option value="19">19</option>
+                    <option value=""> </option>
                 </select>
                 articles
                 <br> received in this dispatch
@@ -569,9 +571,17 @@
         },
         methods: {
             changeForm() {
+
+                console.log("curent bill num:", )
                 if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = "Bill #" + this.formData.billNo
+                    if(!this.item.articleCode.includes("created") && this.item.articleCode != '') {
+                        this.formData.articleCode = "Bill #" + this.formData.billNo
+                    }
+                    else {
+                        this.formData.articleCode = this.formData.billNo
+                    }
+                    
                 }
                 //this.changeBackText()
                 if(this.backText == undefined){
