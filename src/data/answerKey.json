@@ -657,7 +657,7 @@
             "pageNo": "1X",
             "airmail": "",
             "sealNo": "",
-            "to": "AMT APO AE  09463",
+            "to": "AMT APO AE 09463",
             "billNoRight": "144",
             "amNo": "",
             "jacketNoRight": "",
@@ -674,7 +674,7 @@
             "currentTime": "",
             "dispatchingClerk": "Current time",
             "itemNums": ["", "SEAL #62345678", "O/RB300911759US"],
-            "itemOrigins": ["", "APO AE  09459"],
+            "itemOrigins": ["", "APO AE 09459"],
             "topStamp1": true,
             "topStamp2": true,
             "bottomStamp1": false,
@@ -865,7 +865,7 @@
             "situation2Location": "Safe",
             "gradeAt":[2, 3, 5],
             "situation3Location": "Safe",
-            "situation5Location": "Truck 6"
+            "situation5Location": "Bill #129"
 
         },
         {
