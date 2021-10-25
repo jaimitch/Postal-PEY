@@ -80,7 +80,7 @@
                     <select v-model="formData.recievingClerks[0]"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                        <option value="Kyle">Kyle</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option value=""></option>
                     </select>
@@ -89,7 +89,7 @@
                     <select v-model="formData.recievingClerks[1]"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                        <option value="Kyle">Kyle</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
@@ -380,7 +380,7 @@
                      <select v-model="formData.witnessSent">
                          <option value="WIT: George Forrest">WIT: George Forrest</option>
                          <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                         <option value="Kyle">Kyle</option>
+                         <option value="Kyle Dozier">Kyle Dozier</option>
                          <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                          <option value=""></option>
                      </select>
@@ -440,7 +440,7 @@
                      <select v-model="formData.witnessRecieved">
                          <option value="WIT: George Forrest">WIT: George Forrest</option>
                          <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                         <option value="Kyle">Kyle</option>
+                         <option value="Kyle Dozier">Kyle Dozier</option>
                          <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                          <option value=""></option>
                      </select>
