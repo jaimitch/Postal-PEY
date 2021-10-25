@@ -67,6 +67,7 @@
                             <option value="7">7</option>
                             <option value="8">8</option>
                             <option value="9">9</option>
+                            <option value=""></option>
                         </select>
                     <div class="centered">
                         Articles described
@@ -474,6 +475,7 @@
                          <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
                          <option value="Kyle Dozier">Kyle Dozier</option>
                          <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                         <option :value="studentName">{{studentName}}</option>
                          <option value=""></option>
                      </select>
                 </div>
@@ -486,6 +488,7 @@
                         <option value="Hark Smith">Hark Smith</option>
                         <option value="Leroy Brown">Leroy Brown</option>
                         <option value="Michael Turner">Michael Turner</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value=""></option>
                     </select>
