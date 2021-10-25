@@ -618,6 +618,8 @@
         console.log("Delete item:", item)
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
+        parent.children = parent.children.concat(item.children)
+        item.children = []
         //remove id from parent's children array
         parent.children = parent.children.filter(x => x != item.id)
         //NOTE:Filtering the item from this.items causes errors with anything to do with currentItem
