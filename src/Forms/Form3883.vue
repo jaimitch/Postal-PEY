@@ -44,7 +44,7 @@
                </select>
                
                <div class="bill-no2">
-                    <select v-model="formData.billNo">
+                    <select v-model="formData.bill"> 
                         <option value="184">/ 184</option>
                         <option value="102">/ 102</option>
                         <option value="115">/ 115</option>
@@ -204,9 +204,9 @@
         props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
-                address: "",
-                bill: "",
+                
                 formData: {
+                    bill: this.item.formInputs.bill,
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
                     certified: this.item.formInputs.certified,
@@ -238,11 +238,11 @@
             changeForm() {
                 if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.formData.billNo
+                    this.formData.articleCode = this.formData.bill
                 }
-                // this.formData.billNo = this.address + this.formData.billNo
+                this.formData.billNo = this.formData.address + this.formData.bill
                 this.$emit('changeForm', this.formData)
-            }
+            },
         },
         watch: {
             // whenever question changes, this function will run

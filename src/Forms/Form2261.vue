@@ -688,7 +688,7 @@
                 <select v-model="formData.prepSig"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                        <option value="Kyle">Kyle</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
@@ -701,7 +701,7 @@
                 <select v-model="formData.officialSig"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                        <option value="Kyle">Kyle</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
@@ -720,7 +720,7 @@
                 <select v-model="formData.typedName"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                        <option value="Kyle">Kyle</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
@@ -749,7 +749,7 @@
                 <select v-model="formData.signature"> 
                         <option value="WIT: George Forrest">WIT: George Forrest</option>
                         <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
-                        <option value="Kyle">Kyle</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
@@ -823,7 +823,7 @@
                 let x = [
                     "WIT: George Forrest, PFC "+this.studentName+" "+ this.studentPG ,
                     "WIT: Scott Sanders",
-                    "Kyle",
+                    "Kyle Dozier",
                     "WIT: Larry Brown",
                     "Matthew L. Long",
                     ""

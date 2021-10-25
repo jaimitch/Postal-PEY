@@ -984,6 +984,8 @@
               recievedNum: "",
               deliveredBy: "",
               stamped: false,
+              address:"",
+              bill:""
             },
             type: "PS FORM 3883",
             droppable: true
@@ -1224,7 +1226,6 @@
           })
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
-            
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
           }
@@ -1251,7 +1252,7 @@
             this.totalErrors = this.problemItems.length
             this.showError = true
           }
-        console.log("situationItems: ", situationItems, "keyItems", keyItems)
+        console.log(this.problemItems.length)
       },
       gradeForm(articleCode, keyForm, formCode) {
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs

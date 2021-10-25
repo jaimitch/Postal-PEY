@@ -91,7 +91,6 @@
             "gradeAt": [2]
         },
         {
-            "type":"DD FORM 2261",
             "articleCode": "Current Date",
             "situationNumber": "Situation 6",
             "apoNum": "APO AE 09459",
@@ -138,7 +137,8 @@
             "itemsAccepted": "2",
             "items": [],
             "gradeAt": [6],
-            "situation6Location":"Forms"
+            "situation6Location":"Forms",
+            "type":"DD FORM 2261"
         },
         {
             "type":"PS FORM 3849",
@@ -340,7 +340,7 @@
             "currentTime": "Current time",
             "dispatchingClerk": "0930",
             "itemNums": ["", "RB621758502US", "RB309266104US", "RB867092744US","RB218344488US","RB143899161US","RB888122361US"],
-            "itemOrigins": ["", "NOT RECEIVED","Should Read RB309266140US","","","MISSENT"],
+            "itemOrigins": ["", "NOT RECEIVED","Should Read RB309266140US","","","","MISSENT"],
             "topStamp1": true,
             "topStamp2": true,
             "bottomStamp1": true,
@@ -401,7 +401,7 @@
             "pageNo": "1X",
             "airmail": "",
             "sealNo": "H/C",
-            "to": "APO AE 09459",
+            "to": "APO AE 09824",
             "billNoRight": "33",
             "amNo": "",
             "jacketNoRight": "",
@@ -500,6 +500,8 @@
         },
         {
             "type":"PS FORM 3883",
+            "address":"13TH EOC / ",
+            "bill":"102",
             "articleCode": "102",
             "situationNumber":"Situation 3",
             "certified": false,
@@ -527,6 +529,8 @@
         },
         {
             "type":"PS FORM 3883",
+            "address":"45TH MP CO / ",
+            "bill":"196",
             "articleCode": "196",
             "situationNumber":"Situation 3",
             "certified": false,
@@ -555,6 +559,8 @@
         {
             "articleCode": "184",
             "situationNumber":"Situation 3",
+            "bill":"184",
+            "address":"14TH ADMIN CO / ",
             "certified": false,
             "COD": false,
             "DCS": false,
@@ -663,8 +669,8 @@
             "recievingClerks": [],
             "totalArticlesSent": "2",
             "totalArticlesRecieved": "2",
-            "postmasterSent": "Anthony Smith",
-            "postmasterRecieved": "Student",
+            "postmasterSent": "Student",
+            "postmasterRecieved": "",
             "currentTime": "",
             "dispatchingClerk": "Current time",
             "itemNums": ["", "SEAL #62345678", "O/RB300911759US"],
@@ -674,7 +680,7 @@
             "bottomStamp1": false,
             "bottomStamp2": false,
             "witnessSent": "",
-            "witnessRecieved": "Kyle ",
+            "witnessRecieved": "Kyle Dozier",
             "gradeAt": [5],
             "situation5Location":"Truck 6"
         },
