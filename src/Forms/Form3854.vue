@@ -226,14 +226,14 @@
                         <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB707092219US">
                             RB707092219US
                         </option>
-                        <option value="RB842320438US">RB842320438US</option>
-                        <option value="RB842320439US">RB842320439US</option>
+                        <option v-if="formData.billNo == 129" value="RB842320438US">RB842320438US</option>
+                        <option v-if="formData.billNo == 129" value="RB842320439US">RB842320439US</option>
                         <option value="RB298302613US">RB298302613US</option>
                         <option value="RB339065331US">RB339065331US</option>
                         <option value="RB290770790US">RB290770790US</option>
                         <option value="RB309266140US">RB309266140US</option>
-                        <option value="RB218344488US">RB218344488US</option>
-                        <option value="RB143899161US">RB143899161US</option>
+                        <option v-if="formData.billNo == 260" value="RB218344488US">RB218344488US</option>
+                        <option v-if="formData.billNo == 260" value="RB143899161US">RB143899161US</option>
                         <option value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
                         <option v-if="formData.billNo == 30" value="S/43000277">S/43000277</option>
@@ -244,9 +244,9 @@
                         <option v-if="formData.billNo == 260" value="O/RB102022763US">O/RB102022763US</option>
                         <option v-if="formData.billNo == 260" value="O/RB298302613US">O/RB298302613US</option>
                         <option value="RB300911758US">RB300911758US</option>
-                        <option value="RB621758502US">RB621758502US</option>
-                        <option value="RB309266104US">RB309266104US</option>
-                        <option value="Seal # used">Seal # used</option>
+                        <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
+                        <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
+                        <option v-if="formData.billNo == 144" value="Seal # used">Seal # used</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -280,23 +280,23 @@
                     &emsp;{{i+15}} 
                     <!-- <input v-if="i <= 5" type="text" v-model="formData.itemNums[i+15]" class="box"> -->
                     <select v-model="formData.itemNums[i+15]" class="box">
-                        <option value="RB888122361US">RB888122361US</option>
+                        <option v-if="formData.billNo == 260" value="RB888122361US">RB888122361US</option>
                         <option value="RB300911755US">RB300911755US</option>
                         <option value="RB300911756US">RB300911756US</option>
                         <option value="RB300911757US">RB300911757US</option>
                         <option value="RB300911758US">RB300911758US</option>
                         <option value="RB300911760US">RB300911760US</option>
                         <option value="RB300911761US">RB300911761US</option>
-                        <option value="RB707092210US">RB707092210US</option>
-                        <option value="RB707092211US">RB707092211US</option>
-                        <option value="RB707092212US">RB707092212US</option>
-                        <option value="RB707092213US">RB707092213US</option>
-                        <option value="RB707092214US">RB707092214US</option>
-                        <option value="RB707092215US">RB707092215US</option>
-                        <option value="RB707092216US">RB707092216US</option>
-                        <option value="RB707092217US">RB707092217US</option>
-                        <option value="RB707092218US">RB707092218US</option>
-                        <option value="RB707092219US">RB707092219US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092210US">RB707092210US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092211US">RB707092211US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092212US">RB707092212US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092213US">RB707092213US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092214US">RB707092214US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092215US">RB707092215US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092216US">RB707092216US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092217US">RB707092217US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092218US">RB707092218US</option>
+                        <option v-if="formData.billNo == 33" value="RB707092219US">RB707092219US</option>
                         <option value="RB842320438US">RB842320438US</option>
                         <option value="RB842320439US">RB842320439US</option>
                         <option value="RB298302613US">RB298302613US</option>
@@ -305,7 +305,7 @@
                         <option value="RB309266140US">RB309266140US</option>
                         <option value="RB218344488US">RB218344488US</option>
                         <option value="RB143899161US">RB143899161US</option>
-                        <option value="RB867092744US">RB867092744US</option>
+                        <option v-if="formData.billNo == 260" value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
                         <option v-if="formData.billNo == 30" value="S/43000277">S/43000277</option>
                         <option v-if="formData.billNo == 30 || formData.billNo ==144" value="O/RB300911759US">

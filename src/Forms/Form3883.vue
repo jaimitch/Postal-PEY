@@ -36,7 +36,7 @@
            </div>
            <div class="bill-no">
                Mail for/Bill No.
-               <select v-model="address">
+               <select v-model="formData.address">
                    <option value="14TH ADMIN CO / ">14TH ADMIN CO</option>
                    <option value="13TH EOC / ">13TH EOC</option>
                    <option value="11th ENGR DET / ">11th ENGR DET</option>
@@ -44,10 +44,10 @@
                </select>
                
                <div class="bill-no2">
-                    <select v-model="bill"> 
+                    <select v-model="formData.bill"> 
                         <option value="184">/ 184</option>
                         <option value="102">/ 102</option>
-                        <option value="">/ 115</option>
+                        <option value="115">/ 115</option>
                         <option value="196">/ 196</option>
                     </select>
                </div>
@@ -204,9 +204,10 @@
         props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
-                address: "",
-                bill: "",
+                
                 formData: {
+                    address: this.item.formInputs.address,
+                    bill: this.item.formInputs.bill,
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
                     certified: this.item.formInputs.certified,
@@ -239,9 +240,10 @@
                     // this.item.articleCode = this.sigOfAgent
                     this.formData.articleCode = this.bill
                 }
-                this.formData.billNo = this.address + this.bill
+                this.formData.billNo = this.formData.address + this.formData.bill
+                console.log(this.formData.address, "A", this.formData.bill)
                 this.$emit('changeForm', this.formData)
-            }
+            },
         },
         watch: {
             // whenever question changes, this function will run

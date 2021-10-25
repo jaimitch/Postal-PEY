@@ -984,6 +984,8 @@
               recievedNum: "",
               deliveredBy: "",
               stamped: false,
+              address:"",
+              bill:""
             },
             type: "PS FORM 3883",
             droppable: true

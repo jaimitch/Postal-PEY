@@ -500,6 +500,8 @@
         },
         {
             "type":"PS FORM 3883",
+            "address":"13TH EOC / ",
+            "bill":"102",
             "articleCode": "102",
             "situationNumber":"Situation 3",
             "certified": false,
@@ -527,6 +529,8 @@
         },
         {
             "type":"PS FORM 3883",
+            "address":"45TH MP CO / ",
+            "bill":"196",
             "articleCode": "196",
             "situationNumber":"Situation 3",
             "certified": false,
@@ -555,6 +559,8 @@
         {
             "articleCode": "184",
             "situationNumber":"Situation 3",
+            "bill":"184",
+            "address":"14TH ADMIN CO / ",
             "certified": false,
             "COD": false,
             "DCS": false,
