@@ -170,8 +170,11 @@
             "sentTo": "SGT Ronald Cain",
             "sentBy": "David Campbell",
             "date": "Current Date",
-            "gradeAt": [3],
-            "situation3Location": "Truck 2"
+            "gradeAt": [3, 4, 5, 6],
+            "situation3Location": "Truck 2",
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
         },
          {
             "type":"PS FORM 3849",
@@ -203,8 +206,11 @@
             "sentTo": "PFC Carl Thompson",
             "sentBy": "Green Tower Corp.",
             "date": "Current Date",
-            "gradeAt": [3],
-            "situation3Location": "Truck 2"
+            "gradeAt": [3, 4, 5, 6],
+            "situation3Location": "Truck 2",
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
          },
          {
             "type":"PS FORM 3849",
@@ -236,8 +242,11 @@
             "sentTo": "SSG Donald Green",
             "sentBy": "Martha Gadsden",
             "date": "Current Date",
-            "gradeAt": [3],
-            "situation3Location": "Truck 2"
+            "gradeAt": [3, 4, 5, 6],
+            "situation3Location": "Truck 2",
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
          },
          {
             "type":"PS FORM 3849",
@@ -269,8 +278,11 @@
             "sentTo": "SGM Mary Fulton",
             "sentBy": "Thomas Inman",
             "date": "Current Date",
+            "gradeAt": [3, 4, 5, 6],
             "situation3Location": "Truck 2",
-            "gradeAt": [3]
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
          },
          {
             "type":"PS FORM 3854",
@@ -524,8 +536,11 @@
             "recievedNum": "1",
             "deliveredBy": "Student",
             "stamped": true,
-            "gradeAt": [3],
-            "situation3Location": "Truck 2"
+            "gradeAt": [3, 4, 5, 6],
+            "situation3Location": "Truck 2",
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
         },
         {
             "type":"PS FORM 3883",
@@ -553,8 +568,11 @@
             "recievedNum": "1",
             "deliveredBy": "Student",
             "stamped": true,
-            "gradeAt": [3],
-            "situation3Location": "Truck 2"
+            "gradeAt": [3, 4, 5, 6],
+            "situation3Location": "Truck 2",
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
         },
         {
             "articleCode": "184",
@@ -582,8 +600,11 @@
             "deliveredBy": "Student",
             "stamped": true,
             "type":"PS FORM 3883",
-            "gradeAt": [3],
-            "situation3Location": "Truck 2"
+            "gradeAt": [3, 4, 5, 6],
+            "situation3Location": "Truck 2",
+            "situation4Location": "Truck 2",
+            "situation5Location": "Truck 2",
+            "situation6Location": "Truck 2"
         },
         {
             "type":"PS FORM 3854",
@@ -657,7 +678,7 @@
             "pageNo": "1X",
             "airmail": "",
             "sealNo": "",
-            "to": "AMT APO AE  09463",
+            "to": "AMT APO AE 09463",
             "billNoRight": "144",
             "amNo": "",
             "jacketNoRight": "",
@@ -742,8 +763,9 @@
             "images": ["/img/Bag-1.141db596.svg"],
             "level": 2,
             "situationNumber": "Situation 5",
-            "gradeAt":[5],
-            "situation5Location": "Truck 6",
+            "gradeAt":[5, 6],
+            "situation5Location": "Bill #144",
+            "situation6Location": "Bill #144",
             "stampCounter": 0,
             "type": "Pouch"
         },
