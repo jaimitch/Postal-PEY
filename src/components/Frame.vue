@@ -1344,11 +1344,16 @@
               } // end itemOrigins processing
               else if(property == "itemNums"){
                 //Make sure all entries are correct
-                console.log("HELLOS")
                   let keyItems = keyForm.itemNums;
                   let userItems = userForm.itemNums;
+                  if(userItems.length != keyItems.length){
+                    console.log(userItems.length, keyItems.length)
+                    errors++
+                  }
+                  console.log("Key Items: ",keyItems)
                   for(let i = 0; i < userItems.length; i++){
-                    if(!keyItems.includes(userItems[i])){
+                    if(!keyItems.includes(userItems[i]) && userItems[i] != undefined){
+                      console.log(userItems[i])
                       errors++
                     }
                   }
