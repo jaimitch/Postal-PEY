@@ -106,7 +106,7 @@
               <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-            <!-- <div class='space-bar'>|</div> -->
+              <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
               <div class='grand-text'>
               {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created')">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
@@ -132,7 +132,7 @@
               <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-            <!-- <div class='space-bar'>|</div> -->
+              <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
               <div class='great-grand-text'>
               {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created')">{{ items[greatgrand].articleCode }}</span> <br> {{ items[greatgrand].situationNumber }}
