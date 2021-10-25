@@ -12,6 +12,7 @@
       @deleteChoice="deleteItem($event, data)"
       @doNothing="deleteModalShow = false"
     />
+    <!-- <Success  /> -->
     <div class="top-bar">
       <p class="left-text">Left side text <b>Current Time {{time}} </b></p>
       <p class="right-text">Right side text</p>
@@ -252,6 +253,7 @@
   import key from '../data/answerKey.json'
   import Error from '../components/Error.vue'
   import Delete from '../components/Delete.vue'
+  // import Success from '../components/Success.vue'
   export default {
     name: 'Frame',
     components: {
@@ -264,7 +266,8 @@
       Form3849,
       Form3854Back,
       Error,
-      Delete
+      Delete,
+      // Success,
     },
     props: [
       'pageNum'
@@ -478,51 +481,81 @@
       },
       getSituationText() {
         let text = "";
+        //Sitution 1
         if(this.pageNum ==  1) {
-          text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry section and verified the items inside\
-          the safe against the previous day's inventory. Verify that the following items (RB339 065 331US and RB290 770 790US) are accounted for."
+          text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry \
+                  section and verified the items inside the safe against the previous day's inventory. Verify that the \
+                  following items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B)."
         }
+        //Situation 2 Part 1
         else if(this.pageNum == 2) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's)."
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered \
+                  pouch and two registered outside pieces (OSP’s).<br><br>APDS all OSPs. Ensure the correctness of the \
+                  incoming truck bill and sign. Then move the PS Form 3854 \
+                  form into the Forms & Pouches section and all of the incoming articles into the Safe."    
         }
+        //Sitution 2 Part 2
          else if(this.pageNum == 3) {
-          text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
+          text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill.<br><br>\
+          APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
+          on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the empty \
+          pouch into the Forms & Pouches section and the associated mail articles into the Safe."
         }
+        //Situation 3
         else if(this.pageNum == 4) {
-          let now = new Date();
-          text = `<div>Deliver the following mail using the appropriate PS Forms:</div><br>\
+          // let now = new Date();
+          text = `<div>Deliver the following mail using the appropriate PS Forms.  Create a PS Form 3849 for each personal \
+                  article and or a PS Form 3883 for each official article, then attach the form to its article</div><br>\
           RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
-          <br><br> <div>TODAY'S DATE AND TIME: ${now} </div><br>\
-          <div>REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours</div><br>\
+          <br><br> 
+          Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>SGT EARL SMITH</th></tr>\
           <tr><th>13th EOC</th><th>101</th><th>PFC JOHN THOMPSON</th></tr>\
           <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
           <tr><th>45TH MP CO</th><th>195</th><th>SGT JERRY JOHNSON</th></tr></table><div>`
         }
+        //Situation 4 Part 1
         else if(this.pageNum == 5) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one \
+          OSP to dispatch to the AMT serving you area. Check the incoming truck bill, APDS and sign it. Move the extra \
+          OSP to the Safe and the truck bill to the Forms & Pouches section."         
         }
+        //Situation 4 Part 2
         else if(this.pageNum == 6) {
-          text = "2. You and PFC George Forrest, the witness, opened the pouch received from Unit 2."
+          text = "2. You and PFC George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
+          inside bill, and then sign bill with witness. Move all mail to safe and move the inside bill to Forms & Pouches."
         }
+        //Situation 4 Part 3
         else if(this.pageNum == 7) {
-          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877."
+          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
+          on the PS Form 3877. Ensure the correctness of the PS Form 3877 and sign. Move articles to safe and the PS Form \
+          3877 to Forms & Pouches."
         }
+        //Situation 4 Part 4
         else if(this.pageNum == 8) {
-          text = "4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."
+          text = "NOTE: Incoming Truck 5 should be Incoming Transfer Bill 5 <br><br>\
+          4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on \
+          the transfer bill. APDS all items, and ensure correctness of the transfer bill (PS Form 3877). Sign the bill and \
+          move to Forms & Pouches, move all mail items to Safe."
         }
+        //Situation 5 Part 1
         else if(this.pageNum == 9) {
-          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
-          registered mail.\
-          1. Prepare the necessary documentation for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300."
+          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and \
+          is waiting for the outgoing registered mail.<br><br>\
+          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this \
+          outgoing inside bill and its associated mail items into a new pouch, and move it into the Safe"
         }
+        //Situation 5 Part 2
         else if(this.pageNum == 10) {
-          text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+          text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the \
+          AMT that services your post office.<br><br>\
+          Dispatch these items via the Outgoing Truck."
         }
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail\
-          that is still on hand and has not been delivered."
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail \
+          received, delivered, dispatched, and mail that is still on hand and has not been delivered. Move this form to \
+          the Forms & Pouches section."
         }
         return text;
       },
