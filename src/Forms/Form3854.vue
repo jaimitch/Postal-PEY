@@ -158,8 +158,7 @@
             <!-- <input type="text" id="fname" name="fname" class="to-input" v-model="formData.to"> -->
             <select class="to-input" v-model="formData.to">
                 <option value="APO AE 09459" selected>APO AE 09459</option>
-
-                <option value="AMT APO AE 09463">AMT APO AE  09463</option>
+                <option value="AMT APO AE 09463">AMT APO AE 09463</option>
                 <option value="AMF KENNEDY, NY 00300">AMF KENNEDY, NY  00300</option>
                 <option value="APO AE 09824">APO AE  09824</option>
                 <option value="APO AE 09459">APO AE  09459</option>
