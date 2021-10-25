@@ -514,7 +514,7 @@
             "type":"PS FORM 3883",
             "address":"13TH EOC / ",
             "bill":"102",
-            "articleCode": "102",
+            "articleCode": "Bill #102",
             "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
@@ -546,7 +546,7 @@
             "type":"PS FORM 3883",
             "address":"45TH MP CO / ",
             "bill":"196",
-            "articleCode": "196",
+            "articleCode": "Bill #196",
             "situationNumber":"Situation 3",
             "certified": false,
             "COD": false,
@@ -575,7 +575,7 @@
             "situation6Location": "Truck 2"
         },
         {
-            "articleCode": "184",
+            "articleCode": "Bill #184",
             "situationNumber":"Situation 3",
             "bill":"184",
             "address":"14TH ADMIN CO / ",
@@ -784,7 +784,7 @@
             "type": "Package",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "102"
+            "situation3Location": "Bill #102"
         },
         {
             "articleCode": "RB 298 302 613 US",
@@ -818,7 +818,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "196"
+            "situation3Location": "Bill #196"
         },
         {
             "articleCode": "RB 309 266 140 US",
@@ -852,7 +852,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "184"
+            "situation3Location": "Bill #184"
         },
         {
             "articleCode": "RB 218 344 488 US",
@@ -869,7 +869,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "184"
+            "situation3Location": "Bill #184"
         },
         {
             "articleCode": "RB 888 122 361 US",
