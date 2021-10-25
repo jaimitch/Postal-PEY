@@ -597,7 +597,7 @@
             "pageNo": "1X",
             "airmail": "",
             "sealNo": "SEAL #62345678",
-            "to": "APO AE 09459",
+            "to": "AMF KENNEDY, NY 00300",
             "billNoRight": "129",
             "amNo": "",
             "jacketNoRight": "",
@@ -611,8 +611,8 @@
             "totalArticlesRecieved": "",
             "postmasterSent": "Student",
             "postmasterRecieved": "",
-            "currentTime": "Current time",
-            "dispatchingClerk": "",
+            "currentTime": "",
+            "dispatchingClerk": "Current time",
             "itemNums": [
                 "", 
                 "RB888122361US", 
@@ -865,7 +865,7 @@
             "situation2Location": "Safe",
             "gradeAt":[2, 3, 5],
             "situation3Location": "Safe",
-            "situation5Location": "Truck 6"
+            "situation5Location": "Bill #129"
 
         },
         {
