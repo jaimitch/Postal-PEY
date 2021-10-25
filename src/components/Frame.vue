@@ -1323,7 +1323,7 @@
                           //console.log("User Form: ", userForm.itemOrigins[i], "Key Pair: ", keyPairs[j].right)
                           if(userForm.itemOrigins[i] != undefined){
                             if(userForm.itemOrigins[i] != ""){
-                              //console.log("ERROR")
+                              console.log("ERROR")
                               errors++
                               break
                             }
@@ -1477,7 +1477,7 @@
             currentTime = currentTime + "45"
           }
           for(const property in obj){
-            if(property == "currentTime"){
+            if(obj[property] == "Current time"){
               obj[property] = currentTime;
               //console.log(obj[property])
             }
