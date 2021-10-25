@@ -238,10 +238,9 @@
             changeForm() {
                 if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.formData.billNo
+                    this.formData.articleCode = this.formData.bill
                 }
                 this.formData.billNo = this.formData.address + this.formData.bill
-                console.log(this.formData.address, "A", this.formData.bill)
                 this.$emit('changeForm', this.formData)
             },
         },

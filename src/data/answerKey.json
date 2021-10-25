@@ -340,7 +340,7 @@
             "currentTime": "Current time",
             "dispatchingClerk": "0930",
             "itemNums": ["", "RB621758502US", "RB309266104US", "RB867092744US","RB218344488US","RB143899161US","RB888122361US"],
-            "itemOrigins": ["", "NOT RECEIVED","Should Read RB309266140US","","","MISSENT"],
+            "itemOrigins": ["", "NOT RECEIVED","Should Read RB309266140US","","","","MISSENT"],
             "topStamp1": true,
             "topStamp2": true,
             "bottomStamp1": true,
