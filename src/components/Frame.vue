@@ -109,7 +109,7 @@
             <!-- <div class='space-bar'>|</div> -->
 
               <div class='grand-text'>
-              {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
+              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created')">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
               </div>
               </div>
 
@@ -135,7 +135,7 @@
             <!-- <div class='space-bar'>|</div> -->
 
               <div class='great-grand-text'>
-              {{ items[greatgrand].type }} <br> {{ items[greatgrand].articleCode }} <br> {{ items[greatgrand].situationNumber }}
+              {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created')">{{ items[greatgrand].articleCode }}</span> <br> {{ items[greatgrand].situationNumber }}
               </div>
               </div>
 
@@ -1510,7 +1510,7 @@
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
             this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
           }
           this.situationOneInit = true;
         }
