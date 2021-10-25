@@ -232,8 +232,8 @@
                         <option value="RB339065331US">RB339065331US</option>
                         <option value="RB290770790US">RB290770790US</option>
                         <option value="RB309266140US">RB309266140US</option>
-                        <option v-if="formData.billNo == 260" value="RB218344488US">RB218344488US</option>
-                        <option v-if="formData.billNo == 260" value="RB143899161US">RB143899161US</option>
+                        <option v-if="formData.billNo == 260 || formData.billNo == 231" value="RB218344488US">RB218344488US</option>
+                        <option v-if="formData.billNo == 260 || formData.billNo == 231" value="RB143899161US">RB143899161US</option>
                         <option value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
                         <option v-if="formData.billNo == 30" value="S/43000277">S/43000277</option>

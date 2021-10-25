@@ -206,7 +206,6 @@
             return{
                 
                 formData: {
-                    address: this.item.formInputs.address,
                     bill: this.item.formInputs.bill,
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
