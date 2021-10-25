@@ -83,7 +83,7 @@
               <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
               <div class = "child-text">
-              {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created')">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
               </div>
             </div>  
             <div class="child-content item-image" v-if="items[child].images.length != 0">
@@ -1844,7 +1844,7 @@
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;
-        //this.getNearestTime()
+        this.items[this.currentItemIndex].articleCode = newForm.articleCode
       },
       // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
       // to the correct ones for this student (name, date, etc..) 
