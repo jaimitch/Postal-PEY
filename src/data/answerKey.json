@@ -596,7 +596,7 @@
             "billNo": "129",
             "pageNo": "1X",
             "airmail": "",
-            "sealNo": "Seal # Used",
+            "sealNo": "SEAL #62345678",
             "to": "APO AE 09459",
             "billNoRight": "129",
             "amNo": "",
@@ -604,7 +604,7 @@
             "lockNoRight": "",
             "rotaryNoRight": "",
             "airmailRight": "",
-            "sealNoRight": "Seal # Used",
+            "sealNoRight": "SEAL #62345678",
             "recieved": "",
             "recievingClerks": [],
             "totalArticlesSent": "19",
@@ -643,7 +643,7 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5],
-            "situation5Location": "Truck 6"
+            "situation5Location": "SEAL #62345678"
         },
         {
             "type":"PS FORM 3854",
@@ -673,7 +673,7 @@
             "postmasterRecieved": "Student",
             "currentTime": "",
             "dispatchingClerk": "Current time",
-            "itemNums": ["", "Seal # used", "O/RB300911759US"],
+            "itemNums": ["", "SEAL #62345678", "O/RB300911759US"],
             "itemOrigins": ["", "APO AE  09459"],
             "topStamp1": true,
             "topStamp2": true,
@@ -729,6 +729,21 @@
             "level": 2,
             "situationNumber": "Situation 2",
             "gradeAt":[],
+            "stampCounter": 0,
+            "type": "Pouch"
+        },
+        {
+            "articleCode": "SEAL #62345678",
+            "children": [],
+            "currentImageIndex": 0,
+            "droppable": true,
+            "formInputs": {},
+            "id": 1003,
+            "images": ["/img/Bag-1.141db596.svg"],
+            "level": 2,
+            "situationNumber": "Situation 5",
+            "gradeAt":[5],
+            "situation5Location": "Truck 6",
             "stampCounter": 0,
             "type": "Pouch"
         },

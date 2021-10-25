@@ -220,6 +220,7 @@
                     returnReceipt: this.item.formInputs.returnReceipt,
                     SCS: this.item.formInputs.SCS,
                     billNo: this.item.formInputs.billNo,
+                    address: this.item.formInputs.address,
                     article: this.item.formInputs.article,
                     code: this.item.formInputs.code,
                     origin: this.item.formInputs.origin,
@@ -238,7 +239,7 @@
             changeForm() {
                 if(this.item.userCreated == true){
                     // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.bill
+                    this.formData.articleCode = this.formData.billNo
                 }
                 this.formData.billNo = this.formData.address + this.formData.bill
                 console.log(this.formData.address, "A", this.formData.bill)
