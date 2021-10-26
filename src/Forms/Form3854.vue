@@ -570,24 +570,23 @@
         },
         methods: {
             changeForm() {
-
-                console.log("curent bill num:", )
-                if(this.item.userCreated == true){
-                    // this.item.articleCode = this.sigOfAgent
-                    if(!this.item.articleCode.includes("created") && this.item.articleCode != '') {
-                        this.formData.articleCode = "Bill #" + this.formData.billNo
+                if(this.item.type == "PS FORM 3854"){
+                    if(this.item.userCreated == true){
+                        // this.item.articleCode = this.sigOfAgent
+                        if(!this.item.articleCode.includes("created") && this.item.articleCode != '') {
+                            this.formData.articleCode = "Bill #" + this.formData.billNo
+                        }
+                        else {
+                            this.formData.articleCode = this.formData.billNo
+                        }
                     }
-                    else {
-                        this.formData.articleCode = this.formData.billNo
+                    //this.changeBackText()
+                    if(this.backText == undefined){
+                        this.backText = this.item.formInputs.backText
                     }
-                    
+                    this.formData.backText = this.changeBackText()
+                    this.$emit('changeForm', this.formData)
                 }
-                //this.changeBackText()
-                if(this.backText == undefined){
-                    this.backText = this.item.formInputs.backText
-                }
-                this.formData.backText = this.changeBackText()
-                this.$emit('changeForm', this.formData)
             },
             changeBackText(){
                 let string = ""
@@ -611,7 +610,6 @@
 <style scoped>
     .outline{
         position: relative;
-        left:-10%;
         width: 50vmax;
         height: 36vmax;
         border: 1px solid black;

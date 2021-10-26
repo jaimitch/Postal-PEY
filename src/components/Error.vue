@@ -9,7 +9,7 @@
           x
         </button>
           <div class="gold">
-            You have {{totalErrors}} unresolved errors in:
+            You have unresolved errors in the following {{totalErrors}} form(s):
             <div v-for="item in problemItems" :key="item">
               {{item.type}}: {{item.detail}}
             </div>
@@ -81,5 +81,7 @@
 .gold {
   color: #D5D5D5;
   text-align: center;
+  padding: 2vw;
+
 }
 </style>

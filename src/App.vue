@@ -2,6 +2,7 @@
   <div>
     <Frame 
       v-bind:pageNum="this.$store.state.pageNum"
+      v-bind:changePage="change"
       @errorChange="changeError($event, data)"
     />
     <TLO/>
@@ -35,6 +36,7 @@ export default {
           true,
         ],
         navKey: 0,
+        change: 0,
     }
   },
   components: {
@@ -45,6 +47,7 @@ export default {
   methods: {
     jumpPage() {
       console.log("jump page")
+      this.change++
     },
     changeError(data){
       this.pageErrors = data
@@ -69,7 +72,8 @@ export default {
 </script>
 
 <style scoped>
-  .is-stamping{
-    pointer-events: none;
-  }
+* {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
 </style>
