@@ -471,7 +471,6 @@
     mounted() {
       this.updateSituation();
       this.time = this.getNearestTime();
-      console.log("hi")
       this.processAnswerKey();
     },
     computed: {
@@ -584,15 +583,17 @@
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
         let childrenIndexes = this.getChildrenIndexes(draggedID)
-        if(this.items[this.getItemIndex(destination)].level < 4){
-          if(this.items[this.getItemIndex(destination)].type != "Letter"){
-            if(this.items[this.getItemIndex(destination)].type != "Package"){
-              if(this.isDroppable(destination)){
-                if(draggedID != destination){
-                  if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
-                    this.removeItemOnDrop(draggedID,prevParentID)
-                    this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
-                    this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+        if(this.items[this.getItemIndex(destination)].level < 5){
+          if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
+            if(this.items[this.getItemIndex(destination)].type != "Letter"){
+              if(this.items[this.getItemIndex(destination)].type != "Package"){
+                if(this.isDroppable(destination)){
+                  if(draggedID != destination){
+                    if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+                      this.removeItemOnDrop(draggedID,prevParentID)
+                      this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+                      this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+                    }
                   }
                 }
               }
