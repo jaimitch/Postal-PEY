@@ -8,7 +8,12 @@
           @click="closeModal()">
           x
         </button>
-          <div class="gold">This is text for instructions/TLO</div>
+          <div class="gold">
+            Interservice Postal Training Activity<br>
+            Lesson #CJAF5216<br>
+            Practical Exercise - X<br>
+            The following training material utilizes a drag and drop system. To move an item, click and hold it, then drag it into position.<br>
+          </div>
     </div>
 </div>
   </div>
