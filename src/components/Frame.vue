@@ -12,6 +12,11 @@
       @deleteChoice="deleteItem($event, data)"
       @doNothing="deleteModalShow = false"
     />
+    <SectionCompleted
+      v-bind:sectionNumber="getSituationNumber"
+      v-bind:successModalShow="successModalShow"
+      @successModal="successModalShow = false"
+    />
     <div class="top-bar">
       <p class="left-text">Left side text <b>Current Time {{time}} </b></p>
       <p class="right-text">Right side text</p>
@@ -252,6 +257,7 @@
   import key from '../data/answerKey.json'
   import Error from '../components/Error.vue'
   import Delete from '../components/Delete.vue'
+  import SectionCompleted from '../components/SectionCompleted.vue'
   export default {
     name: 'Frame',
     components: {
@@ -264,7 +270,8 @@
       Form3849,
       Form3854Back,
       Error,
-      Delete
+      Delete,
+      SectionCompleted
     },
     props: [
       'pageNum'
@@ -455,6 +462,7 @@
         time: "",
         deleteModalShow: false,
         deletingItem: 0,
+        successModalShow: false 
       }   
     },
     mounted() {
@@ -1230,6 +1238,7 @@
           if(errors == 0) {
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
+            this.successModalShow = true
           }
           else{
             console.log("**************ERRORS**************",errors)
