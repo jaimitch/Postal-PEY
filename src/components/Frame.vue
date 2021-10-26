@@ -12,7 +12,11 @@
       @deleteChoice="deleteItem($event, data)"
       @doNothing="deleteModalShow = false"
     />
-    <!-- <Success  /> -->
+    <SectionCompleted
+      v-bind:sectionNumber="getSituationNumber"
+      v-bind:successModalShow="successModalShow"
+      @successModal="successModalShow = false"
+    />
     <div class="top-bar">
       <p class="left-text">Left side text <b>Current Time {{time}} </b></p>
       <p class="right-text">Right side text</p>
@@ -84,10 +88,11 @@
               <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
               <div class = "child-text">
-              {{ items[child].type }} <br> {{ items[child].articleCode }} <br> {{ items[child].situationNumber }}
+              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
               </div>
             </div>  
             <div class="child-content item-image" v-if="items[child].images.length != 0">
+              <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
               <img v-show="items[child].showImage" :src="itemImage(items[child])">
             </div>
             
@@ -107,14 +112,15 @@
               <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-            <!-- <div class='space-bar'>|</div> -->
+              <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
               <div class='grand-text'>
-              {{ items[grandchild].type }} <br> {{ items[grandchild].articleCode }} <br> {{ items[grandchild].situationNumber }}
+              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
               </div>
               </div>
 
               <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+                <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
                 <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
               <div 
@@ -133,14 +139,15 @@
               <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
               <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-            <!-- <div class='space-bar'>|</div> -->
+              <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
               <div class='great-grand-text'>
-              {{ items[greatgrand].type }} <br> {{ items[greatgrand].articleCode }} <br> {{ items[greatgrand].situationNumber }}
+              {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
               </div>
               </div>
 
               <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
                 <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
               </div>
               </div>
@@ -253,7 +260,7 @@
   import key from '../data/answerKey.json'
   import Error from '../components/Error.vue'
   import Delete from '../components/Delete.vue'
-  // import Success from '../components/Success.vue'
+  import SectionCompleted from '../components/SectionCompleted.vue'
   export default {
     name: 'Frame',
     components: {
@@ -267,7 +274,7 @@
       Form3854Back,
       Error,
       Delete,
-      // Success,
+      SectionCompleted
     },
     props: [
       'pageNum'
@@ -290,7 +297,7 @@
             title: "Placeholder",
             children: [],
             level: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "Truck",
@@ -305,7 +312,7 @@
             level: 1,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "safe",
@@ -315,12 +322,12 @@
           {
             articleCode: "Forms",
             id: 5,
-            title: "Forms",
+            title: "Forms & Pouches",
             children: [],
             level: 1,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "forms",
@@ -334,7 +341,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 2",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 2"
@@ -350,7 +357,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 3",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 3"
@@ -366,7 +373,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -382,7 +389,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -393,12 +400,12 @@
           },
           {
             id: 10,
-            title: "Incoming Truck 5",
+            title: "Incoming Transfer Bill 5",
             articleCode: "Truck 5",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -414,7 +421,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 5",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 5"
@@ -458,12 +465,12 @@
         time: "",
         deleteModalShow: false,
         deletingItem: 0,
+        successModalShow: false 
       }   
     },
     mounted() {
       this.updateSituation();
       this.time = this.getNearestTime();
-      console.log("hi")
       this.processAnswerKey();
     },
     computed: {
@@ -597,16 +604,29 @@
         evt.dataTransfer.setData('parentID', this.findParent(item.id))
         evt.stopPropagation()
       },
+      //"stamp items"
+      stampItem(evt, item) {
+        item.stampCounter = true;
+        evt.stopPropagation()
+      },
       onDrop (evt, destination) {
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
         let childrenIndexes = this.getChildrenIndexes(draggedID)
-        if(this.isDroppable(destination)){
-          if(draggedID != destination){
-            if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
-              this.removeItemOnDrop(draggedID,prevParentID)
-              this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
-              this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+        if(this.items[this.getItemIndex(destination)].level < 5){
+          if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
+            if(this.items[this.getItemIndex(destination)].type != "Letter"){
+              if(this.items[this.getItemIndex(destination)].type != "Package"){
+                if(this.isDroppable(destination)){
+                  if(draggedID != destination){
+                    if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+                      this.removeItemOnDrop(draggedID,prevParentID)
+                      this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+                      this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -648,9 +668,14 @@
       },
       //removes an item given it's id
       deleteItem(item) {
-        console.log("Delete item:", item)
+        //console.log("Delete item:", item)
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
+        for(let i=0; i < item.children.length; i++){
+          this.items[this.getItemIndex(item.children[i])].level--
+        }
+        parent.children = parent.children.concat(item.children)
+        item.children = []
         //remove id from parent's children array
         parent.children = parent.children.filter(x => x != item.id)
         //NOTE:Filtering the item from this.items causes errors with anything to do with currentItem
@@ -722,7 +747,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -791,7 +816,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -846,7 +871,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -914,7 +939,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -990,7 +1015,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -1017,6 +1042,8 @@
               recievedNum: "",
               deliveredBy: "",
               stamped: false,
+              address:"",
+              bill:""
             },
             type: "PS FORM 3883",
             droppable: true
@@ -1042,7 +1069,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Letter",
             droppable: true,
@@ -1063,7 +1090,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Package",
             droppable: true,
@@ -1085,7 +1112,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Pouch",
             droppable: true,
@@ -1162,11 +1189,17 @@
             case "Package": {
               console.log("Its a package")
               let errors = this.checkItemLocation(item, keyItem);
+              if(item.stampCounter != true) {
+                errors++;
+              }
               return errors;
             }
             case "Letter": {
               console.log("Its a letter")
               let errors = this.checkItemLocation(item, keyItem);
+              if(item.stampCounter != true) {
+                errors++;
+              }
               return errors;
             }
             case "Pouch": {
@@ -1257,9 +1290,9 @@
           })
           //If there are no errors, unlock the navigation arrow
           if(errors == 0) {
-            
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
+            this.successModalShow = true
           }
           else{
             console.log("**************ERRORS**************",errors)
@@ -1284,7 +1317,7 @@
             this.totalErrors = this.problemItems.length
             this.showError = true
           }
-        console.log("situationItems: ", situationItems, "keyItems", keyItems)
+        console.log(this.problemItems.length)
       },
       gradeForm(articleCode, keyForm, formCode) {
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
@@ -1353,7 +1386,7 @@
                           //console.log("User Form: ", userForm.itemOrigins[i], "Key Pair: ", keyPairs[j].right)
                           if(userForm.itemOrigins[i] != undefined){
                             if(userForm.itemOrigins[i] != ""){
-                              //console.log("ERROR")
+                              console.log("ERROR")
                               errors++
                               break
                             }
@@ -1372,7 +1405,22 @@
 
                 }
               } // end itemOrigins processing
-
+              else if(property == "itemNums"){
+                //Make sure all entries are correct
+                  let keyItems = keyForm.itemNums;
+                  let userItems = userForm.itemNums;
+                  if(userItems.length != keyItems.length){
+                    console.log(userItems.length, keyItems.length)
+                    errors++
+                  }
+                  console.log("Key Items: ",keyItems)
+                  for(let i = 0; i < userItems.length; i++){
+                    if(!keyItems.includes(userItems[i]) && userItems[i] != undefined){
+                      console.log(userItems[i])
+                      errors++
+                    }
+                  }
+              }
               else if(property == "recievingClerks") {
                 //If the student put nothing, but there should be something its wrong
                 if(userForm[property].length == 0 && keyForm[property].length > 0) {
@@ -1507,7 +1555,7 @@
             currentTime = currentTime + "45"
           }
           for(const property in obj){
-            if(property == "currentTime"){
+            if(obj[property] == "Current time"){
               obj[property] = currentTime;
               //console.log(obj[property])
             }
@@ -1539,8 +1587,16 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
-            this.createItem('package', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            let package1 = this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
+            let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            package1 = this.findItemByID(package1)[0]
+            letter1 = this.findItemByID(letter1)[0]
+            package1 = this.getItemByArticleCode(package1.articleCode)
+            letter1 = this.getItemByArticleCode(letter1.articleCode)
+            this.items[package1].stampCounter = true;
+            this.items[letter1].stampCounter = true;
+            console.log(this.items[package1])
+            console.log(this.items[letter1])
           }
           this.situationOneInit = true;
         }
@@ -1876,7 +1932,7 @@
       },
       changeForm(newForm){
         this.items[this.currentItemIndex].formInputs = newForm;
-        //this.getNearestTime()
+        this.items[this.currentItemIndex].articleCode = newForm.articleCode
       },
       // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
       // to the correct ones for this student (name, date, etc..) 
@@ -2173,5 +2229,14 @@
     position: relative;
     bottom: 1vw;
     left: 14vw;
+  }
+  .stamp-input {
+    position:relative;
+    left: 6.5vw;
+    font-size: 1.2vw;
+  }
+  .stamp-button {
+    transform: scale(1.8);
+    width: 2vw;
   }
 </style>

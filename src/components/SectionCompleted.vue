@@ -1,18 +1,9 @@
 <template>
-<div v-show="show">
-  <div class="modal-backdrop" @click="closeModal()">
+<div v-show="successModalShow" @click="closeModal()">
+  <div class="modal-backdrop">
     <div class="modal">
-        <button
-          type="button"
-          class="btn-close"
-          @click="closeModal()">
-          x
-        </button>
           <div class="gold">
-            Interservice Postal Training Activity<br>
-            Lesson #CJAF5216<br>
-            Practical Exercise - X<br>
-            The following training material utilizes a drag and drop system. To move an item, click and hold it, then drag it into position.<br>
+            You have successfully completed Situation {{sectionNumber}}, you can now move on to Situation {{sectionNumber+1}}
           </div>
     </div>
 </div>
@@ -22,14 +13,10 @@
 <script>
   export default {
     name: 'Warning',
-    data() {
-        return {
-            show:true
-        }
-    },
+    props: ['successModalShow', 'sectionNumber'],
     methods: {
       closeModal() {
-            this.show = false;
+        this.$emit("successModal")
       },
     },
     computed: {
