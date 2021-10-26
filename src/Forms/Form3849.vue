@@ -260,7 +260,6 @@
 <style scoped>
     .outline{
         position: relative;
-        left: 10%;
         width: 35vmax;
         height: 45vmax;
         border: 1px solid black;

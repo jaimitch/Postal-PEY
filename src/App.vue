@@ -72,7 +72,8 @@ export default {
 </script>
 
 <style scoped>
-  .is-stamping{
-    pointer-events: none;
-  }
+* {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
 </style>

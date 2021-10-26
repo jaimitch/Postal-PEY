@@ -5,8 +5,8 @@
           <div class="gold">
             Are you sure you want to delete {{deletingItem.type}}: {{deletingItem.articleCode}}?
             <br>
-            <button @click="closeModal(true)">Yes</button>
-            <button @click="closeModal(false)">No</button>
+            <button class="delete-yes" @click="closeModal(true)">Yes</button>
+            <button class="delete-no" @click="closeModal(false)">No</button>
           </div>
     </div>
 </div>
@@ -82,4 +82,18 @@
   color: #D5D5D5;
   text-align: center;
 }
+  .delete-yes,.delete-no{
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .15vw;
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: .5vw;
+    padding: 1vw;
+    margin: 2%;
+  }
+  .delete-yes:hover,.delete-no:hover{
+    background-color: #32334B;
+    color: #D5D5D5;
+  }
 </style>

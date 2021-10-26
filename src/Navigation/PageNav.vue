@@ -1,14 +1,12 @@
 <template>
 
     <div class="arrowBtn">
-    <div class="arrow">
-    <button v-if="this.$store.state.pageNum > 1" @click="prevPage(), $emit('prev')" class="previousBtn"><img src="@/assets/left-arrow.svg" style="width: 2vw"></button>
-    </div>
-    <div class='arrow' v-if="canGo[this.$store.state.pageNum-1] === true">
-        <button v-if="this.$store.state.pageNum < 11" @click="nextPage(), $emit('next')" class="nextBtn"><img src="@/assets/right-arrow.svg" style="width: 2vw;"></button>
-    </div>
-
-
+        <div class="arrow">
+            <button v-if="this.$store.state.pageNum > 1" @click="prevPage(), $emit('prev')" class="previousBtn"><img src="@/assets/left-arrow.svg"></button>
+        </div>
+        <div class='arrow' v-if="canGo[this.$store.state.pageNum-1] === true">
+            <button v-if="this.$store.state.pageNum < 11" @click="nextPage(), $emit('next')" class="nextBtn"><img src="@/assets/right-arrow.svg"></button>
+        </div>
     </div>
 </template>
 
@@ -78,32 +76,22 @@ export default {
 </script>
 
 <style>
-.arrowBtn {
-    font: Arial;
+
+.previousBtn,.nextBtn {
+    width: 2.9vw;
     position: absolute;
-    top: 5vh;
-    width: 98vw;
+    bottom: 7vh;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
     z-index: 1;
-    font-family: Arial;
-    text-align: left;
-    color: white;
+
 }
 .previousBtn {
-    position: absolute;
-    top: 85vh;
-    right: 4vw;
+    right: 6.5vw;
 }
 .nextBtn {
-    position: absolute;
-    top: 85vh;
-    right: 1vw;
-}
-
-.previousBtn,
-.nextBtn{
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
+    right: 2vw;
 }
 
 .select {
@@ -115,4 +103,4 @@ export default {
     pointer-events: none;
     background-color: grey;
 }
-</style> 
+</style>

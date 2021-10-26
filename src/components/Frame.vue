@@ -17,10 +17,6 @@
       v-bind:successModalShow="successModalShow"
       @successModal="successModalShow = false"
     />
-    <div class="top-bar">
-      <p class="left-text">Left side text <b>Current Time {{time}} </b></p>
-      <p class="right-text">Right side text</p>
-
       <div class="scroll-zone-up"
       draggable=false
       @dragover="onHoverUp()">
@@ -30,16 +26,14 @@
       draggable=false
       @dragover="onHoverDown()">
       </div>
-
-    </div>
     <div class='frame'>
-      <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">Submit</button>
+      <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
 
       <div class= "form-creation">
-        <button @click="createItem(createFormType, 'created', getSituationNumber, 2, true, '', undefined, this.updateGradeAt(), true)">
-          Create New Form
+        <button class="creation-button" @click="createItem(createFormType, 'created', getSituationNumber, 2, true, '', undefined, this.updateGradeAt(), true)">
+          CREATE NEW FORM
         </button>
-        <select class="form-creation-select" v-model="createFormType">
+        <select class="form-creation-select creation-dropdown" v-model="createFormType">
           <option value="psform3854">PS Form 3854</option>
           <option value="psform3877">PS Form 3877</option>
           <option value="ddform2261">DD Form 2261</option>
@@ -49,8 +43,8 @@
       </div>
 
       <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
-        <button @click="createPouch()">
-          Create New Pouch
+        <button class="creation-button" @click="createPouch()">
+          CREATE NEW POUCH
         </button>
       </div>
 
@@ -69,7 +63,7 @@
           @drop="onDrop($event,item.id)"
           @click="changeCurrentItem($event, item.id)"
         >
-          {{ item.title }}
+          <span class="bold">{{ item.title }}</span>
           <div 
             class='child-level' 
             v-for='child in getChildrenIndexes(item.id)' 
@@ -184,22 +178,11 @@
         </div>
       </div>
     </div>
-        <div class = "vertical-line"></div>
-        <div class="right-side-content">
+        <div class="right-frame">
           <div class="situation-title">Situation {{ getSituationNumber }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
 
-          <!-- <p> This is a {{this.items[currentItemIndex].title}} </p> -->
-          <div>
-            <!-- <img 
-              :class="{'letter': this.stamping == false, 'letter-stamping': this.stamping == true }"
-              :src="itemImage(this.items[currentItemIndex])"
-              width="500"
-              @click="stamp(this.items[currentItemIndex])"
-            > -->
-          </div>
-
-          <div v-if="this.currentFormIndex != ''">
+          <div class="right-side-document" v-if="this.currentFormIndex != ''">
             <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
             <Form3854 
               v-bind:item="items[currentFormIndex]"
@@ -268,13 +251,13 @@
             />
           </div>
           </div>
+          </div>
         </div>
         <PageNav 
           v-bind:pageErrors="pageErrors"
           @clearForm="currentFormIndex = ''"
         />
     </div>
-  </div>
 </template>
 
 <script>
@@ -2019,59 +2002,55 @@
   
 
   .frame{
-    display: flex;
-    flex-direction: row;
     position: absolute;
     top: 5vh;
     left: 0;
     width: 100vw;
     height: 95vh;
     z-index: 1;
-    font-family: Arial;
-    background-color: #333366;
-    justify-content: space-evenly;
-    align-items: center;
   }
   .drop-zone {
+    padding: 10%;
     order: 1;
     background-color: #333366;
-    width: 29vw;
-    overflow: scroll;
-    height: 38vw;
-  }
-  .right-side-content{
-    order: 3;
-    color: #D5D5D5;
-    text-align: center;
-    max-width: 39vw;
-
-  }
-  .left-frame{
-    position: relative;
-    top: 2vw;
-    left: 2vw;
-  }
-  .left-side-content{
+    width: 30vw;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    height: 35vw;
+  }
+  .left-frame{
+    position: relative;
+    top: 5vw;
+    left: 2vw;
+    width: 36vw;
+    height: 90vh;
+  }
+  .right-frame{
+    position: absolute;
+    top: 5vw;
+    right: 2vw;
+    width: 56vw;
+    height: 80vh;
   }
   .parent-level {
     position: relative;
     background-color: #D5D5D5;
-    width: 30vw;
-    margin-bottom: 15px;
+    width: 27vw;
+    margin-bottom: 1.5vh;
     padding: 22px;
     color: #42426A;
-    border-radius: 5px;
+    border-radius: 2vw;
+    font-size: 2.2vmin;
     z-index: 1;
+  }
+  .bold{
+    font-weight: bold;
   }
   .child-level {
     margin-bottom: 10px;
     padding: 5px;
     color: #D5D5D5;
-    border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
     max-width: 20.4vw;
@@ -2082,10 +2061,10 @@
     max-width: 20.4vw;;
     padding: 5px;
     color: #D5D5D5;
-    border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
     margin-bottom: 10px;
+
   }
   .great-grand-level {
     position:relative;
@@ -2093,10 +2072,10 @@
     max-width: 20.4vw;;
     padding: 5px;
     color: #D5D5D5;
-    border-radius: 5px;
     z-index: 2;
     font-size: 1vw;
     margin-bottom: 10px;
+
   }
   .vertical-line {
     order: 2;
@@ -2117,24 +2096,24 @@
     color: white;
     box-shadow: 1px 5px 5px black;
   }
-  .right-text{
-    position: absolute;
-    top:0;
-    left:85vw;
-    font-family: Arial;
-  }
-  .left-text {
-    position: absolute;
-    top: 0;
-    left: 1vw;
-    font-family: Arial;
-    color: white;
-  }
+
   .page-submit-button {
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: 5px;
+    padding: .5vw;
     position: absolute;
-    top: 10px;
-    right: 5vw;
+    transform: translateY(-50%);
+    bottom: .5vw;
+    right: 2vw;
     z-index: 2;
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .5vw;
+  }
+  .page-submit-button:hover {
+    background-color: #32334B;
+    color: #D5D5D5;
   }
   .letter{
     pointer-events: none;
@@ -2143,27 +2122,45 @@
     max-width: 39vw;
     text-align: center;
   }
-  .form-creation{
+  .form-creation,.pouch-creation{
+    font-weight: bold;
+    letter-spacing: .5vw;
+    font-size: 1vw;
     position: absolute;
-    font-family: Arial;
-    top: 5.5vw;
-    left: 10vw;
+    left: 6.5vw;
     z-index: 3;
-    background-color: #D5D5D5;
-    margin-bottom: 5px;
-    padding: 5px;
+    color: #32334B;
     border-radius: 5px;
   }
+  .form-creation{
+    transform: translateY(-50%);
+    bottom: .5vw;
+  }
   .pouch-creation {
-    position: absolute;
-    font-family: Arial;
-    top: 8vw;
-    left: 10vw;
-    z-index: 3;
+    transform: translateY(-50%);
+    bottom: .5vw;
+    left: 40vw;
+  }
+  .creation-button{
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .5vw;
     background-color: #D5D5D5;
-    margin-bottom: 5px;
-    padding: 5px;
-    border-radius: 5px;
+    color: #32334B;
+    border-radius: .5vw;
+    padding: .5vw;
+  }
+  .creation-button:hover{
+    background-color: #32334B;
+    color: #D5D5D5;
+  }
+    .creation-dropdown{
+    font-size: 1vw;
+    background-color: white;
+    color: #32334B;
+    padding: .5vw;
+    margin-left: .5vw;
+    border-radius: .5vw;
   }
   .item-icon{
     position: relative;
@@ -2179,18 +2176,24 @@
   }
   .child-content {
     background-color: #42426A;
-    border-radius: 5px;
+    border-radius: .8vw;
     margin-top: 0.15vw;
+    cursor: grab;
+
   }
   .grand-child-content {
     background-color: #42426A;
-    border-radius: 5px;
+    border-radius: .8vw;
     margin-top: 0.15vw;
+    cursor: grab;
+
   }
   .great-grand-content {
     background-color: #42426A;
-    border-radius: 5px;
+    border-radius: .8vw;
     margin-top: 0.15vw;
+    cursor: grab;
+
   }
   .child{
     display: flex;
@@ -2221,14 +2224,19 @@
     top: 20vw;
   }
   .situation-text {
-    position: relative;
-    bottom: 15vw;
-    font-size: 0.8vw;
+    position: absolute;
+    top: 4vw;
+    font-size: 1.2vw;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 50vw;
   }
   .situation-title {
-    position: relative;
-    bottom: 16vw;
-    font-size: 1.2vw;
+    position: absolute;
+    top: 1vw;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8vw;
     font-weight: bold;
   }
   .scroll-zone-up {
@@ -2236,7 +2244,6 @@
     left: 7vw;
     top: 12.8vw;
     width: 27vw;
-    /* border: 2px solid green; */
     padding: 1.1vw;
   }
   .scroll-zone-down {
@@ -2244,12 +2251,8 @@
     left: 7vw;
     top: 50vw;
     width: 27vw;
-    /* border: 2px solid green; */
     padding: 2vw;
   }
-  /* .child-package{
-    margin-top: 15px;
-  } */
   .flip-2261{
     z-index: 2;
     position: absolute;
@@ -2263,13 +2266,14 @@
     bottom: 1vw;
     left: 14vw;
   }
-  .stamp-input {
-    position:relative;
-    left: 6.5vw;
-    font-size: 1.2vw;
-  }
-  .stamp-button {
-    transform: scale(1.8);
-    width: 2vw;
+  .right-side-document {
+    box-shadow: 1px 5px 5px black;
+    position: absolute;
+    top: 0vh;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 60vw;
+    max-height: 75vh;
+    overflow: scroll;
   }
 </style>
