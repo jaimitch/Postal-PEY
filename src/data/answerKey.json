@@ -663,8 +663,9 @@
             "bottomStamp2": false,
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
-            "gradeAt": [5],
-            "situation5Location": "SEAL #62345678"
+            "gradeAt": [5, 6],
+            "situation5Location": "SEAL #62345678",
+            "situation6Location": "SEAL #62345678"
         },
         {
             "type":"PS FORM 3854",
@@ -702,8 +703,9 @@
             "bottomStamp2": false,
             "witnessSent": "",
             "witnessRecieved": "",
-            "gradeAt": [5],
-            "situation5Location":"Truck 6"
+            "gradeAt": [5, 6],
+            "situation5Location":"Truck 6",
+            "situation6Location":"Truck 6"
         },
         {
             "articleCode": "RB 339 065 331 US",
