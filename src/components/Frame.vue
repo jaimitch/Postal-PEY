@@ -271,6 +271,7 @@
         </div>
         <PageNav 
           v-bind:pageErrors="pageErrors"
+          @clearForm="currentFormIndex = ''"
         />
     </div>
   </div>
@@ -305,7 +306,8 @@
       SectionCompleted
     },
     props: [
-      'pageNum'
+      'pageNum',
+      'changePage'
     ],
     data() {
       return {
@@ -2005,6 +2007,9 @@
       },
       currentItemIndex: function () {
         this.formKey++
+      },
+      changePage: function () {
+        this.currentFormIndex = ''
       }
     }      
   }

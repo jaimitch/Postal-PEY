@@ -36,9 +36,11 @@ export default {
   },
   methods: { 
         nextPage() {
+            this.$emit('clearForm')
             this.$store.commit('nextPage');
         },
         prevPage() {
+            this.$emit('clearForm')
             this.$store.commit('prevPage');
         },
         checkCanGo(){
