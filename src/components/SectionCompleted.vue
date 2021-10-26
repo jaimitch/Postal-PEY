@@ -3,7 +3,7 @@
   <div class="modal-backdrop">
     <div class="modal">
           <div class="gold">
-            You have successfully completed Situation {{sectionNumber}} you can now move on to Situation {{sectionNumber+1}}
+            You have successfully completed Situation {{sectionNumber}}, you can now move on to Situation {{sectionNumber+1}}
           </div>
     </div>
 </div>
