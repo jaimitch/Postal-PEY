@@ -1286,7 +1286,7 @@
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
             if(situationItems[i].userCreated == true) {
-              situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
+              //situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
           console.log("in grade situation", situationItems)
@@ -1961,8 +1961,8 @@
 
       },
       changeForm(newForm){
-        this.items[this.currentItemIndex].formInputs = newForm;
-        this.items[this.currentItemIndex].articleCode = newForm.articleCode
+          this.items[this.currentFormIndex].formInputs = newForm;
+          this.items[this.currentFormIndex].articleCode = newForm.articleCode
       },
       // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
       // to the correct ones for this student (name, date, etc..) 
