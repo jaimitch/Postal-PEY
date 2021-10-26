@@ -88,7 +88,7 @@
               <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
               <div class = "child-text">
-              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && !items[child].articleCode.includes('48')">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
               </div>
             </div>  
             <div class="child-content item-image" v-if="items[child].images.length != 0">
@@ -115,7 +115,7 @@
               <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
               <div class='grand-text'>
-              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && !items[grandchild].articleCode.includes('48')">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
               </div>
               </div>
 
@@ -142,7 +142,7 @@
               <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
               <div class='great-grand-text'>
-              {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && !items[greatgrand].articleCode.includes('48')">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+              {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
               </div>
               </div>
 
