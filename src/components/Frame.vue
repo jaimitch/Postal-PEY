@@ -92,6 +92,7 @@
               </div>
             </div>  
             <div class="child-content item-image" v-if="items[child].images.length != 0">
+              <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
               <img v-show="items[child].showImage" :src="itemImage(items[child])">
             </div>
             
@@ -119,6 +120,7 @@
               </div>
 
               <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+                <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
                 <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
               <div 
@@ -145,6 +147,7 @@
               </div>
 
               <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
                 <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
               </div>
               </div>
@@ -294,7 +297,7 @@
             title: "Placeholder",
             children: [],
             level: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "Truck",
@@ -309,7 +312,7 @@
             level: 1,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "safe",
@@ -324,7 +327,7 @@
             level: 1,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "forms",
@@ -338,7 +341,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 2",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 2"
@@ -354,7 +357,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 3",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 3"
@@ -370,7 +373,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -386,7 +389,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -402,7 +405,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -418,7 +421,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 5",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 5"
@@ -572,6 +575,11 @@
         evt.dataTransfer.setData('parentID', this.findParent(item.id))
         evt.stopPropagation()
       },
+      //"stamp items"
+      stampItem(evt, item) {
+        item.stampCounter = true;
+        evt.stopPropagation()
+      },
       onDrop (evt, destination) {
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
@@ -699,7 +707,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -768,7 +776,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -823,7 +831,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -891,7 +899,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -967,7 +975,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -1021,7 +1029,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Letter",
             droppable: true,
@@ -1042,7 +1050,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Package",
             droppable: true,
@@ -1064,7 +1072,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Pouch",
             droppable: true,
@@ -1141,11 +1149,17 @@
             case "Package": {
               console.log("Its a package")
               let errors = this.checkItemLocation(item, keyItem);
+              if(item.stampCounter != true) {
+                errors++;
+              }
               return errors;
             }
             case "Letter": {
               console.log("Its a letter")
               let errors = this.checkItemLocation(item, keyItem);
+              if(item.stampCounter != true) {
+                errors++;
+              }
               return errors;
             }
             case "Pouch": {
@@ -1533,8 +1547,16 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
-            this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            let package1 = this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
+            let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            package1 = this.findItemByID(package1)[0]
+            letter1 = this.findItemByID(letter1)[0]
+            package1 = this.getItemByArticleCode(package1.articleCode)
+            letter1 = this.getItemByArticleCode(letter1.articleCode)
+            this.items[package1].stampCounter = true;
+            this.items[letter1].stampCounter = true;
+            console.log(this.items[package1])
+            console.log(this.items[letter1])
           }
           this.situationOneInit = true;
         }
@@ -2167,5 +2189,14 @@
     position: relative;
     bottom: 1vw;
     left: 14vw;
+  }
+  .stamp-input {
+    position:relative;
+    left: 6.5vw;
+    font-size: 1.2vw;
+  }
+  .stamp-button {
+    transform: scale(1.8);
+    width: 2vw;
   }
 </style>
