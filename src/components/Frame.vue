@@ -82,10 +82,11 @@
               <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
               <div class = "child-text">
-              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && !items[child].articleCode.includes('48')">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
               </div>
             </div>  
             <div class="child-content item-image" v-if="items[child].images.length != 0">
+              <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
               <img v-show="items[child].showImage" :src="itemImage(items[child])">
             </div>
             
@@ -108,11 +109,12 @@
               <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
               <div class='grand-text'>
-              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && !items[grandchild].articleCode.includes('48')">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
               </div>
               </div>
 
               <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+                <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
                 <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
               </div>
               <div 
@@ -123,23 +125,52 @@
               @dragstart='startDrag($event, items[greatgrand])'
               @drop="onDrop($event,items[greatgrand].id)"
               @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
-            >
+              >
             
-              <div class="grand-child-content">
-              <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-              <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
-              <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-              <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+                <div class="grand-child-content">
+                <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-              <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
+                <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
-              <div class='great-grand-text'>
-              {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && !items[greatgrand].articleCode.includes('48')">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
-              </div>
-              </div>
+                <div class='great-grand-text'>
+                {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                </div>
+                </div>
 
-              <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
-                <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+                <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                  <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
+                  <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+                </div>
+                <div 
+              class='great-grand-level' 
+              v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
+              :key='greatgreat'
+              :draggable ='true'
+              @dragstart='startDrag($event, items[greatgreat])'
+              @drop="onDrop($event,items[greatgreat].id)"
+              @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
+              >
+            
+                <div class="grand-child-content">
+                <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                <img v-else-if="items[greatgreat].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+
+                <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
+
+                <div class='great-grand-text'>
+                {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                </div>
+                </div>
+
+                <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
+                  <div class="stamp-input" v-show="items[greatgreat].showImage"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
+                  <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
+                </div>
               </div>
               </div>
             </div>
@@ -224,6 +255,7 @@
         </div>
         <PageNav 
           v-bind:pageErrors="pageErrors"
+          @clearForm="currentFormIndex = ''"
         />
     </div>
 </template>
@@ -257,7 +289,8 @@
       SectionCompleted
     },
     props: [
-      'pageNum'
+      'pageNum',
+      'changePage'
     ],
     data() {
       return {
@@ -277,7 +310,7 @@
             title: "Placeholder",
             children: [],
             level: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "Truck",
@@ -292,7 +325,7 @@
             level: 1,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "safe",
@@ -307,7 +340,7 @@
             level: 1,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {},
             type: "forms",
@@ -321,7 +354,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 2",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 2"
@@ -337,7 +370,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 3",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 3"
@@ -353,7 +386,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -369,7 +402,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -385,7 +418,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 4",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
@@ -401,7 +434,7 @@
             children: [],
             level: 0,
             situationNumber: "Situation 5",
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             formInputs: {
               situationNumber: "Situation 5"
@@ -451,7 +484,6 @@
     mounted() {
       this.updateSituation();
       this.time = this.getNearestTime();
-      console.log("hi")
       this.processAnswerKey();
     },
     computed: {
@@ -469,51 +501,81 @@
       },
       getSituationText() {
         let text = "";
+        //Sitution 1
         if(this.pageNum ==  1) {
-          text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry section and verified the items inside\
-          the safe against the previous day's inventory. Verify that the following items (RB339 065 331US and RB290 770 790US) are accounted for."
+          text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry \
+                  section and verified the items inside the safe against the previous day's inventory. Verify that the \
+                  following items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B)."
         }
+        //Situation 2 Part 1
         else if(this.pageNum == 2) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered pouch and two registered outside pieces (OSP's)."
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered \
+                  pouch and two registered outside pieces (OSP’s).<br><br>APDS all OSPs. Ensure the correctness of the \
+                  incoming truck bill and sign. Then move the PS Form 3854 \
+                  form into the Forms & Pouches section and all of the incoming articles into the Safe."    
         }
+        //Sitution 2 Part 2
          else if(this.pageNum == 3) {
-          text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill."
+          text = "2. You and PFC George Forrest, the witness, opened the pouch and located the incoming inside bill.<br><br>\
+          APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
+          on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the empty \
+          pouch into the Forms & Pouches section and the associated mail articles into the Safe."
         }
+        //Situation 3
         else if(this.pageNum == 4) {
-          let now = new Date();
-          text = `<div>Deliver the following mail using the appropriate PS Forms:</div><br>\
+          // let now = new Date();
+          text = `<div>Deliver the following mail using the appropriate PS Forms.  Create a PS Form 3849 for each personal \
+                  article and or a PS Form 3883 for each official article, then attach the form to its article</div><br>\
           RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
-          <br><br> <div>TODAY'S DATE AND TIME: ${now} </div><br>\
-          <div>REGISTRY SECTION OPERATING HOURS: 0800 to 1600 hours</div><br>\
+          <br><br> 
+          Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>SGT EARL SMITH</th></tr>\
           <tr><th>13th EOC</th><th>101</th><th>PFC JOHN THOMPSON</th></tr>\
           <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
           <tr><th>45TH MP CO</th><th>195</th><th>SGT JERRY JOHNSON</th></tr></table><div>`
         }
+        //Situation 4 Part 1
         else if(this.pageNum == 5) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP to dispatch to the AMT serving you area."         
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one \
+          OSP to dispatch to the AMT serving you area. Check the incoming truck bill, APDS and sign it. Move the extra \
+          OSP to the Safe and the truck bill to the Forms & Pouches section."         
         }
+        //Situation 4 Part 2
         else if(this.pageNum == 6) {
-          text = "2. You and PFC George Forrest, the witness, opened the pouch received from Unit 2."
+          text = "2. You and PFC George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
+          inside bill, and then sign bill with witness. Move all mail to safe and move the inside bill to Forms & Pouches."
         }
+        //Situation 4 Part 3
         else if(this.pageNum == 7) {
-          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed on the PS Form 3877."
+          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
+          on the PS Form 3877. Ensure the correctness of the PS Form 3877 and sign. Move articles to safe and the PS Form \
+          3877 to Forms & Pouches."
         }
+        //Situation 4 Part 4
         else if(this.pageNum == 8) {
-          text = "4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill."
+          text = "NOTE: Incoming Truck 5 should be Incoming Transfer Bill 5 <br><br>\
+          4. SPC Turner, who works at the finance window, comes to the registry section with the items listed on \
+          the transfer bill. APDS all items, and ensure correctness of the transfer bill (PS Form 3877). Sign the bill and \
+          move to Forms & Pouches, move all mail items to Safe."
         }
+        //Situation 5 Part 1
         else if(this.pageNum == 9) {
-          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is waiting for the outgoing\
-          registered mail.\
-          1. Prepare the necessary documentation for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300."
+          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and \
+          is waiting for the outgoing registered mail.<br><br>\
+          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this \
+          outgoing inside bill and its associated mail items into a new pouch, and move it into the Safe"
         }
+        //Situation 5 Part 2
         else if(this.pageNum == 10) {
-          text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office."
+          text = "2. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the \
+          AMT that services your post office.<br><br>\
+          Dispatch these items via the Outgoing Truck."
         }
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail\
-          that is still on hand and has not been delivered."
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail \
+          received, delivered, dispatched, and mail that is still on hand and has not been delivered. Move this form to \
+          the Forms & Pouches section."
         }
         return text;
       },
@@ -555,18 +617,27 @@
         evt.dataTransfer.setData('parentID', this.findParent(item.id))
         evt.stopPropagation()
       },
+      //"stamp items"
+      stampItem(evt, item) {
+        item.stampCounter = true;
+        evt.stopPropagation()
+      },
       onDrop (evt, destination) {
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
         let childrenIndexes = this.getChildrenIndexes(draggedID)
-        if(this.items[this.getItemIndex(destination)].type != "Letter"){
-          if(this.items[this.getItemIndex(destination)].type != "Package"){
-            if(this.isDroppable(destination)){
-              if(draggedID != destination){
-                if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
-                  this.removeItemOnDrop(draggedID,prevParentID)
-                  this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
-                  this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+        if(this.items[this.getItemIndex(destination)].level < 5){
+          if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
+            if(this.items[this.getItemIndex(destination)].type != "Letter"){
+              if(this.items[this.getItemIndex(destination)].type != "Package"){
+                if(this.isDroppable(destination)){
+                  if(draggedID != destination){
+                    if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
+                      this.removeItemOnDrop(draggedID,prevParentID)
+                      this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
+                      this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+                    }
+                  }
                 }
               }
             }
@@ -610,9 +681,12 @@
       },
       //removes an item given it's id
       deleteItem(item) {
-        console.log("Delete item:", item)
+        //console.log("Delete item:", item)
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
+        for(let i=0; i < item.children.length; i++){
+          this.items[this.getItemIndex(item.children[i])].level--
+        }
         parent.children = parent.children.concat(item.children)
         item.children = []
         //remove id from parent's children array
@@ -686,7 +760,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -755,7 +829,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -810,7 +884,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -878,7 +952,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -954,7 +1028,7 @@
             level: level,
             images: [],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             stampable: false,
             gradeAt: gradeAt,
             created: created,
@@ -1008,7 +1082,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Letter",
             droppable: true,
@@ -1029,7 +1103,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Package",
             droppable: true,
@@ -1051,7 +1125,7 @@
             level: level,
             images: [require(`../assets/${imageCode}.svg`),],
             currentImageIndex: 0,
-            stampCounter: 0,
+            stampCounter: false,
             formInputs: {},
             type: "Pouch",
             droppable: true,
@@ -1128,11 +1202,17 @@
             case "Package": {
               console.log("Its a package")
               let errors = this.checkItemLocation(item, keyItem);
+              if(item.stampCounter != true) {
+                errors++;
+              }
               return errors;
             }
             case "Letter": {
               console.log("Its a letter")
               let errors = this.checkItemLocation(item, keyItem);
+              if(item.stampCounter != true) {
+                errors++;
+              }
               return errors;
             }
             case "Pouch": {
@@ -1189,7 +1269,7 @@
           //Update any created items article code to the form input article code
           for(let i = 0; i < situationItems.length; i++) {
             if(situationItems[i].userCreated == true) {
-              situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
+              //situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
           console.log("in grade situation", situationItems)
@@ -1520,8 +1600,16 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
-            this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
-            this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            let package1 = this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
+            let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
+            package1 = this.findItemByID(package1)[0]
+            letter1 = this.findItemByID(letter1)[0]
+            package1 = this.getItemByArticleCode(package1.articleCode)
+            letter1 = this.getItemByArticleCode(letter1.articleCode)
+            this.items[package1].stampCounter = true;
+            this.items[letter1].stampCounter = true;
+            console.log(this.items[package1])
+            console.log(this.items[letter1])
           }
           this.situationOneInit = true;
         }
@@ -1856,8 +1944,8 @@
 
       },
       changeForm(newForm){
-        this.items[this.currentItemIndex].formInputs = newForm;
-        this.items[this.currentItemIndex].articleCode = newForm.articleCode
+          this.items[this.currentFormIndex].formInputs = newForm;
+          this.items[this.currentFormIndex].articleCode = newForm.articleCode
       },
       // Takes the answer key from the JSON and changes all of the variable answers that depend on the student and changes them
       // to the correct ones for this student (name, date, etc..) 
@@ -1902,6 +1990,9 @@
       },
       currentItemIndex: function () {
         this.formKey++
+      },
+      changePage: function () {
+        this.currentFormIndex = ''
       }
     }      
   }

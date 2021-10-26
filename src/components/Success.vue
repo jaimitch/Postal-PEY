@@ -1,13 +1,14 @@
 <template>
-<div v-show="successModalShow" @click="closeModal()">
-  <div class="modal-backdrop">
+<div v-show="show">
+  <div class="modal-backdrop" @click="closeModal()">
     <div class="modal">
-          <div class="gold" v-if="sectionNumber != 6">
-            You have successfully completed Situation {{sectionNumber}}, you can now move on to Situation {{sectionNumber+1}}
-          </div>
-          <div class="gold" v-else>
-            You have successfully completed the PE - X
-          </div>
+        <button
+          type="button"
+          class="btn-close"
+          @click="closeModal()">
+          x
+        </button>
+          <div class="gold">Situation Success, click the forward button below.</div>
     </div>
 </div>
   </div>
@@ -16,10 +17,14 @@
 <script>
   export default {
     name: 'Warning',
-    props: ['successModalShow', 'sectionNumber'],
+    data() {
+        return {
+            show:true
+        }
+    },
     methods: {
       closeModal() {
-        this.$emit("successModal")
+            this.show = false;
       },
     },
     computed: {
@@ -75,6 +80,5 @@
 .gold {
   color: #D5D5D5;
   text-align: center;
-  padding: 2vw;
 }
 </style>
