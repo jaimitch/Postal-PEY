@@ -72,5 +72,6 @@
 .gold {
   color: #D5D5D5;
   text-align: center;
+  padding: 2vw;
 }
 </style>

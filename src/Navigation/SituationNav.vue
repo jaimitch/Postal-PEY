@@ -8,6 +8,8 @@
    
 
 <!-- Holds the drawer with the menu options. -->
+<div class="top-bar" />
+<div class="title-left">Registered Mail PE-X</div>
 <div 
 class="drawer"
 :style="{
@@ -131,13 +133,23 @@ export default {
   left: 0px;
   z-index: 2;
   width: 3vw;
-  height: 5vh; 
+  height: 10vh; 
   background-color: #E71922;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0;
   border-radius: 0px;
+  box-shadow: 1px 5px 5px black;
+}
+.top-bar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 100vw;
+  height: 10vh; 
+  background-color: #32334B;
   box-shadow: 1px 5px 5px black;
 }
 .buttons{
@@ -225,6 +237,16 @@ export default {
   position: absolute;
   left: 15vw;
   font-size: 1.5vw;
+}
+.title-left {
+  position: absolute;
+  top: 5vh;
+  transform: translateY(-50%);
+  left: 4vw;
+  z-index: 2;
+  font-size: 2vw;
+  font-weight: bold;
+  letter-spacing: .5vw;
 }
 
 </style>

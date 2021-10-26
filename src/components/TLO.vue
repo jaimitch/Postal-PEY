@@ -9,9 +9,9 @@
           x
         </button>
           <div class="gold">
-            Interservice Postal Training Activity<br>
+            <span class="tlo-title">Interservice Postal Training Activity<br>
             Lesson #CJAF5216<br>
-            Practical Exercise - X<br>
+            Practical Exercise - X</span><br><br>
             The following training material utilizes a drag and drop system. To move an item, click and hold it, then drag it into position.<br>
           </div>
     </div>
@@ -54,15 +54,14 @@
 
   .modal {
     position: absolute;
-    top: 20vw;
+    top: 15vh;
     left:50%;
-    transform: translateX(-50%);
     background: #32334B;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-    min-width: 35vw;
-    min-height: 10vh;
+    min-width: 70vw;
+    min-height: 70vh;
     border-radius: 5px;
   }
 
@@ -85,5 +84,10 @@
 .gold {
   color: #D5D5D5;
   text-align: center;
+  font-size: 2vw;
+}
+.tlo-title{
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 </style>
