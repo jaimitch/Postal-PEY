@@ -638,9 +638,12 @@
       },
       //removes an item given it's id
       deleteItem(item) {
-        console.log("Delete item:", item)
+        //console.log("Delete item:", item)
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
+        for(let i=0; i < item.children.length; i++){
+          this.items[this.getItemIndex(item.children[i])].level--
+        }
         parent.children = parent.children.concat(item.children)
         item.children = []
         //remove id from parent's children array
