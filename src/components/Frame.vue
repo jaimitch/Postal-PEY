@@ -1621,8 +1621,22 @@
               apoNum: "APO AE 09459",
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
-                totalItems9thru14: "2",
                 items: ["RB339065331US", "RB290770790US"],
+                totalItems9thru14: 15,
+                itemsOnHandAtEnd: 2,
+                numberOfPouchesOpened: 1,
+                itemsOnOutgoingTruck: 0,
+                itemsOnOutgoingManifests: 0,
+                itemsListedOnInsideBillsB: 3,
+                itemsDelivered: 9,
+                total1thru7: 15,
+                itemsRecievedFromOther: 1,
+                numberOfPouchesClosed: 1,
+                itemsOnIncomingTruck: 1,
+                itemsOnIncomingManifests: 0,
+                itemsListedOnInsideBillsA: 1,
+                itemsAccepted: 1,
+                itemsAtStart: 10,
             }
 
             let yest = this.getYYYYMMDD(-1)
