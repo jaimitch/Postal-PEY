@@ -764,7 +764,6 @@
       */
       createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings, gradeAt, created) {
         let newItem = {};
-
         if(itemType == "psform3854") {
           newItem = {
             id: this.idCounter,
@@ -1162,9 +1161,10 @@
 
         }
         //console.log(newItem)
+        this.formKey++
+        this.currentFormIndex = this.getItemIndex(newItem.id)
         this.idCounter++;
         return newItem.id;
-     
       },
       //accepts an array and returns it without any blank entries
       cleanArray(arr) {
@@ -2046,6 +2046,7 @@
     right: 2vw;
     width: 56vw;
     height: 80vh;
+    /* background-color:; */
   }
   .parent-level {
     position: relative;
@@ -2273,7 +2274,7 @@
     z-index: 2;
     position: absolute;
     right:4%;
-    bottom:10%;
+    bottom:0%;
     height:5%;
     width: 5%;
   }
