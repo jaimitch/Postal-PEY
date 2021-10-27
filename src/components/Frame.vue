@@ -179,11 +179,11 @@
         </div>
       </div>
     </div>
-        <div class="right-frame">
+        <div class="right-frame" @click="currentFormIndex = ''">
           <div class="situation-title">Situation {{ getSituationNumber }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
 
-          <div class="right-side-document" v-if="this.currentFormIndex != ''">
+          <div class="right-side-document" v-if="this.currentFormIndex != ''" @click="$event.stopPropagation()">
             <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
             <Form3854 
               v-bind:item="items[currentFormIndex]"
@@ -2059,7 +2059,7 @@
     right: 2vw;
     width: 56vw;
     height: 80vh;
-    /* background-color:; */
+    /* background-color: coral; */
   }
   .parent-level {
     position: relative;
