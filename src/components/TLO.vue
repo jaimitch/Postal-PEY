@@ -1,18 +1,23 @@
 <template>
 <div v-show="show">
-  <div class="modal-backdrop" @click="closeModal()">
-    <div class="modal">
-        <button
-          type="button"
-          class="btn-close"
-          @click="closeModal()">
-          x
-        </button>
+  <div class="modal-backdrop">
+    <div v-if="modalPage == 1" class="modal">
           <div class="gold">
             <span class="tlo-title">Interservice Postal Training Activity<br>
             Lesson #CJAF5216<br>
             Practical Exercise - X</span><br><br>
             The following training material utilizes a drag and drop system. To move an item, click and hold it, then drag it into position.<br>
+            <button class="modal-button" @click="modalPage = 2">NEXT</button>
+          </div>
+    </div>
+    <div v-if="modalPage == 2" class="modal">
+
+          <div class="gold">
+            <span class="tlo-title">Interservice Postal Training Activity<br>
+            Lesson #CJAF5216<br>
+            Practical Exercise - X</span><br><br>
+            Page 2<br>
+            <button class="modal-button" @click="closeModal()">START</button>
           </div>
     </div>
 </div>
@@ -24,7 +29,8 @@
     name: 'Warning',
     data() {
         return {
-            show:true
+            show:true,
+            modalPage: 1
         }
     },
     methods: {
@@ -44,7 +50,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color:#32334B;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +62,6 @@
     position: absolute;
     top: 15vh;
     left:50%;
-    background: #32334B;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
@@ -65,20 +70,22 @@
     border-radius: 5px;
   }
 
-
-  .modal-body {
-    position: relative;
-    padding: 5vw;
-  }
-
-  .btn-close {
+  .modal-button {
     border: none;
     font-size: 20px;
     cursor: pointer;
     font-weight: bold;
-    color: #D5D5D5;
-    background: transparent;
+    color: #32334B;
     text-align: right;
+    padding: 4px;
+    border-radius: 3px;
+    border: solid 3px #D5D5D5;
+    background-color: #D5D5D5;
+    letter-spacing: 2px;;
+  }
+  .modal-button:hover{
+    color: #D5D5D5;
+    background-color: #32334B;
   }
 
 .gold {

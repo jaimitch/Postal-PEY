@@ -534,11 +534,11 @@
         else if(this.pageNum == 4) {
           //Situation 3
           text = `<div>Deliver the following mail using the appropriate PS Forms. Create a PS Form 3849 for each personal \
-          article and or a PS Form 3883 for each official article, then attach the form to its article.</div><br>\
+          article and or a PS Form 3883 for each official article, then attach the article to its form. Each form and its attached article go into the outgoing truck.</div><br>\
           RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
           <br><br>
-          Use the following Last Bill Numbers for the PS Form 3883s:
-          <div class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
+          Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
+          <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>SGT EARL SMITH</th></tr>\
           <tr><th>13th EOC</th><th>101</th><th>PFC JOHN THOMPSON</th></tr>\
           <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
@@ -2138,6 +2138,7 @@
     font-size: 1vw;
     font-weight: bold;
     letter-spacing: .5vw;
+    cursor: pointer;
   }
   .page-submit-button:hover {
     background-color: #32334B;
@@ -2177,6 +2178,7 @@
     color: #32334B;
     border-radius: .5vw;
     padding: .5vw;
+    cursor: pointer;
   }
   .creation-button:hover{
     background-color: #32334B;
@@ -2196,6 +2198,7 @@
     bottom: .5vw;
     right: 15vw;
     z-index:100;
+    cursor: pointer;
   }
   .item-icon{
     position: relative;
