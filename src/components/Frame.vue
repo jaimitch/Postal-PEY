@@ -1547,9 +1547,10 @@
 
         }
       },
-
+      //Returns the index of an item given it's article code
       getItemByArticleCode(code) {
         let index = this.items.findIndex(item => item.articleCode == code)
+        console.log("getItemByArticleCode:", index);
         return index;
       },
       //Uses the parent's article code and the child's id to add the child to the parent's children array
@@ -1606,7 +1607,7 @@
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
-          
+
           //hardcode truck visibility
             this.items[3].level = 0;
             this.items[4].level = 0;
@@ -1975,12 +1976,39 @@
         }
         else if(this.getSituationNumber == 6) {
           //hardcode truck visibility
-          this.items[3].level = 1;
-          this.items[4].level = 1;
-          this.items[5].level = 1;
-          this.items[6].level = 1;
-          this.items[7].level = 1;
-          this.items[8].level = 1;
+          this.items[3].level = 0;
+          this.items[4].level = 0;
+          this.items[5].level = 0;
+          this.items[6].level = 0;
+          this.items[7].level = 0;
+          this.items[8].level = 0;
+
+          //Add all bills that left to forms/pouches
+
+          //Determine what getItemByArticleCode actually returns
+
+
+          let form1 = this.getItemByArticleCode("SGT Ronald Cain")
+          this.items[2].children.push(this.items[form1].id)
+          let form2 = this.getItemByArticleCode("PFC Carl Thompson")
+          this.items[2].children.push(this.items[form2].id)
+          let form3 = this.getItemByArticleCode("SSG Donald Green")
+          this.items[2].children.push(this.items[form3].id)
+          let form4 = this.getItemByArticleCode("SGM Mary Fulton")
+          this.items[2].children.push(this.items[form4].id)
+          let form5 = this.getItemByArticleCode("Bill #102")
+          this.items[2].children.push(this.items[form5].id)
+          let form6 = this.getItemByArticleCode("Bill #196")
+          this.items[2].children.push(this.items[form6].id)
+          let form7 = this.getItemByArticleCode("Bill #184")
+          this.items[2].children.push(this.items[form7].id)
+          let form8 = this.getItemByArticleCode("Bill #129") 
+          this.items[2].children.push(this.items[form8].id)
+          let form9 = this.getItemByArticleCode("Bill #144")
+          this.items[2].children.push(this.items[form9].id)
+
+          console.log("Added all bills that left on trucks:", this.items);
+
         }
 
       },
