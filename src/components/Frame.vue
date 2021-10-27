@@ -2255,17 +2255,21 @@
   }
   .scroll-zone-up {
     position:absolute;
-    left: 7vw;
-    top: 12.8vw;
+    z-index: 40;
+    left: 5vw;
+    top: 10vh;
     width: 27vw;
-    padding: 1.1vw;
+    height:2vh;
+    background-color: transparent;
   }
   .scroll-zone-down {
     position:absolute;
+    z-index: 40;
+    height:2vh;
     left: 7vw;
-    top: 50vw;
+    top: 90vh;
     width: 27vw;
-    padding: 2vw;
+    background-color: transparent;
   }
   .flip-2261{
     z-index: 2;
