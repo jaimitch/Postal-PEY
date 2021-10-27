@@ -141,7 +141,7 @@ export default {
   z-index: 2;
   width: 3vw;
   height: 10vh; 
-  background-color: #E71922;
+  background-color: #d5d5d5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,17 +160,23 @@ export default {
   box-shadow: 1px 5px 5px black;
 }
 .buttons{
-  background-color: #E71922;
+  background-color: #32334B;
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 1vw;
   color: white;
   border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.buttons:hover{
+  background-color: #d5d5d5;
+  color: #32334B;
 }
 .toggle > div {
   position: relative;
   width: 1.5vw;
-  height: 2px;
-  background-color:#FFFF;
+  height: 3px;
+  background-color:#42426A;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,12 +189,15 @@ export default {
   z-index: 1;
   top: -10px;
   width: 1.5vw;
-  height: 2px;
-  background-color:#FFFF;
+  height: 3px;
+  background-color:#42426A;
 }
 
 .toggle > div:after {
   top: 10px;
+}
+.toggle{
+  cursor: pointer;
 }
 
 .drawer-btn {
@@ -198,8 +207,8 @@ export default {
   justify-content: center;
   right: 0%;
   border: none;
-  background-color: #E71922;
-  color: #FFFF;
+  background-color: #32334B;
+  color: #d5d5d5;
   margin: 5% auto;
   padding: 3vh;
   width: 70%;

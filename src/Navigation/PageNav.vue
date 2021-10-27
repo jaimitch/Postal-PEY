@@ -85,6 +85,7 @@ export default {
     background-color: transparent;
     border: none;
     z-index: 1;
+    cursor: pointer;
 
 }
 .previousBtn {
@@ -102,5 +103,7 @@ export default {
 .arrow-off{
     pointer-events: none;
     background-color: grey;
+}
+.arrow{
 }
 </style>
