@@ -10,6 +10,7 @@
 <!-- Holds the drawer with the menu options. -->
 <div class="top-bar" />
 <div class="title-left">Registered Mail PE-X</div>
+<img src="../../public/logo-postal-seal.png" class="seal">
 <div 
 class="drawer"
 :style="{
@@ -75,7 +76,13 @@ export default {
 </script>
 
 <style>
-
+.seal {
+  position: absolute;
+  top:1vh;
+  right:1vw;
+  width: 8vmin;
+  z-index: 100;
+}
 .drawer {
   position: absolute;
   top: 0;
@@ -244,7 +251,7 @@ export default {
   transform: translateY(-50%);
   left: 4vw;
   z-index: 2;
-  font-size: 2vw;
+  font-size: 1.6vw;
   font-weight: bold;
   letter-spacing: .5vw;
 }

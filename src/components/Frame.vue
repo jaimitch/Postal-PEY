@@ -41,6 +41,7 @@
           <option value="psform3849">PS Form 3849</option>
         </select>
       </div>
+                  <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
 
       <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
         <button class="creation-button" @click="createPouch()">
@@ -487,6 +488,9 @@
       this.processAnswerKey();
     },
     computed: {
+      openPDF() {
+        return require('/public/Process_Reg_SHO.pdf');
+      },
       currentPage() {
         return this.$store.state.pageNum;
       },
@@ -620,6 +624,15 @@
       },
     },
     methods: {
+      popOut(url) {
+        var height = window.screen.height;
+        var width = this.calculateNewWidth();
+        window.open(url, '_blank', `location=yes,height=${height},width=${width}`);
+      },
+      calculateNewWidth(){
+        var newWidth = window.screen.width * .6;
+        return newWidth;
+    },
       startDrag (evt, item)  {
         evt.dataTransfer.dropEffect = 'move'
         evt.dataTransfer.effectAllowed = 'move'
@@ -2175,6 +2188,13 @@
     padding: .5vw;
     margin-left: .5vw;
     border-radius: .5vw;
+  }
+  .sho{
+    position: absolute;
+    transform: translateY(-50%);
+    bottom: .5vw;
+    right: 15vw;
+    z-index:100;
   }
   .item-icon{
     position: relative;
