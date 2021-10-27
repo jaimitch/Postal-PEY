@@ -777,7 +777,6 @@
       */
       createItem(itemType, articleCode, situationNumber, level, defaultCreate, imageCode, formSettings, gradeAt, created) {
         let newItem = {};
-
         if(itemType == "psform3854") {
           newItem = {
             id: this.idCounter,
@@ -1175,9 +1174,10 @@
 
         }
         //console.log(newItem)
+        this.formKey++
+        this.currentFormIndex = this.getItemIndex(newItem.id)
         this.idCounter++;
         return newItem.id;
-     
       },
       //accepts an array and returns it without any blank entries
       cleanArray(arr) {
@@ -2041,7 +2041,7 @@
     order: 1;
     background-color: #333366;
     width: 30vw;
-    height: 65vh;
+    height: 62vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -2059,6 +2059,7 @@
     right: 2vw;
     width: 56vw;
     height: 80vh;
+    /* background-color:; */
   }
   .parent-level {
     position: relative;
@@ -2276,9 +2277,8 @@
   .scroll-zone-up {
     position:absolute;
     z-index: 40;
-    left: 5vw;
     top: 10vh;
-    width: 27vw;
+    width: 90vw;
     height:2vh;
     background-color: transparent;
   }
@@ -2286,16 +2286,15 @@
     position:absolute;
     z-index: 40;
     height:2vh;
-    left: 7vw;
     top: 90vh;
-    width: 27vw;
+    width: 80vw;
     background-color: transparent;
   }
   .flip-2261{
     z-index: 2;
     position: absolute;
     right:4%;
-    bottom:10%;
+    bottom:0%;
     height:5%;
     width: 5%;
   }
