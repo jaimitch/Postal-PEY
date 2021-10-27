@@ -2028,7 +2028,7 @@
     order: 1;
     background-color: #333366;
     width: 30vw;
-    height: 63vh;
+    height: 62vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -2259,7 +2259,7 @@
     top: 10vh;
     width: 90vw;
     height:2vh;
-    background-color: green;
+    background-color: transparent;
   }
   .scroll-zone-down {
     position:absolute;
@@ -2267,7 +2267,7 @@
     height:2vh;
     top: 90vh;
     width: 80vw;
-    background-color: green;
+    background-color: transparent;
   }
   .flip-2261{
     z-index: 2;
