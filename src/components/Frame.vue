@@ -692,6 +692,9 @@
       //removes an item given it's id
       deleteItem(item) {
         //console.log("Delete item:", item)
+        if(this.items[this.currentFormIndex] == item){
+          this.currentFormIndex = ""
+        }
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
         for(let i=0; i < item.children.length; i++){
@@ -699,6 +702,7 @@
         }
         parent.children = parent.children.concat(item.children)
         item.children = []
+        item.gradeAt = []
         //remove id from parent's children array
         parent.children = parent.children.filter(x => x != item.id)
         //NOTE:Filtering the item from this.items causes errors with anything to do with currentItem
