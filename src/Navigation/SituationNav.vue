@@ -63,7 +63,7 @@ export default {
     data () {
       return {
         drawerVisible: false,
-        situations: [{name: 'Situation 1', page: 1, clickable: false}, {name: 'Situation 2', page: 2, clickable: this.pageErrors[1]}, {name: 'Situation 3', page: 4, clickable: this.pageErrors[2]}, {name: 'Situation 4', page: 5, clickable: this.pageErrors[3]},{name: 'Situation 5', page: 9 , clickable: this.pageErrors[4]}, {name: 'Situation 6', page: 11, clickable: this.pageErrors[5]},],
+        situations: [{name: 'Situation 1', page: 1, clickable: this.pageErrors[0]}, {name: 'Situation 2', page: 2, clickable: this.pageErrors[1]}, {name: 'Situation 3', page: 4, clickable: this.pageErrors[2]}, {name: 'Situation 4', page: 5, clickable: this.pageErrors[3]},{name: 'Situation 5', page: 9 , clickable: this.pageErrors[4]}, {name: 'Situation 6', page: 11, clickable: this.pageErrors[5]},],
         }
       
     },
@@ -164,7 +164,7 @@ export default {
   box-shadow: 1px 5px 5px black;
 }
 .buttons,.disabled {
-  background-color: #32334B;
+  background-color: green;
   margin-bottom: 10px;
   padding: 1vw;
   color: white;
