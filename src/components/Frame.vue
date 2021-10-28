@@ -2071,11 +2071,11 @@
   
 
   .frame{
-    position: absolute;
-    top: 5vh;
+    position: relative;
+    top: 10vh;
     left: 0;
     width: 100vw;
-    height: 95vh;
+    height: 90vh;
     z-index: 1;
   }
   .drop-zone {
@@ -2173,8 +2173,8 @@
     border-radius: 5px;
     padding: .5vw;
     position: absolute;
-    transform: translateY(-50%);
-    bottom: .5vw;
+    transform: translateY(50%);
+    top: 1vw;
     right: 2vw;
     z-index: 2;
     font-size: 1vw;
