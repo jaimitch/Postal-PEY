@@ -339,9 +339,114 @@
             gradeAt: [],
           },
           {
-            articleCode: "Forms",
+            articleCode: "Start of Day",
             id: 5,
-            title: "Forms & Pouches",
+            title: "Start of Day",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Incoming Inside Bill / Pouches - PS 3854",
+            id: 12,
+            title: "Incoming Inside Bill / Pouches - PS 3854",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Incoming Truck Bills PS - 3854",
+            id: 13,
+            title: "Incoming Truck Bills PS - 3854",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Items Rcv’d from transfer bill - PS Form 3877",
+            id: 14,
+            title: "Items Rcv’d from transfer bill - PS Form 3877",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Items Rcv’d from other sources",
+            id: 15,
+            title: "Items Rcv’d from other sources",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Items Delivered Outgoing PS 3849 PS 3883",
+            id: 16,
+            title: "Items Delivered Outgoing PS 3849 PS 3883",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Outgoing Inside Bill PS 3854",
+            id: 17,
+            title: "Outgoing Inside Bill PS 3854",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Outgoing Truck Bill PS 3854",
+            id: 18,
+            title: "Outgoing Truck Bill PS 3854",
             children: [],
             level: 1,
             images: [],
@@ -387,7 +492,7 @@
           },
           {
             id: 8,
-            title: "Incoming Truck 3",
+            title: "Incoming Truck",
             articleCode: "Truck 3",
             children: [],
             level: 0,
@@ -403,7 +508,7 @@
           },
           {
             id: 9,
-            title: "Incoming Truck 4",
+            title: "Incoming Truck",
             articleCode: "Truck 4",
             children: [],
             level: 0,
@@ -419,7 +524,7 @@
           },
           {
             id: 10,
-            title: "Incoming Transfer Bill 5",
+            title: "Incoming Transfer Bill",
             articleCode: "Truck 5",
             children: [],
             level: 0,
@@ -435,7 +540,7 @@
           },
           {
             id: 11,
-            title: "Outgoing Truck 6",
+            title: "Outgoing Truck",
             articleCode: "Truck 6",
             children: [],
             level: 0,
@@ -2346,7 +2451,7 @@
     z-index: 40;
     height:2vh;
     top: 90vh;
-    width: 80vw;
+    width: 45vw;
     background-color: transparent;
   }
   .flip-2261{
