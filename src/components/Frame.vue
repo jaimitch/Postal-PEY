@@ -2332,7 +2332,7 @@
     z-index: 40;
     height:2vh;
     top: 90vh;
-    width: 80vw;
+    width: 45vw;
     background-color: transparent;
   }
   .flip-2261{
