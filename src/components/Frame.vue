@@ -2350,7 +2350,7 @@
     position: absolute;
     top: 0vh;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-5%) translateX(-50%);
     max-width: 60vw;
     max-height: 75vh;
     overflow: scroll;

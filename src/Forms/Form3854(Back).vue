@@ -70,13 +70,13 @@
 <style scoped>
     .outline{
         position:relative;
-        width: 50vmax;
-        height: 36vmax;
+        width: 880px;
+        height: 680px;
         border: 1px solid black;
         text-align: center;
         background-color: white;
         color: black;
-        font-size: 1vmin;
+        font-size: 10px;
         font-family: Arial;
     }
     .right-area{
@@ -88,7 +88,7 @@
         width: 14%;
         display: flex;
         flex-direction: column;
-        font-size: 1vmin;
+        font-size: 10px;
         text-align: left;
     }
     

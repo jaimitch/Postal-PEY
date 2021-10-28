@@ -289,13 +289,13 @@
     }
     .outline{
         position: relative;
-        width: 50vmax;
-        height: 36vmax;
+        width: 880px;
+        height: 680px;
         border: 1px solid black;
         text-align: center;
         background-color: white;
         color: black;
-        font-size: 1vmin;
+        font-size: 8px;
         font-family: Arial;
     }
     .top-line{
@@ -314,7 +314,7 @@
         position: absolute;
         right: 0;
         top: 55%;
-        font-size: 0.75vmax;
+        font-size: 15px;
     }
     .sender-area{
         position: absolute;
@@ -333,7 +333,7 @@
         height: 20%;
         border: 1px solid black;
         text-align: left;
-        font-size: 00.90vmin;
+        font-size: 9px;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
     }
@@ -481,7 +481,7 @@
         top: 97%;
         left: 50%;
         text-align: left;
-        font-size: 0.95vmin;
+        font-size: 9.5px;
     }
     .sender-text{
         position: absolute;
@@ -500,14 +500,14 @@
         position: absolute;
         max-height: 16%;
         top:10%;
-        font-size: 0.4vmax;
+        font-size: 7px;
     }
     .right-stamps{
         position: absolute;
         max-height: 16%;
         top:10%;
         left:58%;
-        font-size: 0.4vmax;
+        font-size: 7px;
     }
     .checkboxes{
         height: 0.85vmin;
@@ -522,7 +522,7 @@
     }
     .pieces-text{
         text-align: left;
-        font-size: 0.8vmin;
+        font-size: 8px;
     }
     .pieces-text select{
         position: absolute;
@@ -631,7 +631,7 @@
         height: 80%;
         border:none;
         background-color: transparent;
-        font-size: 1vmin;
+        font-size: 8px;
     }
     .postage-text{
         display: grid;
@@ -639,7 +639,7 @@
         height: 5%;
         grid-template-columns: repeat(13, 1fr);
         top: 0%;
-        font-size: 0.7vmin;
+        font-size: 6px;
     }
     .box1{
         position: relative;

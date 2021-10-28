@@ -264,13 +264,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 50vmax;
-        height: 36vmax;
+        width: 880px;
+        height: 680px;
         border: 1px solid black;
         text-align: center;
         background-color: white;
         color: black;
-        font-size: 1vmin;
+        font-size: 10px;
         font-family: Arial;
     }
     .top-text{
@@ -281,7 +281,7 @@
         width:90%;
         border-bottom: 1px solid black;
         text-align: left;
-        font-size:1vmax;
+        font-size:10px;
     }
     .options-area{
         position: absolute;
@@ -307,7 +307,7 @@
         width: 30%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         display: flex;
         align-items:center;
         justify-content:center;
@@ -320,7 +320,7 @@
         width: 5%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
@@ -334,7 +334,7 @@
         width: 15%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
@@ -349,7 +349,7 @@
         background-color: black;
         color: white;
         border-left: 1px solid white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         display: flex;
         align-items:center;
         justify-content:center;
@@ -362,7 +362,7 @@
         width: 5%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
@@ -376,7 +376,7 @@
         width: 15%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
