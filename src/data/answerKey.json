@@ -46,8 +46,8 @@
             "itemsAccepted": 1,
             "itemsAtStart": 10,
             "items": ["RB339065331US", "RB290770790US"],
-            "situation1Location": "Forms",
-            "situation6Location": "Forms",
+            "situation1Location": "Start of Day",
+            "situation6Location": "Start of Day",
             "gradeAt": [1, 6],
             "type":"DD FORM 2261"
         },
@@ -87,7 +87,7 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "situation2Location": "Forms",
+            "situation2Location": "Incoming Truck Bills PS - 3854",
             "gradeAt": [2]
         },
         {
@@ -359,7 +359,7 @@
             "bottomStamp2": true,
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
-            "situation2Location": "Forms",
+            "situation2Location": "Incoming Inside Bill / Pouches - PS 3854",
             "gradeAt": [2]
         },
         {
@@ -751,9 +751,10 @@
             "images": ["/img/Bag-1.141db596.svg"],
             "level": 2,
             "situationNumber": "Situation 2",
-            "gradeAt":[],
+            "gradeAt":[2],
             "stampCounter": false,
-            "type": "Pouch"
+            "type": "Pouch",
+            "situation2Location": "Incoming Inside Bill / Pouches - PS 3854"
         },
         {
             "articleCode": "SEAL #62345678",
@@ -769,7 +770,7 @@
             "situation5Location": "Bill #144",
             "situation6Location": "Bill #144",
             "stampCounter": false,
-            "type": "Pouch"
+            "type": "Incoming Inside Bill / Pouches - PS 3854"
         },
         {
             "articleCode": "RB 102 022 763 US",
@@ -904,7 +905,8 @@
             "situationNumber": "Situation 4",
             "stampCounter": false,
             "type": "Pouch",
-            "gradeAt":[]
+            "gradeAt":[4],
+            "situation4Location": "Incoming Inside Bill / Pouches - PS 3854"
         },
         {
             "articleCode": "RB 300 911 759 US",
