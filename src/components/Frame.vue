@@ -66,6 +66,9 @@
             <span class="bold">{{ item.title }}</span>
             <button v-if='item.collapsed == false || item.collapsed == undefined' class="creation-button" @click="collapseItem(item)">Close</button>
             <button v-if='item.collapsed == true' class="creation-button" @click="collapseItem(item)">Open</button>
+             <div v-if="item.children.length == 0 && item.collapsed == false">
+              <br><br>
+            </div>
             <div v-if="item.collapsed == false || item.collapsed == undefined">
               <div 
                 class='child-level' 
