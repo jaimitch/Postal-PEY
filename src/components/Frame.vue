@@ -515,8 +515,8 @@
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
           //Situation 2 Part 1
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered \
-          pouch and two registered outside pieces (OSP's).\
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section on the incoming truck from the AMT \
+          with one registered pouch and two registered outside pieces (OSP's).\
           <br><br>\
           APDS all OSPs. Ensure the correctness of the incoming truck bill and sign. Then move the PS Form 3854 form into \
           the Forms & Pouches section and all of the incoming articles into the Safe."
