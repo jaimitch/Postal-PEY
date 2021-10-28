@@ -26,8 +26,11 @@ class="drawer"
         <div  class="in-menu">
           <div :key="section" v-for="section in situations">
             <!-- comment this div if you want to turn on the sit nav buttons -->
-            <div v-if="section.clickable === true" >
+            <div v-if="section.clickable === false" >
               <button class="buttons" @click="jumpToPage(section.page), $emit('jump')">{{ section.name }}</button>
+            </div>
+            <div v-else>
+              <button class="disabled" @click="jumpToPage(section.page), $emit('jump')" disabled>{{ section.name }}</button>
             </div>
           </div>
         </div>   
@@ -59,7 +62,7 @@ export default {
     data () {
       return {
         drawerVisible: false,
-        situations: [{name: 'Situation 1', page: 1, clickable: this.pageErrors[0]}, {name: 'Situation 2', page: 2, clickable: this.pageErrors[1]}, {name: 'Situation 3', page: 4, clickable: this.pageErrors[2]}, {name: 'Situation 4', page: 5, clickable: this.pageErrors[3]},{name: 'Situation 5', page: 9 , clickable: this.pageErrors[4]}, {name: 'Situation 6', page: 11, clickable: this.pageErrors[5]},],
+        situations: [{name: 'Situation 1', page: 1, clickable: false}, {name: 'Situation 2', page: 2, clickable: this.pageErrors[1]}, {name: 'Situation 3', page: 4, clickable: this.pageErrors[2]}, {name: 'Situation 4', page: 5, clickable: this.pageErrors[3]},{name: 'Situation 5', page: 9 , clickable: this.pageErrors[4]}, {name: 'Situation 6', page: 11, clickable: this.pageErrors[5]},],
         }
       
     },
@@ -159,7 +162,7 @@ export default {
   background-color: #32334B;
   box-shadow: 1px 5px 5px black;
 }
-.buttons{
+.buttons,.disabled {
   background-color: #32334B;
   margin-bottom: 10px;
   padding: 1vw;
@@ -167,6 +170,10 @@ export default {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+}
+.disabled{
+  background-color: #d5d5d5;
+  color: #32334B;
 }
 .buttons:hover{
   background-color: #d5d5d5;
