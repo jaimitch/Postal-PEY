@@ -27,21 +27,7 @@
     
     <div class='frame'>
       <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
-      <div class= "form-creation">
-        <button class="creation-button" @click="createItem(createFormType, 'created', getSituationNumber, 2, true, '', undefined, this.updateGradeAt(), true)">
-          CREATE NEW FORM
-        </button>
-        <select class="form-creation-select creation-dropdown" v-model="createFormType">
-          <option value="psform3854">PS Form 3854</option>
-          <option value="psform3877">PS Form 3877</option>
-          <option value="ddform2261">DD Form 2261</option>
-          <option value="psform3883">PS Form 3883</option>
-          <option value="psform3849">PS Form 3849</option>
-        </select>
-      </div>
-      
       <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
-
       <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
         <button class="creation-button" @click="createPouch()">
           CREATE NEW POUCH
@@ -193,7 +179,11 @@
           <div class="right-frame" @click="currentFormIndex = ''">
           <div class="situation-title">Situation {{ getSituationNumber }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
-
+          <div class= "form-creation" v-if="getSituationNumber == 5">
+            <button class="creation-button" @click="createSit5Form()">
+              CREATE NEW FORM
+            </button>
+          </div>
           <div class="right-side-document" v-if="this.currentFormIndex != ''" @click="$event.stopPropagation()">
             <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
               <Form3854 
@@ -709,6 +699,14 @@
       },
     },
     methods: {
+      createSit5Form(){
+        if(this.pageNum == 9){
+          this.items[8].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        }
+        else{
+          this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        }
+      },
       createOutForm(evt, item, type){
         console.log(this.items[this.getItemIndex(this.findParent(item.id))])
         let newItemID = this.createItem(type, 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true)
@@ -2287,8 +2285,8 @@
     border-radius: 5px;
   }
   .form-creation{
-    transform: translateY(-50%);
-    bottom: .5vw;
+    transform:  translateY(550%) translateX(65%);
+    z-index: 0;
   }
   .pouch-creation {
     transform: translateY(-50%);
