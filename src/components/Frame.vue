@@ -66,7 +66,7 @@
             <span class="bold">{{ item.title }}</span>
             <button v-if='item.collapsed == false || item.collapsed == undefined' class="creation-button" @click="collapseItem(item)">Close</button>
             <button v-if='item.collapsed == true' class="creation-button" @click="collapseItem(item)">Open</button>
-             <div v-if="item.children.length == 0 && item.collapsed == false">
+             <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
               <br><br>
             </div>
             <div v-if="item.collapsed == false || item.collapsed == undefined">
@@ -611,6 +611,7 @@
             res.push(item)
           }
         })
+        console.log(res, "*******THIS THING**********")
         return res
       },
       getSituationText() {
@@ -1728,12 +1729,12 @@
         if(this.getSituationNumber == 1) {
 
           //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+          this.items[3].level = 0;
+          this.items[4].level = 0;
+          this.items[5].level = 0;
+          this.items[6].level = 0;
+          this.items[7].level = 0;
+          this.items[8].level = 0; 
 
           if(!this.situationOneInit){
 
