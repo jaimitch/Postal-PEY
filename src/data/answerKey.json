@@ -102,7 +102,7 @@
             "typedName": "",
             "officialSig": "Matthew L. Long",
             "prepSig": "Student",
-            "remarks": "WIT: George Forrest, PFC Student PayGrade",
+            "remarks": "WIT: George Forrest, Student PayGrade",
             "sectionC1": "RB309266140US",
             "sectionC2": "RB298302613US",
             "sectionC3": "RB290770790US",
@@ -142,7 +142,7 @@
         },
         {
             "type":"PS FORM 3849",
-            "articleCode": "SGT Ronald Cain",
+            "articleCode": "Ronald Cain",
             "situationNumber": "Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459 ",
             "name": "Ronald Cain",
@@ -167,7 +167,7 @@
             "letter": true,
             "largeEnvelope": false,
             "address": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459",
-            "sentTo": "SGT Ronald Cain",
+            "sentTo": "Ronald Cain",
             "sentBy": "David Campbell",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
@@ -178,7 +178,7 @@
         },
          {
             "type":"PS FORM 3849",
-            "articleCode": "PFC Carl Thompson",
+            "articleCode": "Carl Thompson",
             "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459 ",
             "name": "Carl Thompson",
@@ -203,7 +203,7 @@
             "letter": true,
             "largeEnvelope": false,
             "address": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459",
-            "sentTo": "PFC Carl Thompson",
+            "sentTo": "Carl Thompson",
             "sentBy": "Green Tower Corp.",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
@@ -214,7 +214,7 @@
          },
          {
             "type":"PS FORM 3849",
-            "articleCode": "SSG Donald Green",
+            "articleCode": "Donald Green",
             "situationNumber":"Situation 3",
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459 ",
             "name": "Donald Green",
@@ -239,7 +239,7 @@
             "letter": false,
             "largeEnvelope": false,
             "address": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459",
-            "sentTo": "SSG Donald Green",
+            "sentTo": "Donald Green",
             "sentBy": "Martha Gadsden",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
@@ -250,7 +250,7 @@
          },
          {
             "type":"PS FORM 3849",
-            "articleCode": "SGM Mary Fulton",
+            "articleCode": "Mary Fulton",
             "situationNumber":"Situation 3",
             "reverseAddress": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
             "name": "Mary Fulton",
@@ -275,7 +275,7 @@
             "letter": false,
             "largeEnvelope": false,
             "address": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
-            "sentTo": "SGM Mary Fulton",
+            "sentTo": "Mary Fulton",
             "sentBy": "Thomas Inman",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
@@ -722,7 +722,7 @@
             "type": "Package",
             "gradeAt":[1, 3],
             "situation1Location": "Safe",
-            "situation3Location": "SSG Donald Green"
+            "situation3Location": "Donald Green"
         },
         {
             "articleCode": "RB 290 770 790 US",
@@ -739,7 +739,7 @@
             "type": "Package",
             "gradeAt":[1, 3],
             "situation1Location": "Safe",
-            "situation3Location": "PFC Carl Thompson"
+            "situation3Location": "Carl Thompson"
         },
         {
             "articleCode": "SEAL #70948511",
@@ -804,7 +804,7 @@
             "type": "Package",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "SGM Mary Fulton"
+            "situation3Location": "Mary Fulton"
         },
         {
             "articleCode": "RB 867 092 744 US",
@@ -838,7 +838,7 @@
             "type": "Letter",
             "situation2Location": "Safe",
             "gradeAt":[2, 3],
-            "situation3Location": "SGT Ronald Cain"
+            "situation3Location": "Ronald Cain"
         },
         {
             "articleCode": "RB 143 899 161 US",

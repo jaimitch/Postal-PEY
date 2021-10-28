@@ -821,7 +821,7 @@
         computed:{
             remarks(){
                 let x = [
-                    "WIT: George Forrest, PFC "+this.studentName+" "+ this.studentPG ,
+                    "WIT: George Forrest, "+this.studentName+" "+ this.studentPG ,
                     "WIT: Scott Sanders",
                     "Kyle Dozier",
                     "WIT: Larry Brown",

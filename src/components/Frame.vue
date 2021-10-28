@@ -622,7 +622,7 @@
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
           //Situation 2 Part 1
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered \
+          text = "1. Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered \
           pouch and two registered outside pieces (OSP's).\
           <br><br>\
           APDS all OSPs. Ensure the correctness of the incoming truck bill and sign. Then move the PS Form 3854 form into \
@@ -631,7 +631,7 @@
         //Sitution 2 Part 2
          else if(this.pageNum == 3) {
            //Situation 2 Part 2
-          text = "2. You and PFC George Forrest, the witness, open the pouch and located the incoming inside bill. \
+          text = "2. You and George Forrest, the witness, open the pouch and located the incoming inside bill. \
           <br><br> \
           APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
           on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the \
@@ -646,26 +646,26 @@
           <br><br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
-          <tr><th>14th ADMIN CO</th><th>183</th><th>SGT EARL SMITH</th></tr>\
-          <tr><th>13th EOC</th><th>101</th><th>PFC JOHN THOMPSON</th></tr>\
+          <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
+          <tr><th>13th EOC</th><th>101</th><th>JOHN THOMPSON</th></tr>\
           <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
-          <tr><th>45TH MP CO</th><th>195</th><th>SGT JERRY JOHNSON</th></tr></table><div>`
+          <tr><th>45TH MP CO</th><th>195</th><th>JERRY JOHNSON</th></tr></table><div>`
 
         }
         //Situation 4 Part 1
         else if(this.pageNum == 5) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP \
+          text = "1. Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP \
           to dispatch to the AMT serving you area. Check the incoming truck bill, APDS and sign it. Move the extra OSP to \
           the Safe and the truck bill to the Forms & Pouches section."         
         }
         //Situation 4 Part 2
         else if(this.pageNum == 6) {
-          text = "2. You and PFC George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
+          text = "2. You and George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
           inside bill, and then sign bill with witness. Move all mail to safe and move the inside bill to Forms & Pouches."
         }
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
-          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
+          text = "3. Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
           on the PS Form 3877. Ensure the correctness of the PS Form 3877 and sign. Move articles to safe and the PS Form \
           3877 to Forms & Pouches."
         }
@@ -679,7 +679,7 @@
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
-          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is \
+          text = "The registry section is now closed. Terry Jones, the mail guard has arrived at your location and is \
           waiting for the outgoing registered mail.\
           <br><br> \
           Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this \
@@ -2120,13 +2120,13 @@
           //Determine what getItemByArticleCode actually returns
 
 
-          let form1 = this.getItemByArticleCode("SGT Ronald Cain")
+          let form1 = this.getItemByArticleCode("Ronald Cain")
           this.items[2].children.push(this.items[form1].id)
-          let form2 = this.getItemByArticleCode("PFC Carl Thompson")
+          let form2 = this.getItemByArticleCode("Carl Thompson")
           this.items[2].children.push(this.items[form2].id)
-          let form3 = this.getItemByArticleCode("SSG Donald Green")
+          let form3 = this.getItemByArticleCode("Donald Green")
           this.items[2].children.push(this.items[form3].id)
-          let form4 = this.getItemByArticleCode("SGM Mary Fulton")
+          let form4 = this.getItemByArticleCode("Mary Fulton")
           this.items[2].children.push(this.items[form4].id)
           let form5 = this.getItemByArticleCode("Bill #102")
           this.items[2].children.push(this.items[form5].id)
