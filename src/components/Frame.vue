@@ -92,9 +92,16 @@
                     </div>
                   </div>  
                   <div class="child-content item-image" v-if="items[child].images.length != 0">
-                    <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
-                    <img v-show="items[child].showImage" :src="itemImage(items[child])">
+                    <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
+                      <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp 
+                      <div v-if="getSituationNumber == 3">
+                        <button class="button-3883" @click="createOutForm($event, items[child],'psform3883')">Create 3883</button>
+                        <button class="button-3849" @click="createOutForm($event, items[child],'psform3849')">Create 3849</button>
+                      </div>
                     </div>
+                    
+                    <img v-show="items[child].showImage" :src="itemImage(items[child])">
+                  </div>
                     <div 
                       class='grand-child-level' 
                       v-for='grandchild in getChildrenIndexes(items[child].id)'
@@ -734,6 +741,14 @@
       },
     },
     methods: {
+      createOutForm(evt, item, type){
+        console.log(this.items[this.getItemIndex(this.findParent(item.id))])
+        let newItemID = this.createItem(type, 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true)
+        this.items[this.getItemIndex(this.findParent(item.id))].children.push(newItemID)
+        this.removeItemOnDrop(item.id,this.findParent(item.id))
+        this.items[this.getItemIndex(newItemID)].children.push(item.id)
+        evt.stopPropagation()
+      },
       collapseItem(item){
         if(item.collapsed == false || item.collapsed == undefined){
           item.collapsed = true
@@ -2476,5 +2491,11 @@
     max-width: 60vw;
     max-height: 75vh;
     overflow: scroll;
+  }
+  .button-3883, .button-3849{
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: .5vw;
+    cursor: pointer;
   }
 </style>

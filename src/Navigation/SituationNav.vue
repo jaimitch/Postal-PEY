@@ -30,7 +30,8 @@ class="drawer"
               <button class="buttons" @click="jumpToPage(section.page), $emit('jump')">{{ section.name }}</button>
             </div>
             <div v-else>
-              <button class="disabled" @click="jumpToPage(section.page), $emit('jump')" disabled>{{ section.name }}</button>
+              <!-- disable this in final product -->
+              <button class="disabled" @click="jumpToPage(section.page), $emit('jump')" >{{ section.name }}</button>
             </div>
           </div>
         </div>   
