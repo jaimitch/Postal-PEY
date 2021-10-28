@@ -1728,13 +1728,13 @@
         if(this.getSituationNumber == 1) {
 
           //hardcode truck visibility
-          this.items[3].level = 0;
-          this.items[4].level = 0;
-          this.items[5].level = 0;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0; 
-
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
+            this.items[14].level = 0;
+            this.items[15].level = 0;
+            console.log("items", this.items)
           if(!this.situationOneInit){
 
             let newFormSettings = {
@@ -1777,12 +1777,12 @@
         else if(this.getSituationNumber == 2) {
 
           //hardcode all truck visibility
-          this.items[3].level = 1;
-          this.items[4].level = 0;
-          this.items[5].level = 0;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 1;
+          this.items[11].level = 0;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
+          this.items[14].level = 0;
+          this.items[15].level = 0;
 
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
             
@@ -1816,12 +1816,12 @@
           }
           else if(this.pageNum == 3) {
             //hardcode all truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
+            this.items[14].level = 0;
+            this.items[15].level = 0;
 
             if(!this.situationTwoPartTwo) {
               let newFormSettings = {
@@ -1863,12 +1863,12 @@
         else if(this.getSituationNumber == 3) {
 
           //hardcode all truck visibility
-          this.items[3].level = 0;
-          this.items[4].level = 1;
-          this.items[5].level = 0;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 0;
+          this.items[11].level = 1;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
+          this.items[14].level = 0;
+          this.items[15].level = 0;
 
           if(!this.situationThreeInit) {
             this.situationThreeInit = true;
@@ -1879,12 +1879,12 @@
 
           if(this.pageNum == 5) {
           //hardcode truck visibility
-          this.items[3].level = 0;
-          this.items[4].level = 0;
-          this.items[5].level = 1;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 0;
+          this.items[11].level = 0;
+          this.items[12].level = 1;
+          this.items[13].level = 0;
+          this.items[14].level = 0;
+          this.items[15].level = 0;
 
             if(!this.situationFourPartOne) {
               let newFormSettings = {
@@ -1917,12 +1917,12 @@
           else if(this.pageNum == 6) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
+            this.items[14].level = 0;
+            this.items[15].level = 0;
 
             if(!this.situationFourPartTwo){
 
@@ -1967,12 +1967,12 @@
           else if(this.pageNum == 7) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 1;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 1;
+            this.items[14].level = 0;
+            this.items[15].level = 0;
 
             if(!this.situationFourPartThree) {
               let newFormSettings = {
@@ -2002,12 +2002,12 @@
           else if(this.pageNum == 8) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 1;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
+            this.items[14].level = 1;
+            this.items[15].level = 0;
 
             if(!this.situationFourPartFour) {
               let newFormSettings = {
@@ -2080,12 +2080,12 @@
           if(this.pageNum == 9) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 1;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
+            this.items[14].level = 0;
+            this.items[15].level = 1;
 
             if(!this.situationFivePartOne) {
               this.situationFivePartOne = true;
@@ -2095,12 +2095,12 @@
         }
         else if(this.getSituationNumber == 6) {
           //hardcode truck visibility
-          this.items[3].level = 0;
-          this.items[4].level = 0;
-          this.items[5].level = 0;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 0;
+          this.items[11].level = 0;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
+          this.items[14].level = 0;
+          this.items[15].level = 0;
 
           //Add all bills that left to forms/pouches
 
