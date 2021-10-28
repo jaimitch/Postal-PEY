@@ -64,110 +64,114 @@
             @click="changeCurrentItem($event, item.id)"
           >
             <span class="bold">{{ item.title }}</span>
-            <div 
-              class='child-level' 
-              v-for='child in getChildrenIndexes(item.id)' 
-              :key='child' 
-              :draggable ='true'
-              @dragstart='startDrag($event, items[child])'
-              @drop="onDrop($event,items[child].id)"
-              @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
-            >
-              <div class="child-content">
-                <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
-                <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
-                <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
-                <img v-else src="../assets/White-form.svg" class="item-icon child-form">
+            <button v-if='item.collapsed == false || item.collapsed == undefined' class="creation-button" @click="collapseItem(item)">Close</button>
+            <button v-if='item.collapsed == true' class="creation-button" @click="collapseItem(item)">Open</button>
+            <div v-if="item.collapsed == false || item.collapsed == undefined">
+              <div 
+                class='child-level' 
+                v-for='child in getChildrenIndexes(item.id)' 
+                :key='child' 
+                :draggable ='true'
+                @dragstart='startDrag($event, items[child])'
+                @drop="onDrop($event,items[child].id)"
+                @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
+              >
+                <div class="child-content">
+                  <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
+                  <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
+                  <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
+                  <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
-                <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
+                  <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
-                <div class = "child-text">
-                  {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
-                </div>
-              </div>  
-              <div class="child-content item-image" v-if="items[child].images.length != 0">
-                <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
-                <img v-show="items[child].showImage" :src="itemImage(items[child])">
-                </div>
-                <div 
-                  class='grand-child-level' 
-                  v-for='grandchild in getChildrenIndexes(items[child].id)'
-                  :key='grandchild'
-                  :draggable ='true'
-                  @dragstart='startDrag($event, items[grandchild])'
-                  @drop="onDrop($event,items[grandchild].id)"
-                  @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
-                >
-            
-                  <div class="grand-child-content">
-                    <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                    <img v-else-if="items[grandchild].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
-                    <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-                    <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
-
-                    <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
-
-                    <div class='grand-text'>
-                      {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
-                    </div>
+                  <div class = "child-text">
+                    {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
                   </div>
-
-                  <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
-                  <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
-                    <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
+                </div>  
+                <div class="child-content item-image" v-if="items[child].images.length != 0">
+                  <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
+                  <img v-show="items[child].showImage" :src="itemImage(items[child])">
                   </div>
                   <div 
-                    class='great-grand-level' 
-                    v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
-                    :key='greatgrand'
+                    class='grand-child-level' 
+                    v-for='grandchild in getChildrenIndexes(items[child].id)'
+                    :key='grandchild'
                     :draggable ='true'
-                    @dragstart='startDrag($event, items[greatgrand])'
-                    @drop="onDrop($event,items[greatgrand].id)"
-                    @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
+                    @dragstart='startDrag($event, items[grandchild])'
+                    @drop="onDrop($event,items[grandchild].id)"
+                    @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
                   >
-            
+              
                     <div class="grand-child-content">
-                      <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                      <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
-                      <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                      <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                      <img v-else-if="items[grandchild].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                      <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
                       <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-                      <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
+                      <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
-                      <div class='great-grand-text'>
-                        {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                      <div class='grand-text'>
+                        {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
                       </div>
                     </div>
 
-                    <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
-                      <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
-                      <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+                    <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+                    <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
+                      <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
                     </div>
                     <div 
                       class='great-grand-level' 
-                      v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
-                      :key='greatgreat'
+                      v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
+                      :key='greatgrand'
                       :draggable ='true'
-                      @dragstart='startDrag($event, items[greatgreat])'
-                      @drop="onDrop($event,items[greatgreat].id)"
-                      @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
+                      @dragstart='startDrag($event, items[greatgrand])'
+                      @drop="onDrop($event,items[greatgrand].id)"
+                      @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
                     >
-            
+              
                       <div class="grand-child-content">
-                        <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                        <img v-else-if="items[greatgreat].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
-                        <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                        <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                        <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                        <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
                         <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-                        <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
+                        <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
                         <div class='great-grand-text'>
-                          {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                          {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
                         </div>
                       </div>
-                      <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
-                        <div class="stamp-input" v-show="items[greatgreat].showImage"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
-                          <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
+
+                      <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                        <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
+                        <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+                      </div>
+                      <div 
+                        class='great-grand-level' 
+                        v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
+                        :key='greatgreat'
+                        :draggable ='true'
+                        @dragstart='startDrag($event, items[greatgreat])'
+                        @drop="onDrop($event,items[greatgreat].id)"
+                        @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
+                      >
+              
+                        <div class="grand-child-content">
+                          <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                          <img v-else-if="items[greatgreat].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                          <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                          <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+
+                          <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
+
+                          <div class='great-grand-text'>
+                            {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                          </div>
+                        </div>
+                        <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
+                          <div class="stamp-input" v-show="items[greatgreat].showImage"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
+                            <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -292,6 +296,7 @@
     ],
     data() {
       return {
+        collapsed: false,
         showError: false,
         problemItems: [],
         totalErrors: 0,
@@ -328,7 +333,7 @@
             formInputs: {},
             type: "safe",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
           },
           {
             articleCode: "Forms",
@@ -621,6 +626,14 @@
       },
     },
     methods: {
+      collapseItem(item){
+        if(item.collapsed == false || item.collapsed == undefined){
+          item.collapsed = true
+        }
+        else{
+          item.collapsed = false
+        }
+      },
       popOut(url) {
         var height = window.screen.height;
         var width = this.calculateNewWidth();
@@ -1184,6 +1197,7 @@
       return newArr;
       },
       submitPage() {
+        this.currentFormIndex = ''
         this.gradeSituationContents();
       },
       //Returns an item given it's ID
@@ -2080,14 +2094,14 @@
     order: 1;
     background-color: #333366;
     width: 30vw;
-    height: 62vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
   }
   .left-frame{
     position: relative;
-    top: 5vw;
+    top: 2vh;
     left: 2vw;
     width: 36vw;
     height: 90vh;
