@@ -2069,10 +2069,10 @@
 
   .frame{
     position: absolute;
-    top: 5vh;
+    top: 10vh;
     left: 0;
     width: 100vw;
-    height: 95vh;
+    height: 90vh;
     z-index: 1;
   }
   .drop-zone {
@@ -2350,7 +2350,7 @@
     position: absolute;
     top: 0vh;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-5%) translateX(-50%);
     max-width: 60vw;
     max-height: 75vh;
     overflow: scroll;

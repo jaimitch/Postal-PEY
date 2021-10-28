@@ -610,13 +610,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 50vmax;
-        height: 36vmax;
+        width: 880px;
+        height: 680px;
         border: 1px solid black;
         text-align: center;
         background-color: white;
         color: black;
-        font-size: 1vmin;
+        font-size: 10px;
         font-family: Arial;
     }
     .top-left-area{
@@ -640,7 +640,7 @@
         grid-template-columns: repeat(4, 1fr);
         color: black;
         text-align: left;
-        font-size: 1vmin;   
+        font-size: 10px;   
     }
     .top-stamp1{
         position: absolute;
@@ -706,7 +706,7 @@
         width: 14%;
         display: flex;
         flex-direction: column;
-        font-size: 1vmin;
+        font-size: 10px;
         text-align: left;
     }
     .right-area-content{
@@ -714,7 +714,7 @@
         top: 25%;
         display: flex;
         flex-direction: column;
-        font-size: 1vmin;
+        font-size: 10px;
         text-align: left;
     }
     .right-area input{
@@ -727,7 +727,7 @@
         border: none;
         border-bottom: 2px dotted black;
         position: relative;
-        font-size: 0.97vmin;
+        font-size: 9px;
         width: 80%;
     }
     .bottom-area1{
@@ -769,7 +769,7 @@
         width: 25%;
         height: 100%;
         border-right: 1px solid black;
-        font-size: 1vmin; 
+        font-size: 10px; 
     }
     .sub-area2{
         position: absolute;
@@ -778,7 +778,7 @@
         width: 55%;
         height: 100%;
         border-right: 1px solid black;
-        font-size: 0.75vmax;
+        font-size: 15px;
         text-align: left;
     }
     .sub-area2 input{
@@ -786,7 +786,7 @@
         border-bottom: 2px dotted black;
         width: 80%;
         text-align: left;
-        font-size: 1vmin;
+        font-size: 10px;
         height: 40%;
         top:0%;
     }
@@ -795,7 +795,7 @@
         border-bottom: 2px dotted black;
         width: 80%;
         text-align: left;
-        font-size: 1vmin;
+        font-size: 10px;
         height: 60%;
         top:0%;
     }
@@ -813,7 +813,7 @@
         border-bottom: 2px dotted black;
         width: 80%;
         text-align: left;
-        font-size: 1vmin;
+        font-size: 10px;
         height: 100%;
         top:0%;
     }
@@ -829,7 +829,7 @@
         left: 80%;
         width: 20%;
         height: 100%;
-        font-size: 1vmin;
+        font-size: 10px;
         text-align: center;
     }
     .bottom-area2{
@@ -877,24 +877,24 @@
         border-top: 1px solid black;
         text-align: left;
         color: black;
-        font-size: 0.75vmax;
+        font-size: 15px;
     }
     .top-text{
         position: relative;
         text-align: center;
-        font-size: 1vmin;
+        font-size: 10px;
     }
     .to-text{
         position: relative;
         vertical-align: text-top;
-        font-size: 1vmin;
+        font-size: 10px;
         bottom: 10%;
         right: 20%;
         text-align: center;
     }
     .bottom-text{
         position: relative;
-        font-size: 1vmin;
+        font-size: 10px;
         text-align: center;
         top: 1vmin;
     }
@@ -915,7 +915,7 @@
         color: black;
         top: 12%;
         text-align: left;
-        font-size: 1vmin;
+        font-size: 10px;
         width: 100%;
     }
     .to-input select{
@@ -990,7 +990,7 @@
         position: relative;
         border-bottom: 1px solid black;
         text-align: left;
-        font-size: 1vmin;
+        font-size: 10px;
     }
     .box input{
         position: absolute;
@@ -1000,12 +1000,12 @@
     }
     .centered{
         text-align: center;
-        font-size: 0.75vmin;
+        font-size: 7px;
     }
     .centered-box{
         text-align: center;
         border-bottom: 1px solid black;
-        font-size: .80vmin;
+        font-size: 8px;
         height: 8%;
     }
 </style>

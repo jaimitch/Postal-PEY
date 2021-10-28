@@ -260,13 +260,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 35vmax;
-        height: 45vmax;
+        width: 510px;
+        height: 660px;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
         color: black;
-        font-size: 1vmin;
+        font-size: 8px;
     }
     .left{
         position: absolute;
