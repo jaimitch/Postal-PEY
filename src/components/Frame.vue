@@ -611,7 +611,6 @@
             res.push(item)
           }
         })
-        console.log(res, "*******THIS THING**********")
         return res
       },
       getSituationText() {
@@ -841,8 +840,8 @@
         let itemIndex = this.getItemIndex(item.id)
         this.items[itemIndex].id = undefined
         this.items[itemIndex].showImage = false
-        console.log("'deleted'")
-        console.log(this.items)
+        //console.log("'deleted'")
+        //console.log(this.items)
         this.deleteModalShow = false
         // evt.stopPropagation()
       },
@@ -1419,7 +1418,7 @@
               //situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
-          console.log("in grade situation", situationItems)
+          //console.log("in grade situation", situationItems)
           let keyItems = this.answerKey.answers.filter(x => x.gradeAt.includes(this.getSituationNumber))
 
           keyItems.forEach((currentKeyItem) => {
@@ -1430,7 +1429,7 @@
             )
             
             if(currentItem[0] != undefined) {
-              console.log("situationItems",situationItems.length)
+              //console.log("situationItems",situationItems.length)
               let itemErrors = this.gradeItem(currentItem[0], currentKeyItem);
               console.log("itemErrors",itemErrors)
               
@@ -1477,7 +1476,7 @@
             this.totalErrors = this.problemItems.length
             this.showError = true
           }
-        console.log(this.problemItems.length)
+        //(this.problemItems.length)
       },
       gradeForm(articleCode, keyForm, formCode) {
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
@@ -1535,7 +1534,7 @@
                       keyPairs.push(keyItem);
                     }
                   }
-                  console.log("+++++HERE+++++",keyPairs)
+                  //console.log("+++++HERE+++++",keyPairs)
                   //second pass to see if the items are in the wrong order
                   for(let i = 1; i < userForm.itemNums.length; i++) {
                     for(let j = 0; j < keyPairs.length; j++) {
@@ -1570,13 +1569,13 @@
                   let keyItems = keyForm.itemNums;
                   let userItems = userForm.itemNums;
                   if(userItems.length != keyItems.length){
-                    console.log(userItems.length, keyItems.length)
+                    //console.log(userItems.length, keyItems.length)
                     errors++
                   }
-                  console.log("Key Items: ",keyItems)
+                  //console.log("Key Items: ",keyItems)
                   for(let i = 0; i < userItems.length; i++){
                     if(!keyItems.includes(userItems[i]) && userItems[i] != undefined){
-                      console.log(userItems[i])
+                      //console.log(userItems[i])
                       errors++
                     }
                   }
@@ -1670,7 +1669,7 @@
       //Returns the index of an item given it's article code
       getItemByArticleCode(code) {
         let index = this.items.findIndex(item => item.articleCode == code)
-        console.log("getItemByArticleCode:", index);
+        //console.log("getItemByArticleCode:", index);
         return index;
       },
       //Uses the parent's article code and the child's id to add the child to the parent's children array
@@ -1770,8 +1769,8 @@
             letter1 = this.getItemByArticleCode(letter1.articleCode)
             this.items[package1].stampCounter = true;
             this.items[letter1].stampCounter = true;
-            console.log(this.items[package1])
-            console.log(this.items[letter1])
+            //console.log(this.items[package1])
+            //console.log(this.items[letter1])
           }
           this.situationOneInit = true;
         }
@@ -1810,7 +1809,7 @@
             this.assignItemToParent('Bill #260', item2)
             let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item3)
-            console.log(this.items)
+            //console.log(this.items)
 
             //42 - 47
             this.situationTwoPartOne = true;
@@ -2127,7 +2126,7 @@
           let form9 = this.getItemByArticleCode("Bill #144")
           this.items[2].children.push(this.items[form9].id)
 
-          console.log("Added all bills that left on trucks:", this.items);
+          //console.log("Added all bills that left on trucks:", this.items);
 
         }
 
