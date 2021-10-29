@@ -15,7 +15,7 @@
                     <span>
                         <select v-model="formData.sentBy">
                             <option value="David Campbell">David Campbell</option>
-                            <option value="Thomas Inman">Thomas Inman</option>
+                            <option value="Thomas Fulton">Thomas Fulton</option>
                             <option value="Martha Gadsden">Martha Gadsden</option>
                             <option value="Green Tower Corp.">Green Tower Corp.</option>
                             <option value="George Forrest">George Forrest</option>
