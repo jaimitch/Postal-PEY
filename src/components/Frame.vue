@@ -1565,7 +1565,7 @@
                   //console.log("Key Items: ",keyItems)
                   for(let i = 0; i < userItems.length; i++){
                     if(keyItems.includes("NFE")){
-                      if(keyItems.findIndex("NFE") != userItems.findIndex("NFE")){
+                      if(keyItems.indexOf("NFE") != userItems.indexOf("NFE")){
                         errors++
                       }
                     }
@@ -1616,7 +1616,7 @@
 
               if(property == "article") {
                 if(keyForm[property].includes("NFE")){
-                  if(keyForm[property].findIndex("NFE") != userForm[property].findIndex("NFE")){
+                  if(keyForm[property].indexOf("NFE") != userForm[property].indexOf("NFE")){
                     errors++
                   }
                 }
