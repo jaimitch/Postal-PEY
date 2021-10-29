@@ -360,7 +360,7 @@
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
             "situation2Location": "Incoming Inside Bill / Pouches - PS 3854",
-            "backText":"RB621758502US – NOT RECEIVEDRB309266104US – SHOULD READ RB309266140USRB888122361US – MISSENT",
+            "select": ["RB888122361US – MISSENT","RB309266104US – SHOULD READ RB309266140US","RB621758502US – NOT RECEIVED",""],
             "gradeAt": [2]
         },
         {

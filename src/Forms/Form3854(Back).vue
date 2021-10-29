@@ -2,7 +2,7 @@
     <div class="outline">
         <div class="right-area">
             <div class="right-area-content">
-                <select v-model="formData.select1" class="box">
+                <select v-model="formData.select[0]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
                     <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
                     <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
@@ -12,7 +12,7 @@
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                     <option value=""></option>
                 </select>
-                <select v-model="formData.select2" class="box">
+                <select v-model="formData.select[1]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
                     <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
                     <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
@@ -22,7 +22,7 @@
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                     <option value=""></option>
                 </select>
-                <select v-model="formData.select3" class="box">
+                <select v-model="formData.select[2]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
                     <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
                     <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
@@ -32,7 +32,7 @@
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                     <option value=""></option>
                 </select>
-                <select v-model="formData.select4" class="box">
+                <select v-model="formData.select[3]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
                     <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
                     <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
@@ -54,10 +54,7 @@
             return{
                 
                 formData: {
-                    select1: this.item.formInputs.select1,
-                    select2: this.item.formInputs.select2,
-                    select3: this.item.formInputs.select3,
-                    select4: this.item.formInputs.select4,
+                    select: this.item.formInputs.select,
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
                     lockNo: this.item.formInputs.lockNo,
@@ -98,7 +95,7 @@
         },
         computed: {
             backTextComp(){
-                return this.formData.select1+this.formData.select2+this.formData.select3+this.formData.select4
+                return this.formData.select[0]+this.formData.select[1]+this.formData.select[2]+this.formData.select[3]
             }
         },
         methods: {

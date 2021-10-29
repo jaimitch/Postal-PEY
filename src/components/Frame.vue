@@ -890,10 +890,7 @@
             gradeAt: gradeAt,
             created: created,
             formInputs: {
-              select1: "",
-              select2: "",
-              select3: "",
-              select4: "",
+              select: [],
               situationNumber: 'Situation ' + situationNumber,
               articleCode: "Bill #" + articleCode,
               lockNo: "",
@@ -1565,7 +1562,7 @@
                     }
                   }
               }
-              else if(property == "recievingClerks") {
+              else if(property == "recievingClerks" || property == "select") {
                 //If the student put nothing, but there should be something its wrong
                 if(userForm[property].length == 0 && keyForm[property].length > 0) {
                   errors+= keyForm[property].length;
