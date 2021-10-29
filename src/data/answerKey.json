@@ -137,7 +137,7 @@
             "itemsAccepted": "2",
             "items": [],
             "gradeAt": [6],
-            "situation6Location":"Forms",
+            "situation6Location":"Start of Day",
             "type":"DD FORM 2261"
         },
         {
@@ -321,7 +321,7 @@
             "witnessSent": "WIT: Scott Sanders",
             "witnessRecieved": "WIT: George Forrest",
             "gradeAt": [4],
-            "situation4Location":"Forms"
+            "situation4Location":"Incoming Inside Bill / Pouches - PS 3854"
          },
          {
             "type":"PS FORM 3854",
@@ -399,7 +399,7 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "situation4Location": "Forms",
+            "situation4Location": "Incoming Truck Bills PS - 3854",
             "gradeAt": [4]
         },
         {
@@ -451,7 +451,7 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [4],
-            "situation4Location":"Forms"
+            "situation4Location":"Items Rcv’d from other sources"
         },
         {
             "type":"PS FORM 3877",
@@ -509,7 +509,7 @@
             "square":"",
             "stamped": true,
             "gradeAt": [4],
-            "situation4Location": "Forms"
+            "situation4Location": "Items Rcv’d from transfer bill - PS Form 3877"
         },
         {
             "type":"PS FORM 3883",
@@ -666,8 +666,8 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location": "SEAL #62345678",
-            "situation6Location": "Forms"
+            "situation5Location": "Outgoing Inside Bill PS 3854",
+            "situation6Location": "Outgoing Inside Bill PS 3854"
         },
         {
             "type":"PS FORM 3854",
@@ -706,8 +706,8 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location":"Truck 6",
-            "situation6Location":"Forms"
+            "situation5Location":"Outgoing Truck Bill PS 3854",
+            "situation6Location":"Outgoing Truck Bill PS 3854"
         },
         {
             "articleCode": "RB 339 065 331 US",
