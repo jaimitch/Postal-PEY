@@ -591,11 +591,8 @@
                 currentTime: 0,
                 prevTime: 0,
                 formData: {
-                    select1: "",
-                    select2: "",
-                    select3: "",
-                    select4: "",
-                    articleCode:this.item.formInputs.articleCode,
+                    select: this.item.formInputs.select, 
+                    articleCode: this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
                     lockNo: "------------",
                     rotaryNo: "------------",
