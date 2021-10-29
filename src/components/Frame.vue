@@ -472,25 +472,9 @@
             gradeAt: []
           },
           {
-            id: 7,
-            title: "Outgoing Truck",
-            articleCode: "Truck 2",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 3",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 3"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
             id: 8,
             title: "Incoming Truck",
-            articleCode: "Truck 3",
+            articleCode: "Truck 2",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
@@ -506,7 +490,7 @@
           {
             id: 9,
             title: "Incoming Truck",
-            articleCode: "Truck 4",
+            articleCode: "Truck 3",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
@@ -522,7 +506,7 @@
           {
             id: 10,
             title: "Incoming Transfer Bill",
-            articleCode: "Truck 5",
+            articleCode: "Truck 4",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
@@ -530,22 +514,6 @@
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
-            id: 11,
-            title: "Outgoing Truck",
-            articleCode: "Truck 6",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 5",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 5"
               },
             type: "Truck",
             droppable: true,
@@ -622,8 +590,8 @@
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
           //Situation 2 Part 1
-          text = "1. Terry Jones, the mail guard, arrives at the registry section from the AMT with one registered \
-          pouch and two registered outside pieces (OSP's).\
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section on the incoming truck from the AMT \
+          with one registered pouch and two registered outside pieces (OSP's).\
           <br><br>\
           APDS all OSPs. Ensure the correctness of the incoming truck bill and sign. Then move the PS Form 3854 form into \
           the Forms & Pouches section and all of the incoming articles into the Safe."
@@ -1745,8 +1713,6 @@
             this.items[11].level = 0;
             this.items[12].level = 0;
             this.items[13].level = 0;
-            this.items[14].level = 0;
-            this.items[15].level = 0;
             //console.log("items", this.items)
           if(!this.situationOneInit){
 
@@ -1794,8 +1760,7 @@
           this.items[11].level = 0;
           this.items[12].level = 0;
           this.items[13].level = 0;
-          this.items[14].level = 0;
-          this.items[15].level = 0;
+
 
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
             
@@ -1833,8 +1798,6 @@
             this.items[11].level = 0;
             this.items[12].level = 0;
             this.items[13].level = 0;
-            this.items[14].level = 0;
-            this.items[15].level = 0;
 
             if(!this.situationTwoPartTwo) {
               let newFormSettings = {
@@ -1877,11 +1840,9 @@
 
           //hardcode all truck visibility
           this.items[10].level = 0;
-          this.items[11].level = 1;
+          this.items[11].level = 0;
           this.items[12].level = 0;
           this.items[13].level = 0;
-          this.items[14].level = 0;
-          this.items[15].level = 0;
 
           if(!this.situationThreeInit) {
             this.situationThreeInit = true;
@@ -1893,11 +1854,9 @@
           if(this.pageNum == 5) {
           //hardcode truck visibility
           this.items[10].level = 0;
-          this.items[11].level = 0;
-          this.items[12].level = 1;
+          this.items[11].level = 1;
+          this.items[12].level = 0;
           this.items[13].level = 0;
-          this.items[14].level = 0;
-          this.items[15].level = 0;
 
             if(!this.situationFourPartOne) {
               let newFormSettings = {
@@ -1932,10 +1891,8 @@
             //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
-            this.items[12].level = 0;
+            this.items[12].level = 1;
             this.items[13].level = 0;
-            this.items[14].level = 0;
-            this.items[15].level = 0;
 
             if(!this.situationFourPartTwo){
 
@@ -1984,8 +1941,6 @@
             this.items[11].level = 0;
             this.items[12].level = 0;
             this.items[13].level = 1;
-            this.items[14].level = 0;
-            this.items[15].level = 0;
 
             if(!this.situationFourPartThree) {
               let newFormSettings = {
@@ -2019,8 +1974,6 @@
             this.items[11].level = 0;
             this.items[12].level = 0;
             this.items[13].level = 0;
-            this.items[14].level = 1;
-            this.items[15].level = 0;
 
             if(!this.situationFourPartFour) {
               let newFormSettings = {
@@ -2097,8 +2050,6 @@
             this.items[11].level = 0;
             this.items[12].level = 0;
             this.items[13].level = 0;
-            this.items[14].level = 0;
-            this.items[15].level = 1;
 
             if(!this.situationFivePartOne) {
               this.situationFivePartOne = true;
@@ -2112,8 +2063,6 @@
           this.items[11].level = 0;
           this.items[12].level = 0;
           this.items[13].level = 0;
-          this.items[14].level = 0;
-          this.items[15].level = 0;
 
           //Add all bills that left to forms/pouches
 
