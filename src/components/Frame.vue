@@ -1707,7 +1707,14 @@
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
-
+          //hardcode closed folders
+            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches - PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Truck Bills PS - 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d from transfer bill - PS Form 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d from other sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS 3849 PS 3883")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS 3854")].collapsed = true
           //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
@@ -1781,7 +1788,7 @@
             }
             let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [], false)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2], false)
             this.assignItemToParent('Bill #260', item1)
             let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item2)
