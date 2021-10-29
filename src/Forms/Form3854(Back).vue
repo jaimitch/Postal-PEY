@@ -2,7 +2,46 @@
     <div class="outline">
         <div class="right-area">
             <div class="right-area-content">
-                <textarea v-model="formData.backText" disabled></textarea>
+                <select v-model="formData.select1" class="box">
+                    <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
+                    <option value="MISSENT">MISSENT</option>
+                    <option value="NOT RECEIVED">NOT RECEIVED</option>
+                    <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
+                    <option value="Should Read RB309266140US">Should Read RB309266140US</option>
+                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
+                    <option value=""></option>
+                </select>
+                <select v-model="formData.select2" class="box">
+                    <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
+                    <option value="MISSENT">MISSENT</option>
+                    <option value="NOT RECEIVED">NOT RECEIVED</option>
+                    <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
+                    <option value="Should Read RB309266140US">Should Read RB309266140US</option>
+                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
+                    <option value=""></option>
+                </select>
+                <select v-model="formData.select3" class="box">
+                    <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
+                    <option value="MISSENT">MISSENT</option>
+                    <option value="NOT RECEIVED">NOT RECEIVED</option>
+                    <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
+                    <option value="Should Read RB309266140US">Should Read RB309266140US</option>
+                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
+                    <option value=""></option>
+                </select>
+                <select v-model="formData.select4" class="box">
+                    <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
+                    <option value="MISSENT">MISSENT</option>
+                    <option value="NOT RECEIVED">NOT RECEIVED</option>
+                    <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
+                    <option value="Should Read RB309266140US">Should Read RB309266140US</option>
+                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
+                    <option value=""></option>
+                </select>
             </div>
         </div>
     </div>
@@ -13,7 +52,12 @@
         props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
+                
                 formData: {
+                    select1: this.item.formInputs.select1,
+                    select2: this.item.formInputs.select2,
+                    select3: this.item.formInputs.select3,
+                    select4: this.item.formInputs.select4,
                     articleCode:this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
                     lockNo: this.item.formInputs.lockNo,
@@ -52,8 +96,16 @@
                 },
             }
         },
+        computed: {
+            backTextComp(){
+                return this.formData.select1+this.formData.select2+this.formData.select3+this.formData.select4
+            }
+        },
         methods: {
             changeForm() {
+                if(this.backTextComp != undefined){
+                    this.formData.backText = this.backTextComp
+                }
                 this.$emit('changeForm', this.formData)
             }
         },
@@ -62,7 +114,7 @@
             formData: {
                 deep: true,
                 handler: 'changeForm',
-            }
+            },
         },
     }
 </script>
@@ -82,7 +134,7 @@
     .right-area{
         position: absolute;
         top: 0%;
-        left: 86%;
+        left: 75%;
         height: 100%;
         border-left: 2px dotted black;
         width: 14%;
@@ -92,12 +144,9 @@
         text-align: left;
     }
     
-    .right-area textarea{
-        resize: none;
-        position: absolute;
-        width: 95%;
-        height: 98%;
-        font-family: Arial;
+    .right-area select{
         border: none;
+        border-bottom: 2px dotted black;
+        position: relative;
     }
 </style>
