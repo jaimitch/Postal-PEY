@@ -366,7 +366,7 @@
           },
           {
             id: 7,
-            title: "Outgoing Truck",
+            title: "Deliver to Personnel",
             articleCode: "Truck 2",
             children: [],
             level: 0,
@@ -534,8 +534,7 @@
         else if(this.pageNum == 4) {
           //Situation 3
           text = `<div>Deliver the following mail using the appropriate PS Forms. Create a PS Form 3849 for each personal \
-          article and or a PS Form 3883 for each official article, then attach the article to its form. Each form and its attached article go into the outgoing truck.</div><br>\
-          RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
+          article and or a PS Form 3883 for each official article, then attach the form to its article. 
           <br><br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
