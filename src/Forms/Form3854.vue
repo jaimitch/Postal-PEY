@@ -313,6 +313,7 @@
                         <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
                         <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
                         <option v-if="formData.billNo == 144" value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -414,6 +415,7 @@
                         <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
                         <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
                         <option v-if="formData.billNo == 144" value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -435,6 +437,7 @@
                         <option value="Should Read RB309265340US">Should Read RB309265340US</option>
                         <option value="APO">APO</option>
                         <option value="AE 09459">AE 09459</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
