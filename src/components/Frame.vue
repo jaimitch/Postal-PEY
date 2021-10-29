@@ -1556,6 +1556,11 @@
                   }
                   //console.log("Key Items: ",keyItems)
                   for(let i = 0; i < userItems.length; i++){
+                    if(keyItems.includes("NFE")){
+                      if(keyItems.findIndex("NFE") != userItems.findIndex("NFE")){
+                        errors++
+                      }
+                    }
                     if(!keyItems.includes(userItems[i]) && userItems[i] != undefined){
                       //console.log(userItems[i])
                       errors++
@@ -1602,6 +1607,11 @@
             if(Array.isArray(keyForm[property])) {
 
               if(property == "article") {
+                if(keyForm[property].includes("NFE")){
+                  if(keyForm[property].findIndex("NFE") != userForm[property].findIndex("NFE")){
+                    errors++
+                  }
+                }
                 if(keyForm.article.length > 1) {
                   for(let i = 1; i < keyForm.article.length; i++) {
                     if(!keyForm[property].includes(userForm[property][i])) {
