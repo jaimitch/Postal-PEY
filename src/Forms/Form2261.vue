@@ -853,13 +853,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 510px;
-        height: 660px;
+        width: 580px;
+        height: 880px;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
         color: black;
-        font-size: 8px;
+        font-size: 11px;
     }
     .preparing-activity{
         position: absolute;
@@ -940,7 +940,7 @@
         height: 38%;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
-        font-size: 7px;
+        font-size: 10px;
         
     }
     .sectionA input{
@@ -985,7 +985,7 @@
         width: 90%;
         left: 5%;
         height: 11%;
-        font-size: 8px;
+        font-size: 11px;
         text-align: center;
     }
     .box1{
@@ -1088,7 +1088,7 @@
         height: 38%;
         left: 50%;
         border-bottom: 1px solid black;
-        font-size: 7px;
+        font-size: 10px;
     }
     .sectionB-banner{
         position: absolute;
@@ -1096,7 +1096,7 @@
         width: 90%;
         left: 5%;
         height: 10%;
-        font-size: 8px;
+        font-size: 11px;
     }
     .center-box1{
         position: absolute;
@@ -1311,7 +1311,7 @@
         width:90%;
         height: 70%;
         border:none;
-        font-size: 8px;
+        font-size: 10px;
     }
     .sectionC-banner{
         position: absolute;
@@ -1320,7 +1320,7 @@
         width: 100%;
         height: 10%;
         border-bottom: 1px solid black ;
-        font-size: 7px;
+        font-size: 10px;
     }
     .row1{
         position: absolute;
