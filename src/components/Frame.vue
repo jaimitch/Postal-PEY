@@ -604,7 +604,7 @@
         //Sitution 2 Part 2
          else if(this.pageNum == 3) {
            //Situation 2 Part 2
-          text = "2. You and PFC George Forrest, the witness, open the pouch and located the incoming inside bill. \
+          text = "2. You and George Forrest, the witness, open the pouch and located the incoming inside bill. \
           <br><br> \
           APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
           on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the \
@@ -619,26 +619,26 @@
           <br><br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
-          <tr><th>14th ADMIN CO</th><th>183</th><th>SGT EARL SMITH</th></tr>\
-          <tr><th>13th EOC</th><th>101</th><th>PFC JOHN THOMPSON</th></tr>\
+          <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
+          <tr><th>13th EOC</th><th>101</th><th>JOHN THOMPSON</th></tr>\
           <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
-          <tr><th>45TH MP CO</th><th>195</th><th>SGT JERRY JOHNSON</th></tr></table><div>`
+          <tr><th>45TH MP CO</th><th>195</th><th>JERRY JOHNSON</th></tr></table><div>`
 
         }
         //Situation 4 Part 1
         else if(this.pageNum == 5) {
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP \
+          text = "1. Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP \
           to dispatch to the AMT serving you area. Check the incoming truck bill, APDS and sign it. Move the extra OSP to \
           the Safe and the truck bill to the Forms & Pouches section."         
         }
         //Situation 4 Part 2
         else if(this.pageNum == 6) {
-          text = "2. You and PFC George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
+          text = "2. You and George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
           inside bill, and then sign bill with witness. Move all mail to safe and move the inside bill to Forms & Pouches."
         }
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
-          text = "3. SGT Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
+          text = "3. Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
           on the PS Form 3877. Ensure the correctness of the PS Form 3877 and sign. Move articles to safe and the PS Form \
           3877 to Forms & Pouches."
         }
@@ -652,7 +652,7 @@
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
-          text = "The registry section is now closed. PFC Terry Jones, the mail guard has arrived at your location and is \
+          text = "The registry section is now closed. Terry Jones, the mail guard has arrived at your location and is \
           waiting for the outgoing registered mail.\
           <br><br> \
           Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this \
@@ -898,6 +898,7 @@
             gradeAt: gradeAt,
             created: created,
             formInputs: {
+              select: [],
               situationNumber: 'Situation ' + situationNumber,
               articleCode: "Bill #" + articleCode,
               lockNo: "",
@@ -1563,13 +1564,18 @@
                   }
                   //console.log("Key Items: ",keyItems)
                   for(let i = 0; i < userItems.length; i++){
+                    if(keyItems.includes("NFE")){
+                      if(keyItems.findIndex("NFE") != userItems.findIndex("NFE")){
+                        errors++
+                      }
+                    }
                     if(!keyItems.includes(userItems[i]) && userItems[i] != undefined){
                       //console.log(userItems[i])
                       errors++
                     }
                   }
               }
-              else if(property == "recievingClerks") {
+              else if(property == "recievingClerks" || property == "select") {
                 //If the student put nothing, but there should be something its wrong
                 if(userForm[property].length == 0 && keyForm[property].length > 0) {
                   errors+= keyForm[property].length;
@@ -1609,6 +1615,11 @@
             if(Array.isArray(keyForm[property])) {
 
               if(property == "article") {
+                if(keyForm[property].includes("NFE")){
+                  if(keyForm[property].findIndex("NFE") != userForm[property].findIndex("NFE")){
+                    errors++
+                  }
+                }
                 if(keyForm.article.length > 1) {
                   for(let i = 1; i < keyForm.article.length; i++) {
                     if(!keyForm[property].includes(userForm[property][i])) {
@@ -1715,7 +1726,14 @@
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
-
+          //hardcode closed folders
+            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches - PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Truck Bills PS - 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d from transfer bill - PS Form 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d from other sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS 3849 PS 3883")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS 3854")].collapsed = true
           //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
@@ -1728,7 +1746,7 @@
               apoNum: "APO AE 09459",
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
-                items: ["RB339065331US", "RB290770790US"],
+                items: ["RB339065331US", "RB290770790US","NFE"],
                 totalItems9thru14: 15,
                 itemsOnHandAtEnd: 2,
                 numberOfPouchesOpened: 1,
@@ -1780,7 +1798,7 @@
               totalArticlesSent: "3",
               postmasterSent: "Anthony Smith",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
+              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US","NFE"],
               itemOrigins: ["", "AMF KENNEDY NY 00300"],
               topStamp1: true,
               topStamp2: true,
@@ -1818,7 +1836,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Hark Smith",
               dispatchingClerk: "0930",
-              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US"],
+              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US","NFE"],
               witnessSent: "WIT: Larry Brown",
               topStamp1: true,
               topStamp2: true,
@@ -1875,7 +1893,7 @@
               totalArticlesSent: "2",
               postmasterSent: "Todd Edgar",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/43000277", "O/RB300911759US"],
+              itemNums: ["", "S/43000277", "O/RB300911759US","NFE"],
               itemOrigins: ["", "APO AE 09459 - 2"],
               topStamp1: true,
               topStamp2: true,
@@ -1914,7 +1932,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Leroy Brown",
               dispatchingClerk: "0745",
-              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US"],
+              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US","NFE"],
               topStamp1: true,
               topStamp2: true,
               bottomStamp1: false,
@@ -1958,6 +1976,7 @@
                 trackingNum2: "RB842320439US",
                 trackingTextInput1: "HQ CAC FT KNOX, KY 40121",
                 trackingTextInput2: "545 MP CO FORT JACKSON, SC 29207",
+                trackingTextInput3: "NFE",
                 piecesSent: "2",
                 rows:["0.87", "9.50", "N/A", "", "", "", "", "", "", "", "", "", "",
                       "1.83", "9.50", "N/A"],
@@ -2010,7 +2029,7 @@
               currentTime: "",
               dispatchingClerk: "1400",
               itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
-               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US"],
+               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US","NFE"],
               itemOrigins: [],
               topStamp1: true,
               topStamp2: true,
@@ -2071,6 +2090,7 @@
           this.items[11].level = 0;
           this.items[12].level = 0;
           this.items[13].level = 0;
+
 
 
         }

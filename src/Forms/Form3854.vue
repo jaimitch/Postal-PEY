@@ -97,7 +97,72 @@
                         <option value=""></option>
                     </select>
                 </div>
-                
+                <div class="centered">
+                    <select v-model="formData.recievingClerks[2]" disabled> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option :value="studentName">{{studentName}}</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="centered">
+                    <select v-model="formData.recievingClerks[3]" disabled> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option :value="studentName">{{studentName}}</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="centered">
+                    <select v-model="formData.recievingClerks[4]" disabled> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option :value="studentName">{{studentName}}</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="centered">
+                    <select v-model="formData.recievingClerks[5]" disabled> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option :value="studentName">{{studentName}}</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="centered">
+                    <select v-model="formData.recievingClerks[6]" disabled> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option :value="studentName">{{studentName}}</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="centered">
+                    <select v-model="formData.recievingClerks[7]" disabled> 
+                        <option value="WIT: George Forrest">WIT: George Forrest</option>
+                        <option value="WIT: Scott Sanders">WIT: Scott Sanders</option>
+                        <option value="Kyle Dozier">Kyle Dozier</option>
+                        <option value="WIT: Larry Brown">WIT: Larry Brown</option>
+                        <option :value="studentName">{{studentName}}</option>
+                        <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value="" selected></option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="top-left-area">
@@ -248,6 +313,7 @@
                         <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
                         <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
                         <option v-if="formData.billNo == 144" value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -260,15 +326,13 @@
                 <div v-for="i in 15" :key = i class="box">
                     &emsp;
                     <select v-model="formData.itemOrigins[i]" class="box">
-                        <option value="APO AE 09459">APO AE 09459</option>
+                        <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
                         <option value="MISSENT">MISSENT</option>
                         <option value="NOT RECEIVED">NOT RECEIVED</option>
                         <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
                         <option value="Should Read RB309266140US">Should Read RB309266140US</option>
                         <option value="Should Read RB309265340US">Should Read RB309265340US</option>
-                        <option value="APO">APO</option>
-                        <option value="AE 09459">AE 09459</option>
-                        <option value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
+                        <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -351,6 +415,7 @@
                         <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
                         <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
                         <option v-if="formData.billNo == 144" value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -372,6 +437,7 @@
                         <option value="Should Read RB309265340US">Should Read RB309265340US</option>
                         <option value="APO">APO</option>
                         <option value="AE 09459">AE 09459</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -528,24 +594,25 @@
                 currentTime: 0,
                 prevTime: 0,
                 formData: {
-                    articleCode:this.item.formInputs.articleCode,
+                    select: this.item.formInputs.select, 
+                    articleCode: this.item.formInputs.articleCode,
                     situationNumber: this.item.formInputs.situationNumber,
-                    lockNo: this.item.formInputs.lockNo,
-                    rotaryNo: this.item.formInputs.rotaryNo,
-                    jacketNo: this.item.formInputs.jacketNo,
-                    controlNo: this.item.formInputs.controlNo,
+                    lockNo: "------------",
+                    rotaryNo: "------------",
+                    jacketNo: "------------",
+                    controlNo: "------------",
                     billNo: this.item.formInputs.billNo,
                     pageNo: this.item.formInputs.pageNo,
-                    airmail: this.item.formInputs.airmail,
+                    airmail: "------------",
                     sealNo: this.item.formInputs.sealNo,
                     to: this.item.formInputs.to,
                     billNoRight: this.item.formInputs.billNoRight,
-                    amNo: this.item.formInputs.amNo,
-                    jacketNoRight: this.item.formInputs.jacketNoRight,
-                    lockNoRight: this.item.formInputs.lockNoRight,
-                    rotaryNoRight: this.item.formInputs.rotaryNoRight,
+                    amNo: "------------",
+                    jacketNoRight: "------------",
+                    lockNoRight: "------------",
+                    rotaryNoRight: "------------",
                     sealNoRight: this.item.formInputs.sealNoRight,
-                    airmailRight: this.item.formInputs.airmailRight,
+                    airmailRight: "------------",
                     recieved: this.item.formInputs.recieved,
                     recievingClerks: this.item.formInputs.recievingClerks,
                     totalArticlesSent: this.item.formInputs.totalArticlesSent,

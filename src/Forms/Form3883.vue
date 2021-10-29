@@ -74,6 +74,7 @@
                         <option value="RB143899161US">RB143899161US</option>
                         <option value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
