@@ -853,7 +853,7 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 580px;
+        width: 680px;
         height: 880px;
         border: 1px solid black;
         text-align: center;

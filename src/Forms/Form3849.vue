@@ -272,13 +272,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 510px;
-        height: 660px;
+        width: 680px;
+        height: 880px;
         border: 1px solid black;
         text-align: center;
         background-color: coral;
         color: black;
-        font-size: 8px;
+        font-size: 11px;
     }
     .left{
         position: absolute;
@@ -330,7 +330,7 @@
     }
     .text input[type = 'text'] {
         width: 10%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
@@ -340,7 +340,7 @@
     }
     .other-text input[type = 'text'] {
         width: 75%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
@@ -370,7 +370,7 @@
     }
     .other-text select {
         width: 75%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
@@ -393,7 +393,7 @@
     }
     .missed select {
         width: 100%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
@@ -403,7 +403,7 @@
     }
     .missed input {
         width: 100%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
@@ -413,7 +413,7 @@
     }
     .about input[type="date"] {
         width: 100%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
