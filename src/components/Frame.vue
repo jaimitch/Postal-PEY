@@ -184,6 +184,11 @@
               CREATE NEW FORM
             </button>
           </div>
+          <div class= "form-creation" v-if="getSituationNumber == 6">
+            <button class="creation-button" @click="createSit6Form()">
+              CREATE NEW FORM
+            </button>
+          </div>
           <div class="right-side-document" v-if="this.currentFormIndex != ''" @click="$event.stopPropagation()">
             <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
               <Form3854 
@@ -489,7 +494,7 @@
           },
           {
             id: 9,
-            title: "Incoming Truck",
+            title: "Incoming Transfer Bill",
             articleCode: "Truck 3",
             children: [],
             level: 0,
@@ -505,7 +510,7 @@
           },
           {
             id: 10,
-            title: "Incoming Transfer Bill",
+            title: "situation4part4truck",
             articleCode: "Truck 4",
             children: [],
             level: 0,
@@ -706,6 +711,9 @@
         else{
           this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
         }
+      },
+      createSit6Form(){
+        this.items[2].children.push(this.createItem('ddform2261', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
       },
       createOutForm(evt, item, type){
         console.log(this.items[this.getItemIndex(this.findParent(item.id))])
@@ -1781,7 +1789,7 @@
             }
             let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [], false)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2], false)
             this.assignItemToParent('Bill #260', item1)
             let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item2)
@@ -1876,8 +1884,8 @@
             }
 
             let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('Truck 3', form1)
-            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [], false)
+            this.assignItemToParent('Truck 2', form1)
+            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4], false)
             this.assignItemToParent('Bill #30', item1)
             let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
             this.assignItemToParent('Bill #30', item2)
@@ -1939,8 +1947,8 @@
             //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
-            this.items[12].level = 0;
-            this.items[13].level = 1;
+            this.items[12].level = 1;
+            this.items[13].level = 0;
 
             if(!this.situationFourPartThree) {
               let newFormSettings = {
@@ -1957,7 +1965,7 @@
             }
 
             let form1 = this.createItem('psform3877', '48', 4, 2, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('Truck 4', form1)
+            this.assignItemToParent('Truck 3', form1)
             let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4, 5], false)
             this.assignItemToParent('48', item1)
             let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4, 5], false)
@@ -1973,7 +1981,7 @@
             this.items[10].level = 0;
             this.items[11].level = 0;
             this.items[12].level = 0;
-            this.items[13].level = 0;
+            this.items[13].level = 1;
 
             if(!this.situationFourPartFour) {
               let newFormSettings = {
@@ -2013,7 +2021,7 @@
             }
 
             let form1 = this.createItem('psform3854', '33', 4, 2, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('Truck 5', form1)
+            this.assignItemToParent('Truck 4', form1)
             let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item1)
             let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
@@ -2064,31 +2072,6 @@
           this.items[12].level = 0;
           this.items[13].level = 0;
 
-          //Add all bills that left to forms/pouches
-
-          //Determine what getItemByArticleCode actually returns
-
-
-          let form1 = this.getItemByArticleCode("SGT Ronald Cain")
-          this.items[2].children.push(this.items[form1].id)
-          let form2 = this.getItemByArticleCode("PFC Carl Thompson")
-          this.items[2].children.push(this.items[form2].id)
-          let form3 = this.getItemByArticleCode("SSG Donald Green")
-          this.items[2].children.push(this.items[form3].id)
-          let form4 = this.getItemByArticleCode("SGM Mary Fulton")
-          this.items[2].children.push(this.items[form4].id)
-          let form5 = this.getItemByArticleCode("Bill #102")
-          this.items[2].children.push(this.items[form5].id)
-          let form6 = this.getItemByArticleCode("Bill #196")
-          this.items[2].children.push(this.items[form6].id)
-          let form7 = this.getItemByArticleCode("Bill #184")
-          this.items[2].children.push(this.items[form7].id)
-          let form8 = this.getItemByArticleCode("Bill #129") 
-          this.items[2].children.push(this.items[form8].id)
-          let form9 = this.getItemByArticleCode("Bill #144")
-          this.items[2].children.push(this.items[form9].id)
-
-          //console.log("Added all bills that left on trucks:", this.items);
 
         }
 
