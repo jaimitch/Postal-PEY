@@ -890,6 +890,10 @@
             gradeAt: gradeAt,
             created: created,
             formInputs: {
+              select1: "",
+              select2: "",
+              select3: "",
+              select4: "",
               situationNumber: 'Situation ' + situationNumber,
               articleCode: "Bill #" + articleCode,
               lockNo: "",
