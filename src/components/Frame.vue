@@ -180,13 +180,20 @@
           <div class="situation-title">Situation {{ getSituationNumber }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
-            <button class="creation-button" @click="createSit5Form()">
-              CREATE NEW FORM
+            <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
+              <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form()">
+              CREATE NEW OUTGOING INSIDE BILL
             </button>
+            </div>
+            <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
+              <button class="creation-button" style="position:absolute; width:25vw; top:15vw; left:9vw;" @click="createSit5Form()">
+              CREATE NEW OUTGOING TRUCK BILL
+            </button>
+            </div>
           </div>
           <div class= "form-creation" v-if="getSituationNumber == 6">
             <button class="creation-button" @click="createSit6Form()">
-              CREATE NEW FORM
+              CREATE NEW DD FORM 2261
             </button>
           </div>
           <div class="right-side-document" v-if="this.currentFormIndex != ''" @click="$event.stopPropagation()">
@@ -552,6 +559,8 @@
         situationFourPartFour: false,
         situationFivePartOne: false,
         situationFivePartTwo: false,
+        sit5InsideBill: false,
+        sit5TruckBill: false,
         formKey: 0,
         form2261Back: false,
         form3854Back: false,
@@ -707,9 +716,11 @@
       createSit5Form(){
         if(this.pageNum == 9){
           this.items[8].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.sit5InsideBill = true;
         }
         else{
           this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.sit5TruckBill = true;
         }
       },
       createSit6Form(){
