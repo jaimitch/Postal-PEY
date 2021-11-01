@@ -1285,7 +1285,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [require(`../assets/${imageCode}.svg`),],
+            images: [],
             currentImageIndex: 0,
             stampCounter: false,
             formInputs: {},
@@ -1293,6 +1293,18 @@
             droppable: true,
             gradeAt: gradeAt,
             created: created,
+          }
+          if(newItem.articleCode == "43000277"){
+            newItem.images.push(require(`../assets/Bag-1.svg`))
+          }
+          if(newItem.articleCode == "70948511"){
+            newItem.images.push(require(`../assets/Bag-2.svg`))
+          }
+          if(newItem.articleCode == "70948511"){
+            newItem.images.push(require(`../assets/Bag-2.svg`))
+          }
+          if(newItem.articleCode == "62345678"){
+            newItem.images.push(require(`../assets/Bag-3-33.svg`))
           }
           //checking to see if the user has used all existing seals
           if(newItem.articleCode != undefined) {
