@@ -717,6 +717,11 @@
       createSit5Form(){
         if(this.pageNum == 9){
           this.items[8].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.items[8].collapsed = false
+        }
+        else{
+          this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.items[9].collapsed = false
           this.sit5InsideBill = true;
         }
         else{
@@ -726,6 +731,7 @@
       },
       createSit6Form(){
         this.items[2].children.push(this.createItem('ddform2261', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        this.items[2].collapsed = false
         this.sit62261 = true;
       },
       createOutForm(evt, item, type){
