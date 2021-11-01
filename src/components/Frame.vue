@@ -191,7 +191,7 @@
             </button>
             </div>
           </div>
-          <div class= "form-creation" v-if="getSituationNumber == 6">
+          <div class= "form-creation" style="position:relative; width:25vw; bottom:8vw; left:1vw;" v-if="getSituationNumber == 6 && !this.sit62261">
             <button class="creation-button" @click="createSit6Form()">
               CREATE NEW DD FORM 2261
             </button>
@@ -561,6 +561,7 @@
         situationFivePartTwo: false,
         sit5InsideBill: false,
         sit5TruckBill: false,
+        sit62261: false,
         formKey: 0,
         form2261Back: false,
         form3854Back: false,
@@ -725,6 +726,7 @@
       },
       createSit6Form(){
         this.items[2].children.push(this.createItem('ddform2261', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        this.sit62261 = true;
       },
       createOutForm(evt, item, type){
         console.log(this.items[this.getItemIndex(this.findParent(item.id))])
