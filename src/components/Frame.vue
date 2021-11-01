@@ -710,7 +710,7 @@
       },
       //returns items from items array that contain the current situation in their gradeAt array
       getGradingItemList() {
-        return this.items.filter(x => x.gradeAt.includes(this.getSituationNumber))
+        return this.items.filter(x => x.gradeAt.includes(this.getSituationNumber)) 
       },
     },
     methods: {
