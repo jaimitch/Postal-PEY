@@ -767,8 +767,13 @@
       },
       //"stamp items"
       stampItem(evt, item) {
-        item.currentImageIndex = 1
-        item.stampCounter = true;
+        item.stampCounter = !item.stampCounter;
+        if(item.stampCounter == true){
+          item.currentImageIndex = 1
+        }
+        else{
+          item.currentImageIndex = 0
+        }
         evt.stopPropagation()
       },
       onDrop (evt, destination) {
@@ -1286,7 +1291,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [require(`../assets/${imageCode}.svg`),],
+            images: [],
             currentImageIndex: 0,
             stampCounter: false,
             formInputs: {},
@@ -1294,6 +1299,18 @@
             droppable: true,
             gradeAt: gradeAt,
             created: created,
+          }
+          if(newItem.articleCode == "43000277"){
+            newItem.images.push(require(`../assets/Bag-1.svg`))
+          }
+          if(newItem.articleCode == "70948511"){
+            newItem.images.push(require(`../assets/Bag-2.svg`))
+          }
+          if(newItem.articleCode == "70948511"){
+            newItem.images.push(require(`../assets/Bag-2.svg`))
+          }
+          if(newItem.articleCode == "62345678"){
+            newItem.images.push(require(`../assets/Bag-3-33.svg`))
           }
           //checking to see if the user has used all existing seals
           if(newItem.articleCode != undefined) {
