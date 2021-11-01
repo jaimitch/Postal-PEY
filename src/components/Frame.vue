@@ -725,7 +725,8 @@
         }
       },
       createSit6Form(){
-        this.items[2].children.push(this.createItem('ddform2261', '', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        let today = this.getYYYYMMDD(0)
+        this.items[2].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
         this.sit62261 = true;
       },
       createOutForm(evt, item, type){
@@ -1700,19 +1701,23 @@
         var d = new Date();
         var mm = d.getMonth() + 1;
         var dd = d.getDate()
-        if(dd != 1){
+
+        if(dd + offset > 0){
           dd = dd + offset
         }
+        //offset moved into a different month
+        //we will assume it's the previous month since we auto set the first 2261 to yesterday, but never set a 2261 in the future
         else{
           mm = d.getMonth()
           dd = new Date(d.getFullYear(), d.getMonth()-2, 0).getDate()
         }
+        
         return [d.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
          ].join('-');
       },
-      //gets the nearest time and sets in in the answer key
+      //gets the nearest time and sets it in the answer key
       getNearestTime(){
         let currentTime
         this.answerKey.answers.forEach(obj => {
