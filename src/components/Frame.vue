@@ -67,7 +67,7 @@
                 >
                   <div class="child-content">
                     <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
-                    <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
+                    <img v-else-if="items[child].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon child-parcel">
                     <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
                     <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
@@ -100,7 +100,7 @@
                 
                       <div class="grand-child-content">
                         <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                        <img v-else-if="items[grandchild].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                        <img v-else-if="items[grandchild].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
                         <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
                         <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
@@ -127,7 +127,7 @@
                 
                         <div class="grand-child-content">
                           <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                          <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                          <img v-else-if="items[greatgrand].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
                           <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
                           <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
@@ -154,7 +154,7 @@
                 
                           <div class="grand-child-content">
                             <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                            <img v-else-if="items[greatgreat].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                            <img v-else-if="items[greatgreat].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
                             <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
                             <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
@@ -777,7 +777,7 @@
         if(this.items[this.getItemIndex(destination)].level < 5){
           if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
             if(this.items[this.getItemIndex(destination)].type != "Letter"){
-              if(this.items[this.getItemIndex(destination)].type != "Package"){
+              if(this.items[this.getItemIndex(destination)].type != "Parcel"){
                 if(this.isDroppable(destination)){
                   if(draggedID != destination){
                     if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
@@ -1253,7 +1253,7 @@
             this.items[1].children.push(newItem.id)
           }
         }
-        else if(itemType == "package") {
+        else if(itemType == "parcel") {
           newItem = {
             id: this.idCounter,
             articleCode: articleCode,
@@ -1264,7 +1264,7 @@
             currentImageIndex: 0,
             stampCounter: false,
             formInputs: {},
-            type: "Package",
+            type: "Parcel",
             droppable: true,
             showImage: false,
             gradeAt: gradeAt,
@@ -1363,8 +1363,8 @@
         // console.log("gradeItem got:", item)
         let itemType = item.type;
         switch(itemType) {
-            case "Package": {
-              console.log("Its a package")
+            case "Parcel": {
+              console.log("Its a parcel")
               let errors = this.checkItemLocation(item, keyItem);
               if(item.stampCounter != true) {
                 errors++;
@@ -1806,16 +1806,14 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
-            let package1 = this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
+            let parcel1 = this.createItem('parcel', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
             let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
-            package1 = this.findItemByID(package1)[0]
+            parcel1 = this.findItemByID(parcel1)[0]
             letter1 = this.findItemByID(letter1)[0]
-            package1 = this.getItemByArticleCode(package1.articleCode)
+            parcel1 = this.getItemByArticleCode(parcel1.articleCode)
             letter1 = this.getItemByArticleCode(letter1.articleCode)
-            this.items[package1].stampCounter = true;
+            this.items[parcel1].stampCounter = true;
             this.items[letter1].stampCounter = true;
-            //console.log(this.items[package1])
-            //console.log(this.items[letter1])
           }
           this.situationOneInit = true;
         }
@@ -1849,9 +1847,9 @@
             this.assignItemToParent('Truck 1', form1)
             let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2], false)
             this.assignItemToParent('Bill #260', item1)
-            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
+            let item2 = this.createItem('parcel', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item2)
-            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
+            let item3 = this.createItem('parcel', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item3)
             //console.log(this.items)
 
@@ -1945,7 +1943,7 @@
             this.assignItemToParent('Truck 2', form1)
             let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4], false)
             this.assignItemToParent('Bill #30', item1)
-            let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
+            let item2 = this.createItem('parcel', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
             this.assignItemToParent('Bill #30', item2)
             //30-33
             this.situationFourPartOne = true;
@@ -1988,11 +1986,11 @@
             this.assignItemToParent('SEAL #43000277', item3)
             let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
+            let item5 = this.createItem('parcel', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item5)
             let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
+            let item7 = this.createItem('parcel', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
@@ -2083,7 +2081,7 @@
             this.assignItemToParent('Truck 4', form1)
             let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item1)
-            let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
+            let item2 = this.createItem('parcel', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item2)
             let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item3)
@@ -2091,7 +2089,7 @@
             this.assignItemToParent('Bill #33', item4)
             let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item5)
-            let item6 = this.createItem('package', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4, 5], false)
+            let item6 = this.createItem('parcel', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item6)
             let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item7)
