@@ -605,7 +605,7 @@
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
           //Situation 2 Part 1
-          text = "1. Terry Jones, the mail guard, arrives at the registry section on the incoming truck from the AMT \
+          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section on the incoming truck from the AMT \
           with one registered pouch and two registered outside pieces (OSP's).\
           <br><br>\
           APDS all OSPs. Ensure the correctness of the incoming truck bill and sign. Then move the PS Form 3854 form into \
@@ -624,13 +624,14 @@
         else if(this.pageNum == 4) {
           //Situation 3
           text = `<div>Deliver the following mail using the appropriate PS Forms. Create a PS Form 3849 for each personal \
-          article and or a PS Form 3883 for each official article, then attach the form to its article. 
+          article and or a PS Form 3883 for each official article, then attach the article to its form. Each form and its attached article go into the outgoing truck.</div><br>\
+          RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
           <br><br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
           <tr><th>13th EOC</th><th>101</th><th>JOHN THOMPSON</th></tr>\
-          <tr><th>11th ENGR DET</th><th>182</th><th>RONNIE CARTER</th></tr>\
+          <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
           <tr><th>45TH MP CO</th><th>195</th><th>JERRY JOHNSON</th></tr></table><div>`
 
         }
@@ -655,7 +656,7 @@
         else if(this.pageNum == 8) {
           text = "4. NOTE: Incoming Truck 5 should be Incoming Transfer Bill 5\
           <br><br>\
-          Turner, who works at the finance window, comes to the registry section with the items listed on the transfer \
+          SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer \
           bill. APDS all items, and ensure correctness of the transfer bill (PS Form 3877). Sign the bill and move to Forms \
           & Pouches, move all mail items to Safe."
         }
@@ -772,7 +773,7 @@
         if(this.items[this.getItemIndex(destination)].level < 5){
           if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
             if(this.items[this.getItemIndex(destination)].type != "Letter"){
-              if(this.items[this.getItemIndex(destination)].type != "Parcel"){
+              if(this.items[this.getItemIndex(destination)].type != "Package"){
                 if(this.isDroppable(destination)){
                   if(draggedID != destination){
                     if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
@@ -1245,7 +1246,7 @@
             this.items[1].children.push(newItem.id)
           }
         }
-        else if(itemType == "parcel") {
+        else if(itemType == "package") {
           newItem = {
             id: this.idCounter,
             articleCode: articleCode,
@@ -1256,7 +1257,7 @@
             currentImageIndex: 0,
             stampCounter: false,
             formInputs: {},
-            type: "Parcel",
+            type: "Package",
             droppable: true,
             showImage: false,
             gradeAt: gradeAt,
@@ -1352,8 +1353,8 @@
         // console.log("gradeItem got:", item)
         let itemType = item.type;
         switch(itemType) {
-            case "Parcel": {
-              console.log("Its a parcel")
+            case "Package": {
+              console.log("Its a package")
               let errors = this.checkItemLocation(item, keyItem);
               if(item.stampCounter != true) {
                 errors++;
@@ -1795,13 +1796,13 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
-            let parcel1 = this.createItem('parcel', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
+            let package1 = this.createItem('package', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
             let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
-            parcel1 = this.findItemByID(parcel1)[0]
+            package1 = this.findItemByID(package1)[0]
             letter1 = this.findItemByID(letter1)[0]
-            parcel1 = this.getItemByArticleCode(parcel1.articleCode)
+            package1 = this.getItemByArticleCode(package1.articleCode)
             letter1 = this.getItemByArticleCode(letter1.articleCode)
-            this.items[parcel1].stampCounter = true;
+            this.items[package1].stampCounter = true;
             this.items[letter1].stampCounter = true;
             //console.log(this.items[package1])
             //console.log(this.items[letter1])
@@ -1838,9 +1839,9 @@
             this.assignItemToParent('Truck 1', form1)
             let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2], false)
             this.assignItemToParent('Bill #260', item1)
-            let item2 = this.createItem('parcel', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
+            let item2 = this.createItem('package', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item2)
-            let item3 = this.createItem('parcel', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
+            let item3 = this.createItem('package', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item3)
             //console.log(this.items)
 
@@ -1934,7 +1935,7 @@
             this.assignItemToParent('Truck 2', form1)
             let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4], false)
             this.assignItemToParent('Bill #30', item1)
-            let item2 = this.createItem('parcel', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
+            let item2 = this.createItem('package', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
             this.assignItemToParent('Bill #30', item2)
             //30-33
             this.situationFourPartOne = true;
@@ -1977,11 +1978,11 @@
             this.assignItemToParent('SEAL #43000277', item3)
             let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item4)
-            let item5 = this.createItem('parcel', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
+            let item5 = this.createItem('package', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item5)
             let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item6)
-            let item7 = this.createItem('parcel', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
+            let item7 = this.createItem('package', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
@@ -2072,7 +2073,7 @@
             this.assignItemToParent('Truck 4', form1)
             let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item1)
-            let item2 = this.createItem('parcel', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
+            let item2 = this.createItem('package', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item2)
             let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item3)
@@ -2080,7 +2081,7 @@
             this.assignItemToParent('Bill #33', item4)
             let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item5)
-            let item6 = this.createItem('parcel', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4, 5], false)
+            let item6 = this.createItem('package', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item6)
             let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item7)

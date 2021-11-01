@@ -49,7 +49,7 @@
                         <b>About the missed delivery:</b><br>
                         It was a:<br>
                     </div>
-                    <input type="checkbox" v-model="formData.pack">Parcel <input type="checkbox" v-model="formData.letter">Letter 
+                    <input type="checkbox" v-model="formData.pack">Package <input type="checkbox" v-model="formData.letter">Letter 
                     <input type="checkbox" v-model="formData.largeEnvelope">Large envelope<br>
                     <div class="text">
                         <input type="checkbox" v-model="formData.parcelLockEligible">Parcel Locker Eligible <br>
