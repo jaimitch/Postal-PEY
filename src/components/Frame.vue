@@ -59,7 +59,7 @@
                 <div 
                   class='child-level' 
                   v-for='child in getChildrenIndexes(item.id)' 
-                  :key='child'
+                  :key='child' 
                   :draggable ='true'
                   @dragstart='startDrag($event, items[child])'
                   @drop="onDrop($event,items[child].id)"
@@ -716,17 +716,24 @@
     methods: {
       createSit5Form(){
         if(this.pageNum == 9){
-          this.items[8].children.push(this.createItem('psform3854', '129', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.items[8].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.items[8].collapsed = false
           this.sit5InsideBill = true;
         }
         else{
-          this.items[9].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
           this.sit5TruckBill = true;
+          this.items[9].collapsed = false
         }
       },
       createSit6Form(){
+<<<<<<< HEAD
+        this.items[2].children.push(this.createItem('ddform2261', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        this.items[2].collapsed = false
+=======
         let today = this.getYYYYMMDD(0)
         this.items[2].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+>>>>>>> 206b83df25be56c30738a18e4a98f495934f62d7
         this.sit62261 = true;
       },
       createOutForm(evt, item, type){
@@ -763,6 +770,7 @@
       },
       //"stamp items"
       stampItem(evt, item) {
+        item.currentImageIndex = 1
         item.stampCounter = true;
         evt.stopPropagation()
       },
@@ -1232,7 +1240,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [require(`../assets/${imageCode}.svg`),],
+            images: [require(`../assets/${imageCode}.svg`),require(`../assets/S-${imageCode}.svg`)],
             currentImageIndex: 0,
             stampCounter: false,
             formInputs: {},
@@ -1240,6 +1248,9 @@
             droppable: true,
             gradeAt: gradeAt,
             created: created,
+          }
+          if(imageCode == "790"){
+            newItem.currentImageIndex = 1
           }
           this.items.push(newItem);
           if(defaultCreate) {
@@ -1253,7 +1264,7 @@
             situationNumber: 'Situation ' + situationNumber,
             children: [],
             level: level,
-            images: [require(`../assets/${imageCode}.svg`),],
+            images: [require(`../assets/${imageCode}.svg`),require(`../assets/S-${imageCode}.svg`)],
             currentImageIndex: 0,
             stampCounter: false,
             formInputs: {},
@@ -1262,6 +1273,9 @@
             showImage: false,
             gradeAt: gradeAt,
             created: created,
+          }
+          if(imageCode == "331"){
+            newItem.currentImageIndex = 1
           }
           this.items.push(newItem);
           if(defaultCreate) {
