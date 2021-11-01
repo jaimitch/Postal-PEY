@@ -112,6 +112,7 @@
                       </div>
 
                       <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+
                       <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
                         <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
                       </div>
@@ -517,7 +518,7 @@
           },
           {
             id: 10,
-            title: "situation4part4truck",
+            title: "Incoming Truck",
             articleCode: "Truck 4",
             children: [],
             level: 0,
