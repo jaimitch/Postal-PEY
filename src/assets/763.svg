@@ -1,48 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1958.32 1016.03" style="enable-background:new 0 0 1958.32 1016.03;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#F7F7F7;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
 	.st1{fill:#878787;}
-	.st2{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-	.st3{fill:#F7F7F7;}
-	.st4{fill:#FFFFFF;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
-	.st5{fill:#F7F7F7;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
-	.st6{fill:#FFFFFF;}
-	.st7{font-family:'Arial-BoldMT';}
-	.st8{font-size:48px;}
-	.st9{font-size:18px;}
-	.st10{font-size:31.1591px;}
-	.st11{font-size:12.4511px;}
-	.st12{font-size:36.3015px;}
-	.st13{font-size:24px;}
-	.st14{font-size:22px;}
+	.st2{font-family:'Arial-BoldMT';}
+	.st3{font-size:48px;}
+	.st4{font-size:18px;}
+	.st5{font-size:31.1591px;}
+	.st6{font-size:12.4511px;}
+	.st7{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st8{font-size:36.3015px;}
+	.st9{font-size:24px;}
+	.st10{font-size:22px;}
+	.st11{fill:#F7F7F7;}
+	.st12{fill:#FFFFFF;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+	.st13{fill:#F7F7F7;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+	.st14{fill:#FFFFFF;}
 	.st15{font-family:'Arial-BoldItalicMT';}
 	.st16{font-size:35.9282px;}
 	.st17{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
-	.st18{fill:#282828;}
-	.st19{fill:none;}
-	.st20{fill:#A35625;stroke:#282828;stroke-miterlimit:10;}
-	.st21{fill:#515251;}
-	.st22{fill:#ED7725;stroke:#000000;stroke-miterlimit:10;}
-	.st23{fill:#A09F9F;stroke:#282828;stroke-width:0.75;stroke-miterlimit:10;}
-	.st24{fill:#D8D8D8;}
-	.st25{fill:#7F4D1F;stroke:#282828;stroke-miterlimit:10;}
-	.st26{fill:#4A494A;stroke:#282828;stroke-miterlimit:10;}
-	.st27{fill:#FFFFFF;stroke:#282828;stroke-miterlimit:10;}
-	.st28{fill:#E8E8E8;stroke:#282828;stroke-width:0.75;stroke-miterlimit:10;}
-	.st29{fill:#B7B7B7;stroke:#282828;stroke-miterlimit:10;}
-	.st30{fill:none;stroke:#000000;stroke-miterlimit:10;}
-	.st31{fill:#A35625;}
-	.st32{fill:#828282;}
-	.st33{fill:none;stroke:#606161;stroke-width:2;stroke-miterlimit:10;}
+	.st18{fill:#F7F8F8;stroke:#010101;stroke-width:2;stroke-miterlimit:10;}
+	.st19{fill:none;stroke:#010101;stroke-width:2;stroke-miterlimit:10;}
+	.st20{fill:#010101;}
+	.st21{fill:#F7F8F8;}
+	.st22{fill:#FFFFFF;stroke:#010101;stroke-width:3;stroke-miterlimit:10;}
+	.st23{fill:#F7F8F8;stroke:#010101;stroke-width:3;stroke-miterlimit:10;}
+	.st24{clip-path:url(#SVGID_00000018227363223912652800000006839732776835919245_);fill:#010101;}
+	.st25{clip-path:url(#SVGID_00000058580341894631818070000010033612645285332404_);fill:#FFFFFF;}
 </style>
 <rect x="6.26" y="78.82" class="st0" width="1838.29" height="933.78"/>
 <path class="st1" d="M1376.81,198.41h438.39c7.4,0,13.39-6,13.39-13.39v-81.26c0-7.4-6-13.39-13.39-13.39h-438.39
 	c-7.4,0-13.39,6-13.39,13.39v81.26C1363.42,192.41,1369.41,198.41,1376.81,198.41z"/>
-<text transform="matrix(1 0 0 1 63.9403 164.5744)"><tspan x="0" y="0" class="st7 st8">COMMANDER</tspan><tspan x="0" y="57.6" class="st7 st8">7th BASE SPT BN</tspan><tspan x="0" y="115.2" class="st7 st8">Ft. Lewis, WA 98433</tspan></text>
-<text transform="matrix(1 0 0 1 1028.0175 622.2248)"><tspan x="0" y="0" class="st7 st8">COMMANDER</tspan><tspan x="0" y="57.6" class="st7 st8">13th EOC</tspan><tspan x="0" y="115.2" class="st7 st8">Unit 12000, Box 25</tspan><tspan x="0" y="172.8" class="st7 st8">APO AE 09459</tspan></text>
+<text transform="matrix(1 0 0 1 63.9403 164.5744)"><tspan x="0" y="0" class="st2 st3">COMMANDER</tspan><tspan x="0" y="57.6" class="st2 st3">7th BASE SPT BN</tspan><tspan x="0" y="115.2" class="st2 st3">Ft. Lewis, WA 98433</tspan></text>
+<text transform="matrix(1 0 0 1 1028.0175 622.2248)"><tspan x="0" y="0" class="st2 st3">COMMANDER</tspan><tspan x="0" y="57.6" class="st2 st3">13th EOC</tspan><tspan x="0" y="115.2" class="st2 st3">Unit 12000, Box 25</tspan><tspan x="0" y="172.8" class="st2 st3">APO AE 09459</tspan></text>
 <g>
 	<path d="M511.68,432.68v508.05H81.96V432.68H511.68 M527.68,416.68H65.96v540.05h461.72V416.68L527.68,416.68z"/>
 </g>
@@ -67,8 +59,8 @@
 <g>
 	<polygon points="520.25,907.68 71.45,907.68 71.45,911.67 520.25,911.67 520.25,907.68 	"/>
 </g>
-<text transform="matrix(1 0 0 1 82.2324 554.5598)" class="st7 st9">FROM</text>
-<text transform="matrix(1 0 0 1 224.5232 644.9407)" class="st7 st10">ROUTING</text>
+<text transform="matrix(1 0 0 1 82.2324 554.5598)" class="st2 st4">FROM</text>
+<text transform="matrix(1 0 0 1 224.5232 644.9407)" class="st2 st5">ROUTING</text>
 <g>
 	<g>
 		<path d="M119.01,471.72h-0.88c-7.02-0.05-8.58-1.77-10.24-4.99c-1.04-2.08-2.24-5.25-3.12-7.54c-0.68-1.72-1.2-2.5-2.76-2.5h-1.46
@@ -150,14 +142,14 @@
 		</g>
 	</g>
 </g>
-<text transform="matrix(1 0 0 1 171.8593 924.9582)" class="st7 st11">*US GOVERNMENT PRINTING OFFICE IRS 470 223</text>
-<rect x="564.93" y="416.68" class="st2" width="335.2" height="583.31"/>
-<text transform="matrix(1 0 0 1 647.8253 471.3039)" class="st7 st12">U.S. MAIL</text>
-<text transform="matrix(1 0 0 1 637.8322 509.7853)" class="st7 st13">PS LABEL 136-E</text>
-<text transform="matrix(1 0 0 1 657.8361 537.7385)" class="st7 st13">MARCH 1972</text>
-<text transform="matrix(1 0 0 1 580.639 594.7463)" class="st7 st13">DESTINATION</text>
-<text transform="matrix(1 0 0 1 737.6276 885.6183)" class="st7 st14">VIA</text>
-<text transform="matrix(1 0 0 1 581.2484 841.7033)" class="st7 st13">WEIGHT</text>
+<text transform="matrix(1 0 0 1 171.8593 924.9582)" class="st2 st6">*US GOVERNMENT PRINTING OFFICE IRS 470 223</text>
+<rect x="564.93" y="416.68" class="st7" width="335.2" height="583.31"/>
+<text transform="matrix(1 0 0 1 647.8253 471.3039)" class="st2 st8">U.S. MAIL</text>
+<text transform="matrix(1 0 0 1 637.8322 509.7853)" class="st2 st9">PS LABEL 136-E</text>
+<text transform="matrix(1 0 0 1 657.8361 537.7385)" class="st2 st9">MARCH 1972</text>
+<text transform="matrix(1 0 0 1 580.639 594.7463)" class="st2 st9">DESTINATION</text>
+<text transform="matrix(1 0 0 1 737.6276 885.6183)" class="st2 st10">VIA</text>
+<text transform="matrix(1 0 0 1 581.2484 841.7033)" class="st2 st9">WEIGHT</text>
 <g>
 	<g>
 		<path d="M704.97,672.07c-0.46,2.45-2.05,8.49-2.57,10.03h-28.28v-2.11c5.02-0.34,5.47-0.74,5.47-5.53v-21.72
@@ -263,12 +255,12 @@
 	</g>
 </g>
 <polygon points="831.58,902.94 857.14,868.3 806.01,868.3 "/>
-<polyline class="st2" points="719.67,839.23 719.67,848.1 888.82,848.1 888.82,839.23 "/>
-<rect x="888.82" y="784.73" class="st3" width="36.58" height="54.51"/>
-<polygon class="st4" points="6.04,78.92 149.83,2.87 1953.54,2.87 1844.33,78.92 "/>
-<polygon class="st4" points="1844.33,1012.7 1953.54,915.98 1953.54,2.87 1844.33,78.92 "/>
-<polyline class="st5" points="1844.33,78.92 1898.93,145.36 1898.93,864.41 1844.33,1012.7 "/>
-<polyline class="st5" points="1953.54,2.87 1898.93,145.36 1898.93,864.41 1953.54,915.98 "/>
+<polyline class="st7" points="719.67,839.23 719.67,848.1 888.82,848.1 888.82,839.23 "/>
+<rect x="888.82" y="784.73" class="st11" width="36.58" height="54.51"/>
+<polygon class="st12" points="6.04,78.92 149.83,2.87 1953.54,2.87 1844.33,78.92 "/>
+<polygon class="st12" points="1844.33,1012.7 1953.54,915.98 1953.54,2.87 1844.33,78.92 "/>
+<polyline class="st13" points="1844.33,78.92 1898.93,145.36 1898.93,864.41 1844.33,1012.7 "/>
+<polyline class="st13" points="1953.54,2.87 1898.93,145.36 1898.93,864.41 1953.54,915.98 "/>
 <g>
 	
 		<image style="overflow:visible;" width="312" height="162" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAACiCAYAAADV9dH7AAAgAElEQVR4AXS8939UZdvu7f+xf373
@@ -2003,7 +1995,7 @@ bitsow5amrzYAs1o36rvgY0z3hPf4KPyszmNokMAXNZoNGs7iI7t9+rHvt+p3xvzqu3Bvl0Xj/b9
 37SfD5jv6ffpfTw5/5UtDj7y1fZn1//VeR71+8wnH93n7c+u/1/f7/t4VD6rn79pwG0VolJEgAAA
 AABJRU5ErkJggg==" transform="matrix(1.9185 0 0 1.9185 634.3969 89.385)">
 	</image>
-	<rect x="738.04" y="323.08" class="st6" width="391.28" height="37.43"/>
+	<rect x="738.04" y="323.08" class="st14" width="391.28" height="37.43"/>
 </g>
 <text transform="matrix(1 0 0 1 779.2123 355.4239)" class="st15 st16">RB 102 022 763 US</text>
 </svg>
