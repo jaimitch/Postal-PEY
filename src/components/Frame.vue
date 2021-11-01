@@ -769,6 +769,7 @@
                       if(this.items[this.getItemIndex(destination)].level == 1){
                         this.items[this.getItemIndex(destination)].collapsed = false
                       }
+                      this.toggleItemImage(this.items[this.getItemIndex(draggedID)])
                     }
                   }
                 }
