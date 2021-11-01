@@ -717,12 +717,12 @@
     methods: {
       createSit5Form(){
         if(this.pageNum == 9){
-          this.items[8].children.push(this.createItem('psform3854', 129, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
+          this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.items[8].collapsed = false
           this.sit5InsideBill = true;
         }
         else{
-          this.items[9].children.push(this.createItem('psform3854', 144, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
+          this.items[9].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.sit5TruckBill = true;
           this.items[9].collapsed = false
         }
