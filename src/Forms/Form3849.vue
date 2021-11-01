@@ -252,10 +252,7 @@
         },
         methods:{
             changeForm() {
-                if(this.item.userCreated == true){
-                    // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.formData.sentTo
-                }
+                this.formData.articleCode = this.formData.sentTo
                 this.$emit('changeForm', this.formData)
             }
         },

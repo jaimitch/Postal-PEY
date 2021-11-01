@@ -237,16 +237,11 @@
         },
         methods:{
             changeForm() {
-                if(this.item.userCreated == true){
-                    console.log("hit created", this.formData.articleCode)
-                    // this.item.articleCode = this.sigOfAgent
-                    if(this.item.formInputs.articleCode != "" && !this.item.formInputs.articleCode.includes("created")) {
-                        this.formData.articleCode = "Bill #" + this.formData.bill
-                    }
-                    else {
-                        this.formData.articleCode = this.formData.bill
-                    }
-                    
+                if(this.item.formInputs.articleCode != "" && !this.item.formInputs.articleCode.includes("created")) {
+                    this.formData.articleCode = "Bill #" + this.formData.bill
+                }
+                else {
+                    this.formData.articleCode = this.formData.bill
                 }
                 this.formData.billNo = this.formData.address + this.formData.bill
                 this.$emit('changeForm', this.formData)
