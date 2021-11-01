@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- <ToolTip/> -->
+
     <Error 
       v-bind:showError="showError"
       v-bind:problemItems="problemItems"
@@ -288,6 +290,7 @@
   import Error from '../components/Error.vue'
   import Delete from '../components/Delete.vue'
   import SectionCompleted from '../components/SectionCompleted.vue'
+  import ToolTip from '../components/ToolTip.vue'
   export default {
     name: 'Frame',
     components: {
@@ -301,7 +304,8 @@
       Form3854Back,
       Error,
       Delete,
-      SectionCompleted
+      SectionCompleted,
+      ToolTip,
     },
     props: [
       'pageNum',
@@ -599,9 +603,9 @@
         //Sitution 1
         if(this.pageNum ==  1) {
           //Situation 1
-          text = "You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry \
+          text = `You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry \
           section and verified the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B)."
+          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B).`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
@@ -2208,7 +2212,7 @@
 </script>
 
 <style scoped>
-  
+
 
   .frame{
     position: relative;
