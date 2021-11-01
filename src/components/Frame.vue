@@ -1621,7 +1621,7 @@
                     }
                   }
               }
-              else if(property == "recievingClerks" || property == "select") {
+              else if(property == "recievingClerks") {
                 //If the student put nothing, but there should be something its wrong
                 if(userForm[property].length == 0 && keyForm[property].length > 0) {
                   errors+= keyForm[property].length;
@@ -1630,6 +1630,22 @@
                   //Make sure all entries are correct
                   let keyItems = keyForm.recievingClerks;
                   let userItems = userForm.recievingClerks;
+                  for(let i = 0; i < keyItems.length; i++) {
+                    if(!keyItems.includes(userItems[i])) {
+                      errors++;
+                    }
+                  }
+                }
+              }
+              else if(property == "select"){
+                //If the student put nothing, but there should be something its wrong
+                if(userForm[property].length == 0 && keyForm[property].length > 0) {
+                  errors+= keyForm[property].length;
+                }
+                else {
+                  //Make sure all entries are correct
+                  let keyItems = keyForm.select;
+                  let userItems = userForm.select;
                   for(let i = 0; i < keyItems.length; i++) {
                     if(!keyItems.includes(userItems[i])) {
                       errors++;
