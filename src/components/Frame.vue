@@ -766,6 +766,9 @@
                       this.removeItemOnDrop(draggedID,prevParentID)
                       this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
                       this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+                      if(this.items[this.getItemIndex(destination)].level == 1){
+                        this.items[this.getItemIndex(destination)].collapsed = false
+                      }
                     }
                   }
                 }
