@@ -766,8 +766,13 @@
       },
       //"stamp items"
       stampItem(evt, item) {
-        item.currentImageIndex = 1
-        item.stampCounter = true;
+        item.stampCounter = !item.stampCounter;
+        if(item.stampCounter == true){
+          item.currentImageIndex = 1
+        }
+        else{
+          item.currentImageIndex = 0
+        }
         evt.stopPropagation()
       },
       onDrop (evt, destination) {
