@@ -192,7 +192,7 @@
        </div>
        <div class="stamp-area">
            <b>Postmark - Delivery Office</b>
-           <input type="checkbox" v-model="formData.stamped">
+           <input type="checkbox" name='stamped' id='stamped' v-model="formData.stamped"><label for='stamped'></label>
        </div>
        <div class="bottom-text">
            PS Form 3883, November 1999
@@ -529,12 +529,31 @@
         height: 17%;
         border-bottom: 1px solid black;
     }
-    .stamp-area input{
-        position: absolute;
+    
+     .stamp-area input[type=checkbox]{
+        display: none;
+    }
+    .stamp-area input[type=checkbox] + label{
+        position:absolute;
+        background: transparent;
         top:7%;
         left:20%;
         width: 80%;
         height: 80%;
+        display:inline-block;
+        z-index: 5;
+        padding: 0 0 0 0px;
+    }
+    .stamp-area input[type=checkbox]:checked + label{
+        position: absolute;
+        background: url('../assets/Stamp-Back.svg');
+        top:15%;
+        left:35%;
+        width: 85px;
+        height: 85px;
+        z-index: 5;
+        /* display:inline-block; */
+        /* padding: 0 0 0 0px; */
     }
     .sig-area-top{
         position: absolute;

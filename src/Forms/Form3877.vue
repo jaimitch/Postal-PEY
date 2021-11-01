@@ -62,7 +62,7 @@
                 (for additional copies of this receipt).<br>
                 Postmark with Date of Receipt.
             </div>
-            <input type="checkbox" v-model="formData.stamped">
+            <input type="checkbox" name='stamped' id='stamped' v-model="formData.stamped"><label for='stamped'></label>
         </div>
         
         <div class="tracking-area">
@@ -344,10 +344,29 @@
         border-left: none;
         border-right: none;
     }
-    .stamp-area input{
-        position: absolute;
+    .stamp-area input[type=checkbox]{
+        display: none;
+    }
+    .stamp-area input[type=checkbox] + label{
+        position:absolute;
+        top: 5%;
+        border:1px solid black;
         height: 80%;
         width: 25%;
+        display:inline-block;
+        z-index: 5;
+        padding: 0 0 0 0px;
+    }
+    .stamp-area input[type=checkbox]:checked + label{
+        position: absolute;
+        border: none;
+        top: 5%;
+        background: url('../assets/Stamp-Back.svg');
+        height: 80%;
+        width: 25%;
+        z-index: 5;
+        /* display:inline-block; */
+        /* padding: 0 0 0 0px; */
     }
     .tracking-area{
         position: absolute;
@@ -652,4 +671,5 @@
         transform: scale(5); 
         background-color: white;
     }
+    
 </style>

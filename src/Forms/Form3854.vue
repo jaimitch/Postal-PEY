@@ -3,14 +3,14 @@
         <div class="top-stamp1">
             <div class="stamp-inner">
                 <p class="top-text">Postmark of</p>
-                <input type="checkbox" v-model="formData.topStamp1">
+                <input type="checkbox" name='top1' id='top1' v-model="formData.topStamp1"><label for='top1'></label>
                 <p class="bottom-text">Dispatching Office</p>
             </div>
         </div>
         <div class="right-area">
             <div class="stamp3-inner">
                 <p class="top-text">Postmark of</p>
-                <input type="checkbox" v-model="formData.topStamp2">
+                <input type="checkbox" name='top2' id='top2' v-model="formData.topStamp2"><label for='top2'></label>
                 <p class="bottom-text">Dispatching Office</p>
             </div>
             <div  class="right-area-content">
@@ -572,14 +572,14 @@
         <div class="bottom-stamp1">
             <div class="stamp-inner">
                 <p class="top-text">Postmark of</p>
-                <input type="checkbox" v-model="formData.bottomStamp1">
+                <input type="checkbox" name='bottom1' id='bottom1' v-model="formData.bottomStamp1"><label for='bottom1'></label>
                 <p class="bottom-text">Receiving Office</p>
             </div>
         </div>
         <div class="bottom-stamp2">
             <div class="stamp2-inner">
                 <p class="top-text">Postmark of</p>
-                <input type="checkbox" v-model="formData.bottomStamp2">
+                <input type="checkbox" name='bottom2' id='bottom2' v-model="formData.bottomStamp2"><label for='bottom2'></label>
                 <p class="bottom-text">Receiving Office</p>
             </div>
         </div>
@@ -1071,5 +1071,30 @@
         border-bottom: 1px solid black;
         font-size: 8px;
         height: 8%;
+    }
+    input[type=checkbox]{
+        display: none;
+    }
+    input[type=checkbox] + label{
+        position:absolute;
+        top:0%;
+        left:0%;
+        background: transparent;
+        height: 90px;
+        width: 90px;
+        display:inline-block;
+        z-index: 5;
+        padding: 0 0 0 0px;
+    }
+    input[type=checkbox]:checked + label{
+        position: absolute;
+        top:0%;
+        left:0%;
+        background: url('../assets/Stamp-Back.svg');
+        height: 90px;
+        width: 90px;
+        z-index: 5;
+        /* display:inline-block; */
+        /* padding: 0 0 0 0px; */
     }
 </style>
