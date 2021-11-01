@@ -1685,8 +1685,14 @@
       getYYYYMMDD(offset) {
         var d = new Date();
         var mm = d.getMonth() + 1;
-        var dd = d.getDate() + offset;
-
+        var dd = d.getDate()
+        if(dd != 1){
+          dd = dd + offset
+        }
+        else{
+          mm = d.getMonth()
+          dd = new Date(d.getFullYear(), d.getMonth()-2, 0).getDate()
+        }
         return [d.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
