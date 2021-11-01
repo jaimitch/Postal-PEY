@@ -727,13 +727,9 @@
         }
       },
       createSit6Form(){
-<<<<<<< HEAD
-        this.items[2].children.push(this.createItem('ddform2261', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
-        this.items[2].collapsed = false
-=======
         let today = this.getYYYYMMDD(0)
         this.items[2].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
->>>>>>> 206b83df25be56c30738a18e4a98f495934f62d7
+        this.items[2].collapsed = false
         this.sit62261 = true;
       },
       createOutForm(evt, item, type){
