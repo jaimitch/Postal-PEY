@@ -88,13 +88,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 35vmax;
-        height: 45vmax;
+        width: 680px;
+        height: 880px;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
         color: black;
-        font-size: 1vmin;
+        font-size: 11px;
     }
     .banner{
         position: absolute;
@@ -121,7 +121,7 @@
         height: 90%;
         border:none;
         background-color: transparent;
-        font-size: 1.2vmin;
+        font-size: 11px;
         font-family: Arial;
     }
     .bottom-text{

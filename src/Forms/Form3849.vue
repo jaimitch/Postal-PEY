@@ -15,7 +15,7 @@
                     <span>
                         <select v-model="formData.sentBy">
                             <option value="David Campbell">David Campbell</option>
-                            <option value="Thomas Inman">Thomas Inman</option>
+                            <option value="Thomas Fulton">Thomas Fulton</option>
                             <option value="Martha Gadsden">Martha Gadsden</option>
                             <option value="Green Tower Corp.">Green Tower Corp.</option>
                             <option value="George Forrest">George Forrest</option>
@@ -24,11 +24,11 @@
                     <label>It was sent to:</label> 
                     <span>
                         <select v-model="formData.sentTo">
-                            <option value="SGT Ronald Cain">SGT Ronald Cain</option>
-                            <option value="PFC Carl Thompson">PFC Carl Thompson</option>
-                            <option value="SSG Donald Green">SSG Donald Green</option>
-                            <option value="SGM Mary Fulton">SGM Mary Fulton</option>
-                            <option value="SGT Earl Smith">SGT Earl Smith</option>
+                            <option value="Ronald Cain">Ronald Cain</option>
+                            <option value="Carl Thompson">Carl Thompson</option>
+                            <option value="Donald Green">Donald Green</option>
+                            <option value="Mary Fulton">Mary Fulton</option>
+                            <option value="Earl Smith">Earl Smith</option>
                         </select>
                     </span><br>
                     <label>At this address:</label>
@@ -69,7 +69,7 @@
             <div class="schedule">
                 <b>To Schedule a Redelivery</b>
                 <div class="qr">
-
+                    <img src="../assets/qr-code.svg" width="75" height="75">
                 </div>
                 <div class="text-schedule">
                     <b>Scan the QR Code or go to usps.com/redelivery</b>
@@ -96,7 +96,19 @@
                     </div>
                     <input type="checkbox" v-model="formData.mustBe18">must be 18+ years old <input type="checkbox" v-model="formData.mustBe21">must be 21+ years old<br>
                     <div class="other-text">
-                      <input type="checkbox" v-model="formData.other"> Other: <input type="text" v-model="formData.otherText"><br>
+                      <input type="checkbox" v-model="formData.other"> Other: 
+                      <select v-model="formData.otherText">
+                          <option value="RB298302613US">RB298302613US</option>
+                          <option value="RB339065331US">RB339065331US</option>
+                          <option value="RB290770790US">RB290770790US</option>
+                          <option value="RB309266140US">RB309266140US</option>
+                          <option value="RB218344488US">RB218344488US</option>
+                          <option value="RB143899161US">RB143899161US</option>
+                          <option value="RB867092744US">RB867092744US</option>
+                          <option value="RB102022763US">RB102022763US</option>
+                      </select>
+                      
+                      <br>
                     </div>
                 </div>
                 <div class="bottom-text">
@@ -240,10 +252,7 @@
         },
         methods:{
             changeForm() {
-                if(this.item.userCreated == true){
-                    // this.item.articleCode = this.sigOfAgent
-                    this.formData.articleCode = this.formData.sentTo
-                }
+                this.formData.articleCode = this.formData.sentTo
                 this.$emit('changeForm', this.formData)
             }
         },
@@ -260,13 +269,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 35vmax;
-        height: 45vmax;
+        width: 680px;
+        height: 880px;
         border: 1px solid black;
         text-align: center;
-        background-color: rgb(255, 255, 255);
+        background-color: coral;
         color: black;
-        font-size: 1vmin;
+        font-size: 11px;
     }
     .left{
         position: absolute;
@@ -275,6 +284,7 @@
         height: 100%;
         width: 50%;
         border-right: 1px solid black;
+        background-color: coral;
     }
     .left-top{
         position: absolute;
@@ -292,6 +302,7 @@
         height: 20%;
         width: 100%;
         text-align: left;
+        background-color: coral;
     }
     .about{
         position: absolute;
@@ -316,21 +327,23 @@
     }
     .text input[type = 'text'] {
         width: 10%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
         border-left: none;
+        background-color: coral;
         border-right: none;
     }
     .other-text input[type = 'text'] {
         width: 75%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
         border-left: none;
         border-right: none;
+        background-color: coral;
     }
     .right{
         position: absolute;
@@ -352,6 +365,16 @@
     .other-text{
         text-align: left;
     }
+    .other-text select {
+        width: 75%;
+        font-size: 11px;
+        height: 1.5em;
+        line-height: 1.5em;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background-color: coral;
+    }
     .form {
         display: block;
         padding: 1em;
@@ -367,30 +390,33 @@
     }
     .missed select {
         width: 100%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
         border-left: none;
         border-right: none;
+        background-color: coral;
     }
     .missed input {
         width: 100%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
         border-left: none;
         border-right: none;
+        background-color: coral;
     }
     .about input[type="date"] {
         width: 100%;
-        font-size: 1em;
+        font-size: 11px;
         height: 1.5em;
         line-height: 1.5em;
         border-top: none;
         border-left: none;
         border-right: none;
+        background-color: coral;
     }
     .qr{
         position: relative;
@@ -399,7 +425,6 @@
         padding-bottom: 30%;
         left: 10%;
         top: 10%;
-        background-color: black;
     }
     .text-schedule{
         position: absolute;
@@ -473,6 +498,7 @@
         top:10%;
         height: 60%;
         border: none;
+        background-color: coral;
     }
     .name select{
         position: absolute;
@@ -481,6 +507,7 @@
         top:10%;
         height: 60%;
         border: none;
+        background-color: coral;
     }
     .delivery-address select{
         position: absolute;
@@ -492,5 +519,6 @@
         font-size: 1vmin;
         border: none;
         font-family: Arial;
+        background-color: coral;
     }
 </style>

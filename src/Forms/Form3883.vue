@@ -74,6 +74,7 @@
                         <option value="RB143899161US">RB143899161US</option>
                         <option value="RB867092744US">RB867092744US</option>
                         <option value="RB102022763US">RB102022763US</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -236,16 +237,11 @@
         },
         methods:{
             changeForm() {
-                if(this.item.userCreated == true){
-                    console.log("hit created", this.formData.articleCode)
-                    // this.item.articleCode = this.sigOfAgent
-                    if(this.item.formInputs.articleCode != "" && !this.item.formInputs.articleCode.includes("created")) {
-                        this.formData.articleCode = "Bill #" + this.formData.bill
-                    }
-                    else {
-                        this.formData.articleCode = this.formData.bill
-                    }
-                    
+                if(this.item.formInputs.articleCode != "" && !this.item.formInputs.articleCode.includes("created")) {
+                    this.formData.articleCode = "Bill #" + this.formData.bill
+                }
+                else {
+                    this.formData.articleCode = this.formData.bill
                 }
                 this.formData.billNo = this.formData.address + this.formData.bill
                 this.$emit('changeForm', this.formData)
@@ -264,13 +260,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 50vmax;
-        height: 36vmax;
+        width: 880px;
+        height: 680px;
         border: 1px solid black;
         text-align: center;
         background-color: white;
         color: black;
-        font-size: 1vmin;
+        font-size: 10px;
         font-family: Arial;
     }
     .top-text{
@@ -281,7 +277,7 @@
         width:90%;
         border-bottom: 1px solid black;
         text-align: left;
-        font-size:1vmax;
+        font-size:10px;
     }
     .options-area{
         position: absolute;
@@ -307,7 +303,7 @@
         width: 30%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         display: flex;
         align-items:center;
         justify-content:center;
@@ -320,7 +316,7 @@
         width: 5%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
@@ -334,7 +330,7 @@
         width: 15%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
@@ -349,7 +345,7 @@
         background-color: black;
         color: white;
         border-left: 1px solid white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         display: flex;
         align-items:center;
         justify-content:center;
@@ -362,7 +358,7 @@
         width: 5%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;
@@ -376,7 +372,7 @@
         width: 15%;
         background-color: black;
         color: white;
-        font-size: 0.7vmax;
+        font-size: 15px;
         border-left: 1px solid white;
         display: flex;
         align-items:center;

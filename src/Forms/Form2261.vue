@@ -692,6 +692,7 @@
                         <option value="WIT: Larry Brown">WIT: Larry Brown</option>
                         <option :value="studentName">{{studentName}}</option>
                         <option value="Matthew L. Long">Matthew L. Long</option>
+                        <option value="John Doe">John Doe</option>
                         <option value=""></option>
                 </select>
             </div>
@@ -741,6 +742,7 @@
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
+                    <option value=""> </option>
                 </select>
             </div>
             <div class="official-sign">
@@ -821,7 +823,7 @@
         computed:{
             remarks(){
                 let x = [
-                    "WIT: George Forrest, PFC "+this.studentName+" "+ this.studentPG ,
+                    "WIT: George Forrest, "+this.studentName+" "+ this.studentPG ,
                     "WIT: Scott Sanders",
                     "Kyle Dozier",
                     "WIT: Larry Brown",
@@ -833,10 +835,8 @@
         },
         methods:{
             changeForm() {
-                if(this.item.userCreated == true){
-                    // this.item.articleCode = this.sigOfAgen
-                    this.formData.articleCode = this.formData.to
-                }
+                // this.item.articleCode = this.sigOfAgen
+                this.formData.articleCode = this.formData.to
                 this.$emit('changeForm', this.formData)
             }
         },
@@ -853,13 +853,13 @@
 <style scoped>
     .outline{
         position: relative;
-        width: 35vmax;
-        height: 45vmax;
+        width: 680px;
+        height: 880px;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
         color: black;
-        font-size: 1vmin;
+        font-size: 11px;
     }
     .preparing-activity{
         position: absolute;
@@ -940,7 +940,7 @@
         height: 38%;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
-        font-size: 0.75vmin;
+        font-size: 10px;
         
     }
     .sectionA input{
@@ -985,7 +985,7 @@
         width: 90%;
         left: 5%;
         height: 11%;
-        font-size: 1vmin;
+        font-size: 11px;
         text-align: center;
     }
     .box1{
@@ -1088,7 +1088,7 @@
         height: 38%;
         left: 50%;
         border-bottom: 1px solid black;
-        font-size: 0.75vmin;
+        font-size: 10px;
     }
     .sectionB-banner{
         position: absolute;
@@ -1096,7 +1096,7 @@
         width: 90%;
         left: 5%;
         height: 10%;
-        font-size: 1vmin;
+        font-size: 11px;
     }
     .center-box1{
         position: absolute;
@@ -1311,7 +1311,7 @@
         width:90%;
         height: 70%;
         border:none;
-        font-size: 1vmin;
+        font-size: 10px;
     }
     .sectionC-banner{
         position: absolute;
@@ -1320,7 +1320,7 @@
         width: 100%;
         height: 10%;
         border-bottom: 1px solid black ;
-        font-size: 0.9vmin;
+        font-size: 10px;
     }
     .row1{
         position: absolute;

@@ -80,7 +80,7 @@ export default {
 .previousBtn,.nextBtn {
     width: 2.9vw;
     position: absolute;
-    bottom: 7vh;
+    bottom: 0vh;
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
@@ -103,7 +103,5 @@ export default {
 .arrow-off{
     pointer-events: none;
     background-color: grey;
-}
-.arrow{
 }
 </style>

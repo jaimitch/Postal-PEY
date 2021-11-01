@@ -17,183 +17,196 @@
       v-bind:successModalShow="successModalShow"
       @successModal="successModalShow = false"
     />
-      <div class="scroll-zone-up"
-      draggable=false
-      @dragover="onHoverUp()">
-      </div>
+    <div class="scroll-zone-up"
+    draggable=false
+    @dragover="onHoverUp()"/>
 
-      <div class="scroll-zone-down"
-      draggable=false
-      @dragover="onHoverDown()">
-      </div>
+    <div class="scroll-zone-down"
+    draggable=false
+    @dragover="onHoverDown()"/>
+    
     <div class='frame'>
       <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
-
-      <div class= "form-creation">
-        <button class="creation-button" @click="createItem(createFormType, 'created', getSituationNumber, 2, true, '', undefined, this.updateGradeAt(), true)">
-          CREATE NEW FORM
-        </button>
-        <select class="form-creation-select creation-dropdown" v-model="createFormType">
-          <option value="psform3854">PS Form 3854</option>
-          <option value="psform3877">PS Form 3877</option>
-          <option value="ddform2261">DD Form 2261</option>
-          <option value="psform3883">PS Form 3883</option>
-          <option value="psform3849">PS Form 3849</option>
-        </select>
-      </div>
-                  <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
-
+      <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
       <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
         <button class="creation-button" @click="createPouch()">
           CREATE NEW POUCH
         </button>
       </div>
 
-    <div class="left-frame">
-      <div
-        id="left-frame"
-        class='drop-zone'
-        @dragover.prevent
-        @dragenter.prevent
-      >   
-        <div 
-          class='parent-level' 
-          v-for='item in firstLevel' 
-          :key='item.title' 
-          draggable=false
-          @drop="onDrop($event,item.id)"
-          @click="changeCurrentItem($event, item.id)"
-        >
-          <span class="bold">{{ item.title }}</span>
+      <div class="left-frame">
+        <div
+          id="left-frame"
+          class='drop-zone'
+          @dragover.prevent
+          @dragenter.prevent
+        >   
           <div 
-            class='child-level' 
-            v-for='child in getChildrenIndexes(item.id)' 
-            :key='child' 
-            :draggable ='true'
-            @dragstart='startDrag($event, items[child])'
-            @drop="onDrop($event,items[child].id)"
-            @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
+            class='parent-level' 
+            v-for='item in firstLevel' 
+            :key='item.title' 
+            draggable=false
+            @drop="onDrop($event,item.id)"
+            @click="changeCurrentItem($event, item.id)"
           >
-            <div class="child-content">
-              <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
-              <img v-else-if="items[child].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon child-parcel">
-              <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
-              <img v-else src="../assets/White-form.svg" class="item-icon child-form">
-
-              <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
-
-              <div class = "child-text">
-              {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
-              </div>
-            </div>  
-            <div class="child-content item-image" v-if="items[child].images.length != 0">
-              <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp </div>
-              <img v-show="items[child].showImage" :src="itemImage(items[child])">
+            <span class="bold">{{ item.title }}</span>
+            <button v-if='item.collapsed == false || item.collapsed == undefined' class="creation-button" @click="collapseItem(item)">Close</button>
+            <button v-if='item.collapsed == true' class="creation-button" @click="collapseItem(item)">Open</button>
+             <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
+              <br><br>
             </div>
-            
-            <div 
-              class='grand-child-level' 
-              v-for='grandchild in getChildrenIndexes(items[child].id)'
-              :key='grandchild'
-              :draggable ='true'
-              @dragstart='startDrag($event, items[grandchild])'
-              @drop="onDrop($event,items[grandchild].id)"
-              @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
-            >
-            
-              <div class="grand-child-content">
-              <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-              <img v-else-if="items[grandchild].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
-              <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-              <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
-
-              <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
-
-              <div class='grand-text'>
-              {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
-              </div>
-              </div>
-
-              <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
-                <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
-                <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
-              </div>
-              <div 
-              class='great-grand-level' 
-              v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
-              :key='greatgrand'
-              :draggable ='true'
-              @dragstart='startDrag($event, items[greatgrand])'
-              @drop="onDrop($event,items[greatgrand].id)"
-              @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
-              >
-            
-                <div class="grand-child-content">
-                <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                <img v-else-if="items[greatgrand].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
-                <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-                <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
-
-                <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
-
-                <div class='great-grand-text'>
-                {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
-                </div>
-                </div>
-
-                <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
-                  <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
-                  <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
-                </div>
+            <div v-if="item.collapsed == false || item.collapsed == undefined">
                 <div 
-              class='great-grand-level' 
-              v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
-              :key='greatgreat'
-              :draggable ='true'
-              @dragstart='startDrag($event, items[greatgreat])'
-              @drop="onDrop($event,items[greatgreat].id)"
-              @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
-              >
-            
-                <div class="grand-child-content">
-                <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                <img v-else-if="items[greatgreat].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
-                <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-                <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+                  class='child-level' 
+                  v-for='child in getChildrenIndexes(item.id)' 
+                  :key='child'
+                  :draggable ='true'
+                  @dragstart='startDrag($event, items[child])'
+                  @drop="onDrop($event,items[child].id)"
+                  @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
+                >
+                  <div class="child-content">
+                    <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
+                    <img v-else-if="items[child].type == 'Package'" src="../assets/White-Box.svg" class="item-icon child-package">
+                    <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
+                    <img v-else src="../assets/White-form.svg" class="item-icon child-form">
 
-                <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
+                    <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
-                <div class='great-grand-text'>
-                {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
-                </div>
-                </div>
+                    <div class = "child-text">
+                      {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+                    </div>
+                  </div>  
+                  <div class="child-content item-image" v-if="items[child].images.length != 0">
+                    <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
+                      <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp 
+                      <div v-if="getSituationNumber == 3">
+                        <button class="button-3883" @click="createOutForm($event, items[child],'psform3883')">Create 3883</button>
+                        <button class="button-3849" @click="createOutForm($event, items[child],'psform3849')">Create 3849</button>
+                      </div>
+                    </div>
+                    
+                    <img v-show="items[child].showImage" :src="itemImage(items[child])">
+                  </div>
+                    <div 
+                      class='grand-child-level' 
+                      v-for='grandchild in getChildrenIndexes(items[child].id)'
+                      :key='grandchild'
+                      :draggable ='true'
+                      @dragstart='startDrag($event, items[grandchild])'
+                      @drop="onDrop($event,items[grandchild].id)"
+                      @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
+                    >
+                
+                      <div class="grand-child-content">
+                        <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                        <img v-else-if="items[grandchild].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                        <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                        <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
 
-                <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
-                  <div class="stamp-input" v-show="items[greatgreat].showImage"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
-                  <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
+                        <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
+
+                        <div class='grand-text'>
+                          {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+                        </div>
+                      </div>
+
+                      <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+                      <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
+                        <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
+                      </div>
+                      <div 
+                        class='great-grand-level' 
+                        v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
+                        :key='greatgrand'
+                        :draggable ='true'
+                        @dragstart='startDrag($event, items[greatgrand])'
+                        @drop="onDrop($event,items[greatgrand].id)"
+                        @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
+                      >
+                
+                        <div class="grand-child-content">
+                          <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                          <img v-else-if="items[greatgrand].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                          <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                          <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+
+                          <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
+
+                          <div class='great-grand-text'>
+                            {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                          </div>
+                        </div>
+
+                        <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                          <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
+                          <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+                        </div>
+                        <div 
+                          class='great-grand-level' 
+                          v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
+                          :key='greatgreat'
+                          :draggable ='true'
+                          @dragstart='startDrag($event, items[greatgreat])'
+                          @drop="onDrop($event,items[greatgreat].id)"
+                          @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
+                        >
+                
+                          <div class="grand-child-content">
+                            <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                            <img v-else-if="items[greatgreat].type == 'Package'" src="../assets/White-Box.svg" class="item-icon grand-package">
+                            <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                            <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+
+                            <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
+
+                            <div class='great-grand-text'>
+                              {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                            </div>
+                          </div>
+                          <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
+                            <div class="stamp-input" v-show="items[greatgreat].showImage"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
+                              <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-        <div class="right-frame">
+          <div class="right-frame" @click="currentFormIndex = ''">
           <div class="situation-title">Situation {{ getSituationNumber }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
-
-          <div class="right-side-document" v-if="this.currentFormIndex != ''">
-            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
-            <Form3854 
-              v-bind:item="items[currentFormIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-            <button class="flip-2261" @click="form3854Back = true">Flip</button>
+          <div class= "form-creation" v-if="getSituationNumber == 5">
+            <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
+              <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form()">
+              CREATE NEW OUTGOING INSIDE BILL
+            </button>
+            </div>
+            <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
+              <button class="creation-button" style="position:absolute; width:25vw; top:15vw; left:9vw;" @click="createSit5Form()">
+              CREATE NEW OUTGOING TRUCK BILL
+            </button>
+            </div>
           </div>
+          <div class= "form-creation" style="position:relative; width:25vw; bottom:8vw; left:1vw;" v-if="getSituationNumber == 6 && !this.sit62261">
+            <button class="creation-button" @click="createSit6Form()">
+              CREATE NEW DD FORM 2261
+            </button>
+          </div>
+          <div class="right-side-document" v-if="this.currentFormIndex != ''" @click="$event.stopPropagation()">
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3854' && form3854Back == false">
+              <Form3854 
+                v-bind:item="items[currentFormIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+              <button class="flip-2261" @click="form3854Back = true">Flip</button>
+            </div>
           <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == true">
             <Form3854Back 
               v-bind:item="items[currentItemIndex]"
@@ -251,14 +264,14 @@
               :key="formKey"
             />
           </div>
-          </div>
-          </div>
         </div>
-        <PageNav 
-          v-bind:pageErrors="pageErrors"
-          @clearForm="currentFormIndex = ''"
-        />
+      </div>
     </div>
+    <PageNav 
+      v-bind:pageErrors="pageErrors"
+      @clearForm="currentFormIndex = ''"
+    />
+  </div>
 </template>
 
 <script>
@@ -295,6 +308,7 @@
     ],
     data() {
       return {
+        collapsed: false,
         showError: false,
         problemItems: [],
         totalErrors: 0,
@@ -331,12 +345,117 @@
             formInputs: {},
             type: "safe",
             droppable: true,
+            gradeAt: [],
+          },
+          {
+            articleCode: "Start of Day",
+            id: 5,
+            title: "Start of Day",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
             gradeAt: []
           },
           {
-            articleCode: "Forms",
-            id: 5,
-            title: "Forms & Pouches",
+            articleCode: "Incoming Inside Bill / Pouches - PS 3854",
+            id: 12,
+            title: "Incoming Inside Bill / Pouches - PS 3854",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Incoming Truck Bills PS - 3854",
+            id: 13,
+            title: "Incoming Truck Bills PS - 3854",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Items Rcv’d from transfer bill - PS Form 3877",
+            id: 14,
+            title: "Items Rcv’d from transfer bill - PS Form 3877",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Items Rcv’d from other sources",
+            id: 15,
+            title: "Items Rcv’d from other sources",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Items Delivered Outgoing PS 3849 PS 3883",
+            id: 16,
+            title: "Items Delivered Outgoing PS 3849 PS 3883",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Outgoing Inside Bill PS 3854",
+            id: 17,
+            title: "Outgoing Inside Bill PS 3854",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            articleCode: "Outgoing Truck Bill PS 3854",
+            id: 18,
+            title: "Outgoing Truck Bill PS 3854",
             children: [],
             level: 1,
             images: [],
@@ -365,25 +484,9 @@
             gradeAt: []
           },
           {
-            id: 7,
-            title: "Deliver to Personnel",
-            articleCode: "Truck 2",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 3",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 3"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
             id: 8,
-            title: "Incoming Truck 3",
-            articleCode: "Truck 3",
+            title: "Incoming Truck",
+            articleCode: "Truck 2",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
@@ -398,8 +501,8 @@
           },
           {
             id: 9,
-            title: "Incoming Truck 4",
-            articleCode: "Truck 4",
+            title: "Incoming Transfer Bill",
+            articleCode: "Truck 3",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
@@ -414,8 +517,8 @@
           },
           {
             id: 10,
-            title: "Incoming Transfer Bill 5",
-            articleCode: "Truck 5",
+            title: "situation4part4truck",
+            articleCode: "Truck 4",
             children: [],
             level: 0,
             situationNumber: "Situation 4",
@@ -423,22 +526,6 @@
             stampable: false,
             formInputs: {
               situationNumber: "Situation 4"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
-            id: 11,
-            title: "Outgoing Truck 6",
-            articleCode: "Truck 6",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 5",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 5"
               },
             type: "Truck",
             droppable: true,
@@ -472,6 +559,9 @@
         situationFourPartFour: false,
         situationFivePartOne: false,
         situationFivePartTwo: false,
+        sit5InsideBill: false,
+        sit5TruckBill: false,
+        sit62261: false,
         formKey: 0,
         form2261Back: false,
         form3854Back: false,
@@ -623,6 +713,37 @@
       },
     },
     methods: {
+      createSit5Form(){
+        if(this.pageNum == 9){
+          this.items[8].children.push(this.createItem('psform3854', '129', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.sit5InsideBill = true;
+        }
+        else{
+          this.items[9].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.sit5TruckBill = true;
+        }
+      },
+      createSit6Form(){
+        let today = this.getYYYYMMDD(0)
+        this.items[2].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+        this.sit62261 = true;
+      },
+      createOutForm(evt, item, type){
+        console.log(this.items[this.getItemIndex(this.findParent(item.id))])
+        let newItemID = this.createItem(type, 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true)
+        this.items[this.getItemIndex(this.findParent(item.id))].children.push(newItemID)
+        this.removeItemOnDrop(item.id,this.findParent(item.id))
+        this.items[this.getItemIndex(newItemID)].children.push(item.id)
+        evt.stopPropagation()
+      },
+      collapseItem(item){
+        if(item.collapsed == false || item.collapsed == undefined){
+          item.collapsed = true
+        }
+        else{
+          item.collapsed = false
+        }
+      },
       popOut(url) {
         var height = window.screen.height;
         var width = this.calculateNewWidth();
@@ -658,6 +779,10 @@
                       this.removeItemOnDrop(draggedID,prevParentID)
                       this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
                       this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
+                      if(this.items[this.getItemIndex(destination)].level == 1){
+                        this.items[this.getItemIndex(destination)].collapsed = false
+                      }
+                      this.items[this.getItemIndex(draggedID)].showImage = false
                     }
                   }
                 }
@@ -721,8 +846,8 @@
         let itemIndex = this.getItemIndex(item.id)
         this.items[itemIndex].id = undefined
         this.items[itemIndex].showImage = false
-        console.log("'deleted'")
-        console.log(this.items)
+        //console.log("'deleted'")
+        //console.log(this.items)
         this.deleteModalShow = false
         // evt.stopPropagation()
       },
@@ -790,6 +915,7 @@
             gradeAt: gradeAt,
             created: created,
             formInputs: {
+              select: [],
               situationNumber: 'Situation ' + situationNumber,
               articleCode: "Bill #" + articleCode,
               lockNo: "",
@@ -1186,6 +1312,7 @@
       return newArr;
       },
       submitPage() {
+        this.currentFormIndex = ''
         this.gradeSituationContents();
       },
       //Returns an item given it's ID
@@ -1298,7 +1425,7 @@
               //situationItems[i].articleCode = situationItems[i].formInputs.articleCode;
             }
           }
-          console.log("in grade situation", situationItems)
+          //console.log("in grade situation", situationItems)
           let keyItems = this.answerKey.answers.filter(x => x.gradeAt.includes(this.getSituationNumber))
 
           keyItems.forEach((currentKeyItem) => {
@@ -1309,7 +1436,7 @@
             )
             
             if(currentItem[0] != undefined) {
-              console.log("situationItems",situationItems.length)
+              //console.log("situationItems",situationItems.length)
               let itemErrors = this.gradeItem(currentItem[0], currentKeyItem);
               console.log("itemErrors",itemErrors)
               
@@ -1356,7 +1483,7 @@
             this.totalErrors = this.problemItems.length
             this.showError = true
           }
-        console.log(this.problemItems.length)
+        //(this.problemItems.length)
       },
       gradeForm(articleCode, keyForm, formCode) {
         let userForm = this.items[this.getItemByArticleCode(articleCode)].formInputs
@@ -1414,7 +1541,7 @@
                       keyPairs.push(keyItem);
                     }
                   }
-                  console.log("+++++HERE+++++",keyPairs)
+                  //console.log("+++++HERE+++++",keyPairs)
                   //second pass to see if the items are in the wrong order
                   for(let i = 1; i < userForm.itemNums.length; i++) {
                     for(let j = 0; j < keyPairs.length; j++) {
@@ -1449,18 +1576,23 @@
                   let keyItems = keyForm.itemNums;
                   let userItems = userForm.itemNums;
                   if(userItems.length != keyItems.length){
-                    console.log(userItems.length, keyItems.length)
+                    //console.log(userItems.length, keyItems.length)
                     errors++
                   }
-                  console.log("Key Items: ",keyItems)
+                  //console.log("Key Items: ",keyItems)
                   for(let i = 0; i < userItems.length; i++){
+                    if(keyItems.includes("NFE")){
+                      if(keyItems.indexOf("NFE") != userItems.indexOf("NFE")){
+                        errors++
+                      }
+                    }
                     if(!keyItems.includes(userItems[i]) && userItems[i] != undefined){
-                      console.log(userItems[i])
+                      //console.log(userItems[i])
                       errors++
                     }
                   }
               }
-              else if(property == "recievingClerks") {
+              else if(property == "recievingClerks" || property == "select") {
                 //If the student put nothing, but there should be something its wrong
                 if(userForm[property].length == 0 && keyForm[property].length > 0) {
                   errors+= keyForm[property].length;
@@ -1500,6 +1632,11 @@
             if(Array.isArray(keyForm[property])) {
 
               if(property == "article") {
+                if(keyForm[property].includes("NFE")){
+                  if(keyForm[property].indexOf("NFE") != userForm[property].indexOf("NFE")){
+                    errors++
+                  }
+                }
                 if(keyForm.article.length > 1) {
                   for(let i = 1; i < keyForm.article.length; i++) {
                     if(!keyForm[property].includes(userForm[property][i])) {
@@ -1546,9 +1683,10 @@
 
         }
       },
-
+      //Returns the index of an item given it's article code
       getItemByArticleCode(code) {
         let index = this.items.findIndex(item => item.articleCode == code)
+        //console.log("getItemByArticleCode:", index);
         return index;
       },
       //Uses the parent's article code and the child's id to add the child to the parent's children array
@@ -1561,14 +1699,24 @@
       getYYYYMMDD(offset) {
         var d = new Date();
         var mm = d.getMonth() + 1;
-        var dd = d.getDate() + offset;
+        var dd = d.getDate()
 
+        if(dd + offset > 0){
+          dd = dd + offset
+        }
+        //offset moved into a different month
+        //we will assume it's the previous month since we auto set the first 2261 to yesterday, but never set a 2261 in the future
+        else{
+          mm = d.getMonth()
+          dd = new Date(d.getFullYear(), d.getMonth()-2, 0).getDate()
+        }
+        
         return [d.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
          ].join('-');
       },
-      //gets the nearest time and sets in in the answer key
+      //gets the nearest time and sets it in the answer key
       getNearestTime(){
         let currentTime
         this.answerKey.answers.forEach(obj => {
@@ -1605,23 +1753,44 @@
       //function that handles events as the situation is changed
       updateSituation() {
         if(this.getSituationNumber == 1) {
-          
+          //hardcode closed folders
+            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches - PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Truck Bills PS - 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d from transfer bill - PS Form 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d from other sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS 3849 PS 3883")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS 3854")].collapsed = true
           //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
-
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
+            //console.log("items", this.items)
           if(!this.situationOneInit){
 
             let newFormSettings = {
-              apoNum: "APO AE 09459",
+                apoNum: "APO AE 09459",
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
-                totalItems9thru14: "2",
-                items: ["RB339065331US", "RB290770790US"],
+                items: ["RB339065331US", "RB290770790US","NFE"],
+                totalItems9thru14: 15,
+                itemsOnHandAtEnd: 2,
+                numberOfPouchesOpened: 1,
+                itemsOnOutgoingTruck: 0,
+                itemsOnOutgoingManifests: 0,
+                itemsListedOnInsideBillsB: 3,
+                itemsDelivered: 9,
+                total1thru7: 15,
+                itemsRecievedFromOther: 1,
+                numberOfPouchesClosed: 1,
+                itemsOnIncomingTruck: 1,
+                itemsOnIncomingManifests: 0,
+                itemsListedOnInsideBillsA: 1,
+                itemsAccepted: 1,
+                itemsAtStart: 10,
+                officialSig: "Matthew L. Long",
+                prepSig: "John Doe",
             }
 
             let yest = this.getYYYYMMDD(-1)
@@ -1634,20 +1803,19 @@
             letter1 = this.getItemByArticleCode(letter1.articleCode)
             this.items[parcel1].stampCounter = true;
             this.items[letter1].stampCounter = true;
-            console.log(this.items[parcel1])
-            console.log(this.items[letter1])
+            //console.log(this.items[package1])
+            //console.log(this.items[letter1])
           }
           this.situationOneInit = true;
         }
         else if(this.getSituationNumber == 2) {
 
           //hardcode all truck visibility
-          this.items[3].level = 1;
-          this.items[4].level = 0;
-          this.items[5].level = 0;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 1;
+          this.items[11].level = 0;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
+
 
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
             
@@ -1659,7 +1827,7 @@
               totalArticlesSent: "3",
               postmasterSent: "Anthony Smith",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US"],
+              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US","NFE"],
               itemOrigins: ["", "AMF KENNEDY NY 00300"],
               topStamp1: true,
               topStamp2: true,
@@ -1668,25 +1836,23 @@
             }
             let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
-            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [], false)
+            let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2], false)
             this.assignItemToParent('Bill #260', item1)
             let item2 = this.createItem('parcel', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item2)
             let item3 = this.createItem('parcel', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
             this.assignItemToParent('Bill #260', item3)
-            console.log(this.items)
+            //console.log(this.items)
 
             //42 - 47
             this.situationTwoPartOne = true;
           }
           else if(this.pageNum == 3) {
             //hardcode all truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
 
             if(!this.situationTwoPartTwo) {
               let newFormSettings = {
@@ -1699,7 +1865,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Hark Smith",
               dispatchingClerk: "0930",
-              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US"],
+              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US","NFE"],
               witnessSent: "WIT: Larry Brown",
               topStamp1: true,
               topStamp2: true,
@@ -1728,12 +1894,10 @@
         else if(this.getSituationNumber == 3) {
 
           //hardcode all truck visibility
-          this.items[3].level = 0;
-          this.items[4].level = 1;
-          this.items[5].level = 0;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 0;
+          this.items[11].level = 0;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
 
           if(!this.situationThreeInit) {
             this.situationThreeInit = true;
@@ -1744,12 +1908,10 @@
 
           if(this.pageNum == 5) {
           //hardcode truck visibility
-          this.items[3].level = 0;
-          this.items[4].level = 0;
-          this.items[5].level = 1;
-          this.items[6].level = 0;
-          this.items[7].level = 0;
-          this.items[8].level = 0;
+          this.items[10].level = 0;
+          this.items[11].level = 1;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
 
             if(!this.situationFourPartOne) {
               let newFormSettings = {
@@ -1760,7 +1922,7 @@
               totalArticlesSent: "2",
               postmasterSent: "Todd Edgar",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/43000277", "O/RB300911759US"],
+              itemNums: ["", "S/43000277", "O/RB300911759US","NFE"],
               itemOrigins: ["", "APO AE 09459 - 2"],
               topStamp1: true,
               topStamp2: true,
@@ -1769,8 +1931,8 @@
             }
 
             let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('Truck 3', form1)
-            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [], false)
+            this.assignItemToParent('Truck 2', form1)
+            let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4], false)
             this.assignItemToParent('Bill #30', item1)
             let item2 = this.createItem('parcel', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
             this.assignItemToParent('Bill #30', item2)
@@ -1782,12 +1944,10 @@
           else if(this.pageNum == 6) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 1;
+            this.items[13].level = 0;
 
             if(!this.situationFourPartTwo){
 
@@ -1801,7 +1961,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Leroy Brown",
               dispatchingClerk: "0745",
-              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US"],
+              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US","NFE"],
               topStamp1: true,
               topStamp2: true,
               bottomStamp1: false,
@@ -1832,12 +1992,10 @@
           else if(this.pageNum == 7) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 1;
-            this.items[7].level = 0;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 1;
+            this.items[13].level = 0;
 
             if(!this.situationFourPartThree) {
               let newFormSettings = {
@@ -1845,8 +2003,9 @@
                 registeredMail: true,
                 trackingNum1: "RB842320438US",
                 trackingNum2: "RB842320439US",
-                trackingTextInput1: "HQ CAC FT KNOX, KY 40121",
-                trackingTextInput2: "545 MP CO FORT JACKSON, SC 29207",
+                trackingNum3: "NFE",
+                trackingTextInput1: "HQ CAC\nFT KNOX, KY 40121",
+                trackingTextInput2: "545 MP CO\nFORT JACKSON, SC 29207",
                 piecesSent: "2",
                 rows:["0.87", "9.50", "N/A", "", "", "", "", "", "", "", "", "", "",
                       "1.83", "9.50", "N/A"],
@@ -1854,7 +2013,7 @@
             }
 
             let form1 = this.createItem('psform3877', '48', 4, 2, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('Truck 4', form1)
+            this.assignItemToParent('Truck 3', form1)
             let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4, 5], false)
             this.assignItemToParent('48', item1)
             let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4, 5], false)
@@ -1867,12 +2026,10 @@
           else if(this.pageNum == 8) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 1;
-            this.items[8].level = 0;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 1;
 
             if(!this.situationFourPartFour) {
               let newFormSettings = {
@@ -1901,7 +2058,7 @@
               currentTime: "",
               dispatchingClerk: "1400",
               itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
-               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US"],
+               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US","NFE"],
               itemOrigins: [],
               topStamp1: true,
               topStamp2: true,
@@ -1912,7 +2069,7 @@
             }
 
             let form1 = this.createItem('psform3854', '33', 4, 2, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('Truck 5', form1)
+            this.assignItemToParent('Truck 4', form1)
             let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4, 5], false)
             this.assignItemToParent('Bill #33', item1)
             let item2 = this.createItem('parcel', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
@@ -1945,12 +2102,10 @@
           if(this.pageNum == 9) {
 
             //hardcode truck visibility
-            this.items[3].level = 0;
-            this.items[4].level = 0;
-            this.items[5].level = 0;
-            this.items[6].level = 0;
-            this.items[7].level = 0;
-            this.items[8].level = 1;
+            this.items[10].level = 0;
+            this.items[11].level = 0;
+            this.items[12].level = 0;
+            this.items[13].level = 0;
 
             if(!this.situationFivePartOne) {
               this.situationFivePartOne = true;
@@ -1960,12 +2115,13 @@
         }
         else if(this.getSituationNumber == 6) {
           //hardcode truck visibility
-          this.items[3].level = 1;
-          this.items[4].level = 1;
-          this.items[5].level = 1;
-          this.items[6].level = 1;
-          this.items[7].level = 1;
-          this.items[8].level = 1;
+          this.items[10].level = 0;
+          this.items[11].level = 0;
+          this.items[12].level = 0;
+          this.items[13].level = 0;
+
+
+
         }
 
       },
@@ -2028,11 +2184,11 @@
   
 
   .frame{
-    position: absolute;
-    top: 5vh;
+    position: relative;
+    top: 10vh;
     left: 0;
     width: 100vw;
-    height: 95vh;
+    height: 90vh;
     z-index: 1;
   }
   .drop-zone {
@@ -2040,14 +2196,14 @@
     order: 1;
     background-color: #333366;
     width: 30vw;
-    height: 62vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
   }
   .left-frame{
     position: relative;
-    top: 5vw;
+    top: 2vh;
     left: 2vw;
     width: 36vw;
     height: 90vh;
@@ -2058,7 +2214,7 @@
     right: 2vw;
     width: 56vw;
     height: 80vh;
-    /* background-color:; */
+    /* background-color: coral; */
   }
   .parent-level {
     position: relative;
@@ -2130,8 +2286,8 @@
     border-radius: 5px;
     padding: .5vw;
     position: absolute;
-    transform: translateY(-50%);
-    bottom: .5vw;
+    transform: translateY(50%);
+    top: 1vw;
     right: 2vw;
     z-index: 2;
     font-size: 1vw;
@@ -2161,8 +2317,8 @@
     border-radius: 5px;
   }
   .form-creation{
-    transform: translateY(-50%);
-    bottom: .5vw;
+    transform:  translateY(550%) translateX(65%);
+    z-index: 0;
   }
   .pouch-creation {
     transform: translateY(-50%);
@@ -2289,7 +2445,7 @@
     z-index: 40;
     height:2vh;
     top: 90vh;
-    width: 80vw;
+    width: 45vw;
     background-color: transparent;
   }
   .flip-2261{
@@ -2310,9 +2466,15 @@
     position: absolute;
     top: 0vh;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-5%) translateX(-50%);
     max-width: 60vw;
     max-height: 75vh;
     overflow: scroll;
+  }
+  .button-3883, .button-3849{
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: .5vw;
+    cursor: pointer;
   }
 </style>

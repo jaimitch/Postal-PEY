@@ -26,8 +26,12 @@ class="drawer"
         <div  class="in-menu">
           <div :key="section" v-for="section in situations">
             <!-- comment this div if you want to turn on the sit nav buttons -->
-            <div v-if="section.clickable === true" >
+            <div v-if="section.clickable === false" >
               <button class="buttons" @click="jumpToPage(section.page), $emit('jump')">{{ section.name }}</button>
+            </div>
+            <div v-else>
+              <!-- disable this in final product -->
+              <button class="disabled" @click="jumpToPage(section.page), $emit('jump')" >{{ section.name }}</button>
             </div>
           </div>
         </div>   
@@ -164,14 +168,18 @@ export default {
   background-color: #32334B;
   box-shadow: 1px 5px 5px black;
 }
-.buttons{
-  background-color: #32334B;
+.buttons,.disabled {
+  background-color: green;
   margin-bottom: 10px;
   padding: 1vw;
   color: white;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+}
+.disabled{
+  background-color: #d5d5d5;
+  color: #32334B;
 }
 .buttons:hover{
   background-color: #d5d5d5;
