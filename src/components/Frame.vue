@@ -112,7 +112,7 @@
                       </div>
 
                       <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
-                      <div class="stamp-input" v-show="items[grandchild].showImage"> <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
+                      <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
                         <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
                       </div>
                       <div 
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
-                          <div class="stamp-input" v-show="items[greatgrand].showImage"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
+                          <div class="stamp-input" v-show="items[greatgrand].showImage && items[greatgrand].type != 'Pouch'"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
                           <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
                         </div>
                         <div 
@@ -165,7 +165,7 @@
                             </div>
                           </div>
                           <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
-                            <div class="stamp-input" v-show="items[greatgreat].showImage"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
+                            <div class="stamp-input" v-show="items[greatgreat].showImage && items[greatgreat].type != 'Pouch'"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
                               <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
                             </div>
                           </div>
