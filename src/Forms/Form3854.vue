@@ -638,14 +638,11 @@
         methods: {
             changeForm() {
                 if(this.item.type == "PS FORM 3854"){
-                    if(this.item.userCreated == true){
-                        // this.item.articleCode = this.sigOfAgent
-                        if(!this.item.articleCode.includes("created") && this.item.articleCode != '') {
-                            this.formData.articleCode = "Bill #" + this.formData.billNo
-                        }
-                        else {
-                            this.formData.articleCode = this.formData.billNo
-                        }
+                    if(!this.item.articleCode.includes("created") && this.item.articleCode != '') {
+                        this.formData.articleCode = "Bill #" + this.formData.billNo
+                    }
+                    else {
+                        this.formData.articleCode = this.formData.billNo
                     }
                     //this.changeBackText()
                     if(this.backText == undefined){

@@ -835,10 +835,8 @@
         },
         methods:{
             changeForm() {
-                if(this.item.userCreated == true){
-                    // this.item.articleCode = this.sigOfAgen
-                    this.formData.articleCode = this.formData.to
-                }
+                // this.item.articleCode = this.sigOfAgen
+                this.formData.articleCode = this.formData.to
                 this.$emit('changeForm', this.formData)
             }
         },

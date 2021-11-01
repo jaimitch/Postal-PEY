@@ -59,7 +59,7 @@
                 <div 
                   class='child-level' 
                   v-for='child in getChildrenIndexes(item.id)' 
-                  :key='child' 
+                  :key='child'
                   :draggable ='true'
                   @dragstart='startDrag($event, items[child])'
                   @drop="onDrop($event,items[child].id)"
@@ -716,22 +716,16 @@
     methods: {
       createSit5Form(){
         if(this.pageNum == 9){
-          this.items[8].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
-          this.items[8].collapsed = false
-        }
-        else{
-          this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
-          this.items[9].collapsed = false
+          this.items[8].children.push(this.createItem('psform3854', '129', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
           this.sit5InsideBill = true;
         }
         else{
-          this.items[9].children.push(this.createItem('psform3854', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
+          this.items[9].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
           this.sit5TruckBill = true;
         }
       },
       createSit6Form(){
-        this.items[2].children.push(this.createItem('ddform2261', 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
-        this.items[2].collapsed = false
+        this.items[2].children.push(this.createItem('ddform2261', '', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
         this.sit62261 = true;
       },
       createOutForm(evt, item, type){
