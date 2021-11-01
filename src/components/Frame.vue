@@ -290,7 +290,7 @@
   import Error from '../components/Error.vue'
   import Delete from '../components/Delete.vue'
   import SectionCompleted from '../components/SectionCompleted.vue'
-  import ToolTip from '../components/ToolTip.vue'
+  // import ToolTip from '../components/ToolTip.vue'
   export default {
     name: 'Frame',
     components: {
@@ -305,7 +305,7 @@
       Error,
       Delete,
       SectionCompleted,
-      ToolTip,
+      // ToolTip,
     },
     props: [
       'pageNum',
