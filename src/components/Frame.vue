@@ -769,7 +769,7 @@
                       if(this.items[this.getItemIndex(destination)].level == 1){
                         this.items[this.getItemIndex(destination)].collapsed = false
                       }
-                      this.toggleItemImage(this.items[this.getItemIndex(draggedID)])
+                      this.items[this.getItemIndex(draggedID)].showImage = false
                     }
                   }
                 }
@@ -1753,7 +1753,7 @@
           if(!this.situationOneInit){
 
             let newFormSettings = {
-              apoNum: "APO AE 09459",
+                apoNum: "APO AE 09459",
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
                 items: ["RB339065331US", "RB290770790US","NFE"],
@@ -1772,6 +1772,8 @@
                 itemsListedOnInsideBillsA: 1,
                 itemsAccepted: 1,
                 itemsAtStart: 10,
+                officialSig: "Matthew L. Long",
+                prepSig: "John Doe",
             }
 
             let yest = this.getYYYYMMDD(-1)
