@@ -864,7 +864,7 @@
         let parent = this.findParent(item.id)
         parent = this.findItemByID(parent)[0]
         for(let i=0; i < item.children.length; i++){
-          this.items[this.getItemIndex(item.children[i])].level--
+          this.items[this.getItemIndex(item.children[i])].level = 0;
         }
         parent.children = parent.children.concat(item.children)
         item.children = []
