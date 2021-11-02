@@ -52,8 +52,8 @@
             @click="changeCurrentItem($event, item.id)"
           >
             <span class="bold">{{ item.title }}</span>
-            <button v-if='item.collapsed == false || item.collapsed == undefined' class="creation-button" @click="collapseItem(item)">Close</button>
-            <button v-if='item.collapsed == true' class="creation-button" @click="collapseItem(item)">Open</button>
+            <button v-if='item.collapsed == false || item.collapsed == undefined' class="collapse-button" @click="collapseItem(item)">-</button>
+            <button v-if='item.collapsed == true' class="collapse-button" @click="collapseItem(item)">+</button>
              <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
               <br><br>
             </div>
@@ -1653,7 +1653,7 @@
                   for(let i = 0; i < keyItems.length; i++) {
                     if(!keyItems.includes(userItems[i])) {
                       if(i != userItems.length && userItems[i] != undefined){
-                          errors++;
+                        errors++;
                       }
                     }
                   }
@@ -2387,6 +2387,20 @@
   .creation-button:hover{
     background-color: #32334B;
     color: #D5D5D5;
+  }
+  .collapse-button{
+    position: absolute;
+    right:1%;
+    font-size: 2vw;
+    font-weight: bold;
+    background-color: #D5D5D5;
+    color: #32334B;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
     .creation-dropdown{
     font-size: 1vw;
