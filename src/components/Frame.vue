@@ -2562,12 +2562,13 @@
     cursor: pointer;
   }
   .safe {
-    width: 5vw;
-    left: -0.8vw;
-    top: -0vw; /* I have no idea why this works but it does */
+    width: 3.5vw;
+    left: 3.5vw;
+    top: 0.5vw;
   }
   .safe-title {
     position:absolute;
     top: 3vw;
+    left: 1.2vw;
   }
 </style>
