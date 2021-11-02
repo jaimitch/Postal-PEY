@@ -452,7 +452,7 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [4],
-            "situation4Location":"Items Rcv’d from other sources"
+            "situation4Location":"Items Rcv’d from transfer bill"
         },
         {
             "type":"PS FORM 3877",
@@ -510,7 +510,7 @@
             "square":"",
             "stamped": true,
             "gradeAt": [4],
-            "situation4Location": "Items Rcv’d from transfer bill - PS Form 3877"
+            "situation4Location": "Items Rcv’d from other sources"
         },
         {
             "type":"PS FORM 3883",
@@ -667,8 +667,8 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location": "Outgoing Inside Bill PS 3854",
-            "situation6Location": "Outgoing Inside Bill PS 3854"
+            "situation5Location": "Bill #144",
+            "situation6Location": "Bill #144"
         },
         {
             "type":"PS FORM 3854",
