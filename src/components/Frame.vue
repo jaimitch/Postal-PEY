@@ -723,11 +723,14 @@
         if(this.pageNum == 9){
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.items[8].collapsed = false
-          this.sit5InsideBill = true;
+          this.sit5InsideBill = true
+          this.currentFormIndex = this.items.indexOf(this.items[this.getItemIndex(this.items[8].children[this.items[8].children.length-1])])
+          console.log(this.currentFormIndex)
+          this.changeCurrentItem(this.currentFormIndex)
         }
         else{
           this.items[9].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
-          this.sit5TruckBill = true;
+          this.sit5TruckBill = true
           this.items[9].collapsed = false
         }
       },
@@ -783,6 +786,7 @@
       onDrop (evt, destination) {
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
+        
         let childrenIndexes = this.getChildrenIndexes(draggedID)
         if(this.items[this.getItemIndex(destination)].level < 5){
           if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
@@ -792,12 +796,18 @@
                   if(draggedID != destination){
                     if(childrenIndexes.indexOf(this.getItemIndex(destination)) == -1){
                       this.removeItemOnDrop(draggedID,prevParentID)
+                      if(this.items[this.getItemIndex(prevParentID)].children.length == 0){
+                        this.items[this.getItemIndex(prevParentID)].collapsed = true
+                      }
                       this.items[this.getItemIndex(draggedID)].level = this.items[this.getItemIndex(destination)].level + 1
                       this.items[this.getItemIndex(destination)].children.push(this.items[this.getItemIndex(draggedID)].id)
                       if(this.items[this.getItemIndex(destination)].level == 1){
                         this.items[this.getItemIndex(destination)].collapsed = false
                       }
                       this.items[this.getItemIndex(draggedID)].showImage = false
+                      for(let i = 0; i < this.items[this.getItemIndex(draggedID)].children.length; i++){
+                        this.items[this.getItemIndex(this.items[this.getItemIndex(draggedID)].children[i])].showImage = false
+                      }
                     }
                   }
                 }
@@ -2285,7 +2295,7 @@
     color: #D5D5D5;
     z-index: 2;
     font-size: 1vw;
-    max-width: 20.4vw;
+    max-width: 20vw;
   }
   .grand-child-level {
     position:relative;
@@ -2335,8 +2345,8 @@
     border-radius: 5px;
     padding: .5vw;
     position: absolute;
-    transform: translateY(50%);
-    top: 1vw;
+    transform: translateY(10%);
+    top: 0.25vw;
     right: 2vw;
     z-index: 2;
     font-size: 1vw;
@@ -2390,7 +2400,7 @@
   }
   .collapse-button{
     position: absolute;
-    right:1%;
+    right:2%;
     font-size: 2vw;
     font-weight: bold;
     background-color: #D5D5D5;
@@ -2429,11 +2439,13 @@
     margin-left: 40px;
     left: 3vw;
     bottom: 1vw;
+    max-width: 14vw;
   }
   .child-content {
     background-color: #42426A;
     border-radius: .8vw;
     margin-top: 0.15vw;
+    max-width: 20.4vw;
     cursor: grab;
 
   }
@@ -2460,12 +2472,14 @@
     margin-left: 40px;
     left: 3vw;
     bottom: 1vw; 
+    max-width: 14vw;
   }
   .great-grand-text{
     position: relative;
     margin-left: 40px;
     left: 3vw;
     bottom: 1vw; 
+    max-width: 14vw;
   }
   .space-bar{
     margin-left: 5px;
@@ -2512,10 +2526,9 @@
     background-color: transparent;
   }
   .flip-2261{
-    z-index: 2;
-    position: absolute;
-    right:4%;
-    bottom:0%;
+    z-index: 5;
+    position: relative;
+    right: 0%;
     height:5%;
     width: 5%;
   }
