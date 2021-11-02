@@ -52,15 +52,18 @@
             draggable=false
             @drop="onDrop($event,item.id)"
             @click="changeCurrentItem($event, item.id)"
-          >
-            <img v-if="item.title == 'Safe'" src="../assets/Black-Safe.svg" class="item-icon safe">
-            <span class="bold" :class="item.title == 'Safe' && 'safe-title'"> {{ item.title }}</span>
-            <button v-if='item.collapsed == false || item.collapsed == undefined' class="collapse-button" @click="collapseItem(item)">-</button>
-            <button v-if='item.collapsed == true' class="collapse-button" @click="collapseItem(item)">+</button>
-             <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
-              <br><br>
+          > 
+            <div @click="collapseItem(item)" class="top-level">
+              <img v-if="item.title == 'Safe'" src="../assets/Black-Safe.svg" class="item-icon safe">
+              <span class="bold" :class="item.title == 'Safe' && 'safe-title'"> {{ item.title }}</span>
+              <span v-if='item.collapsed == false || item.collapsed == undefined' class="collapse-button">-</span>
+              <span v-if='item.collapsed == true' class="collapse-button">+</span>
             </div>
             <div v-if="item.collapsed == false || item.collapsed == undefined">
+              <hr style="height:3px;border-width:0;color:#32334B;background-color:#32334B">
+                <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
+                  <br><br>
+                </div>
                 <div 
                   class='child-level' 
                   v-for='child in getChildrenIndexes(item.id)' 
@@ -2408,17 +2411,14 @@
   }
   .collapse-button{
     position: absolute;
-    right:2%;
+    right:5%;
+    top: 15px;
     font-size: 2vw;
     font-weight: bold;
-    background-color: #D5D5D5;
+    background-color: transparent;
     color: #32334B;
     border: none;
     cursor: pointer;
-    margin: 0;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
   }
     .creation-dropdown{
     font-size: 1vw;
@@ -2570,5 +2570,8 @@
     position:absolute;
     top: 3vw;
     left: 1.2vw;
+  }
+  .top-level:hover{
+    cursor:pointer;
   }
 </style>
