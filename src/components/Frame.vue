@@ -187,18 +187,18 @@
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
-              <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form()">
+              <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form($event)">
               CREATE NEW OUTGOING INSIDE BILL
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
-              <button class="creation-button" style="position:absolute; width:25vw; top:15vw; left:9vw;" @click="createSit5Form()">
+              <button class="creation-button" style="position:absolute; width:25vw; top:15vw; left:9vw;" @click="createSit5Form($event)">
               CREATE NEW OUTGOING TRUCK BILL
             </button>
             </div>
           </div>
           <div class= "form-creation" style="position:relative; width:25vw; bottom:8vw; left:1vw;" v-if="getSituationNumber == 6 && !this.sit62261">
-            <button class="creation-button" @click="createSit6Form()">
+            <button class="creation-button" @click="createSit6Form($event)">
               CREATE NEW DD FORM 2261
             </button>
           </div>
@@ -723,26 +723,26 @@
       },
     },
     methods: {
-      createSit5Form(){
+      createSit5Form(evt){
         if(this.pageNum == 9){
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
-          this.items[8].collapsed = false
           this.sit5InsideBill = true
-          this.currentFormIndex = this.items.indexOf(this.items[this.getItemIndex(this.items[8].children[this.items[8].children.length-1])])
-          console.log(this.currentFormIndex)
-          this.changeCurrentItem(this.currentFormIndex)
+          this.items[8].collapsed = false
+          evt.stopPropagation()
         }
         else{
           this.items[9].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.sit5TruckBill = true
           this.items[9].collapsed = false
+          evt.stopPropagation()
         }
       },
-      createSit6Form(){
+      createSit6Form(evt){
         let today = this.getYYYYMMDD(0)
         this.items[2].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
         this.items[2].collapsed = false
         this.sit62261 = true;
+        evt.stopPropagation()
       },
       createOutForm(evt, item, type){
         console.log(this.items[this.getItemIndex(this.findParent(item.id))])
