@@ -53,7 +53,8 @@
             @drop="onDrop($event,item.id)"
             @click="changeCurrentItem($event, item.id)"
           >
-            <span class="bold">{{ item.title }}</span>
+            <img v-if="item.title == 'Safe'" src="../assets/Black-Safe.svg" class="item-icon safe">
+            <span class="bold" :class="item.title == 'Safe' && 'safe-title'"> {{ item.title }}</span>
             <button v-if='item.collapsed == false || item.collapsed == undefined' class="collapse-button" @click="collapseItem(item)">-</button>
             <button v-if='item.collapsed == true' class="collapse-button" @click="collapseItem(item)">+</button>
              <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
@@ -2546,5 +2547,14 @@
     color: #32334B;
     border-radius: .5vw;
     cursor: pointer;
+  }
+  .safe {
+    width: 5vw;
+    left: -0.8vw;
+    top: -0vw; /* I have no idea why this works but it does */
+  }
+  .safe-title {
+    position:absolute;
+    top: 3vw;
   }
 </style>
