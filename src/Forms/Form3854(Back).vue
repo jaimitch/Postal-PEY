@@ -40,7 +40,7 @@
                     <option value="RB309266104US – SHOULD READ RB309266140US">RB309266104US – SHOULD READ RB309266140US</option>
                     <option value="Should Read RB309265340US">Should Read RB309265340US</option>
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
-                    <option value=""></option>
+                    <option value="" selected></option>
                 </select>
             </div>
         </div>

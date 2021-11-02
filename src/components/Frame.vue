@@ -1652,7 +1652,9 @@
                   let userItems = userForm.select;
                   for(let i = 0; i < keyItems.length; i++) {
                     if(!keyItems.includes(userItems[i])) {
-                      errors++;
+                      if(i != userItems.length && userItems[i] != undefined){
+                          errors++;
+                      }
                     }
                   }
                 }
