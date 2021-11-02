@@ -1,6 +1,8 @@
 <template>
   <div>
-    <!-- <ToolTip/> -->
+    <div v-if="this.showToolTip.includes(this.pageNum)" @click="this.disableToolTip()">
+      <ToolTip/>
+    </div>
 
     <Error 
       v-bind:showError="showError"
@@ -290,7 +292,7 @@
   import Error from '../components/Error.vue'
   import Delete from '../components/Delete.vue'
   import SectionCompleted from '../components/SectionCompleted.vue'
-  // import ToolTip from '../components/ToolTip.vue'
+  import ToolTip from '../components/ToolTip.vue'
   export default {
     name: 'Frame',
     components: {
@@ -305,7 +307,7 @@
       Error,
       Delete,
       SectionCompleted,
-      // ToolTip,
+      ToolTip,
     },
     props: [
       'pageNum',
@@ -319,6 +321,7 @@
         totalErrors: 0,
         studentName: "Student",
         showPouchCreation: [9],
+        showToolTip: [1, 4],
         showSubmit: [1, 3, 4, 8, 10, 11],
         payGrade: "0",
         error: false,
@@ -1351,6 +1354,10 @@
       //Returns an item given it's ID
       findItemByID(id){
         return this.items.filter(x => x.id == id);
+      },
+      //removes the page number from the tooltip array so it will only show once
+      disableToolTip() {
+        this.showToolTip = this.showToolTip.filter(x => x != this.pageNum);
       },
       //Creates an array with current and all future situation numbers so that a user created item can be graded at every point it exists
       //NOTE: CREATED ITEMS'S LOCATIONS WILL BE GRADED AT EVERY SITUATION TO SIMPLIFY THE ISSUE OF UPDATING THEM ON CREATE
