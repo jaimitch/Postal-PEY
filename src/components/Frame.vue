@@ -195,12 +195,12 @@
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
-              <button class="creation-button" style="position:absolute; width:25vw; top:15vw; left:9vw;" @click="createSit5Form($event)">
+              <button class="creation-button" style="position:absolute; width:25vw; top:20vw; left:9vw;" @click="createSit5Form($event)">
               CREATE NEW OUTGOING TRUCK BILL
             </button>
             </div>
           </div>
-          <div class= "form-creation" style="position:relative; width:25vw; bottom:8vw; left:1vw;" v-if="getSituationNumber == 6 && !this.sit62261">
+          <div class= "form-creation" style="position:relative; width:25vw; bottom:8vw; left:-0.4vw;" v-if="getSituationNumber == 6 && !this.sit62261">
             <button class="creation-button" @click="createSit6Form($event)">
               CREATE NEW DD FORM 2261
             </button>
@@ -610,88 +610,88 @@
         //Sitution 1
         if(this.pageNum ==  1) {
           //Situation 1
-          text = `You are the registry clerk on duty in the registry section at APO AE 09459. You just opened the registry \
-          section and verified the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B).`
+          text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
+          section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
+          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B) and move it into the safe.`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
           //Situation 2 Part 1
-          text = "1. PFC Terry Jones, the mail guard, arrives at the registry section on the incoming truck from the AMT \
-          with one registered pouch and two registered outside pieces (OSP's).\
+          text = "Terry Jones, the mail guard, arrives at the registry section at 0900 from the AMT \
+          with one registered pouch and two registered outside pieces (OSPs).\
           <br><br>\
-          APDS all OSPs. Ensure the correctness of the incoming truck bill and sign. Then move the PS Form 3854 form into \
-          the Forms & Pouches section and all of the incoming articles into the Safe."
+          All Purpose Date Stamp (APDS) all outside pieces. Ensure the correctness of the \
+          incoming truck bill and sign. Then move the PS Form 3854 form into the Incoming \
+          Truck Bills section and all of the incoming articles into the Safe."
         }
         //Sitution 2 Part 2
          else if(this.pageNum == 3) {
            //Situation 2 Part 2
-          text = "2. You and George Forrest, the witness, open the pouch and located the incoming inside bill. \
+          text = "You and George Forrest, the witness, open the pouch at 0915 and locate the incoming inside bill. \
           <br><br> \
           APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
-          on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the \
-          empty pouch into the Forms & Pouches section and the associated mail articles into the Safe."
+          on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the empty pouch \
+          into the Incoming Inside Bills section and the associated mail articles into the Safe."
         }
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>Deliver the following mail using the appropriate PS Forms. Create a PS Form 3849 for each personal \
-          article and or a PS Form 3883 for each official article, then attach the article to its form. Each form and its attached article go into the outgoing truck.</div><br>\
+          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click each article,  \
+          then select “Create 3883” or “Create 3849” to create the appropriate form. \
+          After the form is filled out, move the mail item to the Items Delivered Outgoing section. </div><br>\
           RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
           <br><br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
           <tr><th>13th EOC</th><th>101</th><th>JOHN THOMPSON</th></tr>\
-          <tr><th>11th ENGR DET</th><th>182</th><th>SPC RONNIE CARTER</th></tr>\
+          <tr><th>11th ENGR DET</th><th>182</th><th>RONNIE CARTER</th></tr>\
           <tr><th>45TH MP CO</th><th>195</th><th>JERRY JOHNSON</th></tr></table><div>`
 
         }
         //Situation 4 Part 1
         else if(this.pageNum == 5) {
-          text = "1. Terry Jones, the mail guard, arrives at the registry section from Unit 2 with a pouch and one OSP \
-          to dispatch to the AMT serving you area. Check the incoming truck bill, APDS and sign it. Move the extra OSP to \
-          the Safe and the truck bill to the Forms & Pouches section."         
+          text = "Terry Jones, the mail guard, arrives at the registry section from Unit 2 at 1300 with a pouch and OSP(s) \
+           to dispatch to the AMT serving your area. ADPS the outside piece(s). Verify the incoming truck bill. Move the outside \
+           piece(s) to the Safe, the truck bill to the Incoming Truck Bills section, and the pouch to the Incoming Inside Bills/Pouches section." 
         }
         //Situation 4 Part 2
         else if(this.pageNum == 6) {
-          text = "2. You and George Forrest, the witness, open the pouch received from Unit 2. Check the incoming \
-          inside bill, and then sign bill with witness. Move all mail to safe and move the inside bill to Forms & Pouches."
+          text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315. Verify the incoming inside bill, and then sign bill with \
+           witness. ADPS all mail items, and move all articles into the safe."
         }
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
-          text = "3. Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section with the items listed \
-          on the PS Form 3877. Ensure the correctness of the PS Form 3877 and sign. Move articles to safe and the PS Form \
-          3877 to Forms & Pouches."
+          text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877. Verify the PS Form 3877, \
+          sign, and move into “Items Rcv’d From Other Sources” section. APDS all articles, and move articles into safe."
         }
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
-          text = "4. NOTE: Incoming Truck 5 should be Incoming Transfer Bill 5\
-          <br><br>\
-          SPC Turner, who works at the finance window, comes to the registry section with the items listed on the transfer \
-          bill. APDS all items, and ensure correctness of the transfer bill (PS Form 3877). Sign the bill and move to Forms \
-          & Pouches, move all mail items to Safe."
+          text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545. APDS all items. Verify the \
+          3854, sign, and move to “Items Rcv’d From Transfer Bills.” Move all mail items into the Safe."
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
-          text = "The registry section is now closed. Terry Jones, the mail guard has arrived at your location and is \
-          waiting for the outgoing registered mail.\
+          text = "It is 1700, the registry section is now closed. Terry Jones, the mail guard, has arrived at your location and is waiting for the outgoing registered mail.\
           <br><br> \
-          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this \
-          outgoing inside bill and its associated mail items into a new pouch, and move it into the Safe. "
+          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this outgoing inside bill and its associated mail items\
+          into a new pouch, and move it into the Outgoing Inside Bills section."
         }
         //Situation 5 Part 2
         else if(this.pageNum == 10) {
-          text = "Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the \
-          AMT that services your post office.\
+          text = "Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office.\
           <br><br> \
-          Dispatch these items via the Outgoing Truck."
+          AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
+          DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
+          LAST OUTGOING INSIDE BILL USED: 128 <br>\
+          LAST OUTGOING TRUCK BILL USED: 143 <br>\
+          CURRENT TIME: 1730 <br><br>\
+          Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section."
         }
         //Situation 6
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail \
-          received, delivered, dispatched, and mail that is still on hand and has not been delivered. Move this form to \
-          the Forms & Pouches section."
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, \
+          and mail that is still on hand and has not been delivered. Move this form to the Safe."
         }
         return text;
       },
