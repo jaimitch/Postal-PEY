@@ -732,11 +732,10 @@
       },
       createSit5Form(evt){
         if(this.pageNum == 9){
+          this.createPouch()
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.sit5InsideBill = true
           this.items[8].collapsed = false
-          
-          this.createPouch()
           evt.stopPropagation()
         }
         else{
