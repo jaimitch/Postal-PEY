@@ -323,7 +323,7 @@
         showPouchCreation: [9],
         showToolTip: [1, 4],
         showSubmit: [1, 3, 4, 8, 10, 11],
-        payGrade: "1",
+        payGrade: "2",
         error: false,
         answerKey: key,
         items: [
