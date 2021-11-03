@@ -37,11 +37,6 @@
               <button class="creation-button sho1" @click="flipForm()">FLIP FORM</button>
             </div>
           </div>
-      <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
-        <button class="creation-button" @click="createPouch()">
-          CREATE NEW POUCH
-        </button>
-      </div>
 
       <div class="left-frame">
         <div
@@ -196,7 +191,7 @@
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form($event)">
-              CREATE NEW OUTGOING INSIDE BILL
+              CREATE NEW OUTGOING INSIDE BILL & POUCH
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
@@ -740,6 +735,8 @@
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.sit5InsideBill = true
           this.items[8].collapsed = false
+          
+          this.createPouch()
           evt.stopPropagation()
         }
         else{
