@@ -705,8 +705,9 @@
         }
         //Situation 6
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, \
-          and mail that is still on hand and has not been delivered. Move this form to the Safe."
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
+          that is still on hand and has not been delivered. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. \
+          Then have your supervisor, Matthew L. Long, sign as the verifying official. Move this form to the Safe.";
         }
         return text;
       },
