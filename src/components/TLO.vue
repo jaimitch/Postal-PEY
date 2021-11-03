@@ -138,7 +138,7 @@
 }
 .tlo-text {
   font-size: 1.3vw;
-  text-align: center;
+  text-align: left;
   display: flex;
   justify-content: center;
   flex-direction: column;
