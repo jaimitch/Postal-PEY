@@ -1737,10 +1737,10 @@
         else if(formCode == "PS FORM 3849"){
           let errors = 0
           console.log("Its a 3849")
-          for(let property in keyForm){
-            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
-              console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
-              errors++;
+          for(let property in userForm){
+            if(userForm[property] != keyForm[property]){
+              console.log(property,": ", userForm[property], " ", keyForm[property])
+              errors++
             }
           }
           return errors
