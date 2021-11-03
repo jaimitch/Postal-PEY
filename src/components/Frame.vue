@@ -2285,6 +2285,7 @@
     z-index: 1;
   }
   .drop-zone {
+    z-index: 3;
     padding: 10%;
     order: 1;
     background-color: #333366;
@@ -2300,6 +2301,7 @@
     left: 2vw;
     width: 36vw;
     height: 90vh;
+    z-index: 3;
   }
   .right-frame{
     position: absolute;
@@ -2550,18 +2552,21 @@
   }
   .scroll-zone-up {
     position:absolute;
-    z-index: 40;
-    top: 10vh;
-    width: 90vw;
-    height:2vh;
+    z-index: 2;
+    top: 0vh;
+    width: 80vw;
+    height:13vh;
+    left:3vw;
+    transform: translateY(1%);
     background-color: transparent;
   }
   .scroll-zone-down {
     position:absolute;
-    z-index: 40;
-    height:2vh;
-    top: 90vh;
+    z-index: 2;
+    height:15vh;
+    top: 80vh;
     width: 45vw;
+    transform: translateY(60%);
     background-color: transparent;
   }
   .flip-2261{
