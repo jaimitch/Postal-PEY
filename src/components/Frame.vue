@@ -82,7 +82,7 @@
                     <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
                     <div class = "child-text">
-                      {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+                      {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '45th MP CO APO AE 09459'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
                     </div>
                   </div>  
                   <div class="child-content item-image" v-if="items[child].images.length != 0">
@@ -115,7 +115,7 @@
                         <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
                         <div class='grand-text'>
-                          {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+                          {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
                         </div>
                       </div>
 
@@ -143,7 +143,7 @@
                           <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
                           <div class='great-grand-text'>
-                            {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                            {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
                           </div>
                         </div>
 
@@ -170,7 +170,7 @@
                             <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
 
                             <div class='great-grand-text'>
-                              {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                              {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
                             </div>
                           </div>
                           <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
@@ -191,7 +191,7 @@
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form($event)">
-              CREATE NEW OUTGOING INSIDE BILL & POUCH
+              CREATE NEW Outgoing Inside Bill & POUCH
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
@@ -371,9 +371,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Incoming Inside Bill / Pouches  PS - 3854",
+            articleCode: "Incoming Inside Bill / Pouches",
             id: 12,
-            title: "Incoming Inside Bill / Pouches  PS - 3854",
+            title: "Incoming Inside Bill / Pouches",
             children: [],
             level: 1,
             images: [],
@@ -386,9 +386,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Incoming Truck Bills PS - 3854",
+            articleCode: "Incoming Truck Bills",
             id: 13,
-            title: "Incoming Truck Bills PS - 3854",
+            title: "Incoming Truck Bills",
             children: [],
             level: 1,
             images: [],
@@ -401,9 +401,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d From Transfer Bill PS - 3877",
+            articleCode: "Items Rcv’d From PS - 3877",
             id: 14,
-            title: "Items Rcv’d From Transfer Bill PS - 3877",
+            title: "Items Rcv’d From PS - 3877",
             children: [],
             level: 1,
             images: [],
@@ -431,9 +431,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Delivered Outgoing PS - 3849 & PS - 3883",
+            articleCode: "Items Delivered Outgoing",
             id: 16,
-            title: "Items Delivered Outgoing PS - 3849 & PS - 3883",
+            title: "Items Delivered Outgoing",
             children: [],
             level: 1,
             images: [],
@@ -446,9 +446,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Outgoing Inside Bill PS - 3854",
+            articleCode: "Outgoing Inside Bills",
             id: 17,
-            title: "Outgoing Inside Bill PS - 3854",
+            title: "Outgoing Inside Bills",
             children: [],
             level: 1,
             images: [],
@@ -461,9 +461,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Outgoing Truck Bill PS - 3854",
+            articleCode: "Outgoing Truck Bills",
             id: 18,
-            title: "Outgoing Truck Bill PS - 3854",
+            title: "Outgoing Truck Bills",
             children: [],
             level: 1,
             images: [],
@@ -508,24 +508,24 @@
             gradeAt: []
           },
           {
-            // id: 9,
-            // title: "Incoming Transfer Bill",
-            // articleCode: "Truck 3",
-            // children: [],
-            // level: 0,
-            // situationNumber: "Situation 4",
-            // stampCounter: false,
-            // stampable: false,
-            // formInputs: {
-            //   situationNumber: "Situation 4"
-            //   },
-            // type: "Truck",
-            // droppable: true,
-            // gradeAt: []
+            id: 9,
+            title: "Incoming Mail",
+            articleCode: "Truck 3",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: false,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
           },
           {
             id: 10,
-            title: "Incoming Truck",
+            title: "Incoming Mail",
             articleCode: "Truck 4",
             children: [],
             level: 0,
@@ -635,8 +635,26 @@
           text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click each article,  \
           then select “Create 3883” or “Create 3849” to create the appropriate form. \
           After the form is filled out, move the mail item to the Items Delivered Outgoing section. </div><br>\
-          RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
-          <br><br>
+          <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
+          <tr>
+          <td  style="width:40%">RB 298 302 613 US</td>
+          <td>RB 339 065 331 US</td>
+          </tr>
+          <tr>
+          <td>RB 290 770 790 US</td>
+          <td>RB 309 266 140 US</td>
+          </tr>
+          <tr>
+          <td>RB 218 344 488 US</td>
+          <td>RB 143 899 161 US</td>
+          </tr>
+          <tr>
+          <td>RB 867 092 744 US</td>
+          <td>RB 102 022 763 US</td>
+          </tr>
+          </table>
+          </div>
+          <br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
@@ -670,7 +688,7 @@
         else if(this.pageNum == 9) {
           text = "It is 1700, the registry section is now closed. Terry Jones, the mail guard, has arrived at your location and is waiting for the outgoing registered mail.\
           <br><br> \
-          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this outgoing inside bill and its associated mail items\
+          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this Outgoing Inside Bill and its associated mail items\
           into a new pouch, and move it into the Outgoing Inside Bills section."
         }
         //Situation 5 Part 2
@@ -679,7 +697,7 @@
           <br><br> \
           AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
           DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
-          LAST OUTGOING INSIDE BILL USED: 128 <br>\
+          LAST Outgoing Inside Bill USED: 128 <br>\
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
           CURRENT TIME: 1730 <br><br>\
           Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section."
@@ -732,11 +750,10 @@
       },
       createSit5Form(evt){
         if(this.pageNum == 9){
+          this.createPouch()
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.sit5InsideBill = true
           this.items[8].collapsed = false
-          
-          this.createPouch()
           evt.stopPropagation()
         }
         else{
@@ -1738,10 +1755,10 @@
         else if(formCode == "PS FORM 3849"){
           let errors = 0
           console.log("Its a 3849")
-          for(let property in keyForm){
-            if(userForm[property] != keyForm[property] && property != "gradeAt" && !property.includes("Location") && !property == "type") {
-              console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
-              errors++;
+          for(let property in userForm){
+            if(userForm[property] != keyForm[property]){
+              console.log(property,": ", userForm[property], " ", keyForm[property])
+              errors++
             }
           }
           return errors
@@ -1832,13 +1849,13 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           //hardcode closed folders
-            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches  PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Incoming Truck Bills PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From Transfer Bill PS - 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From PS - 3877")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS - 3849 & PS - 3883")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS - 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered Outgoing")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
           //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
@@ -1913,11 +1930,11 @@
             let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
             let item1 = this.createItem('pouch', '70948511', 2, 2, false, 'Bag-1', undefined, [2], false)
-            this.assignItemToParent('Bill #260', item1)
+            this.assignItemToParent('Truck 1', item1)
             let item2 = this.createItem('parcel', 'RB 102 022 763 US', 2, 2, false, '763', undefined, [2, 3], false)
-            this.assignItemToParent('Bill #260', item2)
+            this.assignItemToParent('Truck 1', item2)
             let item3 = this.createItem('parcel', 'RB 298 302 613 US', 2, 2, false, '613', undefined, [2, 3], false)
-            this.assignItemToParent('Bill #260', item3)
+            this.assignItemToParent('Truck 1', item3)
             //console.log(this.items)
 
             //42 - 47
@@ -2009,9 +2026,9 @@
             let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 2', form1)
             let item1 = this.createItem('pouch', '43000277', 4, 2, false, 'Bag-1', undefined, [4], false)
-            this.assignItemToParent('Bill #30', item1)
+            this.assignItemToParent('Truck 2', item1)
             let item2 = this.createItem('parcel', 'RB 300 911 759 US', 4, 2, false, '759', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #30', item2)
+            this.assignItemToParent('Truck 2', item2)
             //30-33
             this.situationFourPartOne = true;
             }
@@ -2022,7 +2039,7 @@
             //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
-            this.items[12].level = 1;
+            this.items[12].level = 0;
             this.items[13].level = 0;
 
             if(!this.situationFourPartTwo){
@@ -2088,12 +2105,12 @@
                 stamped: false
             }
 
-            let form1 = this.createItem('psform3877', '48', 4, 2, false, '', newFormSettings, [4], false)
+            let form1 = this.createItem('psform3877', '45th MP CO APO AE 09459', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 3', form1)
             let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4, 5], false)
-            this.assignItemToParent('48', item1)
+            this.assignItemToParent('Truck 3', item1)
             let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4, 5], false)
-            this.assignItemToParent('48', item2)
+            this.assignItemToParent('Truck 3', item2)
             //18-21
             this.situationFourPartThree = true;
             }
@@ -2147,25 +2164,25 @@
             let form1 = this.createItem('psform3854', '33', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 4', form1)
             let item1 = this.createItem('letter', 'RB 707 092 210 US', 4, 2, false, '210', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item1)
+            this.assignItemToParent('Truck 4', item1)
             let item2 = this.createItem('parcel', 'RB 707 092 211 US', 4, 2, false, '211', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item2)
+            this.assignItemToParent('Truck 4', item2)
             let item3 = this.createItem('letter', 'RB 707 092 212 US', 4, 2, false, '212', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item3)
+            this.assignItemToParent('Truck 4', item3)
             let item4 = this.createItem('letter', 'RB 707 092 213 US', 4, 2, false, '213', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item4)
+            this.assignItemToParent('Truck 4', item4)
             let item5 = this.createItem('letter', 'RB 707 092 214 US', 4, 2, false, '214', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item5)
+            this.assignItemToParent('Truck 4', item5)
             let item6 = this.createItem('parcel', 'RB 707 092 215 US', 4, 2, false, '215', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item6)
+            this.assignItemToParent('Truck 4', item6)
             let item7 = this.createItem('letter', 'RB 707 092 216 US', 4, 2, false, '216', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item7)
+            this.assignItemToParent('Truck 4', item7)
             let item8 = this.createItem('letter', 'RB 707 092 217 US', 4, 2, false, '217', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item8)
+            this.assignItemToParent('Truck 4', item8)
             let item9 = this.createItem('letter', 'RB 707 092 218 US', 4, 2, false, '218', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item9)
+            this.assignItemToParent('Truck 4', item9)
             let item10 = this.createItem('letter', 'RB 707 092 219 US', 4, 2, false, '219', undefined, [4, 5], false)
-            this.assignItemToParent('Bill #33', item10)
+            this.assignItemToParent('Truck 4', item10)
             //6-17
             this.situationFourPartFour = true;
             }
@@ -2268,6 +2285,7 @@
     z-index: 1;
   }
   .drop-zone {
+    z-index: 3;
     padding: 10%;
     order: 1;
     background-color: #333366;
@@ -2283,6 +2301,7 @@
     left: 2vw;
     width: 36vw;
     height: 90vh;
+    z-index: 3;
   }
   .right-frame{
     position: absolute;
@@ -2533,18 +2552,21 @@
   }
   .scroll-zone-up {
     position:absolute;
-    z-index: 40;
-    top: 10vh;
-    width: 90vw;
-    height:2vh;
+    z-index: 2;
+    top: 0vh;
+    width: 80vw;
+    height:13vh;
+    left:3vw;
+    transform: translateY(1%);
     background-color: transparent;
   }
   .scroll-zone-down {
     position:absolute;
-    z-index: 40;
-    height:2vh;
-    top: 90vh;
+    z-index: 2;
+    height:15vh;
+    top: 80vh;
     width: 45vw;
+    transform: translateY(60%);
     background-color: transparent;
   }
   .flip-2261{

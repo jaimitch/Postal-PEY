@@ -87,7 +87,7 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "situation2Location": "Incoming Truck Bills PS - 3854",
+            "situation2Location": "Incoming Truck Bills",
             "gradeAt": [2]
         },
         {
@@ -144,7 +144,7 @@
             "type":"PS FORM 3849",
             "articleCode": "Ronald Cain",
             "situationNumber": "Situation 3",
-            "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459 ",
+            "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459",
             "name": "Ronald Cain",
             "signature": "Ronald Cain",
             "otherText": "RB309266140US",
@@ -171,16 +171,16 @@
             "sentBy": "David Campbell",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
         },
          {
             "type":"PS FORM 3849",
             "articleCode": "Carl Thompson",
             "situationNumber":"Situation 3",
-            "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459 ",
+            "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459",
             "name": "Carl Thompson",
             "signature": "Carl Thompson",
             "otherText": "RB290770790US",
@@ -207,16 +207,16 @@
             "sentBy": "Green Tower Corp.",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
          },
          {
             "type":"PS FORM 3849",
             "articleCode": "Donald Green",
             "situationNumber":"Situation 3",
-            "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459 ",
+            "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459",
             "name": "Donald Green",
             "signature": "Donald Green",
             "otherText": "RB339065331US",
@@ -243,10 +243,10 @@
             "sentBy": "Martha Gadsden",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
          },
          {
             "type":"PS FORM 3849",
@@ -279,10 +279,10 @@
             "sentBy": "Thomas Fulton",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
          },
          {
             "type":"PS FORM 3854",
@@ -321,7 +321,7 @@
             "witnessSent": "WIT: Scott Sanders",
             "witnessRecieved": "WIT: George Forrest",
             "gradeAt": [4],
-            "situation4Location":"Incoming Inside Bill / Pouches  PS - 3854"
+            "situation4Location":"Incoming Inside Bill / Pouches"
          },
          {
             "type":"PS FORM 3854",
@@ -359,7 +359,7 @@
             "bottomStamp2": true,
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
-            "situation2Location": "Incoming Inside Bill / Pouches  PS - 3854",
+            "situation2Location": "Incoming Inside Bill / Pouches",
             "select": ["RB888122361US – MISSENT","RB309266104US – SHOULD READ RB309266140US","RB621758502US – NOT RECEIVED",""],
             "gradeAt": [2]
         },
@@ -399,7 +399,7 @@
             "bottomStamp2": true,
             "witnessSent": "",
             "witnessRecieved": "",
-            "situation4Location": "Incoming Truck Bills PS - 3854",
+            "situation4Location": "Incoming Truck Bills",
             "gradeAt": [4]
         },
         {
@@ -452,11 +452,11 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [4],
-            "situation4Location":"Items Rcv’d From Transfer Bill PS - 3877"
+            "situation4Location":"Items Rcv’d From Other Sources"
         },
         {
             "type":"PS FORM 3877",
-            "articleCode": "48",
+            "articleCode": "45th MP CO APO AE 09459",
             "situationNumber":"Situation 4",
             "senderAddress": "45th MP CO APO AE 09459",
             "adultSigReq": false,
@@ -510,7 +510,7 @@
             "square":"",
             "stamped": true,
             "gradeAt": [4],
-            "situation4Location": "Items Rcv’d From Other Sources"
+            "situation4Location": "Items Rcv’d From PS - 3877"
         },
         {
             "type":"PS FORM 3883",
@@ -539,10 +539,10 @@
             "deliveredBy": "Student",
             "stamped": true,
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
         },
         {
             "type":"PS FORM 3883",
@@ -571,10 +571,10 @@
             "deliveredBy": "Student",
             "stamped": true,
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
         },
         {
             "articleCode": "Bill #184",
@@ -603,10 +603,10 @@
             "stamped": true,
             "type":"PS FORM 3883",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation4Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation5Location": "Items Delivered Outgoing PS - 3849 & PS - 3883",
-            "situation6Location": "Items Delivered Outgoing PS - 3849 & PS - 3883"
+            "situation3Location": "Items Delivered Outgoing",
+            "situation4Location": "Items Delivered Outgoing",
+            "situation5Location": "Items Delivered Outgoing",
+            "situation6Location": "Items Delivered Outgoing"
         },
         {
             "type":"PS FORM 3854",
@@ -635,7 +635,7 @@
             "postmasterSent": "Student",
             "postmasterRecieved": "",
             "currentTime": "",
-            "dispatchingClerk": "1700",
+            "dispatchingClerk": "1730",
             "itemNums": [
                 null, 
                 "RB888122361US", 
@@ -667,8 +667,8 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location": "Bill #144",
-            "situation6Location": "Bill #144"
+            "situation5Location": "SEAL #62345678",
+            "situation6Location": "SEAL #62345678"
         },
         {
             "type":"PS FORM 3854",
@@ -693,11 +693,11 @@
             "recieved": "",
             "recievingClerks": [],
             "totalArticlesSent": "2",
-            "totalArticlesRecieved": "2",
+            "totalArticlesRecieved": "",
             "postmasterSent": "Student",
-            "postmasterRecieved": "Kyle Dozier",
+            "postmasterRecieved": "",
             "currentTime": "",
-            "dispatchingClerk": "1700",
+            "dispatchingClerk": "1730",
             "itemNums": ["", "SEAL #62345678", "O/RB300911759US","NFE"],
             "itemOrigins": ["", "APO AE 09459"],
             "topStamp1": true,
@@ -707,8 +707,8 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location":"Outgoing Truck Bill PS - 3854",
-            "situation6Location":"Outgoing Truck Bill PS - 3854"
+            "situation5Location":"Outgoing Truck Bills",
+            "situation6Location":"Outgoing Truck Bills"
         },
         {
             "articleCode": "RB 339 065 331 US",
@@ -757,7 +757,7 @@
             "gradeAt":[2],
             "stampCounter": false,
             "type": "Pouch",
-            "situation2Location": "Incoming Inside Bill / Pouches  PS - 3854"
+            "situation2Location": "Incoming Inside Bill / Pouches"
         },
         {
             "articleCode": "SEAL #62345678",
@@ -773,7 +773,7 @@
             "situation5Location": "Bill #144",
             "situation6Location": "Bill #144",
             "stampCounter": false,
-            "type": "Incoming Inside Bill / Pouches  PS - 3854"
+            "type": "Incoming Inside Bill / Pouches"
         },
         {
             "articleCode": "RB 102 022 763 US",
@@ -909,7 +909,7 @@
             "stampCounter": false,
             "type": "Pouch",
             "gradeAt":[4],
-            "situation4Location": "Incoming Inside Bill / Pouches  PS - 3854"
+            "situation4Location": "Incoming Inside Bill / Pouches"
         },
         {
             "articleCode": "RB 300 911 759 US",
