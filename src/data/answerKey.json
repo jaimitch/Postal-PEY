@@ -770,8 +770,8 @@
             "level": 2,
             "situationNumber": "Situation 5",
             "gradeAt":[5, 6],
-            "situation5Location": "Bill #144",
-            "situation6Location": "Bill #144",
+            "situation5Location": "Outgoing Truck Bills",
+            "situation6Location": "Outgoing Truck Bills",
             "stampCounter": false,
             "type": "Incoming Inside Bill / Pouches"
         },
@@ -925,7 +925,7 @@
             "stampCounter":true,
             "type":"Package",
             "situation4Location": "Safe",
-            "situation5Location": "Bill #144",
+            "situation5Location": "Outgoing Truck Bills",
             "gradeAt":[4, 5]
         },
         {
