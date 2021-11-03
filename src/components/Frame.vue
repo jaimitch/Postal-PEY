@@ -632,9 +632,10 @@
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click each article,  \
-          then select “Create 3883” or “Create 3849” to create the appropriate form. \
-          After the form is filled out, move the mail item to the Items Delivered Outgoing section. </div><br>\
+          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click an article, then
+          select “Create 3883” or “Create 3849” if you wish to create a form. After a form is filled out,\
+          move it and its attached mail item(s) to the Items Delivered Outgoing section.\
+          Don’t forget to add the article number to the form. </div><br>\
           <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
           <tr>
           <td  style="width:40%">RB 298 302 613 US</td>
