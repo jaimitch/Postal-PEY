@@ -732,11 +732,11 @@
                 2.PAY GRADE
                 <!-- <input v-model="formData.payGrade"> -->
                 <select v-model="formData.payGrade">
-                    <option value="1">E-1</option>
-                    <option value="2">E-2</option>
-                    <option value="3">E-3</option>
-                    <option value="4">E-4</option>
-                    <option value="5">E-5</option>
+                    <option value="E-1">E-1</option>
+                    <option value="E-2">E-2</option>
+                    <option value="E-3">E-3</option>
+                    <option value="E-4">E-4</option>
+                    <option value="E-5">E-5</option>
                     <option value=""> </option>
                 </select>
             </div>
