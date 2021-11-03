@@ -9,24 +9,28 @@
             <div class="tlo-text">
               OBJECTIVE:  This practical exercise is designed to prepare you for the Registered Mail performance test.<br><br>
               CONDITIONS:  Given the following:<br>
-              Incoming Registered Mail Articles<br>
-              Blank PS Forms 3849, Delivery Notice/Reminder/Receipt<br>
-              PS Form 3854, Manifold Registry Dispatch Book (Incoming and Outgoing Bills)<br>
-              PS Form 3877, Firm Mailing Book for Accountable Mail<br>
-              PS Form 3883, Firm Delivery Book for Accountable Mail<br>
-              DD Form 2261, Registered Mail Balance and Inventory<br>
-              Previous Day’s Registered Mail Inventory<br>
-              Blank strip label<br>
-              Registered tin band seals<br>
-              All Purpose Dating Stamp (APDS)<br>
-              Standard office supplies (carbon paper, scissors, stapler and stamp pad)<br><br>
+                <ul style="text-align:left; margin:auto;">
+                  <li>Incoming Registered Mail Articles<br></li>
+                  <li>Blank PS Forms 3849, Delivery Notice/Reminder/Receipt<br></li>
+                  <li>PS Form 3854, Manifold Registry Dispatch Book (Incoming and Outgoing Bills)<br></li>
+                  <li>PS Form 3877, Firm Mailing Book for Accountable Mail<br></li>
+                  <li>PS Form 3883, Firm Delivery Book for Accountable Mail<br></li>
+                  <li>DD Form 2261, Registered Mail Balance and Inventory<br></li>
+                  <li>Previous Day’s Registered Mail Inventory<br></li>
+                  <li>Blank strip label<br></li>
+                  <li>Registered tin band seals<br></li>
+                  <li>All Purpose Dating Stamp (APDS)<br></li>
+                  <li>Standard office supplies (carbon paper, scissors, stapler and stamp pad)<br><br></li>
+                </ul>
               REQUIREMENTS:  The student will:<br>
-              Receipt for Registered Mail<br>
-              Notify dispatching office of discrepancies found on dispatch bills<br>
-              Deliver personal registered mail on PS Form 3849<br>
-              Deliver official registered mail on PS Form 3883<br>
-              Dispatch registered mail<br>
-              Prepare DD Form 2261 to close Registry Section at the end of the business day<br><br>
+              <ul style="text-align: left; margin: auto;">
+                <li>Receipt for Registered Mail<br></li>
+                <li>Notify dispatching office of discrepancies found on dispatch bills<br></li> 
+                <li>Deliver personal registered mail on PS Form 3849<br></li> 
+                <li>Deliver official registered mail on PS Form 3883<br></li> 
+                <li>Dispatch registered mail<br></li> 
+                <li>Prepare DD Form 2261 to close Registry Section at the end of the business day<br><br></li> 
+              </ul>
             </div>
             <button class="modal-button" @click="modalPage = 2">NEXT</button>
           </div>
@@ -135,5 +139,8 @@
 .tlo-text {
   font-size: 1.3vw;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 </style>
