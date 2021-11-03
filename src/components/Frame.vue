@@ -635,8 +635,26 @@
           text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click each article,  \
           then select “Create 3883” or “Create 3849” to create the appropriate form. \
           After the form is filled out, move the mail item to the Items Delivered Outgoing section. </div><br>\
-          RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
-          <br><br>
+          <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
+          <tr>
+          <td  style="width:40%">RB 298 302 613 US</td>
+          <td>RB 339 065 331 US</td>
+          </tr>
+          <tr>
+          <td>RB 290 770 790 US</td>
+          <td>RB 309 266 140 US</td>
+          </tr>
+          <tr>
+          <td>RB 218 344 488 US</td>
+          <td>RB 143 899 161 US</td>
+          </tr>
+          <tr>
+          <td>RB 867 092 744 US</td>
+          <td>RB 102 022 763 US</td>
+          </tr>
+          </table>
+          </div>
+          <br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
           <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
           <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
