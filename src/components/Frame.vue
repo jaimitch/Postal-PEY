@@ -323,7 +323,7 @@
         showPouchCreation: [9],
         showToolTip: [1, 4],
         showSubmit: [1, 3, 4, 8, 10, 11],
-        payGrade: "0",
+        payGrade: "1",
         error: false,
         answerKey: key,
         items: [
@@ -732,11 +732,10 @@
       },
       createSit5Form(evt){
         if(this.pageNum == 9){
+          this.createPouch()
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
           this.sit5InsideBill = true
           this.items[8].collapsed = false
-          
-          this.createPouch()
           evt.stopPropagation()
         }
         else{
