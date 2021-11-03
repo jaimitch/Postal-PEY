@@ -2305,9 +2305,9 @@
   }
   .right-frame{
     position: absolute;
-    top: 5vw;
+    top: 3vw;
     right: 2vw;
-    width: 56vw;
+    width: 60vw;
     height: 80vh;
     /* background-color: coral; */
   }
@@ -2585,7 +2585,7 @@
   .right-side-document {
     box-shadow: 1px 5px 5px black;
     position: absolute;
-    top: 0vh;
+    top: 6.5vh;
     left: 50%;
     transform: translateY(-5%) translateX(-50%);
     max-width: 60vw;
