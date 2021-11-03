@@ -499,7 +499,13 @@
                 </div>
             </div>
             <div class="sub-area3">
-                <input type="text" v-model="formData.dispatchingClerk"> M.
+                <select v-model="formData.dispatchingClerk"> 
+                    <option v-if="formData.billNo == '260' || formData.billNo == '30' || formData.billNo == '144' || formData.billNo == '129'" value = "0800">0800</option>
+                    <option v-if="formData.billNo == '24' || formData.billNo == '144' || formData.billNo == '129'" value = "0745">0745</option>
+                    <option v-if="formData.billNo == '231' || formData.billNo == '144' || formData.billNo == '129'" value = "0930">0930</option>
+                    <option v-if="formData.billNo == '33' || formData.billNo == '144' || formData.billNo == '129'" value = "1400">1400</option>
+                    <option v-if="formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1700">1700</option>
+                </select>M.
                 <br> Dispatching Clerk
             </div>
         </div>
@@ -562,7 +568,18 @@
                 </div>
             </div>
             <div class="sub-area3">
-                <input type="text" v-model="formData.currentTime"> M.
+                <select v-model="formData.currentTime"> 
+                    <option v-if="formData.billNo == '260'" value = "0800">0800</option>
+                    <option v-if="formData.billNo == '260' || formData.billNo == '231'" value = "0900">0900</option>
+                    <option v-if="formData.billNo == '260' || formData.billNo == '231' || formData.billNo == '231'" value = "0915">0915</option>
+                    <option v-if="formData.billNo == '260' || formData.billNo == '231' || formData.billNo == '231'" value = "1000">1000</option>
+                    <option v-if="formData.billNo == '231' || formData.billNo == '30'" value = "1100">1100</option>
+                    <option v-if="formData.billNo == '30' || formData.billNo == '24'" value = "1300">1300</option>
+                    <option v-if="formData.billNo == '30' || formData.billNo == '24' || formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1315">1315</option>
+                    <option v-if="formData.billNo == '30' || formData.billNo == '24' || formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1400">1400</option>
+                    <option v-if="formData.billNo == '24' || formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1545">1545</option>
+                    <option v-if="formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1700">1700</option>
+                </select>M.
                 <br> Receiving Clerk
             </div>
         </div>
@@ -894,6 +911,10 @@
         width: 20%;
         height: 100%;
         font-size: 10px;
+        text-align: center;
+    }
+    .sub-area3 select{
+        width: 50%;
         text-align: center;
     }
     .bottom-area2{
