@@ -82,7 +82,7 @@
                     <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
 
                     <div class = "child-text">
-                      {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '48'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+                      {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '45th MP CO APO AE 09459'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
                     </div>
                   </div>  
                   <div class="child-content item-image" v-if="items[child].images.length != 0">
@@ -115,7 +115,7 @@
                         <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
 
                         <div class='grand-text'>
-                          {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '48'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+                          {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
                         </div>
                       </div>
 
@@ -143,7 +143,7 @@
                           <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
 
                           <div class='great-grand-text'>
-                            {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '48'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                            {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
                           </div>
                         </div>
 
@@ -170,7 +170,7 @@
                             <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
 
                             <div class='great-grand-text'>
-                              {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '48'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                              {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
                             </div>
                           </div>
                           <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
@@ -2087,12 +2087,12 @@
                 stamped: false
             }
 
-            let form1 = this.createItem('psform3877', '48', 4, 2, false, '', newFormSettings, [4], false)
+            let form1 = this.createItem('psform3877', '45th MP CO APO AE 09459', 4, 2, false, '', newFormSettings, [4], false)
             this.assignItemToParent('Truck 3', form1)
             let item1 = this.createItem('letter', 'RB 842 320 438 US', 4, 2, false, '438', undefined, [4, 5], false)
-            this.assignItemToParent('48', item1)
+            this.assignItemToParent('45th MP CO APO AE 09459', item1)
             let item2 = this.createItem('letter', 'RB 842 320 439 US', 4, 2, false, '439', undefined, [4, 5], false)
-            this.assignItemToParent('48', item2)
+            this.assignItemToParent('45th MP CO APO AE 09459', item2)
             //18-21
             this.situationFourPartThree = true;
             }
