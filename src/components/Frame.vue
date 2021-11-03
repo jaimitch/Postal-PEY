@@ -361,9 +361,9 @@
             gradeAt: [],
           },
           {
-            articleCode: "Start of Day",
+            articleCode: "Start Of Day",
             id: 5,
-            title: "Start of Day",
+            title: "Start Of Day",
             children: [],
             level: 1,
             images: [],
@@ -376,9 +376,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Incoming Inside Bill / Pouches - PS 3854",
+            articleCode: "Incoming Inside Bill / Pouches  PS - 3854",
             id: 12,
-            title: "Incoming Inside Bill / Pouches - PS 3854",
+            title: "Incoming Inside Bill / Pouches  PS - 3854",
             children: [],
             level: 1,
             images: [],
@@ -406,9 +406,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d from transfer bill - PS Form 3877",
+            articleCode: "Items Rcv’d From Transfer Bill PS - 3877",
             id: 14,
-            title: "Items Rcv’d from transfer bill - PS Form 3877",
+            title: "Items Rcv’d From Transfer Bill PS - 3877",
             children: [],
             level: 1,
             images: [],
@@ -421,9 +421,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d from other sources",
+            articleCode: "Items Rcv’d From Other Sources",
             id: 15,
-            title: "Items Rcv’d from other sources",
+            title: "Items Rcv’d From Other Sources",
             children: [],
             level: 1,
             images: [],
@@ -436,9 +436,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Delivered Outgoing PS 3849 PS 3883",
+            articleCode: "Items Delivered Outgoing PS - 3849 & PS - 3883",
             id: 16,
-            title: "Items Delivered Outgoing PS 3849 PS 3883",
+            title: "Items Delivered Outgoing PS - 3849 & PS - 3883",
             children: [],
             level: 1,
             images: [],
@@ -451,9 +451,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Outgoing Inside Bill PS 3854",
+            articleCode: "Outgoing Inside Bill PS - 3854",
             id: 17,
-            title: "Outgoing Inside Bill PS 3854",
+            title: "Outgoing Inside Bill PS - 3854",
             children: [],
             level: 1,
             images: [],
@@ -466,9 +466,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Outgoing Truck Bill PS 3854",
+            articleCode: "Outgoing Truck Bill PS - 3854",
             id: 18,
-            title: "Outgoing Truck Bill PS 3854",
+            title: "Outgoing Truck Bill PS - 3854",
             children: [],
             level: 1,
             images: [],
@@ -1835,13 +1835,13 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           //hardcode closed folders
-            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches - PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches  PS - 3854")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d from transfer bill - PS Form 3877")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d from other sources")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS 3849 PS 3883")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From Transfer Bill PS - 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS - 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS - 3849 & PS - 3883")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS - 3854")].collapsed = true
           //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
