@@ -32,6 +32,11 @@
     <div class='frame'>
       <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
       <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
+      <div v-if="this.items[currentFormIndex] != undefined">
+            <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
+              <button class="creation-button sho1" @click="flipForm()">FLIP FORM</button>
+            </div>
+          </div>
       <div v-if="this.showPouchCreation.includes(this.pageNum)" class="pouch-creation">
         <button class="creation-button" @click="createPouch()">
           CREATE NEW POUCH
@@ -214,66 +219,62 @@
                 @changeForm="changeForm($event, data)"
                 :key="formKey"
               />
-              <button class="flip-2261" @click="form3854Back = true">Flip</button>
             </div>
-          <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == true">
-            <Form3854Back 
-              v-bind:item="items[currentItemIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-            <button class="flip-2261" @click="form3854Back = false">Flip</button>
+            <div v-if="this.items[currentItemIndex].type == 'PS FORM 3854' && form3854Back == true">
+              <Form3854Back 
+                v-bind:item="items[currentItemIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+            </div>
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3877'" >
+              <Form3877 
+                v-bind:item="items[currentFormIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+            </div>
+            <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == false">
+              <Form2261 
+                v-bind:item="items[currentFormIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+            </div>
+            <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == true">
+              <Form2261Back 
+                v-bind:item="items[currentFormIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+            </div>
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3883'" class="form-3883">
+              <Form3883 
+                v-bind:item="items[currentFormIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+            </div>
+            <div v-if="this.items[currentFormIndex].type == 'PS FORM 3849'">
+              <Form3849
+                v-bind:item="items[currentFormIndex]"
+                v-bind:studentName="studentName"
+                v-bind:studentPG="payGrade"
+                @changeForm="changeForm($event, data)"
+                :key="formKey"
+              />
+            </div>
           </div>
-          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3877'" >
-            <Form3877 
-              v-bind:item="items[currentFormIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-          </div>
-          <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == false">
-            <Form2261 
-              v-bind:item="items[currentFormIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-            <button class="flip-2261" @click="form2261Back = true">Flip</button>
-          </div>
-          <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' && form2261Back == true">
-            <Form2261Back 
-              v-bind:item="items[currentFormIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-            <button class="flip-2261" @click="form2261Back = false">Flip</button>
-          </div>
-          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3883'" class="form-3883">
-            <Form3883 
-              v-bind:item="items[currentFormIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-          </div>
-          <div v-if="this.items[currentFormIndex].type == 'PS FORM 3849'">
-            <Form3849
-              v-bind:item="items[currentFormIndex]"
-              v-bind:studentName="studentName"
-              v-bind:studentPG="payGrade"
-              @changeForm="changeForm($event, data)"
-              :key="formKey"
-            />
-          </div>
-        </div>
       </div>
     </div>
     <PageNav 
@@ -726,6 +727,14 @@
       },
     },
     methods: {
+      flipForm(){
+        if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
+          this.form3854Back = !this.form3854Back
+        }
+        else{
+          this.form2261Back = !this.form2261Back
+        }
+      },
       createSit5Form(evt){
         if(this.pageNum == 9){
           this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
@@ -2436,6 +2445,14 @@
     z-index:100;
     cursor: pointer;
   }
+  .sho1{
+    position: absolute;
+    transform: translateY(-50%);
+    bottom: .5vw;
+    right: 40vw;
+    z-index:100;
+    cursor: pointer;
+  }
   .item-icon{
     position: relative;
     width: 2.5vw;
@@ -2534,11 +2551,12 @@
     background-color: transparent;
   }
   .flip-2261{
-    z-index: 5;
-    position: relative;
-    right: 0%;
-    height:5%;
-    width: 5%;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateY(-10%);
+    font-size: 1.8vw;
+    font-weight: bold;
   }
   .delete-button {
     position: relative;
