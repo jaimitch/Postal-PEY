@@ -508,20 +508,20 @@
             gradeAt: []
           },
           {
-            id: 9,
-            title: "Incoming Transfer Bill",
-            articleCode: "Truck 3",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 4",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 4"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
+            // id: 9,
+            // title: "Incoming Transfer Bill",
+            // articleCode: "Truck 3",
+            // children: [],
+            // level: 0,
+            // situationNumber: "Situation 4",
+            // stampCounter: false,
+            // stampable: false,
+            // formInputs: {
+            //   situationNumber: "Situation 4"
+            //   },
+            // type: "Truck",
+            // droppable: true,
+            // gradeAt: []
           },
           {
             id: 10,
@@ -608,7 +608,7 @@
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
           section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B) and move it into the safe.`
+          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Part 3, Section B).`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
