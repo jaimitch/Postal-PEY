@@ -321,7 +321,7 @@
         totalErrors: 0,
         studentName: "Student",
         showPouchCreation: [9],
-        showToolTip: [1, 4],
+        showToolTip: [1, 2, 3, 4, 9],
         showSubmit: [1, 3, 4, 8, 10, 11],
         payGrade: "E-2",
         error: false,

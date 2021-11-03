@@ -25,10 +25,22 @@
         displayText() {
             let pageNum = this.$store.state.pageNum
             if(pageNum == 1) {
-                return "This is a tool tip that explains situation 1!";
+                return "Welcome to Registered Mail! This interactive PE includes items such as parcels, letters, and forms, \
+                which can be dragged, dropped, and expanded for more information. Click a form a second time to minimize it.\
+                Once you've successfully completed this situation, click 'Submit' in order to unlock navigation to the next situation.";
+            }
+            else if(pageNum == 2) {
+                return "In this situation, you will be moving forms and mail items. To move an item, drag it where you'd like it to go. \
+                Items can be dragged on top of other items to attach them together. ";
+            }
+            else if(pageNum == 3) {
+                return "If a section becomes too large or unwieldy, you may expand and minimize it by clicking the plus and minus signs.";
             }
             else if(pageNum == 4) {
-                return "This is a tool tip that explains situation 3!";
+                return "On forms which describe articles, select NFE (No Further Entries) after the end of the list.";
+            }
+            else if(pageNum == 9) {
+                return "In this situation, you will be adding items to a pouch. Drag and drop the items onto the pouch and they will stack underneath.";
             }
 
             return "The tooltip modal should not be displaying";
@@ -40,20 +52,20 @@
 <style scoped>
 .modal {
     position: absolute;
-    top: 45vh;
+    top: 40%;
     left:50%;
-    min-width: 20vw;
-    min-height: 20vh;
-    max-width: 20vw;
-    max-height: 20vh;
+    min-width: 30vw;
+    min-height: 10vh;
     border-radius: 12px;
     z-index:50;
+    box-shadow: 1px 3px 2px black;
   }
   .modal-text{
       position:relative;
-      top: 3.5vw;
+      /* top: 8vw; */
       text-align:center;
       padding: 1vw;
+      font-size: 1.4vw;
   }
   .modal-backdrop {
     position: fixed;
@@ -61,7 +73,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
