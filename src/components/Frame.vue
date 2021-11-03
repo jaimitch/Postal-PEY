@@ -608,7 +608,7 @@
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
           section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Section B) and move it into the safe.`
+          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Part III, Section B) and move it into the safe.`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
@@ -632,9 +632,10 @@
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click each article,  \
-          then select “Create 3883” or “Create 3849” to create the appropriate form. \
-          After the form is filled out, move the mail item to the Items Delivered Outgoing section. </div><br>\
+          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click an article, then
+          select “Create 3883” or “Create 3849” if you wish to create a form. After a form is filled out,\
+          move it and its attached mail item(s) to the Items Delivered Outgoing section.\
+          Don’t forget to add the article number to the form. </div><br>\
           RB 298 302 613 US , RB 339 065 331 US , RB 290 770 790 US , RB 309 266 140 US , RB 218 344 488 US , RB 143 899 161 US , RB 867 092 744 US , RB 102 022 763 US\
           <br><br>
           Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
