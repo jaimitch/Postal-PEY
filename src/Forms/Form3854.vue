@@ -505,6 +505,7 @@
                     <option v-if="formData.billNo == '231' || formData.billNo == '144' || formData.billNo == '129'" value = "0930">0930</option>
                     <option v-if="formData.billNo == '33' || formData.billNo == '144' || formData.billNo == '129'" value = "1400">1400</option>
                     <option v-if="formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1700">1700</option>
+                    <option v-if="formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1730">1730</option>
                 </select>M.
                 <br> Dispatching Clerk
             </div>
@@ -578,6 +579,7 @@
                     <option v-if="formData.billNo == '30' || formData.billNo == '24' || formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1315">1315</option>
                     <option v-if="formData.billNo == '30' || formData.billNo == '24' || formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1400">1400</option>
                     <option v-if="formData.billNo == '24' || formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1545">1545</option>
+                    <option v-if="formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1730">1730</option>
                     <option v-if="formData.billNo == '129' || formData.billNo == '144' || formData.billNo == '33'" value = "1700">1700</option>
                 </select>M.
                 <br> Receiving Clerk
