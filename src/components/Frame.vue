@@ -191,7 +191,7 @@
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form($event)">
-              CREATE NEW OUTGOING INSIDE BILL & POUCH
+              CREATE NEW Outgoing Inside Bill & POUCH
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
@@ -371,9 +371,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Incoming Inside Bill / Pouches  PS - 3854",
+            articleCode: "Incoming Inside Bill / Pouches",
             id: 12,
-            title: "Incoming Inside Bill / Pouches  PS - 3854",
+            title: "Incoming Inside Bill / Pouches",
             children: [],
             level: 1,
             images: [],
@@ -386,9 +386,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Incoming Truck Bills PS - 3854",
+            articleCode: "Incoming Truck Bills",
             id: 13,
-            title: "Incoming Truck Bills PS - 3854",
+            title: "Incoming Truck Bills",
             children: [],
             level: 1,
             images: [],
@@ -401,9 +401,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d From Transfer Bill PS - 3877",
+            articleCode: "Items Rcv’d From PS - 3877",
             id: 14,
-            title: "Items Rcv’d From Transfer Bill PS - 3877",
+            title: "Items Rcv’d From PS - 3877",
             children: [],
             level: 1,
             images: [],
@@ -431,9 +431,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Delivered Outgoing PS - 3849 & PS - 3883",
+            articleCode: "Items Delivered Outgoing",
             id: 16,
-            title: "Items Delivered Outgoing PS - 3849 & PS - 3883",
+            title: "Items Delivered Outgoing",
             children: [],
             level: 1,
             images: [],
@@ -446,9 +446,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Outgoing Inside Bill PS - 3854",
+            articleCode: "Outgoing Inside Bills",
             id: 17,
-            title: "Outgoing Inside Bill PS - 3854",
+            title: "Outgoing Inside Bills",
             children: [],
             level: 1,
             images: [],
@@ -461,9 +461,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Outgoing Truck Bill PS - 3854",
+            articleCode: "Outgoing Truck Bills",
             id: 18,
-            title: "Outgoing Truck Bill PS - 3854",
+            title: "Outgoing Truck Bills",
             children: [],
             level: 1,
             images: [],
@@ -670,7 +670,7 @@
         else if(this.pageNum == 9) {
           text = "It is 1700, the registry section is now closed. Terry Jones, the mail guard, has arrived at your location and is waiting for the outgoing registered mail.\
           <br><br> \
-          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this outgoing inside bill and its associated mail items\
+          Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this Outgoing Inside Bill and its associated mail items\
           into a new pouch, and move it into the Outgoing Inside Bills section."
         }
         //Situation 5 Part 2
@@ -679,7 +679,7 @@
           <br><br> \
           AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
           DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
-          LAST OUTGOING INSIDE BILL USED: 128 <br>\
+          LAST Outgoing Inside Bill USED: 128 <br>\
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
           CURRENT TIME: 1730 <br><br>\
           Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section."
@@ -1831,13 +1831,13 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           //hardcode closed folders
-            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches  PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Incoming Truck Bills PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From Transfer Bill PS - 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From PS - 3877")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Inside Bill PS - 3854")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Delivered Outgoing PS - 3849 & PS - 3883")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Truck Bill PS - 3854")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered Outgoing")].collapsed = true
+            this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
           //hardcode truck visibility
             this.items[10].level = 0;
             this.items[11].level = 0;
