@@ -33,7 +33,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .modal-backdrop {
     position: fixed;
     top: 0;
@@ -50,17 +50,19 @@
 
   .modal {
     position: absolute;
-    top: 20vw;
+    top: 40%;
     left:50%;
+    min-width: 30vw;
+    min-height: 10vh;
+    border-radius: 12px;
+    z-index:50;
+    box-shadow: 1px 3px 2px black;
     transform: translateX(-50%);
     background: #32334B;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-    min-width: 35vw;
-    min-height: 10vh;
-    border-radius: 5px;
-  }
+}
 
 
   .modal-body {
@@ -79,8 +81,11 @@
   }
 
 .gold {
-  color: #D5D5D5;
-  text-align: center;
+  position:relative;
+  /* top: 8vw; */
+  text-align:center;
+  padding: 1vw;
+  font-size: 1.4vw;
 }
   .delete-yes,.delete-no{
     font-size: 1vw;

@@ -59,7 +59,12 @@
     border-radius: 12px;
     z-index:50;
     box-shadow: 1px 3px 2px black;
-  }
+    transform: translateX(-50%);
+    background: #32334B;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+}
   .modal-text{
       position:relative;
       /* top: 8vw; */
