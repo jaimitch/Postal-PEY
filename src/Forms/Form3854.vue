@@ -572,7 +572,7 @@
                 <select v-model="formData.currentTime"> 
                     <option v-if="formData.billNo == '260'" value = "0800">0800</option>
                     <option v-if="formData.billNo == '260' || formData.billNo == '231'" value = "0900">0900</option>
-                    <option v-if="formData.billNo == '260' || formData.billNo == '231' || formData.billNo == '231'" value = "0915">0915</option>
+                    <option v-if="formData.billNo == '260' || formData.billNo == '231' || formData.billNo == '231'" value = "0945">0945</option>
                     <option v-if="formData.billNo == '260' || formData.billNo == '231' || formData.billNo == '231'" value = "1000">1000</option>
                     <option v-if="formData.billNo == '231' || formData.billNo == '30'" value = "1100">1100</option>
                     <option v-if="formData.billNo == '30' || formData.billNo == '24'" value = "1300">1300</option>
