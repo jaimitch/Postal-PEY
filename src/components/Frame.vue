@@ -197,7 +197,7 @@
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
-              <button class="creation-button" style="position:absolute; width:30vw; top:15vw; left:7vw;" @click="createSit5Form($event)">
+              <button class="creation-button" style="position:absolute; width:30vw; top:22vw; left:8.5vw;" @click="createSit5Form($event)">
               CREATE NEW Outgoing Inside Bill & POUCH
             </button>
             </div>
@@ -695,6 +695,11 @@
         else if(this.pageNum == 9) {
           text = "It is 1700, the registry section is now closed. Terry Jones, the mail guard, has arrived at your location and is waiting for the outgoing registered mail.\
           <br><br> \
+          AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
+          DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
+          LAST Outgoing Inside Bill USED: 128 <br>\
+          LAST OUTGOING TRUCK BILL USED: 143 <br>\
+          CURRENT TIME: 1730 <br><br>\
           Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this Outgoing Inside Bill and its associated mail items\
           into a new pouch, and move it into the Outgoing Inside Bills section."
         }
