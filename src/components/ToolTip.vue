@@ -37,7 +37,7 @@
                 return "If a section becomes too large or unwieldy, you may expand and minimize it by clicking the plus and minus signs.";
             }
             else if(pageNum == 4) {
-                return "On forms which describe articles, select NFE (No Further Entries) after the end of the list.";
+                return "On forms which list articles, such as PS Form 3854 and DD Form 2261, select NFE (No Further Entries) after listed items to designate the end of the list.";
             }
             else if(pageNum == 9) {
                 return "In this situation, you will be adding items to a pouch. Drag and drop the items onto the pouch and they will stack underneath.";

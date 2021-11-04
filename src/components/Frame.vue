@@ -639,10 +639,11 @@
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click an article, then
+          text = `<div>You prepare to deliver the following mail using the appropriate PS Forms at 1130. Click an article, then
           select “Create 3883” or “Create 3849” if you wish to create a form. After a form is filled out,\
           move it and its attached mail item(s) to the Items Delivered Outgoing section.\
-          Don’t forget to add the article number to the form. </div><br>\
+          Don’t forget to add the article number to the form.\
+          Don't forget to mark a form with NFE (No Further Entries) when listing article numbers. </div><br>\
           <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
           <tr>
           <td  style="width:40%">RB 298 302 613 US</td>
@@ -1987,7 +1988,7 @@
             }
             
             let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2], false)
-            this.assignItemToParent('SEAL #70948511', item1)
+            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("SEAL #70948511")].id))].articleCode, item1)
             let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2, 3], false)
             this.assignItemToParent('SEAL #70948511', item2)
             let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined, [2, 3], false)
@@ -2083,7 +2084,7 @@
             }
 
             let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [4], false)
-            this.assignItemToParent('SEAL #43000277', item1)
+            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("SEAL #43000277")].id))].articleCode, item1)
             let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [4, 5], false)
             this.assignItemToParent('SEAL #43000277', item2)
             let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [4, 5], false)
