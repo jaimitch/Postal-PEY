@@ -378,9 +378,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Incoming Inside Bill / Pouches",
+            articleCode: "Incoming Inside Bills / Pouches",
             id: 12,
-            title: "Incoming Inside Bill / Pouches",
+            title: "Incoming Inside Bills / Pouches",
             children: [],
             level: 1,
             images: [],
@@ -1864,7 +1864,7 @@
       updateSituation() {
         if(this.getSituationNumber == 1) {
           //hardcode closed folders
-            this.items[this.getItemByArticleCode("Incoming Inside Bill / Pouches")].collapsed = true
+            this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From PS - 3877")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
