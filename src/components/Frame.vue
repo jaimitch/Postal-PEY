@@ -633,8 +633,8 @@
           text = "You and George Forrest, the witness, open the pouch at 0915 and locate the incoming inside bill. \
           <br><br> \
           APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
-          on the back side of the bill. Then, sign the bill along with the witness. Move the PS Form 3854 form and the empty pouch \
-          into the Incoming Inside Bills section and the associated mail articles into the Safe."
+          on the back side of the bill. Then, sign the bill along with the witness. Move all mail articles from the pouch into the Safe. \
+          Then move the PS Form 3854 form and the empty pouch into the Incoming Inside Bills section. "
         }
         //Situation 3
         else if(this.pageNum == 4) {
