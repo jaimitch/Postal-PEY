@@ -123,7 +123,7 @@
                       <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
 
                       <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp </div>
-                        <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])">
+                        <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])" @click="this.stampItem($event, items[grandchild])" class="stamp-image">
                       </div>
                       <div 
                         class='great-grand-level' 
@@ -150,7 +150,7 @@
 
                         <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
                           <div class="stamp-input" v-show="items[greatgrand].showImage && items[greatgrand].type != 'Pouch'"> <input class="stamp-button" v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp </div>
-                          <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])">
+                          <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])" @click="this.stampItem($event, items[greatgrand])" class="stamp-image">
                         </div>
                         <div 
                           class='great-grand-level' 
@@ -176,7 +176,7 @@
                           </div>
                           <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
                             <div class="stamp-input" v-show="items[greatgreat].showImage && items[greatgreat].type != 'Pouch'"> <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp </div>
-                              <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])">
+                              <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])" @click="this.stampItem($event, items[greatgreat])" class="stamp-image">
                             </div>
                           </div>
                       </div>
