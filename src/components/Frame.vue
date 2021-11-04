@@ -95,7 +95,7 @@
                       </div>
                     </div>
                     
-                      <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" class="stamp-image">
+                      <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" :class="{'stamp-image': items[child].type != 'Pouch'}">
                   </div>
                     <div 
                       class='grand-child-level' 
@@ -125,7 +125,7 @@
                       <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > 
                         <!-- <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp  -->
                       </div>
-                        <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])" @click="this.stampItem($event, items[grandchild])" class="stamp-image">
+                        <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])" @click="this.stampItem($event, items[grandchild])" :class="{'stamp-image': items[grandchild].type != 'Pouch'}">
                       </div>
                       <div 
                         class='great-grand-level' 
@@ -154,7 +154,7 @@
                           <div class="stamp-input" v-show="items[greatgrand].showImage && items[greatgrand].type != 'Pouch'"> 
                             <!-- " v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp  -->
                           </div>
-                          <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])" @click="this.stampItem($event, items[greatgrand])" class="stamp-image">
+                          <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])" @click="this.stampItem($event, items[greatgrand])" :class="{'stamp-image': items[greatgrand].type != 'Pouch'}">
                         </div>
                         <div 
                           class='great-grand-level' 
@@ -182,7 +182,7 @@
                             <div class="stamp-input" v-show="items[greatgreat].showImage && items[greatgreat].type != 'Pouch'"> 
                               <!-- <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp  -->
                             </div>
-                              <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])" @click="this.stampItem($event, items[greatgreat])" class="stamp-image">
+                              <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])" @click="this.stampItem($event, items[greatgreat])" :class="{'stamp-image': items[greatgreat].type != 'Pouch'}">
                             </div>
                           </div>
                       </div>
@@ -719,7 +719,7 @@
         else if(this.pageNum == 11) {
           text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
           that is still on hand and has not been delivered. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. \
-          Then have your supervisor, Matthew L. Long, sign as the verifying official. Move this form to the Safe.";
+          Then have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the Start Of Day folder.";
         }
         return text;
       },
@@ -819,6 +819,10 @@
       },
       //"stamp items"
       stampItem(evt, item) {
+        if(item.type == "Pouch"){
+          evt.stopPropagation()
+          return
+        }
         item.stampCounter = !item.stampCounter;
         if(item.stampCounter == true){
           item.currentImageIndex = 1
