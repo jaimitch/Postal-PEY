@@ -328,7 +328,7 @@
         totalErrors: 0,
         studentName: "Student",
         showPouchCreation: [9],
-        showToolTip: [1, 4],
+        showToolTip: [1, 2, 3, 4, 9],
         showSubmit: [1, 3, 4, 8, 10, 11],
         payGrade: "E-2",
         error: false,
@@ -615,7 +615,7 @@
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
           section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Part III, Section B) and move it into the safe.`
+          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Part III, Section B).`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
@@ -639,9 +639,10 @@
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click each article,  \
-          then select “Create 3883” or “Create 3849” to create the appropriate form. \
-          After the form is filled out, move the mail item to the Items Delivered Outgoing section. </div><br>\
+          text = `<div>Deliver the following mail using the appropriate PS Forms at 1130. Click an article, then
+          select “Create 3883” or “Create 3849” if you wish to create a form. After a form is filled out,\
+          move it and its attached mail item(s) to the Items Delivered Outgoing section.\
+          Don’t forget to add the article number to the form. </div><br>\
           <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
           <tr>
           <td  style="width:40%">RB 298 302 613 US</td>
@@ -716,8 +717,9 @@
         }
         //Situation 6
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, \
-          and mail that is still on hand and has not been delivered. Move this form to the Safe."
+          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
+          that is still on hand and has not been delivered. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. \
+          Then have your supervisor, Matthew L. Long, sign as the verifying official. Move this form to the Safe.";
         }
         return text;
       },
