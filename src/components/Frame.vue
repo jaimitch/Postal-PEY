@@ -688,12 +688,12 @@
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
           text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877. Verify the PS Form 3877, \
-          sign, and move into “Items Rcv’d From Other Sources” section. APDS all articles, and move articles into safe."
+          sign, and move into “Items Rcv’d From Transfer Bills” section. APDS all articles, and move articles into safe."
         }
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
           text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545. APDS all items. Verify the \
-          3854, sign, and move to “Items Rcv’d From Transfer Bills.” Move all mail items into the Safe."
+          3854, sign, and move to “Items Rcv’d From Other Sources.” Move all mail items into the Safe."
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
