@@ -408,9 +408,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d From PS - 3877",
+            articleCode: "Items Rcv’d From Transfer Bills ",
             id: 14,
-            title: "Items Rcv’d From PS - 3877",
+            title: "Items Rcv’d From Transfer Bills ",
             children: [],
             level: 1,
             images: [],
@@ -702,7 +702,7 @@
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
           CURRENT TIME: 1730 <br><br>\
           Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this Outgoing Inside Bill and its associated mail items\
-          into a new pouch, and move it into the Outgoing Inside Bills section."
+          into a new pouch, and keep it in the Outgoing Inside Bills section."
         }
         //Situation 5 Part 2
         else if(this.pageNum == 10) {
@@ -1555,6 +1555,7 @@
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
             this.successModalShow = true
+            this.$store.commit('nextPage')
           }
           else{
             console.log("**************ERRORS**************",errors)
@@ -1870,7 +1871,7 @@
           //hardcode closed folders
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From PS - 3877")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From Transfer Bills ")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Delivered Outgoing")].collapsed = true

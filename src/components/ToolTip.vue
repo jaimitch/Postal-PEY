@@ -26,12 +26,12 @@
             let pageNum = this.$store.state.pageNum
             if(pageNum == 1) {
                 return "Welcome to Registered Mail! This interactive PE includes items such as parcels, letters, and forms, \
-                which can be dragged, dropped, and expanded for more information. Click a form a second time to minimize it.\
+                which can be dragged, dropped, and expanded for more information. Click a form to open it, click it a second time to minimize it.\
                 Once you've successfully completed this situation, click 'Submit' in order to unlock navigation to the next situation.";
             }
             else if(pageNum == 2) {
                 return "In this situation, you will be moving forms and mail items. To move an item, drag it where you'd like it to go. \
-                Items can be dragged on top of other items to attach them together. ";
+                Items can be dragged on top of other items to attach them together. Items can be detached by dragging an item off of another.";
             }
             else if(pageNum == 3) {
                 return "If a section becomes too large or unwieldy, you may expand and minimize it by clicking the plus and minus signs.";
