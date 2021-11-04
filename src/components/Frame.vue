@@ -87,14 +87,15 @@
                   </div>  
                   <div class="child-content item-image" v-if="items[child].images.length != 0">
                     <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
-                      <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp 
+                      <!-- <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" class="stamp-image"> -->
+                      <!-- <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp  -->
                       <div v-if="getSituationNumber == 3">
                         <button class="button-3883" @click="createOutForm($event, items[child],'psform3883')">Create 3883</button>
                         <button class="button-3849" @click="createOutForm($event, items[child],'psform3849')">Create 3849</button>
                       </div>
                     </div>
                     
-                    <img v-show="items[child].showImage" :src="itemImage(items[child])">
+                      <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" class="stamp-image">
                   </div>
                     <div 
                       class='grand-child-level' 
@@ -2611,5 +2612,11 @@
   }
   .top-level:hover{
     cursor:pointer;
+  }
+  .stamp-image{
+    padding: 10px;
+  }
+  .stamp-image:hover{
+    cursor: url('../assets/Stamp-Cursor.svg'), auto
   }
 </style>
