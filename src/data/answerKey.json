@@ -321,7 +321,7 @@
             "witnessSent": "WIT: Scott Sanders",
             "witnessRecieved": "WIT: George Forrest",
             "gradeAt": [4],
-            "situation4Location":"Incoming Inside Bill / Pouches"
+            "situation4Location":"Incoming Inside Bills / Pouches"
          },
          {
             "type":"PS FORM 3854",
@@ -359,7 +359,7 @@
             "bottomStamp2": true,
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
-            "situation2Location": "Incoming Inside Bill / Pouches",
+            "situation2Location": "Incoming Inside Bills / Pouches",
             "select": ["RB888122361US – MISSENT","RB309266104US – SHOULD READ RB309266140US","RB621758502US – NOT RECEIVED",""],
             "gradeAt": [2]
         },
@@ -757,7 +757,7 @@
             "gradeAt":[2],
             "stampCounter": false,
             "type": "Pouch",
-            "situation2Location": "Incoming Inside Bill / Pouches"
+            "situation2Location": "Incoming Inside Bills / Pouches"
         },
         {
             "articleCode": "SEAL #62345678",
@@ -773,7 +773,7 @@
             "situation5Location": "Outgoing Truck Bills",
             "situation6Location": "Outgoing Truck Bills",
             "stampCounter": false,
-            "type": "Incoming Inside Bill / Pouches"
+            "type": "Incoming Inside Bills / Pouches"
         },
         {
             "articleCode": "RB 102 022 763 US",
@@ -909,7 +909,7 @@
             "stampCounter": false,
             "type": "Pouch",
             "gradeAt":[4],
-            "situation4Location": "Incoming Inside Bill / Pouches"
+            "situation4Location": "Incoming Inside Bills / Pouches"
         },
         {
             "articleCode": "RB 300 911 759 US",
