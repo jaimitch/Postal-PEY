@@ -1383,7 +1383,7 @@
           if(itemType == "pouch" && newItem.articleCode != undefined) {
             this.items.push(newItem);
             if(defaultCreate) {
-              this.items[1].children.push(newItem.id)
+              this.items[8].children.push(newItem.id)
               
             }
           }
