@@ -82,7 +82,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .modal-backdrop {
     position: fixed;
     top: 0;
@@ -100,7 +100,6 @@
   .modal {
     position: absolute;
     top: 5vh;
-    left:50%;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
@@ -138,7 +137,8 @@
 }
 .tlo-text {
   font-size: 1.3vw;
-  text-align: left;
+  text-align: center;
+  padding: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
