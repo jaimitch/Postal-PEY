@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="this.showToolTip.includes(this.pageNum)" @click="this.disableToolTip()">
-      <ToolTip/>
+      <div v-if="successModalShow == false">
+        <ToolTip/>
+      </div>
     </div>
 
     <Error 
@@ -630,7 +632,7 @@
         //Sitution 2 Part 2
          else if(this.pageNum == 3) {
            //Situation 2 Part 2
-          text = "You and George Forrest, the witness, open the pouch at 0915 and locate the incoming inside bill. \
+          text = "You and George Forrest, the witness, open the pouch at 0945 and locate the incoming inside bill. \
           <br><br> \
           APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
           on the back side of the bill. Then, sign the bill along with the witness. Move all mail articles from the pouch into the Safe. \
