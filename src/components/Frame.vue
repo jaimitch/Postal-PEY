@@ -19,7 +19,7 @@
       @doNothing="deleteModalShow = false"
     />
     <SectionCompleted
-      v-bind:sectionNumber="getSituationNumber"
+      v-bind:sectionNumber="completeNum"
       v-bind:successModalShow="successModalShow"
       @successModal="successModalShow = false"
     />
@@ -324,6 +324,7 @@
     ],
     data() {
       return {
+        completeNum: 0,
         collapsed: false,
         showError: false,
         problemItems: [],
@@ -1558,7 +1559,10 @@
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
             this.successModalShow = true
-            this.$store.commit('nextPage')
+            this.completeNum++
+            if(this.getSituationNumber != 6){
+              this.$store.commit('nextPage')
+            }
           }
           else{
             console.log("**************ERRORS**************",errors)
