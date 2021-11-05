@@ -200,7 +200,7 @@
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:22vw; left:8.5vw;" @click="createSit5Form($event)">
-              CREATE NEW Outgoing Inside Bill & POUCH
+              CREATE NEW OUTGOING INSIDE BILL & POUCH
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
