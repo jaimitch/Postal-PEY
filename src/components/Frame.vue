@@ -410,9 +410,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d From Transfer Bills ",
+            articleCode: "Items Rcv’d From PS - 3877",
             id: 14,
-            title: "Items Rcv’d From Transfer Bills ",
+            title: "Items Rcv’d From PS - 3877",
             children: [],
             level: 1,
             images: [],
@@ -688,7 +688,7 @@
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
           text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877. Verify the PS Form 3877, \
-          sign, and move into “Items Rcv’d From Transfer Bills” section. APDS all articles, and move articles into safe."
+          sign, and move into “Items Rcv’d From PS - 3877” section. APDS all articles, and move articles into safe."
         }
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
@@ -1874,7 +1874,7 @@
           //hardcode closed folders
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From Transfer Bills ")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From PS - 3877")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Delivered Outgoing")].collapsed = true
