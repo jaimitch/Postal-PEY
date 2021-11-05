@@ -8,7 +8,7 @@
             Practical Exercise - X</span><br><br>
             <div class="tlo-text">
               OBJECTIVE:  This practical exercise is designed to prepare you for the Registered Mail performance test.<br><br>
-              CONDITIONS:  Given the following:<br>
+              CONDITIONS:  Given the following<br>
                 <ul style="text-align:left; margin:auto;">
                   <li>Incoming Registered Mail Articles<br></li>
                   <li>Blank PS Forms 3849, Delivery Notice/Reminder/Receipt<br></li>
@@ -22,7 +22,7 @@
                   <li>All Purpose Dating Stamp (APDS)<br></li>
                   <li>Standard office supplies (carbon paper, scissors, stapler and stamp pad)<br><br></li>
                 </ul>
-              REQUIREMENTS:  The student will:<br>
+              REQUIREMENTS:  The student will<br>
               <ul style="text-align: left; margin: auto;">
                 <li>Receipt for Registered Mail<br></li>
                 <li>Notify dispatching office of discrepancies found on dispatch bills<br></li> 
