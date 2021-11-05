@@ -176,7 +176,7 @@
         <div class="pieces-recieved" >
             <div class="pieces-text">
                 Total Number of Pieces
-                Recieved at Post Office
+                Recieved at PO
                 <!-- <input class="pieces-input" v-model="formData.piecesRecieved"> -->
                 <select v-model="formData.piecesRecieved">
                             <option value="0">0</option>
