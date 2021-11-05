@@ -452,7 +452,7 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [4],
-            "situation4Location":"Items Rcv’d From Other Sources"
+            "situation4Location":"Items Rcv'd From Transfer Bills"
         },
         {
             "type":"PS FORM 3877",
@@ -510,7 +510,7 @@
             "square":"",
             "stamped": true,
             "gradeAt": [4],
-            "situation4Location": "Items Rcv’d From PS - 3877"
+            "situation4Location": "Items Rcv’d From Other Sources"
         },
         {
             "type":"PS FORM 3883",
