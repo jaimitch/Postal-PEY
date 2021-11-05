@@ -302,6 +302,7 @@
   import Delete from '../components/Delete.vue'
   import SectionCompleted from '../components/SectionCompleted.vue'
   import ToolTip from '../components/ToolTip.vue'
+
   export default {
     name: 'Frame',
     components: {
