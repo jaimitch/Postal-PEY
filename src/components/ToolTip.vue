@@ -27,7 +27,7 @@
             if(pageNum == 1) {
                 return "Welcome to Registered Mail! This interactive PE includes items such as parcels, letters, and forms, \
                 which can be dragged, dropped, and expanded for more information. Click a form to open it, click it a second time to minimize it.\
-                Once you've successfully completed this situation, click 'Submit' in order to unlock navigation to the next situation.";
+                Once you've successfully completed this situation, click 'Submit to move to the next situation.";
             }
             else if(pageNum == 2) {
                 return "In this situation, you will be moving forms and mail items. To move an item, drag it where you'd like it to go. \
