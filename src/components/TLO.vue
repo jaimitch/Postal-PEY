@@ -99,12 +99,14 @@
 
   .modal {
     position: absolute;
-    top: 5vh;
+    top: 3vh;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
     min-width: 70vw;
     min-height: 70vh;
+    max-height: 100%;
+    max-width: 100%;
     border-radius: 5px;
   }
 
@@ -137,10 +139,11 @@
 }
 .tlo-text {
   font-size: 1.3vw;
-  text-align: center;
-  padding: 30px;
+  text-align: left;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-left: 10%;
+  margin-right:10%;
 }
 </style>
