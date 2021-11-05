@@ -1559,7 +1559,12 @@
             this.pageErrors[this.getSituationNumber-1] = false;
             this.$emit('errorChange', this.pageErrors)
             this.successModalShow = true
-            this.completeNum++
+            if(this.completeNum < 6){
+              this.completeNum++
+            }
+            if(this.completeNum < this.getSituationNumber){
+              this.completeNum = this.getSituationNumber
+            }
             if(this.getSituationNumber != 6){
               this.$store.commit('nextPage')
             }
