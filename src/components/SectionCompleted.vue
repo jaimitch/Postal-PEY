@@ -3,7 +3,7 @@
   <div class="modal-backdrop">
     <div class="modal">
           <div class="gold" v-if="sectionNumber != 6">
-            You have successfully completed Situation {{sectionNumber}}, you can now move on to Situation {{sectionNumber+1}}
+            You have successfully completed Situation {{sectionNumber-1}}, you can now move on to Situation {{sectionNumber}}
           </div>
           <div class="gold" v-else>
             You have successfully completed the PE - X
