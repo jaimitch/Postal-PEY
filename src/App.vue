@@ -3,7 +3,9 @@
     <Frame 
       v-bind:pageNum="this.$store.state.pageNum"
       v-bind:changePage="change"
+      v-bind:studentName="this.learnerName"
       @errorChange="changeError($event, data)"
+      @markScormPassed="markScormPassed()"
     />
     <TLO/>
     <SituationNav 
@@ -29,6 +31,7 @@ export default {
   created() {
     window.addEventListener('beforeunload', this.handler);
     window.addEventListener('beforedestroy', this.removehandler);
+    this.learnerName = pipwerks.SCORM.data.get("cmi.learner_name");
   },
   data() {
     return {
@@ -43,6 +46,7 @@ export default {
         ],
         navKey: 0,
         change: 0,
+        learnerName: 'student'
     }
   },
   components: {

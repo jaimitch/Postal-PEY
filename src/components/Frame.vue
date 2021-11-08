@@ -337,7 +337,8 @@
     },
     props: [
       'pageNum',
-      'changePage'
+      'changePage',
+      'studentName'
     ],
     data() {
       return {
@@ -347,7 +348,6 @@
         showError: false,
         problemItems: [],
         totalErrors: 0,
-        studentName: "Student",
         showPouchCreation: [9],
         showToolTip: [1, 2, 3, 4, 9],
         showSubmit: [1, 3, 4, 8, 10, 11],
@@ -1593,6 +1593,9 @@
             }
             if(this.getSituationNumber != 6){
               this.$store.commit('nextPage')
+            }
+            if(this.getSituationNumber == 6){
+                this.$emit("markScormPassed")
             }
           }
           else{
