@@ -653,6 +653,10 @@
             }
         },
         mounted(){
+            this.$emit("changeShadeTrue")
+        },
+        beforeUnmount(){
+            this.$emit("changeShadeFalse")
         },
         methods: {
             changeForm() {

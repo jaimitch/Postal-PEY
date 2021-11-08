@@ -93,6 +93,12 @@
                 },
             }
         },
+        mounted(){
+            this.$emit("changeShadeTrue")
+        },
+        beforeUnmount(){
+            this.$emit("changeShadeFalse")
+        },
         computed: {
             backTextComp(){
                 return this.formData.select[0]+this.formData.select[1]+this.formData.select[2]+this.formData.select[3]

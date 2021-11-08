@@ -235,6 +235,12 @@
                 }
             }
         },
+        mounted(){
+            this.$emit("changeShadeTrue")
+        },
+        beforeUnmount(){
+            this.$emit("changeShadeFalse")
+        },
         methods:{
             changeForm() {
                 if(this.item.formInputs.articleCode != "" && !this.item.formInputs.articleCode.includes("created")) {

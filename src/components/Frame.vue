@@ -32,6 +32,8 @@
     @dragover="onHoverDown()"/>
     
     <div class='frame'>
+      <div v-if="shade === true" class="right-frame-shade" @click="this.currentFormIndex = ''">
+      </div>
       <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
       <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
       <div v-if="this.items[currentFormIndex] != undefined">
@@ -194,7 +196,7 @@
               </div>
             </div>
           </div>
-          <div class="right-frame" @click="currentFormIndex = ''">
+          <div :class="'right-frame'" @click="currentFormIndex = ''">
           <div class="situation-title">Situation {{ getSituationNumber }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
@@ -221,6 +223,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -230,6 +234,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -239,6 +245,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -248,6 +256,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -257,6 +267,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -266,6 +278,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -275,6 +289,8 @@
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
                 @changeForm="changeForm($event, data)"
+                @changeShadeTrue="shade = true"
+                @changeShadeFalse="shade = false"
                 :key="formKey"
               />
             </div>
@@ -324,6 +340,7 @@
     ],
     data() {
       return {
+        shade: false,
         completeNum: 0,
         collapsed: false,
         showError: false,
@@ -2351,6 +2368,15 @@
     height: 80vh;
     /* background-color: coral; */
   }
+  .right-frame-shade{
+    position: absolute;
+    top:0;
+    left: 40%;
+    width: 60%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
   .parent-level {
     position: relative;
     background-color: #D5D5D5;
@@ -2631,6 +2657,7 @@
     max-width: 60vw;
     max-height: 75vh;
     overflow: scroll;
+    z-index: 2;
   }
   .button-3883, .button-3849{
     background-color: #D5D5D5;
