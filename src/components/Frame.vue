@@ -58,7 +58,7 @@
             @click="changeCurrentItem($event, item.id)"
           > 
             <div @click="collapseItem(item)" class="top-level">
-              <img v-if="item.title == 'Safe'" src="../assets/Black-Safe.svg" class="item-icon safe">
+              <img v-if="item.title == 'Safe'" src="../assets/Safe-2.svg" class="item-icon safe">
               <span class="bold" :class="item.title == 'Safe' && 'safe-title'"> {{ item.title }}</span>
               <span v-if='item.collapsed == false || item.collapsed == undefined' class="collapse-button">-</span>
               <span v-if='item.collapsed == true' class="collapse-button">+</span>
@@ -2673,7 +2673,7 @@
   }
   .safe-title {
     position:absolute;
-    top: 3vw;
+    top: 2.2vw;
     left: 1.2vw;
   }
   .top-level:hover{
