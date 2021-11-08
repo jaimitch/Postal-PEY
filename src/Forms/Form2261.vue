@@ -815,6 +815,12 @@
                 },   
             }
         },
+        mounted(){
+            this.$emit("changeShadeTrue")
+        },
+        beforeUnmount(){
+            this.$emit("changeShadeFalse")
+        },
         computed:{
             remarks(){
                 let x = [

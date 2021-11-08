@@ -263,6 +263,12 @@
                 }
             }
         },
+        mounted(){
+            this.$emit("changeShadeTrue")
+        },
+        beforeUnmount(){
+            this.$emit("changeShadeFalse")
+        },
         methods:{
             changeForm() {
                 this.formData.articleCode = this.formData.senderAddress

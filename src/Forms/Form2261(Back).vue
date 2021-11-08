@@ -70,6 +70,12 @@
                 
             }
         },
+        mounted(){
+            this.$emit("changeShadeTrue")
+        },
+        beforeUnmount(){
+            this.$emit("changeShadeFalse")
+        },
         methods:{
             changeForm() {
                 this.$emit('changeForm', this.formData)
