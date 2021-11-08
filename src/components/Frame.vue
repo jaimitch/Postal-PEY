@@ -786,13 +786,21 @@
       createSit5Form(evt){
         if(this.pageNum == 9){
           this.createPouch()
-          this.items[8].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
+
+          let newFormSettings = {
+              billNo: "129",
+            }
+          this.items[8].children.push(this.createItem('psform3854', '129', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
           this.sit5InsideBill = true
           this.items[8].collapsed = false
           evt.stopPropagation()
         }
         else{
-          this.items[9].children.push(this.createItem('psform3854', "created", this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
+
+          let newFormSettings = {
+              billNo: '144',
+            }
+          this.items[9].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
           this.sit5TruckBill = true
           this.items[9].collapsed = false
           evt.stopPropagation()
