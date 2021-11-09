@@ -1407,7 +1407,7 @@
           }
           //checking to see if the user has used all existing seals
           if(newItem.articleCode != undefined) {
-            newItem.articleCode = 'SEAL #' + newItem.articleCode;
+            newItem.articleCode = 'S/' + newItem.articleCode;
           }
 
           if(itemType == "pouch" && newItem.articleCode != undefined) {
@@ -2028,17 +2028,17 @@
             }
             
             let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2], false)
-            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("SEAL #70948511")].id))].articleCode, item1)
+            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("S/70948511")].id))].articleCode, item1)
             let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item2)
+            this.assignItemToParent('S/70948511', item2)
             let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item3)
+            this.assignItemToParent('S/70948511', item3)
             let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item4)
+            this.assignItemToParent('S/70948511', item4)
             let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item5)
+            this.assignItemToParent('S/70948511', item5)
             let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2, 3, 5], false)
-            this.assignItemToParent('SEAL #70948511', item6)
+            this.assignItemToParent('S/70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
             }
@@ -2124,19 +2124,19 @@
             }
 
             let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [4], false)
-            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("SEAL #43000277")].id))].articleCode, item1)
+            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("S/43000277")].id))].articleCode, item1)
             let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item2)
+            this.assignItemToParent('S/43000277', item2)
             let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item3)
+            this.assignItemToParent('S/43000277', item3)
             let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item4)
+            this.assignItemToParent('S/43000277', item4)
             let item5 = this.createItem('parcel', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item5)
+            this.assignItemToParent('S/43000277', item5)
             let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item6)
+            this.assignItemToParent('S/43000277', item6)
             let item7 = this.createItem('parcel', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item7)
+            this.assignItemToParent('S/43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
 
