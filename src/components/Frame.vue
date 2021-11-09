@@ -458,9 +458,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Delivered Outgoing",
+            articleCode: "Items Delivered",
             id: 16,
-            title: "Items Delivered Outgoing",
+            title: "Items Delivered",
             children: [],
             level: 1,
             images: [],
@@ -566,6 +566,21 @@
             droppable: true,
             gradeAt: []
           },
+          {
+            articleCode: "End Of Day",
+            id: 45,
+            title: "End Of Day",
+            children: [],
+            level: 1,
+            images: [],
+            currentImageIndex: 0,
+            stampCounter: false,
+            stampable: false,
+            formInputs: {},
+            type: "forms",
+            droppable: true,
+            gradeAt: []
+          },
         ],
         //default assumes there is something wrong
         //(this prevents next arrow from being clicked until they at least try and submit)
@@ -661,7 +676,7 @@
           //Situation 3
           text = `<div>You prepare to deliver the following mail using the appropriate PS Forms at 1130. Click an article, then
           select “Create 3883” or “Create 3849” if you wish to create a form. After a form is filled out,\
-          move it and its attached mail item(s) to the Items Delivered Outgoing section.\
+          move it and its attached mail item(s) to the Items Delivered section.\
           Don’t forget to add the article number to the form.\
           Don't forget to mark a form with NFE (No Further Entries) when listing article numbers. </div><br>\
           <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
@@ -1911,7 +1926,7 @@
             this.items[this.getItemByArticleCode("Items Rcv'd From Transfer Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Delivered Outgoing")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Delivered")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
           //hardcode truck visibility
             this.items[10].level = 0;
@@ -2515,14 +2530,14 @@
     font-size: 1vw;
     background-color: white;
     color: #32334B;
-    padding: .5vw;
+    padding: 1vw;
     margin-left: .5vw;
     border-radius: .5vw;
   }
   .sho{
     position: absolute;
     transform: translateY(-50%);
-    bottom: .5vw;
+    top: 3vh;
     right: 15vw;
     z-index:100;
     cursor: pointer;
@@ -2530,7 +2545,7 @@
   .sho1{
     position: absolute;
     transform: translateY(-50%);
-    bottom: .5vw;
+    top: 3vh;
     right: 40vw;
     z-index:100;
     cursor: pointer;
@@ -2637,7 +2652,7 @@
   }
   .flip-2261{
     position: absolute;
-    bottom: 3%;
+    top: 3%;
     left: 50%;
     transform: translateY(-10%);
     font-size: 1.8vw;

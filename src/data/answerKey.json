@@ -137,7 +137,7 @@
             "itemsAccepted": "2",
             "items": [],
             "gradeAt": [6],
-            "situation6Location":"Start Of Day",
+            "situation6Location":"End Of Day",
             "type":"DD FORM 2261"
         },
         {
@@ -171,10 +171,10 @@
             "sentBy": "David Campbell",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
         },
          {
             "type":"PS FORM 3849",
@@ -207,10 +207,10 @@
             "sentBy": "Green Tower Corp.",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
          },
          {
             "type":"PS FORM 3849",
@@ -243,10 +243,10 @@
             "sentBy": "Martha Gadsden",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
          },
          {
             "type":"PS FORM 3849",
@@ -279,10 +279,10 @@
             "sentBy": "Thomas Fulton",
             "date": "Current Date",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
          },
          {
             "type":"PS FORM 3854",
@@ -539,10 +539,10 @@
             "deliveredBy": "Student",
             "stamped": true,
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
         },
         {
             "type":"PS FORM 3883",
@@ -571,10 +571,10 @@
             "deliveredBy": "Student",
             "stamped": true,
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
         },
         {
             "articleCode": "Bill #184",
@@ -603,10 +603,10 @@
             "stamped": true,
             "type":"PS FORM 3883",
             "gradeAt": [3, 4, 5, 6],
-            "situation3Location": "Items Delivered Outgoing",
-            "situation4Location": "Items Delivered Outgoing",
-            "situation5Location": "Items Delivered Outgoing",
-            "situation6Location": "Items Delivered Outgoing"
+            "situation3Location": "Items Delivered",
+            "situation4Location": "Items Delivered",
+            "situation5Location": "Items Delivered",
+            "situation6Location": "Items Delivered"
         },
         {
             "type":"PS FORM 3854",
