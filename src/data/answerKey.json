@@ -619,7 +619,7 @@
             "billNo": "129",
             "pageNo": "1X",
             "airmail": "------------",
-            "sealNo": "SEAL #62345678",
+            "sealNo": "S/62345678",
             "to": "AMF KENNEDY, NY 00300",
             "billNoRight": "129",
             "amNo": "------------",
@@ -627,7 +627,7 @@
             "lockNoRight": "------------",
             "rotaryNoRight": "------------",
             "airmailRight": "------------",
-            "sealNoRight": "SEAL #62345678",
+            "sealNoRight": "S/62345678",
             "recieved": "",
             "recievingClerks": [],
             "totalArticlesSent": "19",
@@ -667,8 +667,8 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location": "SEAL #62345678",
-            "situation6Location": "SEAL #62345678"
+            "situation5Location": "S/62345678",
+            "situation6Location": "S/62345678"
         },
         {
             "type":"PS FORM 3854",
@@ -698,7 +698,7 @@
             "postmasterRecieved": "",
             "currentTime": "",
             "dispatchingClerk": "1730",
-            "itemNums": ["", "SEAL #62345678", "O/RB300911759US","NFE"],
+            "itemNums": ["", "S/62345678", "O/RB300911759US","NFE"],
             "itemOrigins": ["", "APO AE 09459"],
             "topStamp1": true,
             "topStamp2": true,
@@ -745,7 +745,7 @@
             "situation3Location": "Carl Thompson"
         },
         {
-            "articleCode": "SEAL #70948511",
+            "articleCode": "S/70948511",
             "children": [],
             "currentImageIndex": 0,
             "droppable": true,
@@ -760,7 +760,7 @@
             "situation2Location": "Incoming Inside Bills / Pouches"
         },
         {
-            "articleCode": "SEAL #62345678",
+            "articleCode": "S/62345678",
             "children": [],
             "currentImageIndex": 0,
             "droppable": true,
@@ -893,11 +893,11 @@
             "situation2Location": "Safe",
             "gradeAt":[2, 3, 5],
             "situation3Location": "Safe",
-            "situation5Location": "SEAL #62345678"
+            "situation5Location": "S/62345678"
 
         },
         {
-            "articleCode": "SEAL #43000277",
+            "articleCode": "S/43000277",
             "children": [],
             "currentImageIndex":0,
             "droppable":true,
@@ -942,7 +942,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -959,7 +959,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -976,7 +976,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -993,7 +993,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1010,7 +1010,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1027,7 +1027,7 @@
             "stampCounter":true,
             "type":"Package",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1044,7 +1044,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1061,7 +1061,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1078,7 +1078,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1095,7 +1095,7 @@
             "droppable":true,
             "showImage":false,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1111,7 +1111,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1127,7 +1127,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1143,7 +1143,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1160,7 +1160,7 @@
             "droppable":true,
             "showImage":false,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1176,7 +1176,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1192,7 +1192,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1208,7 +1208,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1224,7 +1224,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         }
     ]
