@@ -197,7 +197,7 @@
             </div>
           </div>
           <div :class="'right-frame'" @click="currentFormIndex = ''">
-          <div class="situation-title">Situation {{ getSituationNumber }}</div>
+          <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
@@ -354,6 +354,7 @@
         payGrade: "E-2",
         error: false,
         answerKey: key,
+        currentSituationPart: "",
         items: [
           {
             articleCode: "Placeholder",
@@ -1845,6 +1846,41 @@
         //console.log("getItemByArticleCode:", index);
         return index;
       },
+      //Returns a string describing the subsection of the current situation
+      getSituationPart() {
+        if(this.pageNum == 1) {
+          return ""
+        }
+        else if(this.pageNum == 2) {
+          return "Part 1"
+        }
+        else if(this.pageNum == 3) {
+          return "Part 2"
+        }
+        else if(this.pageNum == 4) {
+          return ""
+        }
+        else if(this.pageNum == 5) {
+          return "Part 1"
+        }
+        else if(this.pageNum == 6) {
+          return "Part 2"
+        }
+        else if(this.pageNum == 7) {
+          return "Part 3"
+        }
+        else if(this.pageNum == 8) {
+          return "Part 4"
+        }
+        else if(this.pageNum == 9) {
+          return "Part 1"
+        }
+        else if(this.pageNum == 10) {
+          return "Part 2"
+        }else if(this.pageNum == 11) {
+          return ""
+        }
+      },
       //Uses the parent's article code and the child's id to add the child to the parent's children array
       assignItemToParent(parentArticleCode, childID) {
         let parent = this.items.filter(x => x.articleCode == parentArticleCode)
@@ -1908,7 +1944,11 @@
       },
       //function that handles events as the situation is changed
       updateSituation() {
+
+        this.currentSituationPart = this.getSituationPart()
+
         if(this.getSituationNumber == 1) {
+          
           //hardcode closed folders
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
