@@ -636,7 +636,7 @@
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
           section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Part III, Section B).`
+          items (RB 339 065 331 US and RB 290 770 790 US) are accounted for, and then sign the DD Form 2261 (Part III, Section B).`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
@@ -1929,7 +1929,7 @@
                 apoNum: "APO AE 09459",
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
-                items: ["RB339065331US", "RB290770790US","NFE"],
+                items: ["RB 339 065 331 US", "RB 290 770 790 US","NFE"],
                 totalItems9thru14: 15,
                 itemsOnHandAtEnd: 2,
                 numberOfPouchesOpened: 1,
@@ -1981,7 +1981,7 @@
               totalArticlesSent: "3",
               postmasterSent: "Anthony Smith",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US","NFE"],
+              itemNums: ["", "S/70948511", "O/RB 102 022 763 US", "O/RB 298 302 613 US","NFE"],
               itemOrigins: ["", "AMF KENNEDY NY 00300"],
               topStamp1: true,
               topStamp2: true,
@@ -2019,7 +2019,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Hark Smith",
               dispatchingClerk: "0930",
-              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US","NFE"],
+              itemNums: ["", "RB 621 758 502 US", "RB 309 266 104 US", "RB 867 092 744 US", "RB 218 344 488 US", "RB 143 899 161 US", "RB 888 122 361 US","NFE"],
               witnessSent: "WIT: Larry Brown",
               topStamp1: true,
               topStamp2: true,
@@ -2076,7 +2076,7 @@
               totalArticlesSent: "2",
               postmasterSent: "Todd Edgar",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/43000277", "O/RB300911759US","NFE"],
+              itemNums: ["", "S/43000277", "O/RB 300 911 759 US","NFE"],
               itemOrigins: ["", "APO AE 09459 - 2"],
               topStamp1: true,
               topStamp2: true,
@@ -2115,7 +2115,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Leroy Brown",
               dispatchingClerk: "0745",
-              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US","NFE"],
+              itemNums: ["", "RB 300 911 755 US", "RB 300 911 756 US", "RB 300 911 757 US", "RB 300 911 758 US", "RB 300 911 760 US", "RB 300 911 761 US","NFE"],
               topStamp1: true,
               topStamp2: true,
               bottomStamp1: false,
@@ -2155,8 +2155,8 @@
               let newFormSettings = {
                 senderAddress: "45th MP CO APO AE 09459",
                 registeredMail: true,
-                trackingNum1: "RB842320438US",
-                trackingNum2: "RB842320439US",
+                trackingNum1: "RB 842 320 438 US",
+                trackingNum2: "RB 842 320 439 US",
                 trackingNum3: "NFE",
                 trackingTextInput1: "HQ CAC\nFT KNOX, KY 40121",
                 trackingTextInput2: "545 MP CO\nFORT JACKSON, SC 29207",
@@ -2211,8 +2211,8 @@
               postmasterRecieved: "",
               currentTime: "",
               dispatchingClerk: "1400",
-              itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
-               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US","NFE"],
+              itemNums: ["", "RB 707 092 210 US", "RB 707 092 211 US", "RB 707 092 212 US", "RB 707 092 213 US", "RB 707 092 214 US", "RB 707 092 215 US",
+               "RB 707 092 216 US", "RB 707 092 217 US", "RB 707 092 218 US", "RB 707 092 219 US","NFE"],
               itemOrigins: [],
               topStamp1: true,
               topStamp2: true,
