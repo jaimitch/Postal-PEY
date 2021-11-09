@@ -429,9 +429,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv'd From Transfer Bills",
+            articleCode: "Items Rcv'd From Other Sources",
             id: 14,
-            title: "Items Rcv'd From Transfer Bills",
+            title: "Items Rcv'd From Other Sources",
             children: [],
             level: 1,
             images: [],
@@ -444,9 +444,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d From Other Sources",
+            articleCode: "Items Rcv’d From 3877",
             id: 15,
-            title: "Items Rcv’d From Other Sources",
+            title: "Items Rcv’d From 3877",
             children: [],
             level: 1,
             images: [],
@@ -712,7 +712,7 @@
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
           text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545. APDS all items. Verify the \
-          3854, sign, and move to “Items Rcv’d From Transfer Bills.” Move all mail items into the Safe."
+          3854, sign, and move to “Items Rcv’d From Other Sources.” Move all mail items into the Safe."
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
@@ -1912,8 +1912,8 @@
           //hardcode closed folders
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv'd From Transfer Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv'd From Other Sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From 3877")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Delivered Outgoing")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
