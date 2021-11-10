@@ -718,7 +718,7 @@
         //Situation 4 Part 2
         else if(this.pageNum == 6) {
           text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315. Verify the incoming inside bill, and then sign bill with \
-           witness. ADPS all mail items, and move all articles into the safe."
+           witness. ADPS all mail items, and move all articles from the pouch into the safe."
         }
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
@@ -757,7 +757,7 @@
         else if(this.pageNum == 11) {
           text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
           that is still on hand and has not been delivered. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. \
-          Then have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the Start Of Day folder.";
+          Then have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the End Of Day folder.";
         }
         return text;
       },
