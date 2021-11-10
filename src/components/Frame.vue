@@ -816,6 +816,8 @@
 
           let newFormSettings = {
               billNo: '144',
+              sealNo: "------------",
+              sealNoRight: "------------"
             }
           this.items[9].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
           this.sit5TruckBill = true
@@ -2041,7 +2043,9 @@
               topStamp1: true,
               topStamp2: true,
               bottomStamp1: false,
-              bottomStamp2: false
+              bottomStamp2: false,
+              sealNo: "------------",
+              sealNoRight: "------------"
             }
             let form1 = this.createItem('psform3854', '260', 2, 2, false, '', newFormSettings, [2], false)
             this.assignItemToParent('Truck 1', form1)
@@ -2137,6 +2141,8 @@
               topStamp2: true,
               bottomStamp1: false,
               bottomStamp2: false,
+              sealNo: "------------",
+              sealNoRight: "------------"
             }
 
             let form1 = this.createItem('psform3854', '30', 4, 2, false, '', newFormSettings, [4], false)

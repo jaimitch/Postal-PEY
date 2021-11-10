@@ -50,6 +50,7 @@
                         <option value="70948511">70948511</option>
                         <option value="H/C">H/C</option>
                         <option value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="------------">------------</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -213,6 +214,7 @@
                         <option value="70948511">70948511</option>
                         <option value="H/C">H/C</option>
                         <option value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="------------">------------</option>
                         <option value=""></option>
                     </select>
                 </div>
