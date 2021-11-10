@@ -49,7 +49,7 @@
                         <option value="43000277">43000277</option>
                         <option value="70948511">70948511</option>
                         <option value="H/C">H/C</option>
-                        <option value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="S/62345678">S/62345678</option>
                         <option value="------------">------------</option>
                         <option value=""></option>
                     </select>
@@ -213,7 +213,7 @@
                         <option value="43000277">43000277</option>
                         <option value="70948511">70948511</option>
                         <option value="H/C">H/C</option>
-                        <option value="SEAL #62345678">SEAL #62345678</option>
+                        <option value="S/62345678">S/62345678</option>
                         <option value="------------">------------</option>
                         <option value=""></option>
                     </select>
@@ -314,7 +314,7 @@
                         <option value="RB300911758US">RB300911758US</option>
                         <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
                         <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
-                        <option v-if="formData.billNo == 144" value="SEAL #62345678">SEAL #62345678</option>
+                        <option v-if="formData.billNo == 144" value="S/62345678">S/62345678</option>
                         <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
@@ -416,7 +416,7 @@
                         <option value="RB300911758US">RB300911758US</option>
                         <option v-if="formData.billNo == 231" value="RB621758502US">RB621758502US</option>
                         <option v-if="formData.billNo == 231" value="RB309266104US">RB309266104US</option>
-                        <option v-if="formData.billNo == 144" value="SEAL #62345678">SEAL #62345678</option>
+                        <option v-if="formData.billNo == 144" value="S/62345678">S/62345678</option>
                         <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
