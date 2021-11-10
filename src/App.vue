@@ -3,7 +3,9 @@
     <Frame 
       v-bind:pageNum="this.$store.state.pageNum"
       v-bind:changePage="change"
+      v-bind:studentName="this.learnerName"
       @errorChange="changeError($event, data)"
+      @markScormPassed="markScormPassed()"
     />
     <TLO/>
     <SituationNav 
@@ -20,10 +22,17 @@ import Frame from './components/Frame.vue'
 import SituationNav from './Navigation/SituationNav.vue'
 import store from './vuex/vuex.js'
 import TLO from './components/TLO.vue'
+import pipwerks from './assets/scorm-api-wrapper.js';
+
 
 export default {
   name: 'App',
   store,
+  created() {
+    window.addEventListener('beforeunload', this.handler);
+    window.addEventListener('beforedestroy', this.removehandler);
+    this.learnerName = pipwerks.SCORM.data.get("cmi.learner_name");
+  },
   data() {
     return {
       globalPageNum: this.vuexPageNum,
@@ -37,6 +46,7 @@ export default {
         ],
         navKey: 0,
         change: 0,
+        learnerName: 'student'
     }
   },
   components: {
@@ -54,7 +64,27 @@ export default {
     },
     changeKey(){
       this.navKey++
-    }
+    },
+    handler: function handler(event) {
+      console.log(event)
+       pipwerks.SCORM.save();
+       pipwerks.SCORM.quit();
+    },
+    removehandler: function removehandler(event) {
+      console.log(event)
+       window.removeEventListener('beforeunload');
+    },
+    markScormPassed() { 
+          pipwerks.SCORM.data.set("cmi.score.min", "0");
+          pipwerks.SCORM.data.set("cmi.score.max", "100");
+          pipwerks.SCORM.data.set("cmi.score.raw", "100");
+          pipwerks.SCORM.data.set("cmi.score.scaled", "100");
+          pipwerks.SCORM.data.set("cmi.success_status", "passed");
+          pipwerks.SCORM.data.set("cmi.completion_status", "completed");
+          pipwerks.SCORM.data.save();
+          pipwerks.SCORM.quit();
+          console.log('all lessons passed, scorm notified and terminated')
+        },
   },
   computed: {
     vuexPageNum() {

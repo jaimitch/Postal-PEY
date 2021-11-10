@@ -45,7 +45,7 @@
             "itemsListedOnInsideBillsA": 1,
             "itemsAccepted": 1,
             "itemsAtStart": 10,
-            "items": ["RB339065331US", "RB290770790US","NFE"],
+            "items": ["RB 339 065 331 US", "RB 290 770 790 US","NFE"],
             "situation1Location": "Start Of Day",
             "situation6Location": "Start Of Day",
             "gradeAt": [1, 6],
@@ -79,7 +79,7 @@
             "postmasterRecieved": "Student",
             "currentTime": "0900",
             "dispatchingClerk": "0800",
-            "itemNums": ["", "S/70948511", "O/RB102022763US", "O/RB298302613US","NFE"],
+            "itemNums": ["", "S/70948511", "O/RB 102 022 763 US", "O/RB 298 302 613 US","NFE"],
             "itemOrigins": ["", "AMF KENNEDY NY 00300"],
             "topStamp1": true,
             "topStamp2": true,
@@ -147,9 +147,9 @@
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 228 APO AE 09459",
             "name": "Ronald Cain",
             "signature": "Ronald Cain",
-            "otherText": "RB309266140US",
+            "otherText": "RB 309 266 140 US",
             "other": true,
-            "mustBe21": true,
+            "mustBe21": false,
             "mustBe18": false,
             "sigReq": true,
             "noRecip": false,
@@ -183,9 +183,9 @@
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 1901 APO AE 09459",
             "name": "Carl Thompson",
             "signature": "Carl Thompson",
-            "otherText": "RB290770790US",
+            "otherText": "RB 290 770 790 US",
             "other": true,
-            "mustBe21": true,
+            "mustBe21": false,
             "mustBe18": false,
             "sigReq": true,
             "noRecip": false,
@@ -219,9 +219,9 @@
             "reverseAddress": "14th ADMIN CO; PSC 37, Box 828 APO AE 09459",
             "name": "Donald Green",
             "signature": "Donald Green",
-            "otherText": "RB339065331US",
+            "otherText": "RB 339 065 331 US",
             "other": true,
-            "mustBe21": true,
+            "mustBe21": false,
             "mustBe18": false,
             "sigReq": true,
             "noRecip": false,
@@ -255,9 +255,9 @@
             "reverseAddress": "11th ENGR DET; PSC 37, Box 92 APO AE 09459",
             "name": "Mary Fulton",
             "signature": "Mary Fulton",
-            "otherText": "RB298302613US",
+            "otherText": "RB 298 302 613 US",
             "other": true,
-            "mustBe21": true,
+            "mustBe21": false,
             "mustBe18": false,
             "sigReq": true,
             "noRecip": false,
@@ -312,7 +312,7 @@
             "postmasterRecieved": "Student",
             "currentTime": "1315",
             "dispatchingClerk": "0745",
-            "itemNums": ["", "RB300911755US", "RB300911756US", "RB300911757US","RB300911758US","RB300911760US","RB300911761US","NFE"],
+            "itemNums": ["", "RB 300 911 755 US", "RB 300 911 756 US", "RB 300 911 757 US","RB 300 911 758 US","RB 300 911 760 US","RB 300 911 761 US","NFE"],
             "itemOrigins": [],
             "topStamp1": true,
             "topStamp2": true,
@@ -351,8 +351,8 @@
             "postmasterRecieved": "Student",
             "currentTime": "0945",
             "dispatchingClerk": "0930",
-            "itemNums": ["", "RB621758502US", "RB309266104US", "RB867092744US","RB218344488US","RB143899161US","RB888122361US","NFE"],
-            "itemOrigins": ["", "NOT RECEIVED","Should Read RB309266140US","","","","MISSENT"],
+            "itemNums": ["", "RB 621 758 502 US", "RB 309 266 104 US", "RB 867 092 744 US","RB 218 344 488 US","RB 143 899 161 US","RB 888 122 361 US","NFE"],
+            "itemOrigins": ["", "NOT RECEIVED","Should Read RB 309 266 140 US","","","","MISSENT"],
             "topStamp1": true,
             "topStamp2": true,
             "bottomStamp1": true,
@@ -360,7 +360,7 @@
             "witnessSent": "WIT: Larry Brown",
             "witnessRecieved": "WIT: George Forrest",
             "situation2Location": "Incoming Inside Bills / Pouches",
-            "select": ["RB888122361US – MISSENT","RB309266104US – SHOULD READ RB309266140US","RB621758502US – NOT RECEIVED",""],
+            "select": ["RB 888 122 361 US – MISSENT","RB 309 266 104 US – SHOULD READ RB 309 266 140 US","RB 621 758 502 US – NOT RECEIVED",""],
             "gradeAt": [2]
         },
         {
@@ -391,7 +391,7 @@
             "postmasterRecieved": "Student",
             "currentTime": "1300",
             "dispatchingClerk": "0800",
-            "itemNums": ["", "S/43000277", "O/RB300911759US","NFE"],
+            "itemNums": ["", "S/43000277", "O/RB 300 911 759 US","NFE"],
             "itemOrigins": ["", "APO AE 09459 - 2"],
             "topStamp1": true,
             "topStamp2": true,
@@ -432,16 +432,16 @@
             "dispatchingClerk": "1400",
             "itemNums": [
                 "", 
-                "RB707092210US", 
-                "RB707092211US", 
-                "RB707092212US",
-                "RB707092213US",
-                "RB707092214US",
-                "RB707092215US",
-                "RB707092216US",
-                "RB707092217US",
-                "RB707092218US",
-                "RB707092219US",
+                "RB 707 092 210 US", 
+                "RB 707 092 211 US", 
+                "RB 707 092 212 US",
+                "RB 707 092 213 US",
+                "RB 707 092 214 US",
+                "RB 707 092 215 US",
+                "RB 707 092 216 US",
+                "RB 707 092 217 US",
+                "RB 707 092 218 US",
+                "RB 707 092 219 US",
                 "NFE"
             ],
             "itemOrigins": [],
@@ -452,7 +452,7 @@
             "witnessSent": "",
             "witnessRecieved": "",
             "gradeAt": [4],
-            "situation4Location":"Items Rcv'd From Transfer Bills"
+            "situation4Location":"Items Rcv'd From Other Sources"
         },
         {
             "type":"PS FORM 3877",
@@ -471,8 +471,8 @@
             "returnReciept": false,
             "sigConfirm": false,
             "sigConfirmRestrDeliv": false,
-            "trackingNum1": "RB842320438US",
-            "trackingNum2": "RB842320439US",
+            "trackingNum1": "RB 842 320 438 US",
+            "trackingNum2": "RB 842 320 439 US",
             "trackingNum3": "NFE",
             "trackingNum4": "",
             "trackingNum5": "",
@@ -510,7 +510,7 @@
             "square":"",
             "stamped": true,
             "gradeAt": [4],
-            "situation4Location": "Items Rcv’d From Other Sources"
+            "situation4Location": "Items Rcv’d From 3877"
         },
         {
             "type":"PS FORM 3883",
@@ -528,7 +528,7 @@
             "returnReceipt": false,
             "SCS": false,
             "billNo": "13TH EOC / 102",
-            "article": ["","RB102022763US","NFE"],
+            "article": ["","RB 102 022 763 US","NFE"],
             "code": [],
             "origin": [],
             "dateOfDeliv": "Current Date",
@@ -560,7 +560,7 @@
             "returnReceipt": false,
             "SCS": false,
             "billNo": "45TH MP CO / 196",
-            "article": ["","RB867092744US","NFE"],
+            "article": ["","RB 867 092 744 US","NFE"],
             "code": [],
             "origin": [],
             "dateOfDeliv": "Current Date",
@@ -591,7 +591,7 @@
             "returnReceipt": false,
             "SCS": false,
             "billNo": "14TH ADMIN CO / 184",
-            "article": ["","RB143899161US","RB218344488US","NFE"],
+            "article": ["","RB 143 899 161 US","RB 218 344 488 US","NFE"],
             "code": [],
             "origin": [],
             "dateOfDeliv": "Current Date",
@@ -619,7 +619,7 @@
             "billNo": "129",
             "pageNo": "1X",
             "airmail": "------------",
-            "sealNo": "SEAL #62345678",
+            "sealNo": "S/62345678",
             "to": "AMF KENNEDY, NY 00300",
             "billNoRight": "129",
             "amNo": "------------",
@@ -627,7 +627,7 @@
             "lockNoRight": "------------",
             "rotaryNoRight": "------------",
             "airmailRight": "------------",
-            "sealNoRight": "SEAL #62345678",
+            "sealNoRight": "S/62345678",
             "recieved": "",
             "recievingClerks": [],
             "totalArticlesSent": "19",
@@ -638,25 +638,25 @@
             "dispatchingClerk": "1730",
             "itemNums": [
                 null, 
-                "RB888122361US", 
-                "RB300911755US", 
-                "RB300911756US",
-                "RB300911757US",
-                "RB300911758US",
-                "RB300911760US",
-                "RB300911761US",
-                "RB707092210US",
-                "RB707092211US",
-                "RB707092212US",
-                "RB707092213US",
-                "RB707092214US",
-                "RB707092215US",
-                "RB707092216US",
-                "RB707092217US",
-                "RB707092218US",
-                "RB707092219US",
-                "RB842320438US",
-                "RB842320439US",
+                "RB 888 122 361 US", 
+                "RB 300 911 755 US", 
+                "RB 300 911 756 US",
+                "RB 300 911 757 US",
+                "RB 300 911 758 US",
+                "RB 300 911 760 US",
+                "RB 300 911 761 US",
+                "RB 707 092 210 US",
+                "RB 707 092 211 US",
+                "RB 707 092 212 US",
+                "RB 707 092 213 US",
+                "RB 707 092 214 US",
+                "RB 707 092 215 US",
+                "RB 707 092 216 US",
+                "RB 707 092 217 US",
+                "RB 707 092 218 US",
+                "RB 707 092 219 US",
+                "RB 842 320 438 US",
+                "RB 842 320 439 US",
                 "NFE"
             ],
             "itemOrigins": [],
@@ -667,8 +667,8 @@
             "witnessSent": "WIT: George Forrest",
             "witnessRecieved": "",
             "gradeAt": [5, 6],
-            "situation5Location": "SEAL #62345678",
-            "situation6Location": "SEAL #62345678"
+            "situation5Location": "Outgoing Inside Bills",
+            "situation6Location": "Outgoing Inside Bills"
         },
         {
             "type":"PS FORM 3854",
@@ -698,7 +698,7 @@
             "postmasterRecieved": "Kyle Dozier",
             "currentTime": "",
             "dispatchingClerk": "1730",
-            "itemNums": ["", "SEAL #62345678", "O/RB300911759US","NFE"],
+            "itemNums": ["", "S/62345678", "O/RB 300 911 759 US","NFE"],
             "itemOrigins": ["", "APO AE 09459"],
             "topStamp1": true,
             "topStamp2": true,
@@ -745,7 +745,7 @@
             "situation3Location": "Carl Thompson"
         },
         {
-            "articleCode": "SEAL #70948511",
+            "articleCode": "S/70948511",
             "children": [],
             "currentImageIndex": 0,
             "droppable": true,
@@ -760,7 +760,7 @@
             "situation2Location": "Incoming Inside Bills / Pouches"
         },
         {
-            "articleCode": "SEAL #62345678",
+            "articleCode": "S/62345678",
             "children": [],
             "currentImageIndex": 0,
             "droppable": true,
@@ -893,11 +893,11 @@
             "situation2Location": "Safe",
             "gradeAt":[2, 3, 5],
             "situation3Location": "Safe",
-            "situation5Location": "SEAL #62345678"
+            "situation5Location": "S/62345678"
 
         },
         {
-            "articleCode": "SEAL #43000277",
+            "articleCode": "S/43000277",
             "children": [],
             "currentImageIndex":0,
             "droppable":true,
@@ -942,7 +942,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -959,7 +959,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -976,7 +976,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -993,7 +993,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1010,7 +1010,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1027,7 +1027,7 @@
             "stampCounter":true,
             "type":"Package",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1044,7 +1044,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1061,7 +1061,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1078,7 +1078,7 @@
             "stampCounter":true,
             "type":"Letter",
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1095,7 +1095,7 @@
             "droppable":true,
             "showImage":false,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1111,7 +1111,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1127,7 +1127,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1143,7 +1143,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1160,7 +1160,7 @@
             "droppable":true,
             "showImage":false,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1176,7 +1176,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1192,7 +1192,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1208,7 +1208,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         },
         {
@@ -1224,7 +1224,7 @@
             "type":"Letter",
             "droppable":true,
             "situation4Location": "Safe",
-            "situation5Location": "SEAL #62345678",
+            "situation5Location": "S/62345678",
             "gradeAt":[4, 5]
         }
     ]

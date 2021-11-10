@@ -58,7 +58,7 @@
             @click="changeCurrentItem($event, item.id)"
           > 
             <div @click="collapseItem(item)" class="top-level">
-              <img v-if="item.title == 'Safe'" src="../assets/Black-Safe.svg" class="item-icon safe">
+              <img v-if="item.title == 'Safe'" src="../assets/Safe-2.svg" class="item-icon safe">
               <span class="bold" :class="item.title == 'Safe' && 'safe-title'"> {{ item.title }}</span>
               <span v-if='item.collapsed == false || item.collapsed == undefined' class="collapse-button">-</span>
               <span v-if='item.collapsed == true' class="collapse-button">+</span>
@@ -197,7 +197,7 @@
             </div>
           </div>
           <div :class="'right-frame'" @click="currentFormIndex = ''">
-          <div class="situation-title">Situation {{ getSituationNumber }}</div>
+          <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
@@ -319,6 +319,7 @@
   import Delete from '../components/Delete.vue'
   import SectionCompleted from '../components/SectionCompleted.vue'
   import ToolTip from '../components/ToolTip.vue'
+
   export default {
     name: 'Frame',
     components: {
@@ -337,7 +338,8 @@
     },
     props: [
       'pageNum',
-      'changePage'
+      'changePage',
+      'studentName'
     ],
     data() {
       return {
@@ -347,13 +349,13 @@
         showError: false,
         problemItems: [],
         totalErrors: 0,
-        studentName: "Student",
         showPouchCreation: [9],
         showToolTip: [1, 2, 3, 4, 9],
         showSubmit: [1, 3, 4, 8, 10, 11],
         payGrade: "E-2",
         error: false,
         answerKey: key,
+        currentSituationPart: "",
         items: [
           {
             articleCode: "Placeholder",
@@ -429,9 +431,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv'd From Transfer Bills",
+            articleCode: "Items Rcv'd From Other Sources",
             id: 14,
-            title: "Items Rcv'd From Transfer Bills",
+            title: "Items Rcv'd From Other Sources",
             children: [],
             level: 1,
             images: [],
@@ -444,9 +446,9 @@
             gradeAt: []
           },
           {
-            articleCode: "Items Rcv’d From Other Sources",
+            articleCode: "Items Rcv’d From 3877",
             id: 15,
-            title: "Items Rcv’d From Other Sources",
+            title: "Items Rcv’d From 3877",
             children: [],
             level: 1,
             images: [],
@@ -651,7 +653,7 @@
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
           section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB339 065 331US and RB290 770 790US) are accounted for, and then sign the DD Form 2261 (Part III, Section B).`
+          items (RB 339 065 331 US and RB 290 770 790 US) are accounted for, and then sign the DD Form 2261 (Part III, Section B).`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
@@ -717,7 +719,7 @@
         //Situation 4 Part 2
         else if(this.pageNum == 6) {
           text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315. Verify the incoming inside bill, and then sign bill with \
-           witness. ADPS all mail items, and move all articles into the safe."
+           witness. ADPS all mail items, and move all articles from the pouch into the safe."
         }
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
@@ -727,7 +729,7 @@
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
           text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545. APDS all items. Verify the \
-          3854, sign, and move to “Items Rcv’d From Transfer Bills.” Move all mail items into the Safe."
+          3854, sign, and move to “Items Rcv’d From Other Sources.” Move all mail items into the Safe."
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
@@ -756,7 +758,7 @@
         else if(this.pageNum == 11) {
           text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
           that is still on hand and has not been delivered. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. \
-          Then have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the Start Of Day folder.";
+          Then have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the End Of Day folder.";
         }
         return text;
       },
@@ -1422,7 +1424,7 @@
           }
           //checking to see if the user has used all existing seals
           if(newItem.articleCode != undefined) {
-            newItem.articleCode = 'SEAL #' + newItem.articleCode;
+            newItem.articleCode = 'S/' + newItem.articleCode;
           }
 
           if(itemType == "pouch" && newItem.articleCode != undefined) {
@@ -1608,6 +1610,9 @@
             }
             if(this.getSituationNumber != 6){
               this.$store.commit('nextPage')
+            }
+            if(this.getSituationNumber == 6){
+                this.$emit("markScormPassed")
             }
           }
           else{
@@ -1854,6 +1859,41 @@
         //console.log("getItemByArticleCode:", index);
         return index;
       },
+      //Returns a string describing the subsection of the current situation
+      getSituationPart() {
+        if(this.pageNum == 1) {
+          return ""
+        }
+        else if(this.pageNum == 2) {
+          return "Part 1"
+        }
+        else if(this.pageNum == 3) {
+          return "Part 2"
+        }
+        else if(this.pageNum == 4) {
+          return ""
+        }
+        else if(this.pageNum == 5) {
+          return "Part 1"
+        }
+        else if(this.pageNum == 6) {
+          return "Part 2"
+        }
+        else if(this.pageNum == 7) {
+          return "Part 3"
+        }
+        else if(this.pageNum == 8) {
+          return "Part 4"
+        }
+        else if(this.pageNum == 9) {
+          return "Part 1"
+        }
+        else if(this.pageNum == 10) {
+          return "Part 2"
+        }else if(this.pageNum == 11) {
+          return ""
+        }
+      },
       //Uses the parent's article code and the child's id to add the child to the parent's children array
       assignItemToParent(parentArticleCode, childID) {
         let parent = this.items.filter(x => x.articleCode == parentArticleCode)
@@ -1917,12 +1957,16 @@
       },
       //function that handles events as the situation is changed
       updateSituation() {
+
+        this.currentSituationPart = this.getSituationPart()
+
         if(this.getSituationNumber == 1) {
+          
           //hardcode closed folders
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
             this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv'd From Transfer Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From Other Sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv'd From Other Sources")].collapsed = true
+            this.items[this.getItemByArticleCode("Items Rcv’d From 3877")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Delivered")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
@@ -1938,7 +1982,7 @@
                 apoNum: "APO AE 09459",
                 from: this.getYYYYMMDD(-1),
                 to: this.getYYYYMMDD(-1),
-                items: ["RB339065331US", "RB290770790US","NFE"],
+                items: ["RB 339 065 331 US", "RB 290 770 790 US","NFE"],
                 totalItems9thru14: 15,
                 itemsOnHandAtEnd: 2,
                 numberOfPouchesOpened: 1,
@@ -1990,7 +2034,7 @@
               totalArticlesSent: "3",
               postmasterSent: "Anthony Smith",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/70948511", "O/RB102022763US", "O/RB298302613US","NFE"],
+              itemNums: ["", "S/70948511", "O/RB 102 022 763 US", "O/RB 298 302 613 US","NFE"],
               itemOrigins: ["", "AMF KENNEDY NY 00300"],
               topStamp1: true,
               topStamp2: true,
@@ -2028,7 +2072,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Hark Smith",
               dispatchingClerk: "0930",
-              itemNums: ["", "RB621758502US", "RB309266104US", "RB867092744US", "RB218344488US", "RB143899161US", "RB888122361US","NFE"],
+              itemNums: ["", "RB 621 758 502 US", "RB 309 266 104 US", "RB 867 092 744 US", "RB 218 344 488 US", "RB 143 899 161 US", "RB 888 122 361 US","NFE"],
               witnessSent: "WIT: Larry Brown",
               topStamp1: true,
               topStamp2: true,
@@ -2037,17 +2081,17 @@
             }
             
             let item1 = this.createItem('psform3854', '231', 2, 3, false, '', newFormSettings, [2], false)
-            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("SEAL #70948511")].id))].articleCode, item1)
+            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("S/70948511")].id))].articleCode, item1)
             let item2 = this.createItem('letter', 'RB 867 092 744 US', 2, 3, false, '744', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item2)
+            this.assignItemToParent('S/70948511', item2)
             let item3 = this.createItem('letter', 'RB 309 266 140 US', 2, 3, false, '140', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item3)
+            this.assignItemToParent('S/70948511', item3)
             let item4 = this.createItem('letter', 'RB 143 899 161 US', 2, 3, false, '161', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item4)
+            this.assignItemToParent('S/70948511', item4)
             let item5 = this.createItem('letter', 'RB 218 344 488 US', 2, 3, false, '488', undefined, [2, 3], false)
-            this.assignItemToParent('SEAL #70948511', item5)
+            this.assignItemToParent('S/70948511', item5)
             let item6 = this.createItem('letter', 'RB 888 122 361 US', 2, 3, false, '361', undefined, [2, 3, 5], false)
-            this.assignItemToParent('SEAL #70948511', item6)
+            this.assignItemToParent('S/70948511', item6)
             //34-41
             this.situationTwoPartTwo = true;
             }
@@ -2085,7 +2129,7 @@
               totalArticlesSent: "2",
               postmasterSent: "Todd Edgar",
               dispatchingClerk: "0800",
-              itemNums: ["", "S/43000277", "O/RB300911759US","NFE"],
+              itemNums: ["", "S/43000277", "O/RB 300 911 759 US","NFE"],
               itemOrigins: ["", "APO AE 09459 - 2"],
               topStamp1: true,
               topStamp2: true,
@@ -2124,7 +2168,7 @@
               totalArticlesSent: "6",
               postmasterSent: "Leroy Brown",
               dispatchingClerk: "0745",
-              itemNums: ["", "RB300911755US", "RB300911756US", "RB300911757US", "RB300911758US", "RB300911760US", "RB300911761US","NFE"],
+              itemNums: ["", "RB 300 911 755 US", "RB 300 911 756 US", "RB 300 911 757 US", "RB 300 911 758 US", "RB 300 911 760 US", "RB 300 911 761 US","NFE"],
               topStamp1: true,
               topStamp2: true,
               bottomStamp1: false,
@@ -2133,19 +2177,19 @@
             }
 
             let item1 = this.createItem('psform3854', '24', 4, 3, false, '', newFormSettings, [4], false)
-            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("SEAL #43000277")].id))].articleCode, item1)
+            this.assignItemToParent(this.items[this.getItemIndex(this.findParent(this.items[this.getItemByArticleCode("S/43000277")].id))].articleCode, item1)
             let item2 = this.createItem('letter', 'RB 300 911 755 US', 4, 3, false, '755', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item2)
+            this.assignItemToParent('S/43000277', item2)
             let item3 = this.createItem('letter', 'RB 300 911 756 US', 4, 3, false, '756', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item3)
+            this.assignItemToParent('S/43000277', item3)
             let item4 = this.createItem('letter', 'RB 300 911 757 US', 4, 3, false, '757', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item4)
+            this.assignItemToParent('S/43000277', item4)
             let item5 = this.createItem('parcel', 'RB 300 911 758 US', 4, 3, false, '758', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item5)
+            this.assignItemToParent('S/43000277', item5)
             let item6 = this.createItem('letter', 'RB 300 911 760 US', 4, 3, false, '760', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item6)
+            this.assignItemToParent('S/43000277', item6)
             let item7 = this.createItem('parcel', 'RB 300 911 761 US', 4, 3, false, '761', undefined, [4, 5], false)
-            this.assignItemToParent('SEAL #43000277', item7)
+            this.assignItemToParent('S/43000277', item7)
             //22-29
             this.situationFourPartTwo = true;
 
@@ -2164,8 +2208,8 @@
               let newFormSettings = {
                 senderAddress: "45th MP CO APO AE 09459",
                 registeredMail: true,
-                trackingNum1: "RB842320438US",
-                trackingNum2: "RB842320439US",
+                trackingNum1: "RB 842 320 438 US",
+                trackingNum2: "RB 842 320 439 US",
                 trackingNum3: "NFE",
                 trackingTextInput1: "HQ CAC\nFT KNOX, KY 40121",
                 trackingTextInput2: "545 MP CO\nFORT JACKSON, SC 29207",
@@ -2220,8 +2264,8 @@
               postmasterRecieved: "",
               currentTime: "",
               dispatchingClerk: "1400",
-              itemNums: ["", "RB707092210US", "RB707092211US", "RB707092212US", "RB707092213US", "RB707092214US", "RB707092215US",
-               "RB707092216US", "RB707092217US", "RB707092218US", "RB707092219US","NFE"],
+              itemNums: ["", "RB 707 092 210 US", "RB 707 092 211 US", "RB 707 092 212 US", "RB 707 092 213 US", "RB 707 092 214 US", "RB 707 092 215 US",
+               "RB 707 092 216 US", "RB 707 092 217 US", "RB 707 092 218 US", "RB 707 092 219 US","NFE"],
               itemOrigins: [],
               topStamp1: true,
               topStamp2: true,
@@ -2685,7 +2729,7 @@
   }
   .safe-title {
     position:absolute;
-    top: 3vw;
+    top: 2.2vw;
     left: 1.2vw;
   }
   .top-level:hover{
