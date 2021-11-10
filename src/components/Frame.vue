@@ -35,7 +35,7 @@
       <div v-if="shade === true" class="right-frame-shade" @click="this.currentFormIndex = ''">
       </div>
       <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
-      <a target="_blank" @click="popOut(openPDF)"><button class="creation-button sho">STUDENT HAND OUT</button></a>
+      <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button sho">STUDENT HAND OUT</button></a>
       <div v-if="this.items[currentFormIndex] != undefined">
             <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
               <button class="creation-button sho1" @click="flipForm()">FLIP FORM</button>
