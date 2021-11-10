@@ -98,14 +98,14 @@
                     <div class="other-text">
                       <input type="checkbox" v-model="formData.other"> Other: 
                       <select v-model="formData.otherText">
-                          <option value="RB298302613US">RB298302613US</option>
-                          <option value="RB339065331US">RB339065331US</option>
-                          <option value="RB290770790US">RB290770790US</option>
-                          <option value="RB309266140US">RB309266140US</option>
-                          <option value="RB218344488US">RB218344488US</option>
-                          <option value="RB143899161US">RB143899161US</option>
-                          <option value="RB867092744US">RB867092744US</option>
-                          <option value="RB102022763US">RB102022763US</option>
+                          <option value="RB 298 302 613 US">RB 298 302 613 US</option>
+                          <option value="RB 339 065 331 US">RB 339 065 331 US</option>
+                          <option value="RB 290 770 790 US">RB 290 770 790 US</option>
+                          <option value="RB 309 266 140 US">RB 309 266 140 US</option>
+                          <option value="RB 218 344 488 US">RB 218 344 488 US</option>
+                          <option value="RB 143 899 161 US">RB 143 899 161 US</option>
+                          <option value="RB 867 092 744 US">RB 867 092 744 US</option>
+                          <option value="RB 102 022 763 US">RB 102 022 763 US</option>
                       </select>
                       
                       <br>

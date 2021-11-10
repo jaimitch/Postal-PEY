@@ -12,16 +12,16 @@
             <div v-else class="grid">
                 <div v-for="i in 96" :key="i" class="box">
                     <select v-model="formData.items[i-1]">
-                        <option value="RB309266140US">RB309266140US</option>
-                        <option value="RB290770790US">RB290770790US</option>
-                        <option value="RB339065331US">RB339065331US</option>
-                        <option value="RB298302613US">RB298302613US</option>
-                        <option value="RB300911758US">RB300911758US</option>
-                        <option value="RB300911760US">RB300911760US</option>
-                        <option value="RB300911761US">RB300911761US</option>
-                        <option value="RB707092210US">RB707092210US</option>
-                        <option value="RB707092211US">RB707092211US</option>
-                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="RB 309 266 140 US">RB 309 266 140 US</option>
+                        <option value="RB 290 770 790 US">RB 290 770 790 US</option>
+                        <option value="RB 339 065 331 US">RB 339 065 331 US</option>
+                        <option value="RB 298 302 613 US">RB 298 302 613 US</option>
+                        <option value="RB 300 911 758 US">RB 300 911 758 US</option>
+                        <option value="RB 300 911 760 US">RB 300 911 760 US</option>
+                        <option value="RB 300 911 761 US">RB 300 911 761 US</option>
+                        <option value="RB 707 092 210 US">RB 707 092 210 US</option>
+                        <option value="RB 707 092 211 US">RB 707 092 211 US</option>
+                        <option value="RB 707 092 212 US">RB 707 092 212 US</option>
                         <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>

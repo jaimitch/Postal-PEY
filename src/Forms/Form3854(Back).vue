@@ -4,43 +4,43 @@
             <div class="right-area-content">
                 <select v-model="formData.select[0]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
-                    <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
-                    <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
+                    <option value="RB 888 122 361 US – MISSENT">RB 888 122 361 US – MISSENT</option>
+                    <option value="RB 621 758 502 US – NOT RECEIVED">RB 621 758 502 US – NOT RECEIVED</option>
                     <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
-                    <option value="RB309266104US – SHOULD READ RB309266140US">RB309266104US – SHOULD READ RB309266140US</option>
-                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option value="RB 309 266 104 US – SHOULD READ RB 309 266 140 US">RB 309 266 104 US – SHOULD READ RB 309 266 140 US</option>
+                    <option value="Should Read RB 309 265 340 US">Should Read RB 309 265 340 US</option>
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                     <option value=""></option>
                 </select>
                 <select v-model="formData.select[1]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
-                    <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
-                    <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
+                    <option value="RB 888 122 361 US – MISSENT">RB 888 122 361 US – MISSENT</option>
+                    <option value="RB 621 758 502 US – NOT RECEIVED">RB 621 758 502 US – NOT RECEIVED</option>
                     <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
-                    <option value="RB309266104US – SHOULD READ RB309266140US">RB309266104US – SHOULD READ RB309266140US</option>
-                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option value="RB 309 266 104 US – SHOULD READ RB 309 266 140 US">RB 309 266 104 US – SHOULD READ RB 309 266 140 US</option>
+                    <option value="Should Read RB 309 265 340 US">Should Read RB 309 265 340 US</option>
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                     <option value=""></option>
                 </select>
                 <select v-model="formData.select[2]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
-                    <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
-                    <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
+                    <option value="RB 888 122 361 US – MISSENT">RB 888 122 361 US – MISSENT</option>
+                    <option value="RB 621 758 502 US – NOT RECEIVED">RB 621 758 502 US – NOT RECEIVED</option>
                     <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
-                    <option value="RB309266104US – SHOULD READ RB309266140US">RB309266104US – SHOULD READ RB309266140US</option>
-                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option value="RB 309 266 104 US – SHOULD READ RB 309 266 140 US">RB 309 266 104 US – SHOULD READ RB 309 266 140 US</option>
+                    <option value="Should Read RB 309 265 340 US">Should Read RB 309 265 340 US</option>
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                     <option value=""></option>
                 </select>
                 <select v-model="formData.select[3]" class="box">
                     <option value="APO AE 09459" v-if="formData.billNo == 144">APO AE 09459</option>
-                    <option value="RB888122361US – MISSENT">RB888122361US – MISSENT</option>
-                    <option value="RB621758502US – NOT RECEIVED">RB621758502US – NOT RECEIVED</option>
+                    <option value="RB 888 122 361 US – MISSENT">RB 888 122 361 US – MISSENT</option>
+                    <option value="RB 621 758 502 US – NOT RECEIVED">RB 621 758 502 US – NOT RECEIVED</option>
                     <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
-                    <option value="RB309266104US – SHOULD READ RB309266140US">RB309266104US – SHOULD READ RB309266140US</option>
-                    <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                    <option value="RB 309 266 104 US – SHOULD READ RB 309 266 140 US">RB 309 266 104 US – SHOULD READ RB 309 266 140 US</option>
+                    <option value="Should Read RB 309 265 340 US">Should Read RB 309 265 340 US</option>
                     <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
-                    <option value="" selected></option>
+                    <option value=""></option>
                 </select>
             </div>
         </div>
