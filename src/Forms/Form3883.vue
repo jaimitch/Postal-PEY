@@ -46,8 +46,11 @@
                <div class="bill-no2">
                     <select v-model="formData.bill"> 
                         <option value="184">/ 184</option>
+                        <option value="195">/ 195</option>
                         <option value="102">/ 102</option>
                         <option value="115">/ 115</option>
+                        <option value="101">/ 101</option>
+                        <option value="183">/ 183</option>
                         <option value="196">/ 196</option>
                     </select>
                </div>
