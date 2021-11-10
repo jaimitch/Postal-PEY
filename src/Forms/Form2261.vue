@@ -14,10 +14,16 @@
                 <p>PERIOD COVERED (YYYYMMDD)</p>
             </div>
             <div class="period-covered-from">
-                FROM <input type="date" v-model="formData.from">
+                FROM 
+                <select v-model="formData.from">
+                    <option v-for="date in last7Days" :value="date" :key=date>{{date}}</option>
+                </select>
             </div>
             <div class="period-covered-to">
-                TO <input type="date" v-model="formData.to">
+                TO 
+                <select v-model="formData.to">
+                    <option v-for="date in last7Days" :value="date" :key=date>{{date}}</option>
+                </select>
             </div>
         </div>
         <div class="part1-banner">
@@ -832,6 +838,34 @@
                     ""
                 ]
                 return x;
+            },
+            last7Days () {
+                let dateStrings = []
+                const dates = [...Array(7)].map((_, i) => {
+                    const d = new Date()
+                    d.setDate(d.getDate() - i)
+                    return d
+                })
+                for(let i = 0; i < dates.length; i++){
+                    let m = dates[i].getMonth()+1
+                    let d
+                    if(dates[i].getDate()<10){
+                        d = '0'+dates[i].getDate()
+                    }
+                    else{
+                        d = dates[i].getDate()
+                    }
+                    let x = dates[i].getFullYear()+ ""+m+""+d
+                    dateStrings[i] = x
+                }
+                for (var i = dateStrings.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = dateStrings[i];
+                    dateStrings[i] = dateStrings[j];
+                    dateStrings[j] = temp;
+                }
+                console.log(dateStrings)
+                return dateStrings
             }
         },
         methods:{
@@ -839,7 +873,7 @@
                 // this.item.articleCode = this.sigOfAgen
                 this.formData.articleCode = this.formData.to
                 this.$emit('changeForm', this.formData)
-            }
+            },
         },
         watch: {
             // whenever question changes, this function will run
@@ -908,7 +942,7 @@
         border-right: 1px solid black;
         text-align: left;
     }
-    .period-covered input{
+    .period-covered select{
         position: absolute;
         top:30%;
         left: 0;

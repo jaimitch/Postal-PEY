@@ -1881,7 +1881,7 @@
         return [d.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
-         ].join('-');
+         ].join('');
       },
       //gets the nearest time and sets it in the answer key
       getNearestTime(){
