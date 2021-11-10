@@ -4,11 +4,29 @@
             <p><b>PART 1V PHYSICAL INVENTORY</b></p>
             (Enter complete listing at the close of business or shift change)
         </div>
-        <div class="grid">
-            <div v-for="i in 96" :key="i" class="box">
-                <input v-if="i <= 6" placeholder=" " v-model="formData.items[i-1]" disabled>
+            <div v-if="formData.articleCode == 'YESTERDAY' || formData.articleCode == yest" class="grid">
+                <div v-for="i in 96" :key="i" class="box">
+                    <input v-if="i <= 6" placeholder=" " v-model="formData.items[i-1]" disabled>
+                </div>
             </div>
-        </div>
+            <div v-else class="grid">
+                <div v-for="i in 96" :key="i" class="box">
+                    <select v-model="formData.items[i-1]">
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
         <div class="bottom-text">
             <b>DD FORM 2261 (BACK), MAY 2000</b>
         </div>
@@ -17,7 +35,7 @@
 
 <script>
     export default {
-        props: ['item', 'studentName', 'studentPG'],
+        props: ['item', 'studentName', 'studentPG', 'yest'],
         data(){
             return{
                 formData:{
@@ -123,6 +141,14 @@
         border-bottom:none;
     }
     .box input{
+        width:95%;
+        height: 90%;
+        border:none;
+        background-color: transparent;
+        font-size: 11px;
+        font-family: Arial;
+    }
+    .box select{
         width:95%;
         height: 90%;
         border:none;

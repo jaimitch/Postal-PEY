@@ -266,6 +266,7 @@
                 v-bind:item="items[currentFormIndex]"
                 v-bind:studentName="studentName"
                 v-bind:studentPG="payGrade"
+                v-bind:yest="getYYYYMMDD(-1)"
                 @changeForm="changeForm($event, data)"
                 @changeShadeTrue="shade = true"
                 @changeShadeFalse="shade = false"
@@ -1660,17 +1661,14 @@
               errors++;
             }
             if(Array.isArray(keyForm[property])) {
-              let startGrading = false;
-              for(let i = userForm.items.length-1; i >= 0; i--) {
-                if(startGrading == true && (userForm.items[i] === "" || userForm.items[i] === undefined)){
-                  errors = errors+i+1;
-                  break;
-                }
-                else if(userForm.items[i].length){
+              if(userForm.items.length < keyForm.items.length){
+                errors = errors + keyForm.items.length
+              }
+              else{
+                for(let i = userForm.items.length-1; i >= 0; i--) {
                   if(!keyForm.items.includes(userForm.items[i])){
-                    errors++;
+                    errors++
                   }
-                  startGrading = true;
                 }
               }
              // console.log(articleCode, "errors:", errors);

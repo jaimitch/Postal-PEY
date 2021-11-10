@@ -571,6 +571,7 @@
                         <option value="RB707092210US">RB707092210US</option>
                         <option value="RB707092211US">RB707092211US</option>
                         <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
@@ -587,60 +588,34 @@
                         <option value="RB707092210US">RB707092210US</option>
                         <option value="RB707092211US">RB707092211US</option>
                         <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
                 <div class="space3">
                     <!-- <input v-model="formData.sectionC3"> -->
-                    <select v-model="formData.sectionC3">
-                        <option value="RB309266140US">RB309266140US</option>
-                        <option value="RB290770790US">RB290770790US</option>
-                        <option value="RB339065331US">RB339065331US</option>
-                        <option value="RB298302613US">RB298302613US</option>
-                        <option value="RB300911758US">RB300911758US</option>
-                        <option value="RB300911760US">RB300911760US</option>
-                        <option value="RB300911761US">RB300911761US</option>
-                        <option value="RB707092210US">RB707092210US</option>
-                        <option value="RB707092211US">RB707092211US</option>
-                        <option value="RB707092212US">RB707092212US</option>
-                        <option value=""></option>
+                    <select v-model="formData.sectionC3" disabled>
                     </select>
                 </div>
                 <div class="space4">
-                    <select v-model="formData.sectionC4">
-                        <option value="RB309266140US">RB309266140US</option>
-                        <option value="RB290770790US">RB290770790US</option>
-                        <option value="RB339065331US">RB339065331US</option>
-                        <option value="RB298302613US">RB298302613US</option>
-                        <option value="RB300911758US">RB300911758US</option>
-                        <option value="RB300911760US">RB300911760US</option>
-                        <option value="RB300911761US">RB300911761US</option>
-                        <option value="RB707092210US">RB707092210US</option>
-                        <option value="RB707092211US">RB707092211US</option>
-                        <option value="RB707092212US">RB707092212US</option>
-                        <option value=""></option>
+                    <select v-model="formData.sectionC4" disabled>
                     </select>
                     <!-- <input v-model="formData.sectionC4"> -->
                 </div>
                 <div class="space5">
                     <!-- <input v-model="formData.sectionC5"> -->
-                    <select v-model="formData.sectionC5">
-                        <option value="RB309266140US">RB309266140US</option>
-                        <option value="RB290770790US">RB290770790US</option>
-                        <option value="RB339065331US">RB339065331US</option>
-                        <option value="RB298302613US">RB298302613US</option>
-                        <option value="RB300911758US">RB300911758US</option>
-                        <option value="RB300911760US">RB300911760US</option>
-                        <option value="RB300911761US">RB300911761US</option>
-                        <option value="RB707092210US">RB707092210US</option>
-                        <option value="RB707092211US">RB707092211US</option>
-                        <option value="RB707092212US">RB707092212US</option>
-                        <option value=""></option>
+                    <select v-model="formData.sectionC5" disabled>
                     </select>
                 </div>
                 <div class="space6">
                     <!-- <input v-model="formData.sectionC6"> -->
-                    <select v-model="formData.sectionC6">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="space1">
+                    <select v-model="formData.sectionC7">
                         <option value="RB309266140US">RB309266140US</option>
                         <option value="RB290770790US">RB290770790US</option>
                         <option value="RB339065331US">RB339065331US</option>
@@ -651,25 +626,92 @@
                         <option value="RB707092210US">RB707092210US</option>
                         <option value="RB707092211US">RB707092211US</option>
                         <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
                         <option value=""></option>
                     </select>
                 </div>
-            </div>
-            <div class="row2">
-                <div class="space1"><input v-model="formData.sectionC7" disabled></div>
-                <div class="space2"><input v-model="formData.sectionC8" disabled></div>
-                <div class="space3"><input v-model="formData.sectionC9" disabled></div>
-                <div class="space4"><input v-model="formData.sectionC10" disabled></div>
-                <div class="space5"><input v-model="formData.sectionC11" disabled></div>
-                <div class="space6"><input v-model="formData.sectionC12" disabled></div>
+                <div class="space2">
+                    <select v-model="formData.sectionC8">
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space3">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+                <div class="space4">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+                <div class="space5">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+                <div class="space6">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
             </div>
             <div class="row3">
-                <div class="space1"><input v-model="formData.sectionC13" disabled></div>
-                <div class="space2"><input v-model="formData.sectionC14" disabled></div>
-                <div class="space3"><input v-model="formData.sectionC15" disabled></div>
-                <div class="space4"><input v-model="formData.sectionC16" disabled></div>
-                <div class="space5"><input v-model="formData.sectionC17" disabled></div>
-                <div class="space6"><input v-model="formData.sectionC18" disabled></div>
+                <div class="space1">
+                    <select v-model="formData.sectionC13">
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space2">
+                    <select v-model="formData.sectionC14">
+                        <option value="RB309266140US">RB309266140US</option>
+                        <option value="RB290770790US">RB290770790US</option>
+                        <option value="RB339065331US">RB339065331US</option>
+                        <option value="RB298302613US">RB298302613US</option>
+                        <option value="RB300911758US">RB300911758US</option>
+                        <option value="RB300911760US">RB300911760US</option>
+                        <option value="RB300911761US">RB300911761US</option>
+                        <option value="RB707092210US">RB707092210US</option>
+                        <option value="RB707092211US">RB707092211US</option>
+                        <option value="RB707092212US">RB707092212US</option>
+                        <option value="NFE">NFE</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="space3">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+                <div class="space4">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+                <div class="space5">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
+                <div class="space6">
+                    <select v-model="formData.sectionC6" disabled>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="part2-banner">
@@ -864,7 +906,7 @@
                     dateStrings[i] = dateStrings[j];
                     dateStrings[j] = temp;
                 }
-                console.log(dateStrings)
+                //console.log(dateStrings)
                 return dateStrings
             }
         },
