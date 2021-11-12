@@ -829,8 +829,8 @@
       },
       createSit6Form(evt){
         let today = this.getYYYYMMDD(0)
-        this.items[14].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true))
-        this.items[14].collapsed = false
+        this.items[2].children.push(this.createItem('ddform2261', today, this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), false))
+        this.items[2].collapsed = false
         this.sit62261 = true;
         evt.stopPropagation()
       },
