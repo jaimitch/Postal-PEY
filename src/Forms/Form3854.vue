@@ -333,7 +333,7 @@
                         <option value="NOT RECEIVED">NOT RECEIVED</option>
                         <option v-if="formData.billNo == 30" value="APO AE 09459 - 2">APO AE 09459 - 2</option>
                         <option value="Should Read RB 309 266 140 US">Should Read RB 309 266 140 US</option>
-                        <option value="Should Read RB309265340US">Should Read RB309265340US</option>
+                        <option value="Should Read RB 309 265 340 US">Should Read RB 309 265 340 US</option>
                         <option v-if="formData.billNo == 260" value="AMF KENNEDY NY 00300">AMF KENNEDY NY 00300</option>
                         <option value=""></option>
                     </select>
