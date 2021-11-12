@@ -724,7 +724,7 @@
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
           text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877. Verify the PS Form 3877, \
-          sign, and move into “Items Rcv’d From 3877” section. APDS all articles, and move articles into safe."
+          sign, and move into “Items Rcv'd From 3877” section. APDS all articles, and move articles into safe."
         }
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
