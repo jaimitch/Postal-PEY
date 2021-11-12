@@ -2383,7 +2383,12 @@
               }
               if(obj[property].includes("Current Date")){
                 //console.log("Before ", obj[property])
-                obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDDdelim(0));
+                if(obj.type == "DD FORM 2261"){
+                  obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDD(0));
+                }
+                else{
+                  obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDDdelim(0));
+                }
                 //console.log("After ", obj[property])
               }
             }
