@@ -1923,6 +1923,26 @@
           (dd>9 ? '' : '0') + dd
          ].join('');
       },
+      getYYYYMMDDdelim(offset) {
+        var d = new Date();
+        var mm = d.getMonth() + 1;
+        var dd = d.getDate()
+
+        if(dd + offset > 0){
+          dd = dd + offset
+        }
+        //offset moved into a different month
+        //we will assume it's the previous month since we auto set the first 2261 to yesterday, but never set a 2261 in the future
+        else{
+          mm = d.getMonth()
+          dd = new Date(d.getFullYear(), d.getMonth()-2, 0).getDate()
+        }
+        
+        return [d.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('-');
+      },
       //gets the nearest time and sets it in the answer key
       getNearestTime(){
         let currentTime
@@ -2362,7 +2382,7 @@
               }
               if(obj[property].includes("Current Date")){
                 //console.log("Before ", obj[property])
-                obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDD(0));
+                obj[property] = obj[property].replaceAll("Current Date", this.getYYYYMMDDdelim(0));
                 //console.log("After ", obj[property])
               }
             }
