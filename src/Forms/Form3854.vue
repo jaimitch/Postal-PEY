@@ -274,7 +274,7 @@
                             RB 707 092 212 US
                         </option>
                         <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB 707 092 213 US">
-                            RB 707 0922 13 US
+                            RB 707 092 213 US
                         </option>
                         <option v-if="formData.billNo == 33 || formData.billNo == 129" value="RB 707 092 214 US">
                             RB 707 092 214 US
