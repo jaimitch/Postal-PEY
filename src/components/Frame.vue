@@ -582,7 +582,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            collapsed: true
           },
         ],
         //default assumes there is something wrong
