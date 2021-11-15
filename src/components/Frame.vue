@@ -47,6 +47,9 @@
             v-for='item in firstLevel' 
             :key='item.title' 
             draggable=false
+            :id='item.id'
+            @dragover='dragOver(item.id,$event)'
+            @dragleave='dragLeave(item.id,$event)'
             @drop="onDrop($event,item.id)"
             @click="changeCurrentItem($event, item.id)"
           > 
@@ -66,6 +69,9 @@
                   v-for='child in getChildrenIndexes(item.id)' 
                   :key='child' 
                   :draggable ='true'
+                  :id='items[child].id'
+                  @dragover='dragOver(items[child].id,$event)'
+                  @dragleave='dragLeave(items[child].id,$event)'
                   @dragstart='startDrag($event, items[child])'
                   @drop="onDrop($event,items[child].id)"
                   @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
@@ -99,6 +105,9 @@
                       v-for='grandchild in getChildrenIndexes(items[child].id)'
                       :key='grandchild'
                       :draggable ='true'
+                      :id='items[grandchild].id'
+                      @dragover="dragOver(items[grandchild].id,$event)"
+                      @dragleave="dragLeave(items[grandchild].id,$event)"
                       @dragstart='startDrag($event, items[grandchild])'
                       @drop="onDrop($event,items[grandchild].id)"
                       @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
@@ -129,6 +138,9 @@
                         v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
                         :key='greatgrand'
                         :draggable ='true'
+                        :id='items[greatgrand].id'
+                        @dragover="dragOver(items[greatgrand].id,$event)"
+                        @dragleave="dragLeave(items[greatgrand].id,$event)"
                         @dragstart='startDrag($event, items[greatgrand])'
                         @drop="onDrop($event,items[greatgrand].id)"
                         @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
@@ -158,6 +170,9 @@
                           v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
                           :key='greatgreat'
                           :draggable ='true'
+                          :id='items[greatgreat].id'
+                          @dragover="dragOver(items[greatgreat].id,$event)"
+                          @dragleave="dragLeave(items[greatgreat].id,$event)"
                           @dragstart='startDrag($event, items[greatgreat])'
                           @drop="onDrop($event,items[greatgreat].id)"
                           @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
@@ -797,6 +812,19 @@
       },
     },
     methods: {
+      dragOver(id,evt){
+        console.log(id)
+        evt.currentTarget.style.boxShadow = '0 0 10px 10px black';
+        for(let i = 0; i < this.items.length; i++){
+          if(this.items[i].level > 0 && this.items[i].id != id){
+            document.getElementById(this.items[i].id).style.boxShadow = "none"
+          }
+        }
+      },
+      dragLeave(id,evt){
+        evt.currentTarget.style.boxShadow = 'none';
+        return id
+      },
       flipForm(){
         if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
           this.form3854Back = !this.form3854Back
@@ -915,6 +943,11 @@
                 }
               }
             }
+          }
+        }
+        for(let i = 0; i < this.items.length; i++){
+          if(this.items[i].level > 0){
+            document.getElementById(this.items[i].id).style.boxShadow = "none"
           }
         }
         evt.stopPropagation();
@@ -2481,40 +2514,42 @@
     color: #42426A;
     border-radius: 2vw;
     font-size: 2.2vmin;
-    z-index: 1;
+    z-index: 0;
   }
   .bold{
     font-weight: bold;
   }
   .child-level {
     margin-bottom: 10px;
-    padding: 5px;
+    /* padding: 5px; */
+    border-radius: .8vw;
     color: #D5D5D5;
+    background-color: transparent;
     z-index: 2;
     font-size: 1vw;
     max-width: 20vw;
   }
   .grand-child-level {
     position:relative;
+    border-radius: .8vw;
     left: 3vw;
     max-width: 20.4vw;;
-    padding: 5px;
+    /* padding: 5px; */
     color: #D5D5D5;
     z-index: 2;
     font-size: 1vw;
     margin-bottom: 10px;
-
   }
   .great-grand-level {
     position:relative;
+    border-radius: .8vw;
     left: 3vw;
-    max-width: 20.4vw;;
-    padding: 5px;
+    max-width: 20.4vw;
+    /* padding: 5px; */
     color: #D5D5D5;
     z-index: 2;
     font-size: 1vw;
     margin-bottom: 10px;
-
   }
   .vertical-line {
     order: 2;
@@ -2656,7 +2691,6 @@
     margin-top: 0.15vw;
     max-width: 20.4vw;
     cursor: grab;
-
   }
   .grand-child-content {
     background-color: #42426A;
@@ -2787,7 +2821,7 @@
   }
   .top-buttons{
     position: relative;
-    top: -7%;
+    top: -5%;
     left: 0%;
     display: flex;
     justify-content: space-evenly;
