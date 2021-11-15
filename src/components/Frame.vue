@@ -2743,7 +2743,7 @@
     top: 6.5vh;
     left: 50%;
     transform: translateY(-5%) translateX(-50%);
-    max-width: 60vw;
+    max-width: 55vw;
     max-height: 75vh;
     overflow: scroll;
     z-index: 2;
