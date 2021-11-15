@@ -1670,6 +1670,7 @@
               else{
                 for(let i = userForm.items.length-1; i >= 0; i--) {
                   if(!keyForm.items.includes(userForm.items[i])){
+                    console.log("error",userForm.items[i])
                     errors++
                   }
                 }
