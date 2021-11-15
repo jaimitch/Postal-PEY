@@ -34,13 +34,6 @@
     <div class='frame'>
       <div v-if="shade === true" class="right-frame-shade" @click="this.currentFormIndex = ''">
       </div>
-      <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
-      <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button sho">STUDENT HAND OUT</button></a>
-      <div v-if="this.items[currentFormIndex] != undefined">
-            <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
-              <button class="creation-button sho1" @click="flipForm()">FLIP FORM</button>
-            </div>
-          </div>
 
       <div class="left-frame">
         <div
@@ -197,6 +190,16 @@
             </div>
           </div>
           <div :class="'right-frame'" @click="currentFormIndex = ''">
+            <div class="top-buttons">
+              <div v-if="this.items[currentFormIndex] != undefined">
+                <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
+                  <button class="creation-button" @click="flipForm()">FLIP FORM</button>
+                </div>
+              </div>
+              <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
+              <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button">STUDENT HANDOUT</button></a>
+              <button v-if="this.showSubmit.includes(this.pageNum)" :class="'creation-button'" @click="submitPage()">SUBMIT</button>
+            </div>
           <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
@@ -2028,6 +2031,7 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
+            
             let parcel1 = this.createItem('parcel', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
             let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
             parcel1 = this.findItemByID(parcel1)[0]
@@ -2038,6 +2042,7 @@
             this.items[letter1].stampCounter = true;
           }
           this.situationOneInit = true;
+          this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 2) {
 
@@ -2535,12 +2540,7 @@
     background-color: #D5D5D5;
     color: #32334B;
     border-radius: 5px;
-    padding: .5vw;
-    position: absolute;
-    transform: translateY(10%);
-    top: 0.25vw;
-    right: 2vw;
-    z-index: 2;
+    z-index: 4;
     font-size: 1vw;
     font-weight: bold;
     letter-spacing: .5vw;
@@ -2578,13 +2578,21 @@
   }
   .creation-button{
     font-size: 1vw;
-    font-weight: bold;
-    letter-spacing: .5vw;
     background-color: #D5D5D5;
     color: #32334B;
     border-radius: .5vw;
     padding: .5vw;
     cursor: pointer;
+    width: 15vw;
+    height: 5vh;
+  }
+  .creation-button-copy{
+    font-size: 1vw;
+    border-radius: .5vw;
+    padding: .5vw;
+    cursor: pointer;
+    width: 15vw;
+    height: 5vh;
   }
   .creation-button:hover{
     background-color: #32334B;
@@ -2610,19 +2618,23 @@
     border-radius: .5vw;
   }
   .sho{
-    position: absolute;
-    transform: translateY(-50%);
-    top: 3vh;
-    right: 15vw;
-    z-index:100;
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: 5px;
+    z-index: 4;
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .5vw;
     cursor: pointer;
   }
   .sho1{
-    position: absolute;
-    transform: translateY(-50%);
-    top: 3vh;
-    right: 40vw;
-    z-index:100;
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: 5px;
+    z-index: 4;
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .5vw;
     cursor: pointer;
   }
   .item-icon{
@@ -2726,7 +2738,6 @@
     background-color: transparent;
   }
   .flip-2261{
-    position: absolute;
     top: 3%;
     left: 50%;
     transform: translateY(-10%);
@@ -2773,5 +2784,13 @@
   }
   .stamp-image:hover{
     cursor: url('../assets/Stamp-Cursor.svg'), auto
+  }
+  .top-buttons{
+    position: relative;
+    top: -7%;
+    left: 0%;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 6;
   }
 </style>
