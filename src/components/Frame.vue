@@ -34,13 +34,6 @@
     <div class='frame'>
       <div v-if="shade === true" class="right-frame-shade" @click="this.currentFormIndex = ''">
       </div>
-      <button v-if="this.showSubmit.includes(this.pageNum)" :class="'page-submit-button'" @click="submitPage()">SUBMIT</button>
-      <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button sho">STUDENT HAND OUT</button></a>
-      <div v-if="this.items[currentFormIndex] != undefined">
-            <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
-              <button class="creation-button sho1" @click="flipForm()">FLIP FORM</button>
-            </div>
-          </div>
 
       <div class="left-frame">
         <div
@@ -54,6 +47,9 @@
             v-for='item in firstLevel' 
             :key='item.title' 
             draggable=false
+            :id='item.id'
+            @dragover='dragOver(item.id,$event)'
+            @dragleave='dragLeave(item.id,$event)'
             @drop="onDrop($event,item.id)"
             @click="changeCurrentItem($event, item.id)"
           > 
@@ -73,6 +69,9 @@
                   v-for='child in getChildrenIndexes(item.id)' 
                   :key='child' 
                   :draggable ='true'
+                  :id='items[child].id'
+                  @dragover='dragOver(items[child].id,$event)'
+                  @dragleave='dragLeave(items[child].id,$event)'
                   @dragstart='startDrag($event, items[child])'
                   @drop="onDrop($event,items[child].id)"
                   @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
@@ -115,6 +114,9 @@
                       v-for='grandchild in getChildrenIndexes(items[child].id)'
                       :key='grandchild'
                       :draggable ='true'
+                      :id='items[grandchild].id'
+                      @dragover="dragOver(items[grandchild].id,$event)"
+                      @dragleave="dragLeave(items[grandchild].id,$event)"
                       @dragstart='startDrag($event, items[grandchild])'
                       @drop="onDrop($event,items[grandchild].id)"
                       @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
@@ -145,6 +147,9 @@
                         v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
                         :key='greatgrand'
                         :draggable ='true'
+                        :id='items[greatgrand].id'
+                        @dragover="dragOver(items[greatgrand].id,$event)"
+                        @dragleave="dragLeave(items[greatgrand].id,$event)"
                         @dragstart='startDrag($event, items[greatgrand])'
                         @drop="onDrop($event,items[greatgrand].id)"
                         @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
@@ -174,6 +179,9 @@
                           v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
                           :key='greatgreat'
                           :draggable ='true'
+                          :id='items[greatgreat].id'
+                          @dragover="dragOver(items[greatgreat].id,$event)"
+                          @dragleave="dragLeave(items[greatgreat].id,$event)"
                           @dragstart='startDrag($event, items[greatgreat])'
                           @drop="onDrop($event,items[greatgreat].id)"
                           @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
@@ -206,6 +214,16 @@
             </div>
           </div>
           <div :class="'right-frame'" @click="currentFormIndex = ''">
+            <div class="top-buttons">
+              <div v-if="this.items[currentFormIndex] != undefined">
+                <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
+                  <button class="creation-button" @click="flipForm()">FLIP FORM</button>
+                </div>
+              </div>
+              <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
+              <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button">STUDENT HANDOUT</button></a>
+              <button v-if="this.showSubmit.includes(this.pageNum)" :class="'creation-button'" @click="submitPage()">SUBMIT</button>
+            </div>
           <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
@@ -809,6 +827,19 @@
       },
     },
     methods: {
+      dragOver(id,evt){
+        console.log(id)
+        evt.currentTarget.style.boxShadow = '0 0 10px 10px black';
+        for(let i = 0; i < this.items.length; i++){
+          if(this.items[i].level > 0 && this.items[i].id != id){
+            document.getElementById(this.items[i].id).style.boxShadow = "none"
+          }
+        }
+      },
+      dragLeave(id,evt){
+        evt.currentTarget.style.boxShadow = 'none';
+        return id
+      },
       flipForm(){
         if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
           this.form3854Back = !this.form3854Back
@@ -927,6 +958,11 @@
                 }
               }
             }
+          }
+        }
+        for(let i = 0; i < this.items.length; i++){
+          if(this.items[i].level > 0){
+            document.getElementById(this.items[i].id).style.boxShadow = "none"
           }
         }
         evt.stopPropagation();
@@ -2077,6 +2113,7 @@
 
             let yest = this.getYYYYMMDD(-1)
             this.createItem('ddform2261', yest, 1, 2, true, '', newFormSettings, [1, 6], false)
+            
             let parcel1 = this.createItem('parcel', 'RB 339 065 331 US', 1, 2, true, '331', undefined, [1, 3], false)
             let letter1 = this.createItem('letter', 'RB 290 770 790 US', 1, 2, true, '790', undefined, [1, 3], false)
             parcel1 = this.findItemByID(parcel1)[0]
@@ -2087,6 +2124,7 @@
             this.items[letter1].stampCounter = true;
           }
           this.situationOneInit = true;
+          this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 2) {
 
@@ -2525,40 +2563,42 @@
     color: #42426A;
     border-radius: 2vw;
     font-size: 2.2vmin;
-    z-index: 1;
+    z-index: 0;
   }
   .bold{
     font-weight: bold;
   }
   .child-level {
     margin-bottom: 10px;
-    padding: 5px;
+    /* padding: 5px; */
+    border-radius: .8vw;
     color: #D5D5D5;
+    background-color: transparent;
     z-index: 2;
     font-size: 1vw;
     max-width: 20vw;
   }
   .grand-child-level {
     position:relative;
+    border-radius: .8vw;
     left: 3vw;
     max-width: 20.4vw;;
-    padding: 5px;
+    /* padding: 5px; */
     color: #D5D5D5;
     z-index: 2;
     font-size: 1vw;
     margin-bottom: 10px;
-
   }
   .great-grand-level {
     position:relative;
+    border-radius: .8vw;
     left: 3vw;
-    max-width: 20.4vw;;
-    padding: 5px;
+    max-width: 20.4vw;
+    /* padding: 5px; */
     color: #D5D5D5;
     z-index: 2;
     font-size: 1vw;
     margin-bottom: 10px;
-
   }
   .vertical-line {
     order: 2;
@@ -2584,12 +2624,7 @@
     background-color: #D5D5D5;
     color: #32334B;
     border-radius: 5px;
-    padding: .5vw;
-    position: absolute;
-    transform: translateY(10%);
-    top: 0.25vw;
-    right: 2vw;
-    z-index: 2;
+    z-index: 4;
     font-size: 1vw;
     font-weight: bold;
     letter-spacing: .5vw;
@@ -2627,13 +2662,21 @@
   }
   .creation-button{
     font-size: 1vw;
-    font-weight: bold;
-    letter-spacing: .5vw;
     background-color: #D5D5D5;
     color: #32334B;
     border-radius: .5vw;
     padding: .5vw;
     cursor: pointer;
+    width: 15vw;
+    height: 5vh;
+  }
+  .creation-button-copy{
+    font-size: 1vw;
+    border-radius: .5vw;
+    padding: .5vw;
+    cursor: pointer;
+    width: 15vw;
+    height: 5vh;
   }
   .creation-button:hover{
     background-color: #32334B;
@@ -2659,19 +2702,23 @@
     border-radius: .5vw;
   }
   .sho{
-    position: absolute;
-    transform: translateY(-50%);
-    top: 3vh;
-    right: 15vw;
-    z-index:100;
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: 5px;
+    z-index: 4;
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .5vw;
     cursor: pointer;
   }
   .sho1{
-    position: absolute;
-    transform: translateY(-50%);
-    top: 3vh;
-    right: 40vw;
-    z-index:100;
+    background-color: #D5D5D5;
+    color: #32334B;
+    border-radius: 5px;
+    z-index: 4;
+    font-size: 1vw;
+    font-weight: bold;
+    letter-spacing: .5vw;
     cursor: pointer;
   }
   .item-icon{
@@ -2693,7 +2740,6 @@
     margin-top: 0.15vw;
     max-width: 20.4vw;
     cursor: grab;
-
   }
   .grand-child-content {
     background-color: #42426A;
@@ -2775,7 +2821,6 @@
     background-color: transparent;
   }
   .flip-2261{
-    position: absolute;
     top: 3%;
     left: 50%;
     transform: translateY(-10%);
@@ -2830,5 +2875,13 @@
     border: solid;
     border-width: 1.5px;
     border-radius: 3px;
+  }
+  .top-buttons{
+    position: relative;
+    top: -5%;
+    left: 0%;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 6;
   }
 </style>
