@@ -87,6 +87,15 @@
                     <div class = "child-text">
                       {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '45th MP CO APO AE 09459'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
                     </div>
+                    <div>
+                        <button class="send-to-button" @click="toggleSendTo($event, items[child])">Send To</button>
+                        <div v-if="items[child].sendTo">
+                          <!-- <div v-for='destination in sendToLocations' :key='destination'>
+                            <button @click="sendTo(items[child], destination)">{{ destination.articleCode }}</button>
+                          </div> -->
+                          <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
+                        </div>
+                      </div>
                   </div>  
                   <div class="child-content item-image" v-if="items[child].images.length != 0">
                     <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
@@ -337,6 +346,7 @@
   import Delete from '../components/Delete.vue'
   import SectionCompleted from '../components/SectionCompleted.vue'
   import ToolTip from '../components/ToolTip.vue'
+  import SendTo from '../components/SendTo.vue'
 
   export default {
     name: 'Frame',
@@ -353,6 +363,7 @@
       Delete,
       SectionCompleted,
       ToolTip,
+      SendTo
     },
     props: [
       'pageNum',
@@ -655,6 +666,10 @@
       },
       currentPage() {
         return this.$store.state.pageNum;
+      },
+      sendToLocations() {
+        let locations = this.items.filter(x => x.level == 1 || x.type == "Pouch")
+        return locations;
       },
       firstLevel() {
         let res = [];
@@ -1052,6 +1067,32 @@
       toggleItemImage(item) {
         item.showImage = !item.showImage;
       },
+      //toggles the sendTo locations buttons visibility
+      toggleSendTo(evt, item) {
+        item.sendTo = !item.sendTo;
+        evt.stopPropagation();
+      },
+      //sends an item from one location to another, and removes it from it's previous location
+      sendTo(item, destination) {
+        let parentID = this.findParent(item.id)
+        let location = this.items.filter(x => x.id == parentID)[0]
+        this.removeItemOnDrop(item.id, location.id)
+
+        //update this.items with item swap
+        for(let i = 0; i < this.items.length; i++) {
+          if(this.items[i].articleCode == destination.articleCode) {
+            this.items[i].children.push(item.id)
+            this.items[i].collapsed = false
+            console.log(this.items[i])
+            //If parent is now empty, close it
+            if(this.items[this.getItemIndex(location.id)].children.length == 0) {
+              this.items[this.getItemIndex(location.id)].collapsed = true
+            }
+          }
+        }
+        this.items.filter(x => x.id == item.id)[0].sendTo = false;
+        this.items.filter(x => x.id == item.id)[0].showImage = true;
+      },
       /*creates a new item given information:
       ['string'] type of item, ['string'] unique article identifer, ['int'] situation number, ['int'] level, ['boolean'] default item creation behavior, ['string'] image code, ['object'] form settings,
       ['array'] list of situations to grade the article, ['boolean'] was the item created by the user
@@ -1074,6 +1115,7 @@
             stampable: false,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
             formInputs: {
               select: [],
               situationNumber: 'Situation ' + situationNumber,
@@ -1144,6 +1186,7 @@
             stampable: false,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
             formInputs: {
                situationNumber: 'Situation ' + situationNumber,
                articleCode: articleCode,
@@ -1199,6 +1242,7 @@
             stampable: false,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -1267,6 +1311,7 @@
             stampable: false,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -1343,6 +1388,7 @@
             stampable: false,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
               articleCode: articleCode,
@@ -1399,6 +1445,7 @@
             droppable: true,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
           }
           if(imageCode == "790"){
             newItem.currentImageIndex = 1
@@ -1424,6 +1471,7 @@
             showImage: false,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
           }
           if(imageCode == "331"){
             newItem.currentImageIndex = 1
@@ -1448,6 +1496,7 @@
             droppable: true,
             gradeAt: gradeAt,
             created: created,
+            sendTo: false,
           }
           if(newItem.articleCode == "43000277"){
             newItem.images.push(require(`../assets/Bag-1.svg`))
@@ -2818,6 +2867,14 @@
   }
   .stamp-image:hover{
     cursor: url('../assets/Stamp-Cursor.svg'), auto
+  }
+  .send-to-button {
+    width: 5vw;
+    font-size: 1vw;
+    padding: 0.2vw;
+    border: solid;
+    border-width: 1.5px;
+    border-radius: 3px;
   }
   .top-buttons{
     position: relative;
