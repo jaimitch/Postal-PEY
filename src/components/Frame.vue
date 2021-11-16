@@ -2210,7 +2210,7 @@
             this.situationTwoPartTwo = true;
             }
           }
-          
+          this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 3) {
 
@@ -2223,6 +2223,7 @@
           if(!this.situationThreeInit) {
             this.situationThreeInit = true;
           }
+          this.currentFormIndex = '';
         }
 
         else if(this.getSituationNumber == 4) {
@@ -2419,6 +2420,7 @@
 
 
           }
+          this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 5) {
 
@@ -2435,6 +2437,7 @@
             }
 
           }
+          this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 6) {
           //hardcode truck visibility
@@ -2444,7 +2447,7 @@
           this.items[13].level = 0;
 
 
-
+          this.currentFormIndex = '';
         }
 
       },
