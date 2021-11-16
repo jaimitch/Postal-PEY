@@ -223,6 +223,7 @@
               <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
               <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button">STUDENT HANDOUT</button></a>
               <button v-if="this.showSubmit.includes(this.pageNum)" :class="'creation-button'" @click="submitPage()">SUBMIT</button>
+              <div v-else class="creation-button-copy"></div>
             </div>
           <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
