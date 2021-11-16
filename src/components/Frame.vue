@@ -90,9 +90,6 @@
                     <div>
                         <button class="send-to-button" @click="toggleSendTo($event, items[child])">Send To</button>
                         <div v-if="items[child].sendTo">
-                          <!-- <div v-for='destination in sendToLocations' :key='destination'>
-                            <button @click="sendTo(items[child], destination)">{{ destination.articleCode }}</button>
-                          </div> -->
                           <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
                         </div>
                       </div>
@@ -133,8 +130,13 @@
                         <div class='grand-text'>
                           {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
                         </div>
+                        <div>
+                        <button class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To</button>
+                        <div v-if="items[grandchild].sendTo">
+                          <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
+                        </div>
                       </div>
-
+                      </div>
                       <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
 
                       <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > 
@@ -1092,7 +1094,7 @@
           }
         }
         this.items.filter(x => x.id == item.id)[0].sendTo = false
-        this.items.filter(x => x.id == item.id)[0].showImage = true
+        this.items.filter(x => x.id == item.id)[0].showImage = false
         this.currentFormIndex = ""
         evt.stopPropagation();
       },
