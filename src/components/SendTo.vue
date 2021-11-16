@@ -27,9 +27,10 @@
 .modal-button {
     width: 10vw;
     font-size: 0.9vw;
-    padding: 0.2vw;
-    border: solid;
-    border-width: 1px;
+    /* padding: 0.2vw; */
+    /* border: solid; */
+    margin: 0px;
+    /* border-width: 1px; */
     border-radius: 3px;
 }
 </style>
