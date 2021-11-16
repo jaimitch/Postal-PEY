@@ -132,8 +132,13 @@
                         <div class='grand-text'>
                           {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
                         </div>
+                        <div>
+                        <button class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To</button>
+                        <div v-if="items[grandchild].sendTo">
+                          <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
+                        </div>
                       </div>
-
+                      </div>
                       <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
 
                       <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > 
@@ -216,7 +221,7 @@
             <div class="top-buttons">
               <div v-if="this.items[currentFormIndex] != undefined">
                 <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
-                  <button class="creation-button" @click="flipForm()">FLIP FORM</button>
+                  <button class="creation-button" @click="flipForm($event)">FLIP FORM</button>
                 </div>
               </div>
               <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
@@ -840,13 +845,14 @@
         evt.currentTarget.style.boxShadow = 'none';
         return id
       },
-      flipForm(){
+      flipForm(evt){
         if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
           this.form3854Back = !this.form3854Back
         }
         else{
           this.form2261Back = !this.form2261Back
         }
+        evt.stopPropagation()
       },
       createSit5Form(evt){
         if(this.pageNum == 9){
@@ -1073,7 +1079,7 @@
         evt.stopPropagation();
       },
       //sends an item from one location to another, and removes it from it's previous location
-      sendTo(item, destination) {
+      sendTo(evt, item, destination) {
         let parentID = this.findParent(item.id)
         let location = this.items.filter(x => x.id == parentID)[0]
         this.removeItemOnDrop(item.id, location.id)
@@ -1083,15 +1089,16 @@
           if(this.items[i].articleCode == destination.articleCode) {
             this.items[i].children.push(item.id)
             this.items[i].collapsed = false
-            console.log(this.items[i])
             //If parent is now empty, close it
             if(this.items[this.getItemIndex(location.id)].children.length == 0) {
               this.items[this.getItemIndex(location.id)].collapsed = true
             }
           }
         }
-        this.items.filter(x => x.id == item.id)[0].sendTo = false;
-        this.items.filter(x => x.id == item.id)[0].showImage = true;
+        this.items.filter(x => x.id == item.id)[0].sendTo = false
+        this.items.filter(x => x.id == item.id)[0].showImage = false
+        this.currentFormIndex = ""
+        evt.stopPropagation();
       },
       /*creates a new item given information:
       ['string'] type of item, ['string'] unique article identifer, ['int'] situation number, ['int'] level, ['boolean'] default item creation behavior, ['string'] image code, ['object'] form settings,
