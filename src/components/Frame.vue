@@ -1074,7 +1074,7 @@
         evt.stopPropagation();
       },
       //sends an item from one location to another, and removes it from it's previous location
-      sendTo(item, destination) {
+      sendTo(evt, item, destination) {
         let parentID = this.findParent(item.id)
         let location = this.items.filter(x => x.id == parentID)[0]
         this.removeItemOnDrop(item.id, location.id)
@@ -1084,15 +1084,16 @@
           if(this.items[i].articleCode == destination.articleCode) {
             this.items[i].children.push(item.id)
             this.items[i].collapsed = false
-            console.log(this.items[i])
             //If parent is now empty, close it
             if(this.items[this.getItemIndex(location.id)].children.length == 0) {
               this.items[this.getItemIndex(location.id)].collapsed = true
             }
           }
         }
-        this.items.filter(x => x.id == item.id)[0].sendTo = false;
-        this.items.filter(x => x.id == item.id)[0].showImage = true;
+        this.items.filter(x => x.id == item.id)[0].sendTo = false
+        this.items.filter(x => x.id == item.id)[0].showImage = true
+        this.currentFormIndex = ""
+        evt.stopPropagation();
       },
       /*creates a new item given information:
       ['string'] type of item, ['string'] unique article identifer, ['int'] situation number, ['int'] level, ['boolean'] default item creation behavior, ['string'] image code, ['object'] form settings,
