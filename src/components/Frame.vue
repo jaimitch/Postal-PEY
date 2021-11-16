@@ -86,16 +86,15 @@
 
                     <div class = "child-text">
                       {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '45th MP CO APO AE 09459'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
-                    </div>
-                    <div>
-                        <button class="send-to-button" @click="toggleSendTo($event, items[child])">Send To</button>
+                      <div>
+                        <button v-if="items[child].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                        <button v-if="items[child].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                         <div v-if="items[child].sendTo">
-                          <!-- <div v-for='destination in sendToLocations' :key='destination'>
-                            <button @click="sendTo(items[child], destination)">{{ destination.articleCode }}</button>
-                          </div> -->
                           <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
                         </div>
                       </div>
+                    </div>
+                     
                   </div>  
                   <div class="child-content item-image" v-if="items[child].images.length != 0">
                     <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
@@ -2873,12 +2872,19 @@
     cursor: url('../assets/Stamp-Cursor.svg'), auto
   }
   .send-to-button {
-    width: 5vw;
+    width: 40%;
     font-size: 1vw;
-    padding: 0.2vw;
-    border: solid;
-    border-width: 1.5px;
-    border-radius: 3px;
+    /* padding: 0.2vw; */
+    border: none;
+    transform: translateX(-5%);
+    background-color: #42426A;
+    color: #D5D5D5;
+    text-align: left;
+  }
+  .send-to-button:hover{
+    background-color: #32334B;
+    color: #D5D5D5;
+    border-radius: 0.1vw;
   }
   .top-buttons{
     position: relative;
