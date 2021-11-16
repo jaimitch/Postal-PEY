@@ -234,13 +234,13 @@
             </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
-              <button class="creation-button" style="position:absolute; width:25vw; top:20vw; left:9vw;" @click="createSit5Form($event)">
+              <button class="creation-button" style="position:absolute; width:30vw; top:22vw; left:8.5vw;" @click="createSit5Form($event)">
               CREATE NEW OUTGOING TRUCK BILL
             </button>
             </div>
           </div>
-          <div class= "form-creation" style="position:relative; width:25vw; bottom:8vw; left:-0.4vw;" v-if="getSituationNumber == 6 && !this.sit62261">
-            <button class="creation-button" @click="createSit6Form($event)">
+          <div class= "form-creation" style="position:absolute; width:30vw; left:3.25vw;" v-if="getSituationNumber == 6 && !this.sit62261">
+            <button class="creation-button cb2261" @click="createSit6Form($event)">
               CREATE NEW DD FORM 2261
             </button>
           </div>
@@ -2671,7 +2671,7 @@
     background-color: #D5D5D5;
     color: #32334B;
     border-radius: .5vw;
-    padding: .5vw;
+    /* padding: .5vw; */
     cursor: pointer;
     width: 15vw;
     height: 5vh;
@@ -2679,7 +2679,7 @@
   .creation-button-copy{
     font-size: 1vw;
     border-radius: .5vw;
-    padding: .5vw;
+    /* padding: .5vw; */
     cursor: pointer;
     width: 15vw;
     height: 5vh;
@@ -2890,4 +2890,5 @@
     justify-content: space-evenly;
     z-index: 6;
   }
+  
 </style>
