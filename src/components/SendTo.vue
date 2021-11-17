@@ -1,7 +1,7 @@
 <template>
     <div class="background">
         <div v-for='item in locations' :key='item'>
-            <button class="modal-button" @click="this.$emit('selectedDestination', currentItem, item)"> {{ item.articleCode }} </button>
+            <button class="modal-button" @click="this.$emit('selectedDestination', $event, currentItem, item)"> {{ item.articleCode }} </button>
         </div>
     </div>
 </template>
