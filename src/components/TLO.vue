@@ -61,8 +61,6 @@
           <button class="modal-button" @click="closeModal()">START</button>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
