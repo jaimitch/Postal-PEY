@@ -2892,6 +2892,7 @@
     background-color: #32334B;
     color: #D5D5D5;
     border-radius: 0.1vw;
+    cursor: pointer;
   }
   .top-buttons{
     position: relative;
