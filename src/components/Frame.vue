@@ -216,7 +216,7 @@
             <div class="top-buttons">
               <div v-if="this.items[currentFormIndex] != undefined">
                 <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
-                  <button class="creation-button" @click="flipForm()">FLIP FORM</button>
+                  <button class="creation-button" @click="flipForm($event)">FLIP FORM</button>
                 </div>
               </div>
               <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
@@ -840,13 +840,14 @@
         evt.currentTarget.style.boxShadow = 'none';
         return id
       },
-      flipForm(){
+      flipForm(evt){
         if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
           this.form3854Back = !this.form3854Back
         }
         else{
           this.form2261Back = !this.form2261Back
         }
+        evt.stopPropagation()
       },
       createSit5Form(evt){
         if(this.pageNum == 9){
@@ -2885,6 +2886,7 @@
     background-color: #32334B;
     color: #D5D5D5;
     border-radius: 0.1vw;
+    cursor: pointer;
   }
   .top-buttons{
     position: relative;
