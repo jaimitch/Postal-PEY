@@ -1,21 +1,22 @@
 <template>
-<div v-show="showError">
-  <div class="modal-backdrop" @click="closeModal()">
-    <div class="modal">
+  <div v-show="showError">
+    <div class="modal-backdrop" @click="closeModal()">
+      <div class="modal">
         <button
           type="button"
           class="btn-close"
-          @click="closeModal()">
+          @click="closeModal()"
+        >
           x
         </button>
-          <div class="gold">
-            You have unresolved errors in the following {{totalErrors}} item(s):
-            <div v-for="item in problemItems" :key="item">
-              {{item.type}}: {{item.detail}}
-            </div>
+        <div class="gold">
+          You have unresolved errors in the following {{totalErrors}} item(s):
+          <div v-for="item in problemItems" :key="item">
+            {{item.type}}: {{item.detail}}
           </div>
+        </div>
+      </div>
     </div>
-</div>
   </div>
 </template>
 
@@ -27,8 +28,6 @@
       closeModal() {
         this.$emit('changeShow')
       },
-    },
-    computed: {
     },
   };
 </script>
@@ -47,7 +46,6 @@
     overflow: scroll;
     z-index: 2000;
   }
-
   .modal {
     position: absolute;
     top: 40%;
@@ -63,14 +61,11 @@
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-}
-
-
+  }
   .modal-body {
     position: relative;
     padding: 5vw;
   }
-
   .btn-close {
     border: none;
     font-size: 20px;
@@ -80,12 +75,11 @@
     background: transparent;
     text-align: right;
   }
-
-.gold {
-  position:relative;
-  /* top: 8vw; */
-  text-align:center;
-  padding: 1vw;
-  font-size: 1.4vw;
-}
+  .gold {
+    position:relative;
+    /* top: 8vw; */
+    text-align:center;
+    padding: 1vw;
+    font-size: 1.4vw;
+  }
 </style>

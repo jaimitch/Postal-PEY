@@ -830,7 +830,7 @@
     },
     methods: {
       dragOver(id,evt){
-        console.log(id)
+        //console.log(id)
         evt.currentTarget.style.boxShadow = '0 0 10px 10px black';
         for(let i = 0; i < this.items.length; i++){
           if(this.items[i].level > 0 && this.items[i].id != id){
@@ -883,7 +883,7 @@
         evt.stopPropagation()
       },
       createOutForm(evt, item, type){
-        console.log(this.items[this.getItemIndex(this.findParent(item.id))])
+        //console.log(this.items[this.getItemIndex(this.findParent(item.id))])
         let newItemID = this.createItem(type, 'created', this.getSituationNumber, 2, false, '', undefined, this.updateGradeAt(), true)
         this.items[this.getItemIndex(this.findParent(item.id))].children.push(newItemID)
         this.removeItemOnDrop(item.id,this.findParent(item.id))
@@ -1565,7 +1565,7 @@
       returns 0 if it's correct or 1 if it's incorrect
       */
       checkItemLocation(item, keyItem) {
-        console.log("checking location!")
+        //console.log("checking location!")
         let parentID = this.findParent(item.id)
         let location = this.findItemByID(parentID)[0].articleCode
         if(location == keyItem[`situation${this.getSituationNumber}Location`]) {
@@ -1586,7 +1586,7 @@
         let itemType = item.type;
         switch(itemType) {
             case "Parcel": {
-              console.log("Its a parcel")
+             // console.log("Its a parcel")
               let errors = this.checkItemLocation(item, keyItem);
               if(item.stampCounter != true) {
                 errors++;
@@ -1594,7 +1594,7 @@
               return errors;
             }
             case "Letter": {
-              console.log("Its a letter")
+              //console.log("Its a letter")
               let errors = this.checkItemLocation(item, keyItem);
               if(item.stampCounter != true) {
                 errors++;
@@ -1602,12 +1602,12 @@
               return errors;
             }
             case "Pouch": {
-              console.log("Its a pouch")
+              //console.log("Its a pouch")
               let errors = this.checkItemLocation(item, keyItem);
               return errors;
             }
             case "Truck": {
-              console.log("Its a Truck")
+              //console.log("Its a Truck")
               let errors = this.checkItemLocation(item, keyItem);
               return errors;
             }
@@ -1626,19 +1626,19 @@
                 return errors
               }
               else if(itemType == "PS FORM 3883") {
-                  console.log("Its a PS FORM 3883")
+                 // console.log("Its a PS FORM 3883")
                   errors += this.checkItemLocation(item, keyItem)
                   errors += this.gradeForm(item.articleCode, keyItem, item.type)
                   return errors
               }
               else if (itemType == "PS FORM 3849"){
-                console.log("Its a PS FORM 3849")
+                //console.log("Its a PS FORM 3849")
                   errors += this.checkItemLocation(item, keyItem)
                   errors += this.gradeForm(item.articleCode, keyItem, item.type)
                   return errors
               }
               else if(itemType == "PS FORM 3877") {
-                console.log("PS FORM 3877")
+                //console.log("PS FORM 3877")
                 errors += this.checkItemLocation(item, keyItem)
                 errors += this.gradeForm(item.articleCode, keyItem, item.type)
                 return errors
@@ -1671,7 +1671,7 @@
             if(currentItem[0] != undefined) {
               //console.log("situationItems",situationItems.length)
               let itemErrors = this.gradeItem(currentItem[0], currentKeyItem);
-              console.log("itemErrors",itemErrors)
+              //console.log("itemErrors",itemErrors)
               
               //if there are no errors, remove item from both arrays
               if(itemErrors == 0) {
@@ -1747,7 +1747,7 @@
               }
             }
             else if(userForm[property] != keyForm[property] && property != "items" && property != "gradeAt" && !property.includes("Location")) {
-              console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
+              //console.log(`${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
             if(Array.isArray(keyForm[property])) {
@@ -1757,7 +1757,7 @@
               else{
                 for(let i = userForm.items.length-1; i >= 0; i--) {
                   if(!keyForm.items.includes(userForm.items[i])){
-                    console.log("error",userForm.items[i])
+                    //console.log("error",userForm.items[i])
                     errors++
                   }
                 }
@@ -1768,7 +1768,7 @@
           }
         }
         else if(formCode == "PS FORM 3854") {
-          console.log("Its a 3854!")
+          //console.log("Its a 3854!")
           let errors = 0;
           let keyPairs = [];
           for (let property in keyForm) {
@@ -1795,7 +1795,7 @@
                           //console.log("User Form: ", userForm.itemOrigins[i], "Key Pair: ", keyPairs[j].right)
                           if(userForm.itemOrigins[i] != undefined){
                             if(userForm.itemOrigins[i] != ""){
-                              console.log("ERROR")
+                              //console.log("ERROR")
                               errors++
                               break
                             }
@@ -1804,7 +1804,7 @@
                         else{
                           if(userForm.itemOrigins[i] != keyPairs[j].right) {
                             errors++
-                            console.log("mismatch:", userForm.itemOrigins[i],  keyPairs[j].right)
+                            //console.log("mismatch:", userForm.itemOrigins[i],  keyPairs[j].right)
                             break
                           }
                         }
@@ -1886,7 +1886,7 @@
         }
         else if(formCode == "PS FORM 3883") {
           let errors = 0
-          console.log("Its a 3883!")
+          //console.log("Its a 3883!")
 
           for (let property in keyForm) {
             // console.log(property)
@@ -1901,7 +1901,7 @@
                 if(keyForm.article.length > 1) {
                   for(let i = 1; i < keyForm.article.length; i++) {
                     if(!keyForm[property].includes(userForm[property][i])) {
-                      console.log("It doesnt match")
+                      //console.log("It doesnt match")
                       errors++;
                     }
                   }
@@ -1911,7 +1911,7 @@
             }
             //Property is not an array, and is incorrect
             else if(userForm[property] != keyForm[property] && !property.includes("Location") && !property == "type") {
-              console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
+              //console.log("prop:", property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
               errors++;
             }
           }
@@ -1920,7 +1920,7 @@
         }
         else if(formCode == "PS FORM 3849"){
           let errors = 0
-          console.log("Its a 3849")
+          //console.log("Its a 3849")
           for(let property in userForm){
             if(userForm[property] != keyForm[property]){
               console.log(property,": ", userForm[property], " ", keyForm[property])
@@ -1931,11 +1931,11 @@
         }
         else if(formCode == "PS FORM 3877") {
           let errors = 0;
-          console.log("Attempting to grade a 3877!")
+          //console.log("Attempting to grade a 3877!")
           for(let property in keyForm){
              if(!Array.isArray(keyForm[property])) {
                if(userForm[property] != keyForm[property] && property != "gradeAt" && property != "square" && !property.includes("Location") && !property == "type") {
-                console.log(property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
+                //console.log(property, `${userForm[property]}`, '!=', `${keyForm[property]}`)
                 errors++;
               }
             }

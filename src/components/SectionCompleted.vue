@@ -1,15 +1,15 @@
 <template>
-<div v-show="successModalShow" @click="closeModal()">
-  <div class="modal-backdrop">
-    <div class="modal">
-          <div class="gold" v-if="sectionNumber != 6">
-            You have successfully completed Situation {{sectionNumber}}, you can now move on to Situation {{sectionNumber+1}}
-          </div>
-          <div class="gold" v-else>
-            You have successfully completed the PE - X
-          </div>
+  <div v-show="successModalShow" @click="closeModal()">
+    <div class="modal-backdrop">
+      <div class="modal">
+        <div class="gold" v-if="sectionNumber != 6">
+          You have successfully completed Situation {{sectionNumber}}, you can now move on to Situation {{sectionNumber+1}}
+        </div>
+        <div class="gold" v-else>
+          You have successfully completed the PE - X
+        </div>
+      </div>
     </div>
-</div>
   </div>
 </template>
 
@@ -21,9 +21,6 @@
       closeModal() {
         this.$emit("successModal")
       },
-    },
-    computed: {
-
     },
   };
 </script>
@@ -42,7 +39,6 @@
     overflow: scroll;
     z-index: 2000;
   }
-
   .modal {
     position: absolute;
     top: 40%;
@@ -58,14 +54,11 @@
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-}
-
-
+  }
   .modal-body {
     position: relative;
     padding: 5vw;
   }
-
   .btn-close {
     border: none;
     font-size: 20px;
@@ -75,12 +68,11 @@
     background: transparent;
     text-align: right;
   }
-
-.gold {
-  position:relative;
-  /* top: 8vw; */
-  text-align:center;
-  padding: 1vw;
-  font-size: 1.4vw;
-}
+  .gold {
+    position:relative;
+    /* top: 8vw; */
+    text-align:center;
+    padding: 1vw;
+    font-size: 1.4vw;
+  }
 </style>
