@@ -1,15 +1,15 @@
 <template>
-<div v-show="deleteModalShow">
-  <div class="modal-backdrop">
-    <div class="modal">
-          <div class="gold">
-            Are you sure you want to delete {{deletingItem.type}}: {{deletingItem.articleCode}}?
-            <br>
-            <button class="delete-yes" @click="closeModal(true)">Yes</button>
-            <button class="delete-no" @click="closeModal(false)">No</button>
-          </div>
+  <div v-show="deleteModalShow">
+    <div class="modal-backdrop">
+      <div class="modal">
+        <div class="gold">
+          Are you sure you want to delete {{deletingItem.type}}: {{deletingItem.articleCode}}?
+          <br>
+          <button class="delete-yes" @click="closeModal(true)">Yes</button>
+          <button class="delete-no" @click="closeModal(false)">No</button>
+        </div>
+      </div>
     </div>
-</div>
   </div>
 </template>
 
@@ -24,11 +24,8 @@
         }
         else{
           this.$emit('doNothing')
-        }
-        
+        }  
       },
-    },
-    computed: {
     },
   };
 </script>
@@ -47,7 +44,6 @@
     overflow: scroll;
     z-index: 2000;
   }
-
   .modal {
     position: absolute;
     top: 40%;
@@ -63,14 +59,11 @@
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-}
-
-
+  }
   .modal-body {
     position: relative;
     padding: 5vw;
   }
-
   .btn-close {
     border: none;
     font-size: 20px;
@@ -80,14 +73,13 @@
     background: transparent;
     text-align: right;
   }
-
-.gold {
-  position:relative;
-  /* top: 8vw; */
-  text-align:center;
-  padding: 1vw;
-  font-size: 1.4vw;
-}
+  .gold {
+    position:relative;
+    /* top: 8vw; */
+    text-align:center;
+    padding: 1vw;
+    font-size: 1.4vw;
+  }
   .delete-yes,.delete-no{
     font-size: 1vw;
     font-weight: bold;
