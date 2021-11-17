@@ -32,9 +32,7 @@
             </div>
             <button class="modal-button" @click="modalPage = 2">NEXT</button>
           </div>
-          <button class="modal-button" @click="modalPage = 2">NEXT</button>
         </div>
-      </div>
       <div v-if="modalPage == 2" class="modal">
         <div class="gold">
           <span class="tlo-title">Interservice Postal Training Activity<br>
@@ -58,8 +56,8 @@
             </div>
             <button class="modal-button" @click="closeModal()">START</button>
           </div>
-          <button class="modal-button" @click="closeModal()">START</button>
         </div>
+      </div>
       </div>
 </template>
 
