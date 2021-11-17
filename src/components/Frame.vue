@@ -773,7 +773,7 @@
           <br><br> \
           AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
           DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
-          LAST Outgoing Inside Bill USED: 128 <br>\
+          LAST OUTGOING INSIDE BILL USED: 128 <br>\
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
           CURRENT TIME: 1730 <br><br>\
           Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300. Put this Outgoing Inside Bill and its associated mail items\
