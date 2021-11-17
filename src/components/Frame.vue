@@ -5,7 +5,6 @@
         <ToolTip/>
       </div>
     </div>
-
     <Error 
       v-bind:showError="showError"
       v-bind:problemItems="problemItems"
@@ -23,18 +22,18 @@
       v-bind:successModalShow="successModalShow"
       @successModal="successModalShow = false"
     />
-    <div class="scroll-zone-up"
-    draggable=false
-    @dragover="onHoverUp()"/>
-
-    <div class="scroll-zone-down"
-    draggable=false
-    @dragover="onHoverDown()"/>
-    
+    <div 
+      class="scroll-zone-up"
+      draggable=false
+      @dragover="onHoverUp()"
+    />
+    <div 
+      class="scroll-zone-down"
+      draggable=false
+      @dragover="onHoverDown()"
+    />
     <div class='frame'>
-      <div v-if="shade === true" class="right-frame-shade" @click="this.currentFormIndex = ''">
-      </div>
-
+      <div v-if="shade === true" class="right-frame-shade" @click="this.currentFormIndex = ''"/>
       <div class="left-frame">
         <div
           id="left-frame"
@@ -61,170 +60,151 @@
             </div>
             <div v-if="item.collapsed == false || item.collapsed == undefined">
               <hr style="height:3px;border-width:0;color:#32334B;background-color:#32334B">
-                <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
-                  <br><br>
+              <div v-if="item.children.length == 0 && (item.collapsed == false || item.collapsed == undefined)">
+                <br><br>
+              </div>
+              <div 
+                class='child-level' 
+                v-for='child in getChildrenIndexes(item.id)' 
+                :key='child' 
+                :draggable ='true'
+                :id='items[child].id'
+                @dragover='dragOver(items[child].id,$event)'
+                @dragleave='dragLeave(items[child].id,$event)'
+                @dragstart='startDrag($event, items[child])'
+                @drop="onDrop($event,items[child].id)"
+                @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
+              >
+                <div class="child-content">
+                  <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
+                  <img v-else-if="items[child].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon child-parcel">
+                  <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
+                  <img v-else src="../assets/White-form.svg" class="item-icon child-form">
+                  <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
+                  <div class = "child-text">
+                    {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '45th MP CO APO AE 09459'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+                    <div>
+                      <button v-if="items[child].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                      <button v-if="items[child].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                      <div v-if="items[child].sendTo">
+                        <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+                <div class="child-content item-image" v-if="items[child].images.length != 0">
+                  <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
+                    <div v-if="getSituationNumber == 3">
+                      <button class="button-3883" @click="createOutForm($event, items[child],'psform3883')">Create 3883</button>
+                      <button class="button-3849" @click="createOutForm($event, items[child],'psform3849')">Create 3849</button>
+                    </div>
+                  </div>
+                  <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" :class="{'stamp-image': items[child].type != 'Pouch'}">
                 </div>
                 <div 
-                  class='child-level' 
-                  v-for='child in getChildrenIndexes(item.id)' 
-                  :key='child' 
+                  class='grand-child-level' 
+                  v-for='grandchild in getChildrenIndexes(items[child].id)'
+                  :key='grandchild'
                   :draggable ='true'
-                  :id='items[child].id'
-                  @dragover='dragOver(items[child].id,$event)'
-                  @dragleave='dragLeave(items[child].id,$event)'
-                  @dragstart='startDrag($event, items[child])'
-                  @drop="onDrop($event,items[child].id)"
-                  @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
+                  :id='items[grandchild].id'
+                  @dragover="dragOver(items[grandchild].id,$event)"
+                  @dragleave="dragLeave(items[grandchild].id,$event)"
+                  @dragstart='startDrag($event, items[grandchild])'
+                  @drop="onDrop($event,items[grandchild].id)"
+                  @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
                 >
-                  <div class="child-content">
-                    <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
-                    <img v-else-if="items[child].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon child-parcel">
-                    <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
-                    <img v-else src="../assets/White-form.svg" class="item-icon child-form">
-
-                    <button v-if="items[child].created" @click="startDelete($event, items[child])" class="delete-button">X</button>
-
-                    <div class = "child-text">
-                      {{ items[child].type }} <br> <span v-if="!items[child].articleCode.includes('created') && items[child].articleCode != '45th MP CO APO AE 09459'">{{ items[child].articleCode }}</span> <br> {{ items[child].situationNumber }}
+                  <div class="grand-child-content">
+                    <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                    <img v-else-if="items[grandchild].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
+                    <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                    <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+                    <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
+                    <div class='grand-text'>
+                      {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
                       <div>
-                        <button v-if="items[child].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                        <button v-if="items[child].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                        <div v-if="items[child].sendTo">
-                          <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
+                        <button v-if="items[grandchild].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                        <button v-if="items[grandchild].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                        <div v-if="items[grandchild].sendTo">
+                          <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
                         </div>
                       </div>
                     </div>
-                     
-                  </div>  
-                  <div class="child-content item-image" v-if="items[child].images.length != 0">
-                    <div class="stamp-input" v-show="items[child].showImage && items[child].type != 'Pouch'"> 
-                      <!-- <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" class="stamp-image"> -->
-                      <!-- <input class="stamp-button" v-model="items[child].stampCounter" @click="this.stampItem($event, items[child])" type="checkbox">Stamp  -->
-                      <div v-if="getSituationNumber == 3">
-                        <button class="button-3883" @click="createOutForm($event, items[child],'psform3883')">Create 3883</button>
-                        <button class="button-3849" @click="createOutForm($event, items[child],'psform3849')">Create 3849</button>
-                      </div>
-                    </div>
-                    
-                      <img v-show="items[child].showImage" :src="itemImage(items[child])" @click="this.stampItem($event, items[child])" :class="{'stamp-image': items[child].type != 'Pouch'}">
                   </div>
+                  <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
+                    <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > 
+                      <!-- <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp  -->
+                    </div>
+                    <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])" @click="this.stampItem($event, items[grandchild])" :class="{'stamp-image': items[grandchild].type != 'Pouch'}">
+                  </div>
+                  <div 
+                    class='great-grand-level' 
+                    v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
+                    :key='greatgrand'
+                    :draggable ='true'
+                    :id='items[greatgrand].id'
+                    @dragover="dragOver(items[greatgrand].id,$event)"
+                    @dragleave="dragLeave(items[greatgrand].id,$event)"
+                    @dragstart='startDrag($event, items[greatgrand])'
+                    @drop="onDrop($event,items[greatgrand].id)"
+                    @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
+                  >
+                    <div class="grand-child-content">
+                      <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                      <img v-else-if="items[greatgrand].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
+                      <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                      <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
+                      <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
+                      <div class='great-grand-text'>
+                        {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                        <div>
+                          <button v-if="items[greatgrand].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                          <button v-if="items[greatgrand].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                          <div v-if="items[greatgrand].sendTo">
+                            <SendTo :locations="sendToLocations" :currentItem="this.items[greatgrand]" @selectedDestination="this.sendTo"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
+                      <div class="stamp-input" v-show="items[greatgrand].showImage && items[greatgrand].type != 'Pouch'"> 
+                        <!-- " v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp  -->
+                      </div>
+                      <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])" @click="this.stampItem($event, items[greatgrand])" :class="{'stamp-image': items[greatgrand].type != 'Pouch'}">
+                    </div>
                     <div 
-                      class='grand-child-level' 
-                      v-for='grandchild in getChildrenIndexes(items[child].id)'
-                      :key='grandchild'
+                      class='great-grand-level' 
+                      v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
+                      :key='greatgreat'
                       :draggable ='true'
-                      :id='items[grandchild].id'
-                      @dragover="dragOver(items[grandchild].id,$event)"
-                      @dragleave="dragLeave(items[grandchild].id,$event)"
-                      @dragstart='startDrag($event, items[grandchild])'
-                      @drop="onDrop($event,items[grandchild].id)"
-                      @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
+                      :id='items[greatgreat].id'
+                      @dragover="dragOver(items[greatgreat].id,$event)"
+                      @dragleave="dragLeave(items[greatgreat].id,$event)"
+                      @dragstart='startDrag($event, items[greatgreat])'
+                      @drop="onDrop($event,items[greatgreat].id)"
+                      @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
                     >
-                
                       <div class="grand-child-content">
-                        <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                        <img v-else-if="items[grandchild].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
-                        <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
+                        <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
+                        <img v-else-if="items[greatgreat].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
+                        <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
                         <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
-
-                        <button v-if="items[grandchild].created" @click="startDelete($event, items[grandchild])" class="delete-button">X</button>
-
-                        <div class='grand-text'>
-                          {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+                        <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
+                        <div class='great-grand-text'>
+                          {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
                           <div>
-                            <button v-if="items[grandchild].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                            <button v-if="items[grandchild].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                            <div v-if="items[grandchild].sendTo">
-                              <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
+                            <button v-if="items[greatgreat].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                            <button v-if="items[greatgreat].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                            <div v-if="items[greatgreat].sendTo">
+                              <SendTo :locations="sendToLocations" :currentItem="this.items[greatgreat]" @selectedDestination="this.sendTo"/>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
-
-                      <div class="stamp-input" v-show="items[grandchild].showImage && items[grandchild].type != 'Pouch'" > 
-                        <!-- <input class="stamp-button" v-model="items[grandchild].stampCounter" @click="this.stampItem($event, items[grandchild])" type="checkbox">Stamp  -->
-                      </div>
-                        <img v-show="items[grandchild].showImage" :src="itemImage(items[grandchild])" @click="this.stampItem($event, items[grandchild])" :class="{'stamp-image': items[grandchild].type != 'Pouch'}">
-                      </div>
-                      <div 
-                        class='great-grand-level' 
-                        v-for='greatgrand in getChildrenIndexes(items[grandchild].id)'
-                        :key='greatgrand'
-                        :draggable ='true'
-                        :id='items[greatgrand].id'
-                        @dragover="dragOver(items[greatgrand].id,$event)"
-                        @dragleave="dragLeave(items[greatgrand].id,$event)"
-                        @dragstart='startDrag($event, items[greatgrand])'
-                        @drop="onDrop($event,items[greatgrand].id)"
-                        @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
-                      >
-                
-                        <div class="grand-child-content">
-                          <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                          <img v-else-if="items[greatgrand].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
-                          <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-                          <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
-
-                          <button v-if="items[greatgrand].created" @click="startDelete($event, items[greatgrand])" class="delete-button">X</button>
-
-                          <div class='great-grand-text'>
-                            {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
-                            <div>
-                              <button v-if="items[greatgrand].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                              <button v-if="items[greatgrand].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                              <div v-if="items[greatgrand].sendTo">
-                                <SendTo :locations="sendToLocations" :currentItem="this.items[greatgrand]" @selectedDestination="this.sendTo"/>
-                              </div>
-                            </div>
-                          </div>
+                      <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
+                        <div class="stamp-input" v-show="items[greatgreat].showImage && items[greatgreat].type != 'Pouch'"> 
+                          <!-- <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp  -->
                         </div>
-
-                        <div class="grand-child-content" v-if="items[greatgrand].images.length != 0">
-                          <div class="stamp-input" v-show="items[greatgrand].showImage && items[greatgrand].type != 'Pouch'"> 
-                            <!-- " v-model="items[greatgrand].stampCounter" @click="this.stampItem($event, items[greatgrand])" type="checkbox">Stamp  -->
-                          </div>
-                          <img v-show="items[greatgrand].showImage" :src="itemImage(items[greatgrand])" @click="this.stampItem($event, items[greatgrand])" :class="{'stamp-image': items[greatgrand].type != 'Pouch'}">
-                        </div>
-                        <div 
-                          class='great-grand-level' 
-                          v-for='greatgreat in getChildrenIndexes(items[greatgrand].id)'
-                          :key='greatgreat'
-                          :draggable ='true'
-                          :id='items[greatgreat].id'
-                          @dragover="dragOver(items[greatgreat].id,$event)"
-                          @dragleave="dragLeave(items[greatgreat].id,$event)"
-                          @dragstart='startDrag($event, items[greatgreat])'
-                          @drop="onDrop($event,items[greatgreat].id)"
-                          @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
-                        >
-                
-                          <div class="grand-child-content">
-                            <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
-                            <img v-else-if="items[greatgreat].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
-                            <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
-                            <img v-else src="../assets/White-form.svg" class="item-icon grand-form">
-
-                            <button v-if="items[greatgreat].created" @click="startDelete($event, items[greatgreat])" class="delete-button">X</button>
-
-                            <div class='great-grand-text'>
-                              {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
-                              <div>
-                                <button v-if="items[greatgreat].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                                <button v-if="items[greatgreat].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
-                                <div v-if="items[greatgreat].sendTo">
-                                  <SendTo :locations="sendToLocations" :currentItem="this.items[greatgreat]" @selectedDestination="this.sendTo"/>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
-                            <div class="stamp-input" v-show="items[greatgreat].showImage && items[greatgreat].type != 'Pouch'"> 
-                              <!-- <input class="stamp-button" v-model="items[greatgreat].stampCounter" @click="this.stampItem($event, items[greatgreat])" type="checkbox">Stamp  -->
-                            </div>
-                              <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])" @click="this.stampItem($event, items[greatgreat])" :class="{'stamp-image': items[greatgreat].type != 'Pouch'}">
-                            </div>
-                          </div>
+                        <img v-show="items[greatgreat].showImage" :src="itemImage(items[greatgreat])" @click="this.stampItem($event, items[greatgreat])" :class="{'stamp-image': items[greatgreat].type != 'Pouch'}">
                       </div>
                     </div>
                   </div>
@@ -232,30 +212,32 @@
               </div>
             </div>
           </div>
-          <div :class="'right-frame'" @click="currentFormIndex = ''">
-            <div class="top-buttons">
-              <div v-if="this.items[currentFormIndex] != undefined">
-                <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
-                  <button class="creation-button" @click="flipForm($event)">FLIP FORM</button>
-                </div>
-              </div>
-              <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
-              <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button">STUDENT HANDOUT</button></a>
-              <button v-if="this.showSubmit.includes(this.pageNum)" :class="'creation-button'" @click="submitPage()">SUBMIT</button>
-              <div v-else class="creation-button-copy"></div>
+        </div>
+      </div>
+      <div :class="'right-frame'" @click="currentFormIndex = ''">
+        <div class="top-buttons">
+          <div v-if="this.items[currentFormIndex] != undefined">
+            <div v-if="this.items[currentFormIndex].type == 'DD FORM 2261' || this.items[currentItemIndex].type == 'PS FORM 3854'">
+              <button class="creation-button" @click="flipForm($event)">FLIP FORM</button>
             </div>
+          </div>
+          <div v-if="currentFormIndex == ''" class="creation-button-copy"></div>
+            <a target="_blank" @click="popOut('https://ssilrc.army.mil/resources/Postal/Process_Reg_SHO.pdf')"><button class="creation-button">STUDENT HANDOUT</button></a>
+            <button v-if="this.showSubmit.includes(this.pageNum)" :class="'creation-button'" @click="submitPage()">SUBMIT</button>
+            <div v-else class="creation-button-copy"></div>
+          </div>
           <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:22vw; left:8.5vw;" @click="createSit5Form($event)">
-              CREATE NEW OUTGOING INSIDE BILL & POUCH
-            </button>
+                CREATE NEW OUTGOING INSIDE BILL & POUCH
+              </button>
             </div>
             <div v-if="this.pageNum == 10 && !this.sit5TruckBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:22vw; left:8.5vw;" @click="createSit5Form($event)">
-              CREATE NEW OUTGOING TRUCK BILL
-            </button>
+                CREATE NEW OUTGOING TRUCK BILL
+              </button>
             </div>
           </div>
           <div class= "form-creation" style="position:absolute; width:30vw; left:3.25vw;" v-if="getSituationNumber == 6 && !this.sit62261">
@@ -341,11 +323,11 @@
                 @changeShadeFalse="shade = false"
                 :key="formKey"
               />
-            </div>
           </div>
+        </div>
       </div>
     </div>
-    <PageNav 
+    <PageNav
       v-bind:pageErrors="pageErrors"
       @clearForm="currentFormIndex = ''"
     />
@@ -872,7 +854,6 @@
       createSit5Form(evt){
         if(this.pageNum == 9){
           this.createPouch()
-
           let newFormSettings = {
               billNo: "129",
             }
@@ -925,7 +906,7 @@
       calculateNewWidth(){
         var newWidth = window.screen.width * .6;
         return newWidth;
-    },
+      },
       startDrag (evt, item)  {
         this.currentFormIndex = ""
         evt.dataTransfer.dropEffect = 'move'
@@ -952,7 +933,6 @@
       onDrop (evt, destination) {
         const draggedID = evt.dataTransfer.getData('itemID')
         const prevParentID = evt.dataTransfer.getData('parentID')
-        
         let childrenIndexes = this.getChildrenIndexes(draggedID)
         if(this.items[this.getItemIndex(destination)].level < 5){
           if(childrenIndexes.indexOf(this.getItemIndex(this.findParent(destination))) == -1){
@@ -1556,9 +1536,9 @@
       //accepts an array and returns it without any blank entries
       cleanArray(arr) {
         let newArr = arr.filter(function(str) {
-        return /\S/.test(str);
-      });
-      return newArr;
+          return /\S/.test(str);
+        });
+        return newArr;
       },
       submitPage() {
         this.currentFormIndex = ''
