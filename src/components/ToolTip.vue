@@ -1,11 +1,11 @@
 <template>
-<div v-show="show" class="modal-backdrop" @click="closeModal()">
-    <div class="modal">
-        <div class="modal-text">
-            {{ displayText }}
+    <div v-show="show" class="modal-backdrop" @click="closeModal()">
+        <div class="modal">
+            <div class="modal-text">
+                {{ displayText }}
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -42,7 +42,6 @@
             else if(pageNum == 9) {
                 return "In this situation, you will be adding items to a pouch. Drag and drop the items onto the pouch and they will stack underneath.";
             }
-
             return "The tooltip modal should not be displaying";
         }
     },
@@ -50,40 +49,40 @@
 </script>
 
 <style scoped>
-.modal {
-    position: absolute;
-    top: 40%;
-    left:50%;
-    min-width: 30vw;
-    min-height: 10vh;
-    border-radius: 12px;
-    z-index:50;
-    box-shadow: 1px 3px 2px black;
-    transform: translateX(-50%);
-    background: #D5D5D5;
-    color: #32334B;
-    overflow-x: auto;
-    display: flex;
-    flex-direction: column;
-}
-  .modal-text{
-      position:relative;
-      /* top: 8vw; */
-      text-align:center;
-      padding: 1vw;
-      font-size: 1.4vw;
-  }
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: scroll;
-    z-index: 2000;
-  }
+    .modal {
+        position: absolute;
+        top: 40%;
+        left:50%;
+        min-width: 30vw;
+        min-height: 10vh;
+        border-radius: 12px;
+        z-index:50;
+        box-shadow: 1px 3px 2px black;
+        transform: translateX(-50%);
+        background: #D5D5D5;
+        color: #32334B;
+        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .modal-text{
+        position:relative;
+        /* top: 8vw; */
+        text-align:center;
+        padding: 1vw;
+        font-size: 1.4vw;
+    }
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: scroll;
+        z-index: 2000;
+    }
 </style>

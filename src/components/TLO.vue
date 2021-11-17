@@ -1,9 +1,9 @@
 <template>
-<div v-show="show">
-  <div class="modal-backdrop">
-    <div v-if="modalPage == 1" class="modal">
-          <div class="gold">
-            <span class="tlo-title">Interservice Postal Training Activity<br>
+  <div v-show="show">
+    <div class="modal-backdrop">
+      <div v-if="modalPage == 1" class="modal">
+        <div class="gold">
+          <span class="tlo-title">Interservice Postal Training Activity<br>
             Lesson #CJAF5216<br>
             Practical Exercise - X</span><br><br>
             <div class="tlo-text">
@@ -32,11 +32,12 @@
             </div>
             <button class="modal-button" @click="modalPage = 2">NEXT</button>
           </div>
-    </div>
-    <div v-if="modalPage == 2" class="modal">
-
-          <div class="gold">
-            <span class="tlo-title">Interservice Postal Training Activity<br>
+          <button class="modal-button" @click="modalPage = 2">NEXT</button>
+        </div>
+      </div>
+      <div v-if="modalPage == 2" class="modal">
+        <div class="gold">
+          <span class="tlo-title">Interservice Postal Training Activity<br>
             Lesson #CJAF5216<br>
             Practical Exercise - X</span><br><br>
             <div class="tlo-text">
@@ -57,8 +58,10 @@
             </div>
             <button class="modal-button" @click="closeModal()">START</button>
           </div>
+          <button class="modal-button" @click="closeModal()">START</button>
+        </div>
+      </div>
     </div>
-</div>
   </div>
 </template>
 
@@ -66,17 +69,15 @@
   export default {
     name: 'Warning',
     data() {
-        return {
-            show:true,
-            modalPage: 1
-        }
+      return {
+        show:true,
+        modalPage: 1
+      }
     },
     methods: {
       closeModal() {
-            this.show = false;
+        this.show = false;
       },
-    },
-    computed: {
     },
   };
 </script>
@@ -97,7 +98,6 @@
       -ms-overflow-style: none; 
   scrollbar-width: none;
   }
-
   .modal {
     position: absolute;
     top: 3vh;
@@ -110,7 +110,6 @@
     max-width: 100%;
     border-radius: 5px;
   }
-
   .modal-button {
     border: none;
     font-size: 20px;

@@ -1,16 +1,17 @@
 <template>
-<div v-show="show">
-  <div class="modal-backdrop" @click="closeModal()">
-    <div class="modal">
+  <div v-show="show">
+    <div class="modal-backdrop" @click="closeModal()">
+      <div class="modal">
         <button
           type="button"
           class="btn-close"
-          @click="closeModal()">
+          @click="closeModal()"
+        >
           x
         </button>
-          <div class="gold">Situation Success, click the forward button below.</div>
+        <div class="gold">Situation Success, click the forward button below.</div>
+      </div>
     </div>
-</div>
   </div>
 </template>
 
@@ -18,16 +19,14 @@
   export default {
     name: 'Warning',
     data() {
-        return {
-            show:true
-        }
+      return {
+        show:true
+      }
     },
     methods: {
       closeModal() {
-            this.show = false;
+        this.show = false;
       },
-    },
-    computed: {
     },
   };
 </script>
@@ -46,7 +45,6 @@
     overflow: scroll;
     z-index: 2000;
   }
-
   .modal {
     position: absolute;
     top: 40%;
@@ -62,14 +60,11 @@
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-}
-
-
+  }
   .modal-body {
     position: relative;
     padding: 5vw;
   }
-
   .btn-close {
     border: none;
     font-size: 20px;
@@ -79,12 +74,11 @@
     background: transparent;
     text-align: right;
   }
-
-.gold {
-  position:relative;
-  /* top: 8vw; */
-  text-align:center;
-  padding: 1vw;
-  font-size: 1.4vw;
-}
+  .gold {
+    position:relative;
+    /* top: 8vw; */
+    text-align:center;
+    padding: 1vw;
+    font-size: 1.4vw;
+  }
 </style>
