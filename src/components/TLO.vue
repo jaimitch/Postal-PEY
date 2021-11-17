@@ -5,34 +5,32 @@
         <div class="gold">
           <span class="tlo-title">Interservice Postal Training Activity<br>
             Lesson #CJAF5216<br>
-            Practical Exercise - X
-          </span>
-          <br><br>
-          <div class="tlo-text">
-            OBJECTIVE:  This practical exercise is designed to prepare you for the Registered Mail performance test.<br><br>
-            CONDITIONS:  Given the following<br>
-            <ul style="text-align:left; margin:auto;">
-              <li>Incoming Registered Mail Articles<br></li>
-              <li>Blank PS Forms 3849, Delivery Notice/Reminder/Receipt<br></li>
-              <li>PS Form 3854, Manifold Registry Dispatch Book (Incoming and Outgoing Bills)<br></li>
-              <li>PS Form 3877, Firm Mailing Book for Accountable Mail<br></li>
-              <li>PS Form 3883, Firm Delivery Book for Accountable Mail<br></li>
-              <li>DD Form 2261, Registered Mail Balance and Inventory<br></li>
-              <li>Previous Day’s Registered Mail Inventory<br></li>
-              <li>Blank strip label<br></li>
-              <li>Registered tin band seals<br></li>
-              <li>All Purpose Dating Stamp (APDS)<br></li>
-              <li>Standard office supplies (carbon paper, scissors, stapler and stamp pad)<br><br></li>
-            </ul>
-            REQUIREMENTS:  The student will<br>
-            <ul style="text-align: left; margin: auto;">
-              <li>Receipt for Registered Mail<br></li>
-              <li>Notify dispatching office of discrepancies found on dispatch bills<br></li> 
-              <li>Deliver personal registered mail on PS Form 3849<br></li> 
-              <li>Deliver official registered mail on PS Form 3883<br></li> 
-              <li>Dispatch registered mail<br></li> 
-              <li>Prepare DD Form 2261 to close Registry Section at the end of the business day<br><br></li> 
-            </ul>
+            Practical Exercise - X</span><br><br>
+            <div class="tlo-text">
+              OBJECTIVE:  This practical exercise is designed to prepare you for the Registered Mail performance test.<br><br>
+              CONDITIONS:  Given the following digital assets<br>
+                <ul style="text-align:left; margin:auto;">
+                  <li>Incoming Registered Mail Articles<br></li>
+                  <li>Blank PS Forms 3849, Delivery Notice/Reminder/Receipt<br></li>
+                  <li>PS Form 3854, Manifold Registry Dispatch Book (Incoming and Outgoing Bills)<br></li>
+                  <li>PS Form 3877, Firm Mailing Book for Accountable Mail<br></li>
+                  <li>PS Form 3883, Firm Delivery Book for Accountable Mail<br></li>
+                  <li>DD Form 2261, Registered Mail Balance and Inventory<br></li>
+                  <li>Previous Day’s Registered Mail Inventory<br></li>
+                  <li>Registered tin band seals<br></li>
+                  <li>All Purpose Dating Stamp (APDS)<br></li>
+                </ul>
+              REQUIREMENTS:  The student will<br>
+              <ul style="text-align: left; margin: auto;">
+                <li>Receipt for Registered Mail<br></li>
+                <li>Notify dispatching office of discrepancies found on dispatch bills<br></li> 
+                <li>Deliver personal registered mail on PS Form 3849<br></li> 
+                <li>Deliver official registered mail on PS Form 3883<br></li> 
+                <li>Dispatch registered mail<br></li> 
+                <li>Prepare DD Form 2261 to close Registry Section at the end of the business day<br><br></li> 
+              </ul>
+            </div>
+            <button class="modal-button" @click="modalPage = 2">NEXT</button>
           </div>
           <button class="modal-button" @click="modalPage = 2">NEXT</button>
         </div>
@@ -41,22 +39,24 @@
         <div class="gold">
           <span class="tlo-title">Interservice Postal Training Activity<br>
             Lesson #CJAF5216<br>
-            Practical Exercise - X
-          </span>
-          <br><br>
-          <div class="tlo-text">
-            INSTRUCTIONS:<br><br>
-            Ensure that your name and the date are on the exercise booklet.<br>
-            This booklet contains six situations.  You will have 120 minutes to complete the registered exam.<br><br>
-            This exercise contains situations that include processing incoming registered mail, delivering registered mail, 
-            dispatching outgoing registered mail, and closing a registry section.
-            Make all responses clear and legible in the booklet.  Read each situation carefully but move on so that all 
-            situations may be answered in the allotted time.
-            If you make a mistake or if you have to change an answer in the booklet, completely erase it and then write in the correct information.
-            You must achieve a minimum of 80% in order to pass this exercise.<br><br>
-            SITUATION:  You are the registry clerk on duty in the registry section at APO AE  09459.  Perform routine registry section duties represented in situations 1 through 6.<br><br>
-            SPECIAL INSTRUCTIONS:  For this practical exercise, you will act as the registry clerk, unit mail clerk, addressee, witness, mail guard, and registry section supervisor.  Sign his/her names where applicable.<br><br>
-            NOTE:  ASSUME THAT ALL ADDRESSES SHOWN THROUGHOUT THIS PRACTICAL EXERCISE ARE CORRECT.<br><br>
+            Practical Exercise - X</span><br><br>
+            <div class="tlo-text">
+              INSTRUCTIONS:<br>
+                <ul style="text-align:left; margin:auto;">
+
+              <li>This webapp contains six situations.  You will have 120 minutes to complete the exercise.</li>
+              <li>This exercise will include processing incoming registered mail, delivering registered mail
+              dispatching outgoing registered mail, and closing a registry section.</li>
+              <li>Read each situation and all instructions carefully.</li>
+              </ul>
+              <br>
+              <br>
+              SITUATION:  You are the registry clerk on duty in the registry section at APO AE  09459.  Perform routine registry section duties.<br><br>
+              SPECIAL INSTRUCTIONS:  For this practical exercise, you will act as the registry clerk, unit mail clerk, addressee, witness, mail guard, and registry section supervisor.  Sign his/her names where applicable.<br><br>
+              NOTE:  ASSUME THAT ALL ADDRESSES SHOWN THROUGHOUT THIS PRACTICAL EXERCISE ARE CORRECT.
+
+            </div>
+            <button class="modal-button" @click="closeModal()">START</button>
           </div>
           <button class="modal-button" @click="closeModal()">START</button>
         </div>
@@ -95,6 +95,8 @@
     align-items: center;
     overflow: scroll;
     z-index: 2000;
+      -ms-overflow-style: none; 
+  scrollbar-width: none;
   }
   .modal {
     position: absolute;
@@ -125,22 +127,27 @@
     color: #D5D5D5;
     background-color: #32334B;
   }
-  .gold {
-    color: #D5D5D5;
-    text-align: center;
-    font-size: 2vw;
-  }
-  .tlo-title{
-    font-weight: bold;
-    letter-spacing: 3px;
-  }
-  .tlo-text {
-    font-size: 1.3vw;
-    text-align: left;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 10%;
-    margin-right:10%;
-  }
+
+.gold {
+  color: #D5D5D5;
+  text-align: center;
+  font-size: 2vw;
+}
+.tlo-title{
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+.tlo-text {
+  font-size: 1.1vw;
+  text-align: left;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  margin-left: 10%;
+  margin-right:10%;
+
+}
+.modal-backdrop::-webkit-scrollbar {
+  display: none;
+}
 </style>
