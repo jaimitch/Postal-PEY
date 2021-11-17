@@ -131,13 +131,14 @@
 
                         <div class='grand-text'>
                           {{ items[grandchild].type }} <br> <span v-if="!items[grandchild].articleCode.includes('created') && items[grandchild].articleCode != '45th MP CO APO AE 09459'">{{ items[grandchild].articleCode }}</span> <br> {{ items[grandchild].situationNumber }}
+                          <div>
+                            <button v-if="items[grandchild].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                            <button v-if="items[grandchild].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                            <div v-if="items[grandchild].sendTo">
+                              <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                        <button class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To</button>
-                        <div v-if="items[grandchild].sendTo">
-                          <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
-                        </div>
-                      </div>
                       </div>
                       <div class="grand-child-content" v-if="items[grandchild].images.length != 0">
 
@@ -169,6 +170,13 @@
 
                           <div class='great-grand-text'>
                             {{ items[greatgrand].type }} <br> <span v-if="!items[greatgrand].articleCode.includes('created') && items[greatgrand].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgrand].articleCode }}</span><br> {{ items[greatgrand].situationNumber }}
+                            <div>
+                              <button v-if="items[greatgrand].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                              <button v-if="items[greatgrand].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                              <div v-if="items[greatgrand].sendTo">
+                                <SendTo :locations="sendToLocations" :currentItem="this.items[greatgrand]" @selectedDestination="this.sendTo"/>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
@@ -201,6 +209,13 @@
 
                             <div class='great-grand-text'>
                               {{ items[greatgreat].type }} <br> <span v-if="!items[greatgreat].articleCode.includes('created') && items[greatgreat].articleCode != '45th MP CO APO AE 09459'">{{ items[greatgreat].articleCode }}</span><br> {{ items[greatgreat].situationNumber }}
+                              <div>
+                                <button v-if="items[greatgreat].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                                <button v-if="items[greatgreat].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
+                                <div v-if="items[greatgreat].sendTo">
+                                  <SendTo :locations="sendToLocations" :currentItem="this.items[greatgreat]" @selectedDestination="this.sendTo"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div class="grand-child-content" v-if="items[greatgreat].images.length != 0">
