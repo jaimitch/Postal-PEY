@@ -47,8 +47,6 @@
             :key='item.title' 
             draggable=false
             :id='item.id'
-            @dragover='dragOver(item.id,$event)'
-            @dragleave='dragLeave(item.id,$event)'
             @drop="onDrop($event,item.id)"
             @click="changeCurrentItem($event, item.id)"
           > 
@@ -69,8 +67,6 @@
                 :key='child' 
                 :draggable ='true'
                 :id='items[child].id'
-                @dragover='dragOver(items[child].id,$event)'
-                @dragleave='dragLeave(items[child].id,$event)'
                 @dragstart='startDrag($event, items[child])'
                 @drop="onDrop($event,items[child].id)"
                 @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
@@ -107,8 +103,6 @@
                   :key='grandchild'
                   :draggable ='true'
                   :id='items[grandchild].id'
-                  @dragover="dragOver(items[grandchild].id,$event)"
-                  @dragleave="dragLeave(items[grandchild].id,$event)"
                   @dragstart='startDrag($event, items[grandchild])'
                   @drop="onDrop($event,items[grandchild].id)"
                   @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
@@ -142,8 +136,6 @@
                     :key='greatgrand'
                     :draggable ='true'
                     :id='items[greatgrand].id'
-                    @dragover="dragOver(items[greatgrand].id,$event)"
-                    @dragleave="dragLeave(items[greatgrand].id,$event)"
                     @dragstart='startDrag($event, items[greatgrand])'
                     @drop="onDrop($event,items[greatgrand].id)"
                     @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
@@ -177,8 +169,6 @@
                       :key='greatgreat'
                       :draggable ='true'
                       :id='items[greatgreat].id'
-                      @dragover="dragOver(items[greatgreat].id,$event)"
-                      @dragleave="dragLeave(items[greatgreat].id,$event)"
                       @dragstart='startDrag($event, items[greatgreat])'
                       @drop="onDrop($event,items[greatgreat].id)"
                       @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
@@ -829,19 +819,6 @@
       },
     },
     methods: {
-      dragOver(id,evt){
-        //console.log(id)
-        evt.currentTarget.style.boxShadow = '0 0 10px 10px black';
-        for(let i = 0; i < this.items.length; i++){
-          if(this.items[i].level > 0 && this.items[i].id != id){
-            document.getElementById(this.items[i].id).style.boxShadow = "none"
-          }
-        }
-      },
-      dragLeave(id,evt){
-        evt.currentTarget.style.boxShadow = 'none';
-        return id
-      },
       flipForm(evt){
         if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
           this.form3854Back = !this.form3854Back

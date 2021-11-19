@@ -3,7 +3,7 @@
        <div class="top-text">
            United States Postal Service<br>
            <b>
-               Firm Delivery Receipt for
+                Firm Delivery Receipt for
                 <br>Accountable and Bulk Delivery Mail
             </b>
        </div>
