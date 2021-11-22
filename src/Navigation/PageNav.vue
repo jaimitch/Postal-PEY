@@ -35,7 +35,7 @@ export default {
   methods: { 
         nextPage() {
             this.$emit('clearForm')
-            this.$store.commit('nextPage');
+            this.$emit('nextPage')
         },
         prevPage() {
             this.$emit('clearForm')
