@@ -75,9 +75,8 @@
                 @dragstart='startDrag($event, items[child])'
                 @drop="onDrop($event,items[child].id)"
                 @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
-                :style= "items[child].showHalo"
               >
-                <div class="child-content">
+                <div class="child-content" :style= "items[child].showHalo">
                   <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
                   <img v-else-if="items[child].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon child-parcel">
                   <img v-else-if="items[child].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon child-pouch">
@@ -118,7 +117,7 @@
                   @drop="onDrop($event,items[grandchild].id)"
                   @click="changeCurrentItem($event, items[grandchild].id), toggleItemImage(items[grandchild])"
                 >
-                  <div class="grand-child-content">
+                  <div class="grand-child-content" :style= "items[grandchild].showHalo">
                     <img v-if="items[grandchild].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
                     <img v-else-if="items[grandchild].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
                     <img v-else-if="items[grandchild].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
@@ -156,7 +155,7 @@
                     @drop="onDrop($event,items[greatgrand].id)"
                     @click="changeCurrentItem($event, items[greatgrand].id), toggleItemImage(items[greatgrand])"
                   >
-                    <div class="grand-child-content">
+                    <div class="grand-child-content" :style= "items[greatgrand].showHalo">
                       <img v-if="items[greatgrand].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
                       <img v-else-if="items[greatgrand].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
                       <img v-else-if="items[greatgrand].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
@@ -194,7 +193,7 @@
                       @drop="onDrop($event,items[greatgreat].id)"
                       @click="changeCurrentItem($event, items[greatgreat].id), toggleItemImage(items[greatgreat])"
                     >
-                      <div class="grand-child-content">
+                      <div class="grand-child-content" :style= "items[greatgreat].showHalo">
                         <img v-if="items[greatgreat].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon grand-letter">
                         <img v-else-if="items[greatgreat].type == 'Parcel'" src="../assets/White-Box.svg" class="item-icon grand-parcel">
                         <img v-else-if="items[greatgreat].type == 'Pouch'" src="../assets/White-Pouch.svg" class="item-icon grand-pouch">
@@ -743,8 +742,9 @@
         if(this.pageNum ==  1) {
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
-          section in order to verify the items inside the safe against the previous day's inventory. Verify that the following \
-          items (RB 339 065 331 US and RB 290 770 790 US) are accounted for, and then sign the DD Form 2261 (Part III, Section B).`
+          section in order to verify the items inside the safe against the previous day's inventory.<br> \
+          1. Verify that the following items (RB 339 065 331 US and RB 290 770 790 US) are accounted for.<br> \
+          2. Sign the DD Form 2261 (Part III, Section B)`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
@@ -752,18 +752,22 @@
           text = "Terry Jones, the mail guard, arrives at the registry section at 0900 from the AMT \
           with one registered pouch and two registered outside pieces (OSPs).\
           <br><br>\
-          All Purpose Date Stamp (APDS) all outside pieces. Ensure the correctness of the \
-          incoming truck bill and sign. Then move the PS Form 3854 form into the Incoming \
-          Truck Bills section and all of the incoming articles into the Safe."
+          1. All Purpose Date Stamp (APDS) all outside pieces.<br> \
+          2. Ensure the correctness of the incoming truck bill and sign.<br> \
+          3. Move the PS Form 3854 form into the Incoming Truck Bills section.<br> \
+          4. Move all of the incoming articles into the Safe."
         }
         //Sitution 2 Part 2
          else if(this.pageNum == 3) {
            //Situation 2 Part 2
           text = "You and George Forrest, the witness, open the pouch at 0945 and locate the incoming inside bill. \
           <br><br> \
-          APDS all mail pieces. Ensure the correctness of the inside bill and note any discrepancies. Fill out the coupon \
-          on the back side of the bill. Then, sign the bill along with the witness. Move all mail articles from the pouch into the Safe. \
-          Then move the PS Form 3854 form and the empty pouch into the Incoming Inside Bills section. "
+          1. APDS all mail pieces.<br> \
+          2. Ensure the correctness of the inside bill and note any discrepancies.<br> \
+          3. Fill out the coupon. on the back side of the bill.<br> \
+          4. Sign the bill along with the witness.<br> \
+          5. Move all mail articles from the pouch into the Safe.<br> \
+          6. Move the PS Form 3854 form and the empty pouch into the Incoming Inside Bills section. "
         }
         //Situation 3
         else if(this.pageNum == 4) {
@@ -2649,8 +2653,6 @@
 </script>
 
 <style scoped>
-
-
   .frame{
     position: relative;
     top: 10vh;
