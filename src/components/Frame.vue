@@ -5,6 +5,11 @@
         <ToolTip/>
       </div>
     </div>
+    <ItemsLeft 
+      v-bind:showItemsLeft="showItemsLeft"
+      v-bind:problemItem="problemItem"
+      @changeShow="showItemsLeft = false"
+    />
     <Error 
       v-bind:showError="showError"
       v-bind:problemItems="problemItems"
@@ -320,6 +325,7 @@
     <PageNav
       v-bind:pageErrors="pageErrors"
       @clearForm="currentFormIndex = ''"
+      @nextPage="checkNext()"
     />
   </div>
 </template>
@@ -339,6 +345,7 @@
   import SectionCompleted from '../components/SectionCompleted.vue'
   import ToolTip from '../components/ToolTip.vue'
   import SendTo from '../components/SendTo.vue'
+  import ItemsLeft from '../components/ItemsLeft.vue'
 
   export default {
     name: 'Frame',
@@ -355,7 +362,8 @@
       Delete,
       SectionCompleted,
       ToolTip,
-      SendTo
+      SendTo,
+      ItemsLeft
     },
     props: [
       'pageNum',
@@ -364,6 +372,7 @@
     ],
     data() {
       return {
+        showItemsLeft: false,
         shade: false,
         completeNum: 0,
         collapsed: false,
@@ -653,6 +662,22 @@
       this.processAnswerKey();
     },
     computed: {
+      problemItem() {
+        let text = ""
+        if(this.pageNum == 2){
+          text = this.items[10].title
+        }
+        if(this.pageNum == 5){
+          text = this.items[11].title
+        }
+        if(this.pageNum == 7){
+          text = this.items[12].title
+        }
+        if(this.pageNum == 8){
+          text = this.items[13].title
+        }
+        return text
+      },
       openPDF() {
         return require('/public/Process_Reg_SHO.pdf');
       },
@@ -819,6 +844,24 @@
       },
     },
     methods: {
+      checkNext(){
+        console.log(this.pageNum)
+        if(this.items[10].children.length > 0){
+          this.showItemsLeft = true
+        }
+        else if(this.items[11].children.length > 0){
+          this.showItemsLeft = true
+        }
+        else if(this.items[12].children.length > 0){
+          this.showItemsLeft = true
+        }
+        else if(this.items[13].children.length > 0){
+          this.showItemsLeft = true
+        }
+        else{
+          this.$store.commit('nextPage');
+        }
+      },
       flipForm(evt){
         if(this.items[this.currentFormIndex].type == "PS FORM 3854"){
           this.form3854Back = !this.form3854Back
