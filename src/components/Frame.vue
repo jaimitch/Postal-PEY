@@ -408,6 +408,70 @@
         currentSituationPart: "",
         items: [
           {
+            id: 6,
+            title: "Incoming Truck",
+            articleCode: "Truck 1",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 2",
+            stampCounter: false,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 2"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 8,
+            title: "Incoming Truck",
+            articleCode: "Truck 2",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: false,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+            },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 9,
+            title: "Incoming Mail",
+            articleCode: "Truck 3",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: false,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
+            id: 10,
+            title: "Incoming Mail",
+            articleCode: "Truck 4",
+            children: [],
+            level: 0,
+            situationNumber: "Situation 4",
+            stampCounter: false,
+            stampable: false,
+            formInputs: {
+              situationNumber: "Situation 4"
+              },
+            type: "Truck",
+            droppable: true,
+            gradeAt: []
+          },
+          {
             articleCode: "Placeholder",
             id: 1,
             title: "Placeholder",
@@ -556,70 +620,6 @@
             gradeAt: []
           },
           {
-            id: 6,
-            title: "Incoming Truck",
-            articleCode: "Truck 1",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 2",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 2"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
-            id: 8,
-            title: "Incoming Truck",
-            articleCode: "Truck 2",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 4",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 4"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
-            id: 9,
-            title: "Incoming Mail",
-            articleCode: "Truck 3",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 4",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 4"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
-            id: 10,
-            title: "Incoming Mail",
-            articleCode: "Truck 4",
-            children: [],
-            level: 0,
-            situationNumber: "Situation 4",
-            stampCounter: false,
-            stampable: false,
-            formInputs: {
-              situationNumber: "Situation 4"
-              },
-            type: "Truck",
-            droppable: true,
-            gradeAt: []
-          },
-          {
             articleCode: "End Of Day",
             id: 45,
             title: "End Of Day",
@@ -685,16 +685,16 @@
       problemItem() {
         let text = ""
         if(this.pageNum == 2){
-          text = this.items[10].title
+          text = this.items[0].title
         }
         if(this.pageNum == 5){
-          text = this.items[11].title
+          text = this.items[1].title
         }
         if(this.pageNum == 7){
-          text = this.items[12].title
+          text = this.items[2].title
         }
         if(this.pageNum == 8){
-          text = this.items[13].title
+          text = this.items[3].title
         }
         return text
       },
@@ -870,16 +870,16 @@
     methods: {
       checkNext(){
         console.log(this.pageNum)
-        if(this.items[10].children.length > 0){
+        if(this.items[0].children.length > 0){
           this.showItemsLeft = true
         }
-        else if(this.items[11].children.length > 0){
+        else if(this.items[1].children.length > 0){
           this.showItemsLeft = true
         }
-        else if(this.items[12].children.length > 0){
+        else if(this.items[2].children.length > 0){
           this.showItemsLeft = true
         }
-        else if(this.items[13].children.length > 0){
+        else if(this.items[3].children.length > 0){
           this.showItemsLeft = true
         }
         else{
@@ -901,9 +901,9 @@
           let newFormSettings = {
               billNo: "129",
             }
-          this.items[8].children.push(this.createItem('psform3854', '129', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
+          this.items[12].children.push(this.createItem('psform3854', '129', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
           this.sit5InsideBill = true
-          this.items[8].collapsed = false
+          this.items[12].collapsed = false
           evt.stopPropagation()
         }
         else{
@@ -913,9 +913,9 @@
               sealNo: "------------",
               sealNoRight: "------------"
             }
-          this.items[9].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
+          this.items[13].children.push(this.createItem('psform3854', '144', this.getSituationNumber, 2, false, '', newFormSettings, this.updateGradeAt(), false))
           this.sit5TruckBill = true
-          this.items[9].collapsed = false
+          this.items[13].collapsed = false
           evt.stopPropagation()
         }
       },
@@ -1003,11 +1003,6 @@
                 }
               }
             }
-          }
-        }
-        for(let i = 0; i < this.items.length; i++){
-          if(this.items[i].level > 0){
-            document.getElementById(this.items[i].id).style.boxShadow = "none"
           }
         }
         evt.stopPropagation();
@@ -1226,7 +1221,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[2].children.push(newItem.id)
+            this.items[0].children.push(newItem.id)
           }
           
         }
@@ -1282,7 +1277,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[2].children.push(newItem.id)
+            this.items[10].children.push(newItem.id)
           }
           
         }
@@ -1351,7 +1346,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[2].children.push(newItem.id)
+            this.items[10].children.push(newItem.id)
           }
           
         }
@@ -1428,7 +1423,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[2].children.push(newItem.id)
+            this.items[6].children.push(newItem.id)
           }
           
         }
@@ -1484,7 +1479,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[2].children.push(newItem.id)
+            this.items[10].children.push(newItem.id)
           }
         }
         else if(itemType == "letter") {
@@ -1509,7 +1504,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[1].children.push(newItem.id)
+            this.items[5].children.push(newItem.id)
           }
         }
         else if(itemType == "parcel") {
@@ -1535,7 +1530,7 @@
           }
           this.items.push(newItem);
           if(defaultCreate) {
-            this.items[1].children.push(newItem.id)
+            this.items[5].children.push(newItem.id)
           }
         }
         else if(itemType == "pouch") {
@@ -1575,7 +1570,7 @@
           if(itemType == "pouch" && newItem.articleCode != undefined) {
             this.items.push(newItem);
             if(defaultCreate) {
-              this.items[8].children.push(newItem.id)
+              this.items[12].children.push(newItem.id)
               
             }
           }
@@ -2137,10 +2132,10 @@
             this.items[this.getItemByArticleCode("Items Delivered")].collapsed = true
             this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
           //hardcode truck visibility
-            this.items[10].level = 0;
-            this.items[11].level = 0;
-            this.items[12].level = 0;
-            this.items[13].level = 0;
+            this.items[0].level = 0;
+            this.items[1].level = 0;
+            this.items[2].level = 0;
+            this.items[3].level = 0;
             //console.log("items", this.items)
           if(!this.situationOneInit){
 
@@ -2186,10 +2181,10 @@
         else if(this.getSituationNumber == 2) {
 
           //hardcode all truck visibility
-          this.items[10].level = 1;
-          this.items[11].level = 0;
-          this.items[12].level = 0;
-          this.items[13].level = 0;
+          this.items[0].level = 1;
+          this.items[1].level = 0;
+          this.items[2].level = 0;
+          this.items[3].level = 0;
 
 
           if(this.pageNum == 2 && !this.situationTwoPartOne) {
@@ -2226,10 +2221,10 @@
           }
           else if(this.pageNum == 3) {
             //hardcode all truck visibility
-            this.items[10].level = 0;
-            this.items[11].level = 0;
-            this.items[12].level = 0;
-            this.items[13].level = 0;
+            this.items[0].level = 0;
+            this.items[1].level = 0;
+            this.items[2].level = 0;
+            this.items[3].level = 0;
 
             if(!this.situationTwoPartTwo) {
               let newFormSettings = {
@@ -2271,10 +2266,10 @@
         else if(this.getSituationNumber == 3) {
 
           //hardcode all truck visibility
-          this.items[10].level = 0;
-          this.items[11].level = 0;
-          this.items[12].level = 0;
-          this.items[13].level = 0;
+          this.items[0].level = 0;
+          this.items[1].level = 0;
+          this.items[2].level = 0;
+          this.items[3].level = 0;
 
           if(!this.situationThreeInit) {
             this.situationThreeInit = true;
@@ -2286,10 +2281,10 @@
 
           if(this.pageNum == 5) {
           //hardcode truck visibility
-          this.items[10].level = 0;
-          this.items[11].level = 1;
-          this.items[12].level = 0;
-          this.items[13].level = 0;
+          this.items[0].level = 0;
+          this.items[1].level = 1;
+          this.items[2].level = 0;
+          this.items[3].level = 0;
 
             if(!this.situationFourPartOne) {
               let newFormSettings = {
@@ -2324,10 +2319,10 @@
           else if(this.pageNum == 6) {
 
             //hardcode truck visibility
-            this.items[10].level = 0;
-            this.items[11].level = 0;
-            this.items[12].level = 0;
-            this.items[13].level = 0;
+            this.items[0].level = 0;
+            this.items[1].level = 0;
+            this.items[2].level = 0;
+            this.items[3].level = 0;
 
             if(!this.situationFourPartTwo){
 
@@ -2372,10 +2367,10 @@
           else if(this.pageNum == 7) {
 
             //hardcode truck visibility
-            this.items[10].level = 0;
-            this.items[11].level = 0;
-            this.items[12].level = 1;
-            this.items[13].level = 0;
+            this.items[0].level = 0;
+            this.items[1].level = 0;
+            this.items[2].level = 1;
+            this.items[3].level = 0;
 
             if(!this.situationFourPartThree) {
               let newFormSettings = {
@@ -2406,10 +2401,10 @@
           else if(this.pageNum == 8) {
 
             //hardcode truck visibility
-            this.items[10].level = 0;
-            this.items[11].level = 0;
-            this.items[12].level = 0;
-            this.items[13].level = 1;
+            this.items[0].level = 0;
+            this.items[1].level = 0;
+            this.items[2].level = 0;
+            this.items[3].level = 1;
 
             if(!this.situationFourPartFour) {
               let newFormSettings = {
@@ -2483,10 +2478,10 @@
           if(this.pageNum == 9) {
 
             //hardcode truck visibility
-            this.items[10].level = 0;
-            this.items[11].level = 0;
-            this.items[12].level = 0;
-            this.items[13].level = 0;
+            this.items[0].level = 0;
+            this.items[1].level = 0;
+            this.items[2].level = 0;
+            this.items[3].level = 0;
 
             if(!this.situationFivePartOne) {
               this.situationFivePartOne = true;
@@ -2497,10 +2492,10 @@
         }
         else if(this.getSituationNumber == 6) {
           //hardcode truck visibility
-          this.items[10].level = 0;
-          this.items[11].level = 0;
-          this.items[12].level = 0;
-          this.items[13].level = 0;
+          this.items[0].level = 0;
+          this.items[1].level = 0;
+          this.items[2].level = 0;
+          this.items[3].level = 0;
 
 
           this.currentFormIndex = '';
