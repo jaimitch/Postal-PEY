@@ -83,7 +83,12 @@
                       <button v-if="items[child].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                       <button v-if="items[child].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[child])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                       <div v-if="items[child].sendTo">
-                        <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
+                        <div v-if="items[child].type != 'Pouch' && !this.hasPouchAsChild(items[child])">
+                          <SendTo :locations="sendToLocations" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
+                        </div>
+                        <div v-else>
+                          <SendTo :locations="sendToLocationsNoPouch" :currentItem="this.items[child]" @selectedDestination="this.sendTo"/>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -119,7 +124,12 @@
                         <button v-if="items[grandchild].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                         <button v-if="items[grandchild].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[grandchild])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                         <div v-if="items[grandchild].sendTo">
+                         <div v-if="items[grandchild].type != 'Pouch' && !this.hasPouchAsChild(items[grandchild])">
                           <SendTo :locations="sendToLocations" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
+                        </div>
+                        <div v-else>
+                          <SendTo :locations="sendToLocationsNoPouch" :currentItem="this.items[grandchild]" @selectedDestination="this.sendTo"/>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -152,8 +162,13 @@
                           <button v-if="items[greatgrand].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                           <button v-if="items[greatgrand].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgrand])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                           <div v-if="items[greatgrand].sendTo">
-                            <SendTo :locations="sendToLocations" :currentItem="this.items[greatgrand]" @selectedDestination="this.sendTo"/>
-                          </div>
+                         <div v-if="items[greatgrand].type != 'Pouch' && !this.hasPouchAsChild(items[greatgrand])">
+                          <SendTo :locations="sendToLocations" :currentItem="this.items[greatgrand]" @selectedDestination="this.sendTo"/>
+                        </div>
+                        <div v-else>
+                          <SendTo :locations="sendToLocationsNoPouch" :currentItem="this.items[greatgrand]" @selectedDestination="this.sendTo"/>
+                        </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -185,8 +200,13 @@
                             <button v-if="items[greatgreat].sendTo == false" class="send-to-button" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-down.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                             <button v-if="items[greatgreat].sendTo == true" class="send-to-button" style="background-color: #D5D5D5; color:#42426A" @click="toggleSendTo($event, items[greatgreat])">Send To <img src="../assets/arrow-up.svg" width="20" height="20" style="position: absolute; transform: translate(10%, -10%);"></button>
                             <div v-if="items[greatgreat].sendTo">
-                              <SendTo :locations="sendToLocations" :currentItem="this.items[greatgreat]" @selectedDestination="this.sendTo"/>
-                            </div>
+                              <div v-if="items[greatgreat].type != 'Pouch' && !this.hasPouchAsChild(items[greatgreat])">
+                                <SendTo :locations="sendToLocations" :currentItem="this.items[greatgreat]" @selectedDestination="this.sendTo"/>
+                              </div>
+                              <div v-else>
+                                <SendTo :locations="sendToLocationsNoPouch" :currentItem="this.items[greatgreat]" @selectedDestination="this.sendTo"/>
+                              </div>
+                        </div>
                           </div>
                         </div>
                       </div>
@@ -663,6 +683,10 @@
         let locations = this.items.filter(x => x.level == 1 || x.type == "Pouch")
         return locations;
       },
+      sendToLocationsNoPouch() {
+        let locations = this.items.filter(x => x.level == 1)
+        return locations;
+      },
       firstLevel() {
         let res = [];
         this.items.forEach(item => {
@@ -1049,6 +1073,17 @@
       toggleSendTo(evt, item) {
         item.sendTo = !item.sendTo;
         evt.stopPropagation();
+      },
+      //takes in an item and determines if any of it's children are a pouch
+      hasPouchAsChild(item) {
+        console.log("checking:", item)
+        for(const child of item.children) {
+          let currentChild = this.findItemByID(child)[0]
+          if(currentChild.type == "Pouch") {
+            return true
+          }
+        }
+        return false
       },
       //sends an item from one location to another, and removes it from it's previous location
       sendTo(evt, item, destination) {
