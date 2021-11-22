@@ -46,6 +46,8 @@
             "itemsAccepted": 1,
             "itemsAtStart": 10,
             "items": ["RB 339 065 331 US", "RB 290 770 790 US","NFE"],
+            "toTime": "1600",
+            "fromTime": "0800",
             "situation1Location": "Start Of Day",
             "situation6Location": "Start Of Day",
             "gradeAt": [1, 6],
@@ -136,6 +138,8 @@
             "itemsListedOnInsideBillsA": "11",
             "itemsAccepted": "2",
             "items": ["NFE"],
+            "toTime": "1600",
+            "fromTime": "0800",
             "gradeAt": [6],
             "situation6Location":"End Of Day",
             "type":"DD FORM 2261"

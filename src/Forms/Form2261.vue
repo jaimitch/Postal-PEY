@@ -15,14 +15,20 @@
             </div>
             <div class="period-covered-from">
                 FROM 
-                <select v-model="formData.from">
+                <select v-model="formData.from" class="period-covered-select">
                     <option v-for="date in last7Days" :value="date" :key=date>{{date}}</option>
+                </select>
+                <select v-model="formData.fromTime" class="time">
+                    <option v-for="time in times" :value="time" :key=time>/{{time}}</option>
                 </select>
             </div>
             <div class="period-covered-to">
-                TO 
-                <select v-model="formData.to">
+                TO&nbsp;&nbsp;
+                <select v-model="formData.to" class="period-covered-select">
                     <option v-for="date in last7Days" :value="date" :key=date>{{date}}</option>
+                </select>
+                <select v-model="formData.toTime" class="time">
+                    <option v-for="time in times" :value="time" :key=time>/{{time}}</option>
                 </select>
             </div>
         </div>
@@ -860,7 +866,16 @@
                     itemsListedOnInsideBillsA: this.item.formInputs.itemsListedOnInsideBillsA,
                     itemsAccepted: this.item.formInputs.itemsAccepted,
                     items: this.item.formInputs.items,
-                },   
+                    toTime: this.item.formInputs.toTime,
+                    fromTime: this.item.formInputs.fromTime
+                },  
+                times: [
+                    "0800",
+                    "1600",
+                    "0500",
+                    "1300",
+                    "1500"
+                ] 
             }
         },
         mounted(){
@@ -984,11 +999,18 @@
         border-right: 1px solid black;
         text-align: left;
     }
-    .period-covered select{
+    .period-covered-select{
         position: absolute;
-        top:30%;
-        left: 0;
-        width: 90%;
+        top: 45%;
+        width: 45%;
+        left: 0%;
+        border: none;
+    }
+    .time{
+        position: absolute;
+        top: 45%;
+        width: 45%;
+        left: 50%;
         border: none;
     }
     .period-covered-to{
