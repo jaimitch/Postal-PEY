@@ -75,6 +75,7 @@
                 @dragstart='startDrag($event, items[child])'
                 @drop="onDrop($event,items[child].id)"
                 @click="changeCurrentItem($event, items[child].id), toggleItemImage(items[child])"
+                :style= "items[child].showHalo"
               >
                 <div class="child-content">
                   <img v-if="items[child].type == 'Letter'" src="../assets/White-Letter.svg" class="item-icon child-letter">
@@ -421,7 +422,8 @@
               },
             type: "Truck",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             id: 8,
@@ -437,7 +439,8 @@
             },
             type: "Truck",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             id: 9,
@@ -453,7 +456,8 @@
               },
             type: "Truck",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             id: 10,
@@ -469,7 +473,8 @@
               },
             type: "Truck",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Placeholder",
@@ -482,7 +487,8 @@
             formInputs: {},
             type: "Truck",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Safe",
@@ -498,6 +504,7 @@
             type: "safe",
             droppable: true,
             gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Start Of Day",
@@ -512,7 +519,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Incoming Inside Bills / Pouches",
@@ -527,7 +535,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Incoming Truck Bills",
@@ -542,7 +551,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Items Rcv'd From Other Sources",
@@ -557,7 +567,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Items Rcv’d From 3877",
@@ -572,7 +583,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Items Delivered",
@@ -587,7 +599,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Outgoing Inside Bills",
@@ -602,7 +615,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "Outgoing Truck Bills",
@@ -617,7 +631,8 @@
             formInputs: {},
             type: "forms",
             droppable: true,
-            gradeAt: []
+            gradeAt: [],
+            showHalo: false
           },
           {
             articleCode: "End Of Day",
@@ -633,7 +648,8 @@
             type: "forms",
             droppable: true,
             gradeAt: [],
-            collapsed: true
+            collapsed: true,
+            showHalo: false
           },
         ],
         //default assumes there is something wrong
@@ -1093,6 +1109,7 @@
       //record current item index and update current form index when needed
       changeCurrentItem (evt, id) {
           this.currentItemIndex = this.getItemIndex(id)
+          this.items[this.getItemIndex(id)].showHalo = {}
           if(this.items[this.currentItemIndex].type.indexOf("FORM") !== -1) {
             if(this.currentItemIndex == this.currentFormIndex){
               this.currentFormIndex = ''
@@ -1168,6 +1185,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
             formInputs: {
               select: [],
               situationNumber: 'Situation ' + situationNumber,
@@ -1239,6 +1259,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
             formInputs: {
                situationNumber: 'Situation ' + situationNumber,
                articleCode: articleCode,
@@ -1295,6 +1318,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -1364,6 +1390,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
                 articleCode: articleCode,
@@ -1441,6 +1470,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
               articleCode: articleCode,
@@ -1498,6 +1530,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
           }
           if(imageCode == "790"){
             newItem.currentImageIndex = 1
@@ -1524,6 +1559,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
           }
           if(imageCode == "331"){
             newItem.currentImageIndex = 1
@@ -1549,6 +1587,9 @@
             gradeAt: gradeAt,
             created: created,
             sendTo: false,
+            showHalo: {
+              boxShadow: '0 0 0.75rem crimson'
+            },
           }
           if(newItem.articleCode == "43000277"){
             newItem.images.push(require(`../assets/Bag-1.svg`))
