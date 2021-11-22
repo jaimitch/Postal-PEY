@@ -16,14 +16,15 @@
 	.st10{font-family:'Arial-BoldItalicMT';}
 	.st11{font-size:35.9282px;}
 	.st12{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
-	.st13{fill:#F7F8F8;stroke:#010101;stroke-width:2;stroke-miterlimit:10;}
-	.st14{fill:none;stroke:#010101;stroke-width:2;stroke-miterlimit:10;}
-	.st15{fill:#010101;}
-	.st16{fill:#F7F8F8;}
-	.st17{fill:#FFFFFF;stroke:#010101;stroke-width:3;stroke-miterlimit:10;}
-	.st18{fill:#F7F8F8;stroke:#010101;stroke-width:3;stroke-miterlimit:10;}
-	.st19{clip-path:url(#SVGID_00000150808006006537463050000001301907727669136007_);fill:#010101;}
-	.st20{clip-path:url(#SVGID_00000085237302166222769890000012081954601596719261_);fill:#FFFFFF;}
+	.st13{fill:#E42028;}
+	.st14{fill:#F7F8F8;stroke:#010101;stroke-width:2;stroke-miterlimit:10;}
+	.st15{fill:none;stroke:#010101;stroke-width:2;stroke-miterlimit:10;}
+	.st16{fill:#010101;}
+	.st17{fill:#F7F8F8;}
+	.st18{fill:#FFFFFF;stroke:#010101;stroke-width:3;stroke-miterlimit:10;}
+	.st19{fill:#F7F8F8;stroke:#010101;stroke-width:3;stroke-miterlimit:10;}
+	.st20{clip-path:url(#SVGID_00000146488176967831828290000014453622539190214315_);fill:#010101;}
+	.st21{clip-path:url(#SVGID_00000019643215177833933590000013596410645736880026_);fill:#FFFFFF;}
 </style>
 <rect x="0" class="st0" width="1838.29" height="933.78"/>
 <path class="st1" d="M1370.55,119.58h438.39c7.4,0,13.39-6,13.39-13.39V24.93c0-7.4-6-13.39-13.39-13.39h-438.39
@@ -1764,4 +1765,19 @@ AABJRU5ErkJggg==" transform="matrix(1.9185 0 0 1.9185 628.1387 10.5633)">
 </image>
 <rect x="731.78" y="244.26" class="st6" width="391.28" height="37.43"/>
 <text transform="matrix(1 0 0 1 772.9539 276.6026)" class="st10 st11">RB 707 092 218 US</text>
+<g>
+	<g>
+		<path class="st6" d="M1371.46,14.77c-57.89,0-104.82,46.93-104.82,104.82c0,57.89,46.93,104.82,104.82,104.82
+			c57.89,0,104.82-46.93,104.82-104.82C1476.28,61.7,1429.35,14.77,1371.46,14.77 M1371.46,164.33c-24.71,0-44.74-20.03-44.74-44.74
+			c0-24.71,20.03-44.74,44.74-44.74s44.74,20.03,44.74,44.74C1416.21,144.3,1396.17,164.33,1371.46,164.33"/>
+	</g>
+	<g>
+		<path class="st13" d="M1371.46,227.4c-59.45,0-107.82-48.37-107.82-107.82s48.37-107.82,107.82-107.82s107.82,48.37,107.82,107.82
+			S1430.91,227.4,1371.46,227.4z M1371.46,17.77c-56.14,0-101.82,45.67-101.82,101.82s45.67,101.82,101.82,101.82
+			s101.82-45.67,101.82-101.82S1427.6,17.77,1371.46,17.77z M1371.46,167.33c-26.33,0-47.75-21.42-47.75-47.74
+			s21.42-47.75,47.75-47.75s47.75,21.42,47.75,47.75S1397.79,167.33,1371.46,167.33z M1371.46,77.84
+			c-23.02,0-41.75,18.73-41.75,41.75c0,23.02,18.73,41.74,41.75,41.74s41.75-18.73,41.75-41.74
+			C1413.21,96.57,1394.48,77.84,1371.46,77.84z"/>
+	</g>
+</g>
 </svg>

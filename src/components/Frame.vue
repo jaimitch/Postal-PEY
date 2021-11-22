@@ -1163,7 +1163,6 @@
         }
         this.items.filter(x => x.id == item.id)[0].sendTo = false
         this.items.filter(x => x.id == item.id)[0].showImage = false
-        this.currentFormIndex = ""
         evt.stopPropagation();
       },
       /*creates a new item given information:
