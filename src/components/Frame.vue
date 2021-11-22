@@ -1439,6 +1439,8 @@
                 itemsListedOnInsideBillsA: "",
                 itemsAccepted: "",
                 items: [],
+                toTime: "",
+                fromTime: ""
             },
             type: "DD FORM 2261",
             droppable: true
@@ -2205,6 +2207,8 @@
                 itemsAtStart: 10,
                 officialSig: "Matthew L. Long",
                 prepSig: "John Doe",
+                toTime: "1600",
+                fromTime: "0800"
             }
 
             let yest = this.getYYYYMMDD(-1)
