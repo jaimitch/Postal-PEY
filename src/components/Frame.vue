@@ -242,10 +242,20 @@
             <div v-else class="creation-button-copy"></div>
           </div>
           <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
-          <div class="situation-text"> <span v-html="this.getSituationText"></span> </div>
+          <div class="situation-text"> <span v-html="this.getSituationText"></span> 
+          <div v-if="this.pageNum == 4">
+            <input type="checkbox" class="checkbox-col1" style="top: 18vw;">
+            <input type="checkbox" class="checkbox-col1" style="top: 19.6vw;">
+            <input type="checkbox" class="checkbox-col1" style="top: 21.2vw;">
+            <input type="checkbox" class="checkbox-col1" style="top: 22.8vw;">
+            <input type="checkbox" class="checkbox-col2" style="top: 18vw;">
+            <input type="checkbox" class="checkbox-col2" style="top: 19.6vw;">
+            <input type="checkbox" class="checkbox-col2" style="top: 21.2vw;">
+            <input type="checkbox" class="checkbox-col2" style="top: 22.8vw;">
+          </div></div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
-              <button class="creation-button" style="position:absolute; width:30vw; top:22vw; left:8.5vw;" @click="createSit5Form($event)">
+              <button class="creation-button" style="position:absolute; width:30vw; top:24vw; left:8.5vw;" @click="createSit5Form($event)">
                 CREATE NEW OUTGOING INSIDE BILL & POUCH
               </button>
             </div>
@@ -256,7 +266,7 @@
             </div>
           </div>
           <div class= "form-creation" style="position:absolute; width:30vw; left:3.25vw;" v-if="getSituationNumber == 6 && !this.sit62261">
-            <button class="creation-button cb2261" @click="createSit6Form($event)">
+            <button class="creation-button cb2261" style="position: relative; top: 4vw;" @click="createSit6Form($event)">
               CREATE NEW DD FORM 2261
             </button>
           </div>
@@ -742,40 +752,40 @@
         if(this.pageNum ==  1) {
           //Situation 1
           text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
-          section in order to verify the items inside the safe against the previous day's inventory.<br> \
-          1. Verify that the following items (RB 339 065 331 US and RB 290 770 790 US) are accounted for.<br> \
-          2. Sign the DD Form 2261 (Part III, Section B)`
+          section in order to verify the items inside the safe against the previous day's inventory.<br><br><br> \
+          <div style="text-align: left;">1. Verify that the following items (RB 339 065 331 US and RB 290 770 790 US) are accounted for.<br><br> \
+          2. Sign the DD Form 2261 (Part III, Section B)</div>`
         }
         //Situation 2 Part 1
         else if(this.pageNum == 2) {
           //Situation 2 Part 1
           text = "Terry Jones, the mail guard, arrives at the registry section at 0900 from the AMT \
           with one registered pouch and two registered outside pieces (OSPs).\
-          <br><br>\
-          1. All Purpose Date Stamp (APDS) all outside pieces.<br> \
-          2. Ensure the correctness of the incoming truck bill and sign.<br> \
-          3. Move the PS Form 3854 form into the Incoming Truck Bills section.<br> \
-          4. Move all of the incoming articles into the Safe."
+          <br><br><br>\
+          <div style='text-align: left;'>1. All Purpose Date Stamp (APDS) all outside pieces.<br><br> \
+          2. Ensure the correctness of the incoming truck bill and sign.<br><br> \
+          3. Move the PS Form 3854 form into the Incoming Truck Bills section.<br><br> \
+          4. Move all of the incoming articles into the Safe.</div>"
         }
         //Sitution 2 Part 2
          else if(this.pageNum == 3) {
            //Situation 2 Part 2
           text = "You and George Forrest, the witness, open the pouch at 0945 and locate the incoming inside bill. \
-          <br><br> \
-          1. APDS all mail pieces.<br> \
-          2. Ensure the correctness of the inside bill and note any discrepancies.<br> \
-          3. Fill out the coupon. on the back side of the bill.<br> \
-          4. Sign the bill along with the witness.<br> \
-          5. Move all mail articles from the pouch into the Safe.<br> \
-          6. Move the PS Form 3854 form and the empty pouch into the Incoming Inside Bills section. "
+          <br><br><br> \
+          <div style='text-align: left;'>1. APDS all mail pieces.<br><br> \
+          2. Ensure the correctness of the inside bill and note any discrepancies.<br><br> \
+          3. Fill out the coupon. on the back side of the bill.<br><br> \
+          4. Sign the bill along with the witness.<br><br> \
+          5. Move all mail articles from the pouch into the Safe.<br><br> \
+          6. Move the PS Form 3854 form and the empty pouch into the Incoming Inside Bills section.</div>"
         }
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>You prepare to deliver the following mail using the appropriate PS Forms at 1130.<br><br> \
-          1. Click an article<br> \
-          2. Select “Create 3883” or “Create 3849” if you wish to create a form. <br>\
-          3. After a form is filled out, move it and its attached mail item(s) to the Items Delivered section.<br><br>\
+          text = `<div>You prepare to deliver the following mail using the appropriate PS Forms at 1130.<br><br><br> \
+          <div style='text-align: left;'>1. Click an article<br><br> \
+          2. Select “Create 3883” or “Create 3849” if you wish to create a form. <br><br>\
+          3. After a form is filled out, move it and its attached mail item(s) to the Items Delivered section.<br><br><br></div>\
           Don’t forget to add the article number to the form.\
           Don't forget to mark a form with NFE (No Further Entries) when listing article numbers. </div><br>\
           <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
@@ -809,31 +819,31 @@
         //Situation 4 Part 1
         else if(this.pageNum == 5) {
           text = "Terry Jones, the mail guard, arrives at the registry section from Unit 2 at 1300 with a pouch and OSP(s) \
-           to dispatch to the AMT serving your area.<br> \
-           1. ADPS the outside piece(s).<br> \
-           2. Verify the incoming truck bill.<br> \
-           3. Move the outside piece(s) to the Safe, the truck bill to the Incoming Truck Bills section, and the pouch to the Incoming Inside Bills/Pouches section." 
+           to dispatch to the AMT serving your area.<br><br><br> \
+           <div style='text-align: left;'>1. ADPS the outside piece(s).<br><br> \
+           2. Verify the incoming truck bill.<br><br> \
+           3. Move the outside piece(s) to the Safe, the truck bill to the Incoming Truck Bills section, and the pouch to the Incoming Inside Bills/Pouches section.</div>"
         }
         //Situation 4 Part 2
         else if(this.pageNum == 6) {
-          text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315.<br> \
-          1. Verify the incoming inside bill, and then sign bill with witness.<br> \
-          2. ADPS all mail items.<br> \
-          3. Move all articles from the pouch into the safe."
+          text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315.<br><br><br> \
+          <div style='text-align: left;'>1. Verify the incoming inside bill, and then sign bill with witness.<br><br> \
+          2. ADPS all mail items.<br><br> \
+          3. Move all articles from the pouch into the safe.</div>"
         }
         //Situation 4 Part 3
         else if(this.pageNum == 7) {
-          text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877.<br> \
-          1. Verify the PS Form 3877.<br> \
-          2. Sign, and move into “Items Rcv’d From 3877” section.<br>\
-          3. APDS all articles, and move articles into safe."
+          text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877.<br><br><br> \
+          <div style='text-align: left;'>1. Verify the PS Form 3877.<br><br> \
+          2. Sign, and move into “Items Rcv’d From 3877” section.<br><br>\
+          3. APDS all articles, and move articles into safe.</div>"
         }
         //Situation 4 Part 4
         else if(this.pageNum == 8) {
-          text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545.<br> \
-          1. APDS all items.<br>\
-          2. Verify the 3854, sign, and move to “Items Rcv’d From Other Sources.”<br> \
-          3. Move all mail items into the Safe."
+          text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545.<br><br><br> \
+          <div style='text-align: left;'>1. APDS all items.<br><br>\
+          2. Verify the 3854, sign, and move to “Items Rcv’d From Other Sources.”<br><br> \
+          3. Move all mail items into the Safe.</div>"
         }
         //Situation 5 Part 1
         else if(this.pageNum == 9) {
@@ -843,9 +853,9 @@
           DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
           LAST OUTGOING INSIDE BILL USED: 128 <br>\
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
-          CURRENT TIME: 1730 <br><br>\
-          1. Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300.<br>\
-          2. Put this Outgoing Inside Bill and its associated mail items into a new pouch, and keep it in the Outgoing Inside Bills section."
+          CURRENT TIME: 1730 <br><br><br>\
+          <div style='text-align: left;'>1. Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300.<br><br>\
+          2. Put this Outgoing Inside Bill and its associated mail items into a new pouch, and keep it in the Outgoing Inside Bills section.</div>"
         }
         //Situation 5 Part 2
         else if(this.pageNum == 10) {
@@ -856,13 +866,15 @@
           LAST Outgoing Inside Bill USED: 128 <br>\
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
           CURRENT TIME: 1730 <br><br>\
-          2. Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section."
+          <div style='text-align: left;'>2. Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section.</div>"
         }
         //Situation 6
         else if(this.pageNum == 11) {
           text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
-          that is still on hand and has not been delivered. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. \
-          Then have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the End Of Day folder.";
+          that is still on hand and has not been delivered. <br><br><br>\
+          <div style='text-align: left;'>1. Account for all registered mail. <br><br>\
+          2. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. <br><br>\
+          3. Have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the End Of Day folder.</div>";
         }
         return text;
       },
@@ -3043,6 +3055,16 @@
     display: flex;
     justify-content: space-evenly;
     z-index: 6;
+  }
+  .checkbox-col1 {
+    position: absolute;
+    left: 24vw;
+    transform: translateX(-50%);
+  }
+  .checkbox-col2 {
+    position: absolute;
+    left: 37.7vw;
+    transform: translateX(-50%);
   }
   
 </style>
