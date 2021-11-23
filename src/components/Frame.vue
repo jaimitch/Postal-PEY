@@ -1198,7 +1198,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
             formInputs: {
               select: [],
@@ -1272,7 +1272,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+             boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
             formInputs: {
                situationNumber: 'Situation ' + situationNumber,
@@ -1331,7 +1331,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
@@ -1403,7 +1403,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
             formInputs: {
                 situationNumber: 'Situation ' + situationNumber,
@@ -1485,7 +1485,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
             formInputs: {
               situationNumber: 'Situation ' + situationNumber,
@@ -1545,7 +1545,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
           }
           if(imageCode == "790"){
@@ -1574,7 +1574,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
           }
           if(imageCode == "331"){
@@ -1602,7 +1602,7 @@
             created: created,
             sendTo: false,
             showHalo: {
-              boxShadow: '0 0 0.75rem crimson'
+              boxShadow: '0 0 0.5rem 0.5rem #32334B'
             },
           }
           if(newItem.articleCode == "43000277"){
