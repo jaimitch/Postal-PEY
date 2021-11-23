@@ -243,16 +243,7 @@
           </div>
           <div class="situation-title">Situation {{ getSituationNumber }} {{ currentSituationPart }}</div>
           <div class="situation-text"> <span v-html="this.getSituationText"></span> 
-          <div v-if="this.pageNum == 4">
-            <input type="checkbox" class="checkbox-col1" style="top: 18vw;">
-            <input type="checkbox" class="checkbox-col1" style="top: 19.6vw;">
-            <input type="checkbox" class="checkbox-col1" style="top: 21.2vw;">
-            <input type="checkbox" class="checkbox-col1" style="top: 22.8vw;">
-            <input type="checkbox" class="checkbox-col2" style="top: 18vw;">
-            <input type="checkbox" class="checkbox-col2" style="top: 19.6vw;">
-            <input type="checkbox" class="checkbox-col2" style="top: 21.2vw;">
-            <input type="checkbox" class="checkbox-col2" style="top: 22.8vw;">
-          </div></div>
+          </div>
           <div class= "form-creation" v-if="getSituationNumber == 5">
             <div v-if="this.pageNum == 9 && !this.sit5InsideBill">
               <button class="creation-button" style="position:absolute; width:30vw; top:24vw; left:8.5vw;" @click="createSit5Form($event)">
@@ -790,20 +781,20 @@
           Don't forget to mark a form with NFE (No Further Entries) when listing article numbers. </div><br>\
           <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
           <tr>
-          <td  style="width:40%">RB 298 302 613 US</td>
-          <td>RB 339 065 331 US</td>
+          <td  style="width:40%">RB 298 302 613 US <input type="checkbox"></td>
+          <td>RB 339 065 331 US <input type="checkbox"></td>
           </tr>
           <tr>
-          <td>RB 290 770 790 US</td>
-          <td>RB 309 266 140 US</td>
+          <td>RB 290 770 790 US <input type="checkbox"></td>
+          <td>RB 309 266 140 US <input type="checkbox"></td>
           </tr>
           <tr>
-          <td>RB 218 344 488 US</td>
-          <td>RB 143 899 161 US</td>
+          <td>RB 218 344 488 US <input type="checkbox"></td>
+          <td>RB 143 899 161 US <input type="checkbox"></td>
           </tr>
           <tr>
-          <td>RB 867 092 744 US</td>
-          <td>RB 102 022 763 US</td>
+          <td>RB 867 092 744 US <input type="checkbox"></td>
+          <td>RB 102 022 763 US <input type="checkbox"></td>
           </tr>
           </table>
           </div>
@@ -3056,16 +3047,6 @@
     display: flex;
     justify-content: space-evenly;
     z-index: 6;
-  }
-  .checkbox-col1 {
-    position: absolute;
-    left: 24vw;
-    transform: translateX(-50%);
-  }
-  .checkbox-col2 {
-    position: absolute;
-    left: 37.7vw;
-    transform: translateX(-50%);
   }
   
 </style>
