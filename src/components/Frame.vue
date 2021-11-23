@@ -867,7 +867,7 @@
           LAST OUTGOING TRUCK BILL USED: 143 <br>\
           CURRENT TIME: 1730 <br><br>\
           <div style='text-align: left;'>2. Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section. <br><br>\
-          3. Ensure the receiving registry clerk, Kyle Dozier, signs the PS Form 3854.</div>"
+          3. Ensure the receiving registry clerk, Kyle Dozier, signs the Outgoing Truck Bill.</div>"
         }
         //Situation 6
         else if(this.pageNum == 11) {
