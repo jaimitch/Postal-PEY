@@ -244,7 +244,7 @@
                 </div>
                 <div v-for="i in 15" :key = i class="box">
                     &emsp;{{i}}
-                    <select v-model="formData.itemNums[i]" class="box">
+                    <select v-model="formData.itemNums[i]" class="box" @input="hideSelected($event, topSelect+i)" :id="topSelect+i">
                         <option value="RB 888 122 361 US">RB 888 122 361 US</option>
                         <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB 300 911 755 US">
                             RB 300 911 755 US
@@ -311,7 +311,6 @@
                         <option v-if="formData.billNo == 260" value="S/70948511">S/70948511</option>
                         <option v-if="formData.billNo == 260" value="O/RB 102 022 763 US">O/RB 102 022 763 US</option>
                         <option v-if="formData.billNo == 260" value="O/RB 298 302 613 US">O/RB 298 302 613 US</option>
-                        <option value="RB 300 911 758 US">RB 300 911 758 US</option>
                         <option v-if="formData.billNo == 231" value="RB 621 758 502 US">RB 621 758 502 US</option>
                         <option v-if="formData.billNo == 231" value="RB 309 266 104 US">RB 309 266 104 US</option>
                         <option v-if="formData.billNo == 144" value="S/62345678">S/62345678</option>
@@ -346,7 +345,7 @@
                 <div v-for="i in 15" :key = i class="box">
                     &emsp;{{i+15}} 
                     <!-- <input v-if="i <= 5" type="text" v-model="formData.itemNums[i+15]" class="box"> -->
-                    <select v-model="formData.itemNums[i+15]" class="box">
+                    <select v-model="formData.itemNums[i+15]" class="box" @input="hideSelected($event, topSelect+(i+15))" :id="topSelect+(i+15)">
                         <option value="RB 888 122 361 US">RB 888 122 361 US</option>
                         <option v-if="formData.billNo == 24 || formData.billNo == 129" value="RB 300 911 755 US">
                             RB 300 911 755 US
@@ -413,7 +412,6 @@
                         <option v-if="formData.billNo == 260" value="S/70948511">S/70948511</option>
                         <option v-if="formData.billNo == 260" value="O/RB 102 022 763 US">O/RB 102 022 763 US</option>
                         <option v-if="formData.billNo == 260" value="O/RB 298 302 613 US">O/RB 298 302 613 US</option>
-                        <option value="RB 300 911 758 US">RB 300 911 758 US</option>
                         <option v-if="formData.billNo == 231" value="RB 621 758 502 US">RB 621 758 502 US</option>
                         <option v-if="formData.billNo == 231" value="RB 309 266 104 US">RB 309 266 104 US</option>
                         <option v-if="formData.billNo == 144" value="S/62345678">S/62345678</option>
@@ -612,6 +610,7 @@
         props: ['item', 'studentName', 'studentPG'],
         data () {
             return{
+                topSelect: "TOPSELECT",
                 currentTime: 0,
                 prevTime: 0,
                 formData: {
@@ -652,10 +651,50 @@
                     witnessRecieved: this.item.formInputs.witnessRecieved,
                     backText: this.item.formInputs.backText
                 },
+                showSelect: [
+                    "RB 888 122 361 US",
+                    "RB 300 911 755 US",
+                    "RB 300 911 756 US",
+                    "RB 300 911 757 US",
+                    "RB 300 911 758 US",
+                    "RB 300 911 760 US",
+                    "RB 300 911 761 US",
+                    "RB 707 092 210 US",
+                    "RB 707 092 211 US",
+                    "RB 707 092 212 US",
+                    "RB 707 092 213 US",
+                    "RB 707 092 214 US",
+                    "RB 707 092 215 US",
+                    "RB 707 092 216 US",
+                    "RB 707 092 217 US",
+                    "RB 707 092 218 US",
+                    "RB 707 092 219 US",
+                    "RB 842 320 438 US",
+                    "RB 842 320 439 US",
+                    "RB 298 302 613 US",
+                    "RB 339 065 331 US",
+                    "RB 290 770 790 US",
+                    "RB 309 266 140 US",
+                    "RB 218 344 488 US",
+                    "RB 143 899 161 US",
+                    "RB 867 092 744 US",
+                    "RB 102 022 763 US",
+                    "S/43000277",
+                    "O/RB 300 911 759 US",
+                    "S/70948511",
+                    "O/RB 102 022 763 US",
+                    "O/RB 298 302 613 US",
+                    "RB 300 911 758 US",
+                    "RB 621 758 502 US",
+                    "RB 309 266 104 US",
+                    "S/62345678"
+                ],
+                savedSelects: [],
             }
         },
         mounted(){
             this.$emit("changeShadeTrue")
+            this.renderList()
         },
         beforeUnmount(){
             this.$emit("changeShadeFalse")
@@ -682,8 +721,67 @@
                 for(let i = 1; i < this.formData.itemOrigins.length; i++){
                     string = string + " " + this.formData.itemOrigins[i]
                 }
-                //console.log(string)
                 return string
+            },
+            hideSelected(evt,id){
+                this.savedSelects.push({value: evt.target.value, id: id})
+                this.savedSelects.forEach((item,index,object) => {
+                    if(item.id == id){
+                        if(item.value != evt.target.value){
+                            for(let i = 1; i < 31; i++){
+                                let option = document.createElement("option")
+                                option.text = item.value
+                                option.value = item.value
+                                if(item.id != this.topSelect+i){
+                                    document.getElementById(this.topSelect+i).add(option,0)
+                                } 
+                            }
+                            object.splice(index,1)
+                        }
+                    }
+                })
+                for(let i = 1; i < 31; i++){
+                    if((this.topSelect + i) != id){
+                        for(let j = 0; j < document.getElementById(this.topSelect+i).options.length; j++){
+                            if(document.getElementById(this.topSelect+i).options[j].text == evt.target.value){
+                                if(evt.target.value != ""){
+                                    if(evt.target.value != "NFE"){
+                                        //this.savedSelects.push({value: document.getElementById(this.topSelect+i).options[j].value, id: id})
+                                        document.getElementById(this.topSelect+i).remove(j)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            renderList(){
+                for(let i = 1; i < 31; i++){
+                    if(document.getElementById(this.topSelect+i).value != ''){
+                        this.savedSelects.push({value: document.getElementById(this.topSelect+i).value, id:this.topSelect+i})
+                    }
+                }
+                let itemIDs= []
+                this.savedSelects.forEach((item) => {itemIDs.push(item.id)})
+                this.savedSelects.forEach((item)=>{
+                    for(let i = 1; i < 31; i++){
+                        if((this.topSelect + i) != item.id){
+                            for(let j = 0; j < document.getElementById(this.topSelect+i).options.length; j++){
+                                if(document.getElementById(this.topSelect+i).options[j].text == item.value){
+                                    if(item.value != ""){
+                                        if(item.value != "NFE"){
+                                            //this.savedSelects.push({value: document.getElementById(this.topSelect+i).options[j].value, id: id})
+                                            document.getElementById(this.topSelect+i).remove(j)
+                                            if(!itemIDs.includes(this.topSelect+i)){
+                                                document.getElementById(this.topSelect+i).value = ''
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
             }
         },
         watch: {
