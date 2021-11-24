@@ -724,7 +724,11 @@
                 return string
             },
             hideSelected(evt,id){
-                this.savedSelects.push({value: evt.target.value, id: id})
+                if(evt.target.value != ''){
+                    if(evt.target.value != "NFE"){
+                        this.savedSelects.push({value: evt.target.value, id: id})
+                    }
+                }
                 this.savedSelects.forEach((item,index,object) => {
                     if(item.id == id){
                         if(item.value != evt.target.value){
