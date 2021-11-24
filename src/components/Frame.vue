@@ -2339,6 +2339,7 @@
           this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 3) {
+          //hardcode closed folders
             this.items[this.getItemByArticleCode("Safe")].collapsed = false
             this.items[this.getItemByArticleCode("Start Of Day")].collapsed = false
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
@@ -2362,16 +2363,18 @@
         }
 
         else if(this.getSituationNumber == 4) {
-            this.items[this.getItemByArticleCode("Safe")].collapsed = false
-            this.items[this.getItemByArticleCode("Start Of Day")].collapsed = false
-            this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
-            this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv'd From Other Sources")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Rcv’d From 3877")].collapsed = true
-            this.items[this.getItemByArticleCode("Items Delivered")].collapsed = false
-            this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
-            this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = false
-            this.items[this.getItemByArticleCode("End Of Day")].collapsed = true
+          //hardcode closed folders
+          this.items[this.getItemByArticleCode("Safe")].collapsed = false
+          this.items[this.getItemByArticleCode("Start Of Day")].collapsed = false
+          this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
+          this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = false
+          this.items[this.getItemByArticleCode("Items Rcv'd From Other Sources")].collapsed = true
+          this.items[this.getItemByArticleCode("Items Rcv’d From 3877")].collapsed = true
+          this.items[this.getItemByArticleCode("Items Delivered")].collapsed = true
+          this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
+          this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
+          this.items[this.getItemByArticleCode("End Of Day")].collapsed = true
+
           if(this.pageNum == 5) {
           //hardcode truck visibility
           this.items[0].level = 0;
@@ -2410,6 +2413,9 @@
 
           }
           else if(this.pageNum == 6) {
+            //hardcode closed folders
+            this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = false
+            this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
 
             //hardcode truck visibility
             this.items[0].level = 0;
@@ -2458,7 +2464,10 @@
             
           }
           else if(this.pageNum == 7) {
+            //hardcode closed folders
+            this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv’d From 3877")].collapsed = false
+
             //hardcode truck visibility
             this.items[0].level = 0;
             this.items[1].level = 0;
@@ -2492,7 +2501,10 @@
 
           }
           else if(this.pageNum == 8) {
+            //hardcode closed folders
+            this.items[this.getItemByArticleCode("Incoming Truck Bills")].collapsed = true
             this.items[this.getItemByArticleCode("Items Rcv'd From Other Sources")].collapsed = false
+
             //hardcode truck visibility
             this.items[0].level = 0;
             this.items[1].level = 0;
@@ -2567,6 +2579,7 @@
           this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 5) {
+          //hardcode closed folders
             this.items[this.getItemByArticleCode("Safe")].collapsed = false
             this.items[this.getItemByArticleCode("Start Of Day")].collapsed = false
             this.items[this.getItemByArticleCode("Incoming Inside Bills / Pouches")].collapsed = true
@@ -2590,9 +2603,17 @@
             }
 
           }
+          else if(this.pageNum == 10) {
+            //hardcode closed folders
+            this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = false
+            this.items[this.getItemByArticleCode("Outgoing Truck Bills")].collapsed = true
+          }
           this.currentFormIndex = '';
         }
         else if(this.getSituationNumber == 6) {
+          //hardcode closed folders
+            this.items[this.getItemByArticleCode("Outgoing Inside Bills")].collapsed = true
+          
           //hardcode truck visibility
           this.items[0].level = 0;
           this.items[1].level = 0;
