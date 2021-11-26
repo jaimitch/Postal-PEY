@@ -742,131 +742,117 @@
         //Sitution 1
         if(this.pageNum ==  1) {
           //Situation 1
-          text = `You are the registry clerk on duty in the registry section at APO AE 09459, pay grade E-2. You just opened the registry \
-          section in order to verify the items inside the safe against the previous day's inventory.<br><br><br> \
-          <div style="text-align: left;">1. Verify that the following items (RB 339 065 331 US and RB 290 770 790 US) are accounted for.<br><br> \
-          2. Sign the DD Form 2261 (Part III, Section B)</div>`
+          text = `You are the registry clerk on duty in the registry section at APO AE 09093.  You just opened the registry
+          section and verified the items inside the safe against the previous day's inventory. Verify that the following items on pages
+          55 through 58 are all accounted for:<br><br>
+           RB225 776 101US<br>
+           RB605 097 092US<br>
+           RB302 393 604US<br><br>
+           At this time remove pages 55 through 58 and set them aside for futher processing later on the PE.`
         }
-        //Situation 2 Part 1
         else if(this.pageNum == 2) {
-          //Situation 2 Part 1
-          text = "Terry Jones, the mail guard, arrives at the registry section at 0900 from the AMT \
-          with one registered pouch and two registered outside pieces (OSPs).\
-          <br><br><br>\
-          <div style='text-align: left;'>1. All Purpose Date Stamp (APDS) all outside pieces.<br><br> \
-          2. Ensure the correctness of the incoming truck bill and sign.<br><br> \
-          3. Move the PS Form 3854 form into the Incoming Truck Bills section.<br><br> \
-          4. Move all of the incoming articles into the Safe.</div>"
+          //Situation 2
+          text = `1. Mary Martin, the mail guard, arrives at the registry section from the AMT with two registered pouches and one
+          registered outside piece (OSP). At this time remove pages 49 through 54 and properly receipt for the mall.<br><br>
+          2. You and Frank Potter, the witness, opened the pouch that originated from AMF Kennedy and located the incoming inside
+          bill.  At this time remove pages 39 through 48 and properly reciept for the registered articles recieved on the
+          incoming inside bill.<br><br>
+          3. You and Frank Potter, the witness, opened he second pouch that originated from APO AE 09012 and located the incoming
+          inside bill.  At this time remove pages 31 through 38 and properly receipt for the articles received on the incoming
+          inside bill<br><br>
+          TODAY'S DATE AND TIME: Use current date and time`
         }
         //Sitution 2 Part 2
-         else if(this.pageNum == 3) {
-           //Situation 2 Part 2
-          text = "You and George Forrest, the witness, open the pouch at 0945 and locate the incoming inside bill. \
-          <br><br><br> \
-          <div style='text-align: left;'>1. APDS all mail pieces.<br><br> \
-          2. Ensure the correctness of the inside bill and note any discrepancies.<br><br> \
-          3. Fill out the coupon. on the back side of the bill.<br><br> \
-          4. Sign the bill along with the witness.<br><br> \
-          5. Move all mail articles from the pouch into the Safe.<br><br> \
-          6. Move the PS Form 3854 form and the empty pouch into the Incoming Inside Bills section.</div>"
-        }
+        //  else if(this.pageNum == 3) {
+        //    //Situation 2 Part 2
+        //   text = `Deliver the following registered mail using the appropriate PS Forms<br><br>
+        //   RB605 097 092US &nbsp&nbsp&nbsp RB225 776 101US &nbsp&nbsp&nbsp RB933 338 290US<br>
+        //   RB760 301 185US &nbsp&nbsp&nbsp RB555 204 977US &nbsp&nbsp&nbsp RB577 301 983US<br>
+        //   RB577 301 987US &nbsp&nbsp&nbsp RB428 113 933US &nbsp&nbsp&nbsp RB577 301 985US<br><br>`
+        // }
         //Situation 3
         else if(this.pageNum == 4) {
           //Situation 3
-          text = `<div>You prepare to deliver the following mail using the appropriate PS Forms at 1130.<br><br><br> \
-          <div style='text-align: left;'>1. Click an article<br><br> \
-          2. Select “Create 3883” or “Create 3849” if you wish to create a form. <br><br>\
-          3. After a form is filled out, move it and its attached mail item(s) to the Items Delivered section.<br><br><br></div>\
-          Don’t forget to add the article number to the form.\
-          Don't forget to mark a form with NFE (No Further Entries) when listing article numbers. </div><br>\
-          <div  style="position: relative; left:50%; transform: translateX(-25%);" class=sit3chart style="text-align:center;"><table>
-          <tr>
-          <td  style="width:40%">RB 298 302 613 US <input type="checkbox"></td>
-          <td>RB 339 065 331 US <input type="checkbox"></td>
-          </tr>
-          <tr>
-          <td>RB 290 770 790 US <input type="checkbox"></td>
-          <td>RB 309 266 140 US <input type="checkbox"></td>
-          </tr>
-          <tr>
-          <td>RB 218 344 488 US <input type="checkbox"></td>
-          <td>RB 143 899 161 US <input type="checkbox"></td>
-          </tr>
-          <tr>
-          <td>RB 867 092 744 US <input type="checkbox"></td>
-          <td>RB 102 022 763 US <input type="checkbox"></td>
-          </tr>
-          </table>
-          </div>
-          <br>
-          Use the following Last Bill Numbers for the PS Form 3883s:<br><br>
-          <div  style="position: relative; left:32vw; transform: translateX(-50%);" class=sit3chart style="text-align:center;"> <table><tr><th>UNIT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>LAST BILL # USED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>UNIT MAIL CLERK</th></tr>\
-          <tr><th>14th ADMIN CO</th><th>183</th><th>EARL SMITH</th></tr>\
-          <tr><th>13th EOC</th><th>101</th><th>JOHN THOMPSON</th></tr>\
-          <tr><th>11th ENGR DET</th><th>182</th><th>RONNIE CARTER</th></tr>\
-          <tr><th>45TH MP CO</th><th>195</th><th>JERRY JOHNSON</th></tr></table><div>`
+          text = `Deliver the following registered mail using the appropriate PS Forms<br><br>
+          RB605 097 092US &nbsp&nbsp&nbsp RB225 776 101US &nbsp&nbsp&nbsp RB933 338 290US<br>
+          RB760 301 185US &nbsp&nbsp&nbsp RB555 204 977US &nbsp&nbsp&nbsp RB577 301 983US<br>
+          RB577 301 987US &nbsp&nbsp&nbsp RB428 113 933US &nbsp&nbsp&nbsp RB577 301 985US<br><br>
+          TODAY'S DATE AND TIME: Use current date and time<br><br>
+          REGISTRY SECTION OPERATING HOURS: 0730 to 1500 hours<br><br>
+          UNIT: &nbsp&nbsp&nbsp LAST BILL # USED &nbsp&nbsp&nbsp UNIT MAIL CLERK<br><br>
+          123 SPT BN, CO C &nbsp&nbsp&nbsp 115 &nbsp&nbsp&nbsp EARL MILLER<br>
+          123 SPT BN, CO D &nbsp&nbsp&nbsp 127 &nbsp&nbsp&nbsp JOE FRANKLIN<br>
+          222 BASE SPT BN, HHC &nbsp&nbsp&nbsp 105 &nbsp&nbsp&nbsp DON PETERS<br>
+          2/68 AR BN TANK &nbsp&nbsp&nbsp 111 &nbsp&nbsp&nbsp JOHN LOMAZ`
 
         }
         //Situation 4 Part 1
         else if(this.pageNum == 5) {
-          text = "Terry Jones, the mail guard, arrives at the registry section from Unit 2 at 1300 with a pouch and OSP(s) \
-           to dispatch to the AMT serving your area.<br><br><br> \
-           <div style='text-align: left;'>1. ADPS the outside piece(s).<br><br> \
-           2. Verify the incoming truck bill.<br><br> \
-           3. Move the outside piece(s) to the Safe, the truck bill to the Incoming Truck Bills section, and the pouch to the Incoming Inside Bills/Pouches section.</div>"
+          text = `1. Mary Martin, the mail guard, arrives at the registry section from Unit 1 with a pouch and one OSP to
+          be dispatched to the AMT servicinng your area.  At this time remove pages 27 through 30 and properly 
+          receipt for the mail<br><br>
+          2. You and Frank Potter, the witness, opened the pouch received from Unit 1.  Remove pages 21 through 26 and
+          properly receipt for the mail listed on the inside bill.<br><br>
+          3. Earl Miller (the 123 SPT BN, CO C mail clerk) arrives at the registry section with the items listed on the
+          PS Form 3877.  Remove pages 15 through 20 and properly receipt for the mail<br><br>
+          4. Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill.
+            Remove pages 9 through 14 and properly receipt for the mail<br><br>
+            TODAY'S DATE AND TIME: Use current date and time`
         }
-        //Situation 4 Part 2
-        else if(this.pageNum == 6) {
-          text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315.<br><br><br> \
-          <div style='text-align: left;'>1. Verify the incoming inside bill, and then sign bill with witness.<br><br> \
-          2. ADPS all mail items.<br><br> \
-          3. Move all articles from the pouch into the safe.</div>"
-        }
-        //Situation 4 Part 3
-        else if(this.pageNum == 7) {
-          text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877.<br><br><br> \
-          <div style='text-align: left;'>1. Verify the PS Form 3877.<br><br> \
-          2. Sign, and move into “Items Rcv’d From 3877” section.<br><br>\
-          3. APDS all articles, and move articles into safe.</div>"
-        }
-        //Situation 4 Part 4
-        else if(this.pageNum == 8) {
-          text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545.<br><br><br> \
-          <div style='text-align: left;'>1. APDS all items.<br><br>\
-          2. Verify the 3854, sign, and move to “Items Rcv’d From Other Sources.”<br><br> \
-          3. Move all mail items into the Safe.</div>"
-        }
-        //Situation 5 Part 1
+        // //Situation 4 Part 2
+        // else if(this.pageNum == 6) {
+        //   text = "You and George Forrest, the witness, open the pouch received from Unit 2 at 1315.<br><br><br> \
+        //   <div style='text-align: left;'>1. Verify the incoming inside bill, and then sign bill with witness.<br><br> \
+        //   2. ADPS all mail items.<br><br> \
+        //   3. Move all articles from the pouch into the safe.</div>"
+        // }
+        // //Situation 4 Part 3
+        // else if(this.pageNum == 7) {
+        //   text = "Jerry Johnson (the 45th MP CO mail clerk) arrives at the registry section at 1400 with the items listed on the PS Form 3877.<br><br><br> \
+        //   <div style='text-align: left;'>1. Verify the PS Form 3877.<br><br> \
+        //   2. Sign, and move into “Items Rcv’d From 3877” section.<br><br>\
+        //   3. APDS all articles, and move articles into safe.</div>"
+        // }
+        // //Situation 4 Part 4
+        // else if(this.pageNum == 8) {
+        //   text = "Turner, who works at the finance window, comes to the registry section with the items listed on the transfer bill at 1545.<br><br><br> \
+        //   <div style='text-align: left;'>1. APDS all items.<br><br>\
+        //   2. Verify the 3854, sign, and move to “Items Rcv’d From Other Sources.”<br><br> \
+        //   3. Move all mail items into the Safe.</div>"
+        //}
+        //Situation 5
         else if(this.pageNum == 9) {
-          text = "It is 1700, the registry section is now closed. Terry Jones, the mail guard, has arrived at your location and is waiting for the outgoing registered mail.\
-          <br><br> \
-          AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
-          DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
-          LAST OUTGOING INSIDE BILL USED: 128 <br>\
-          LAST OUTGOING TRUCK BILL USED: 143 <br>\
-          CURRENT TIME: 1730 <br><br><br>\
-          <div style='text-align: left;'>1. Create a PS Form 3854 for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300.<br><br>\
-          2. Put this Outgoing Inside Bill and its associated mail items into a new pouch, and keep it in the Outgoing Inside Bills section.</div>"
+          text = `The registry section is now closed.  Mary Martin, the mail guard has arrived at your location and is waiting
+          for the outgoing registered mail.<br><br>
+          1. Prepare the necessary documentation for dispatching all pouchable outgoing registered mail to AMF Kennedy, NY 00300<br><br>
+          2. Now prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSP's) to the 
+          AMT that services your post office.<br><br>
+          AMT SERVING YOUR AREA:  AMT, APO AE  09060<br><br>
+          DESTINATION FOR OUTGOING POUCHES:  AMF Kennedy NY  00300<br><br>
+          LAST OUTGOING INSIDE BILL USED:  175<br><br>
+          LAST OUTGOING TRUCK BILL USED:  193<br><br>
+          TODAY’S DATE AND TIME:  Use current date and time<br><br>`
         }
         //Situation 5 Part 2
-        else if(this.pageNum == 10) {
-          text = "1. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office.\
-          <br><br> \
-          AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
-          DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
-          LAST Outgoing Inside Bill USED: 128 <br>\
-          LAST OUTGOING TRUCK BILL USED: 143 <br>\
-          CURRENT TIME: 1730 <br><br>\
-          <div style='text-align: left;'>2. Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section. <br><br>\
-          3. Ensure the receiving registry clerk, Kyle Dozier, signs the Outgoing Truck Bill.</div>"
-        }
+        // else if(this.pageNum == 10) {
+        //   text = "1. Prepare the necessary documentation to dispatch all outgoing registered mail (pouches and OSPs) to the AMT that services your post office.\
+        //   <br><br> \
+        //   AMT SERVING YOUR AREA: AMT, APO AE 09463 <br>\
+        //   DESTINATION FOR OUTGOING POUCHES: AMF Kennedy, NY 00300 <br>\
+        //   LAST Outgoing Inside Bill USED: 128 <br>\
+        //   LAST OUTGOING TRUCK BILL USED: 143 <br>\
+        //   CURRENT TIME: 1730 <br><br>\
+        //   <div style='text-align: left;'>2. Move the PS Form 3854, the pouch(es), and OSP(s) into the Outgoing Truck Bills section. <br><br>\
+        //   3. Ensure the receiving registry clerk, Kyle Dozier, signs the Outgoing Truck Bill.</div>"
+        // }
         //Situation 6
         else if(this.pageNum == 11) {
-          text = "Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all registered mail received, delivered, dispatched, and mail \
-          that is still on hand and has not been delivered. <br><br><br>\
-          <div style='text-align: left;'>1. Account for all registered mail. <br><br>\
-          2. Under 'Part II - Remarks' print the witness' name, George Forrest, and your own name and pay grade. <br><br>\
-          3. Have your supervisor, Matthew L. Long, sign as the verifying official. Leave this form in the End Of Day folder.</div>";
+          text = `Prepare a DD Form 2261 (Registered Mail Balance and Inventory) to account for all 
+            registered mail received, delivered, dispatched, and mail that is still on hand that you 
+            have not delivered.  At this time remove pages 7 and 8 and prepare the form.<br><br>
+            REGISTRY SECTION SUPERVISOR:  MSG Stacy Simon<br><br>
+            TODAY’S DATE AND TIME:  Use current date and time<br><br>
+            REGISTRY SECTION OPERATING HOURS:  0730 to 1500 hours`;
         }
         return text;
       },
